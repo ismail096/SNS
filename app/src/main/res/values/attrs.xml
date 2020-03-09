@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SNAppTheme">
+        <attr name="primaryTextColor" format="color"/>
+        <attr name="secondaryTextColor" format="color"/>
+        <attr name="whiteTextColor" format="color"/>
+        <attr name="dividerColor" format="color"/>
+        <attr name="bottomNavItemColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="backgroundColor2" format="color"/>
+        <attr name="backgroundColor3" format="color"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="iconPlaceholder" format="integer"/>
+        <attr name="bottomBarBg" format="color"/>
+        <attr name="iconHome" format="integer"/>
+        <attr name="iconFlash" format="integer"/>
+        <attr name="iconMedia" format="integer"/>
+        <attr name="iconSearch" format="integer"/>
+        <attr name="iconSettings" format="integer"/>
+        <attr name="iconSlider" format="integer"/>
+        <attr name="iconListe1" format="integer"/>
+        <attr name="iconListe2" format="integer"/>
+        <attr name="iconGrid" format="integer"/>
+        <attr name="iconLogo" format="integer"/>
+        <attr name="darkGrey" format="color"/>
+        <attr name="iconFontSize" format="integer"/>
+        <attr name="iconShare" format="integer"/>
+        <attr name="iconSearch1" format="integer"/>
+        <attr name="iconSearch2" format="integer"/>
+        <attr name="iconSearch3" format="integer"/>
+        <attr name="toolbarBg" format="color"/>
+        <attr name="iconPlace" format="integer"/>
+        <attr name="iconDate" format="integer"/>
+        <attr name="iconShare2" format="integer"/>
+        <attr name="iconFav" format="integer"/>
+        <attr name="iconFavMenu" format="integer"/>
+        <attr name="menuLogo" format="integer"/>
+        <attr name="logoDetail" format="integer"/>
+        <attr name="iconBack" format="integer"/>
+        <attr name="iconMenu" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="SpannedGridLayoutManager">
+        <attr name="android:orientation" />
+        <attr name="spanCount" />
+        <attr name="aspectRatio" format="string" />
+    </declare-styleable>
+</resources>

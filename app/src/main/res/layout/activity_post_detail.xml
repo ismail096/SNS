@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostDetailActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detail_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_detail"
+        android:layout_above="@+id/post_bottom_layout"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="20sp"
+                android:textColor="?attr/secondaryTextColor"
+                android:textAllCaps="true"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:src="?attr/logoDetail"
+                    android:adjustViewBounds="true"
+                    android:layout_marginStart="16dp"
+                    />
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="12dp"
+                    android:src="@drawable/clock"
+                    android:layout_marginStart="10dp"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <ma.snrt.news.ui.TextViewRegular
+                    android:id="@+id/post_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey"
+                    android:layout_marginStart="5dp"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <View
+                    android:id="@+id/post_author_divider"
+                    android:layout_width="1dp"
+                    android:layout_height="24dp"
+                    android:background="?attr/dividerColor"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <ma.snrt.news.ui.TextViewRegular
+                    android:id="@+id/post_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+            <ma.snrt.news.ui.TextViewExtraBold
+                android:id="@+id/post_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_grey"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="14sp"
+                />
+
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/tags_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                />-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <ozaydin.serkan.com.image_zoom_view.ImageViewZoom
+                    android:id="@+id/post_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder"
+                    android:transitionName="imageMain"
+                    />
+
+                <ma.snrt.news.ui.TextViewEBItalic
+                    android:id="@+id/post_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/category_bg"
+                    android:textColor="@color/app_white"
+                    android:textSize="14sp"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="30dp"
+                    android:textAllCaps="true"
+                    android:transitionName="categoryText"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
+
+            <WebView
+                android:id="@+id/post_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:scrollbars="none"
+                android:background="?attr/backgroundColor"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?attr/dividerColor"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                >
+
+                <ma.snrt.news.ui.TextViewExtraBold
+                    android:id="@+id/like_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:text="@string/like_post_text"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="5dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/like_btn"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/like_empty"
+                    android:layout_marginEnd="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:padding="2dp"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                >
+
+                <ma.snrt.news.ui.TextViewExtraBold
+                    android:id="@+id/related_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/primaryTextColor"
+                    android:text="@string/related_posts"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:visibility="gone"
+                    />
+                <View
+                    android:id="@+id/related_divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/dividerColor"
+                    android:layout_marginStart="10dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/related_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ma.snrt.news.ui.TextViewRegular
+        android:id="@+id/empty_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/empty_view"
+        android:textColor="?attr/primaryTextColor"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:id="@+id/progress_bar"
+        android:indeterminateDrawable="@drawable/circular_progress_bar"
+        android:indeterminateDuration="700"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+
+   <!-- <View
+        android:id="@+id/bottom_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/shadow"
+        android:layout_above="@+id/post_bottom_layout"
+        android:visibility="gone"
+        />
+-->
+    <LinearLayout
+        android:id="@+id/post_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?attr/backgroundColor"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/wave"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/dividerColor"/>
+
+        <ImageView
+            android:id="@+id/read_text_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/play_button_red"
+            android:onClick="onClick"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/blackview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:onClick="onClick"
+        />
+
+    <RelativeLayout
+        android:id="@+id/font_size_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/backgroundColor"
+        android:padding="10dp"
+        android:layout_below="@id/toolbar_detail"
+        android:visibility="gone"
+        android:clickable="true"
+        android:layoutDirection="ltr"
+        >
+
+        <SeekBar
+            android:id="@+id/font_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:textColor="?attr/secondaryTextColor"
+            android:text="A"
+            android:textSize="12sp"
+            android:layout_below="@+id/font_seekBar"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/secondaryTextColor"
+            android:text="A"
+            android:layout_below="@+id/font_seekBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="6sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="?attr/secondaryTextColor"
+            android:text="A"
+            android:layout_below="@+id/font_seekBar"
+            android:layout_marginTop="2sp"
+            android:layout_marginEnd="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar_detail"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:paddingTop="10dp"
+        android:background="?attr/toolbarBg"
+        android:elevation="2dp"
+        >
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:src="?attr/iconBack"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            android:adjustViewBounds="true"
+            />
+
+        <ImageView
+            android:id="@+id/fontBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="?attr/iconFontSize"
+            android:layout_toStartOf="@+id/share_btn"
+            android:layout_centerVertical="true"
+            android:onClick="onClick"
+            />
+
+        <ImageView
+            android:id="@+id/share_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="?attr/iconShare"
+            android:layout_toStartOf="@+id/bookmark_btn"
+            android:layout_marginStart="20dp"
+            android:onClick="onClick"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/bookmark_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/bookmarks_empty"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="onClick"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

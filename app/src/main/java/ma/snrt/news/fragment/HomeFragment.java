@@ -1,0 +1,206 @@
+package ma.snrt.news.fragment;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ma.snrt.news.AgendaActivity;
+import ma.snrt.news.AppController;
+import ma.snrt.news.R;
+
+import ma.snrt.news.adapter.CategoryPagerAdapter;
+import ma.snrt.news.model.Category;
+import ma.snrt.news.network.ApiCall;
+import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.TextViewExtraBold;
+import ma.snrt.news.ui.TextViewRegular;
+import ma.snrt.news.util.Cache;
+import ma.snrt.news.util.Utils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+public class HomeFragment extends Fragment {
+    Context mContext;
+    List<Category> categories;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+    TextViewRegular emptyTextView;
+    ProgressBar progressBar;
+    LinearLayout contentLayout;
+    int currentPage = 0;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        mContext = getActivity();
+        viewPager = rootView.findViewById(R.id.viewpager);
+        tabLayout = rootView.findViewById(R.id.tablayout);
+        contentLayout = rootView.findViewById(R.id.content_layout);
+        emptyTextView = rootView.findViewById(R.id.empty_textview);
+        progressBar = rootView.findViewById(R.id.progress_bar);
+        categories = new ArrayList<>();
+        categories.add(new Category(2020, getString(R.string.top_news), "#ff0000"));
+        getCategories();
+        return rootView;
+    }
+
+    private void getCategories(){
+        progressBar.setVisibility(View.VISIBLE);
+        ApiCall.getCategories(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                if(progressBar!=null)
+                    progressBar.setVisibility(View.GONE);
+                if(response.body()!=null && response.isSuccessful()){
+                    Cache.putPermanentObject(response.body().toString(), "categories_"+ Utils.getAppCurrentLang());
+                    categories.addAll(GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<Category>>(){}.getType()));
+                }
+                else {
+                    String resultFromCache = (String) Cache.getPermanentObject("categories_"+ Utils.getAppCurrentLang());
+                    if(resultFromCache!=null)
+                        categories.addAll(GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Category>>(){}.getType()));
+                }
+                setPagerAdapter();
+                enableNotifs();
+            }
+
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                if(progressBar!=null)
+                    progressBar.setVisibility(View.GONE);
+                String resultFromCache = (String) Cache.getPermanentObject("categories_"+ Utils.getAppCurrentLang());
+                if(resultFromCache!=null)
+                    categories.addAll(GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Category>>(){}.getType()));
+                setPagerAdapter();
+            }
+        });
+    }
+
+    private void setPagerAdapter(){
+        if(categories.size()>0){
+            viewPager.setOffscreenPageLimit(categories.size());
+            contentLayout.setVisibility(View.VISIBLE);
+            categories.add(new Category(2022, getString(R.string.agenda), "#EEFF41"));
+            CategoryPagerAdapter adapter = new CategoryPagerAdapter(categories, ((AppCompatActivity) mContext).getSupportFragmentManager());
+            viewPager.setAdapter(adapter);
+            tabLayout.setupWithViewPager(viewPager);
+            for (int i = 0; i < tabLayout.getTabCount(); i++) {
+                View container = LayoutInflater.from(mContext).inflate(R.layout.tab_item_layout,null);
+                TextViewExtraBold tv = container.findViewById(R.id.tab_textview);
+                tv.setText(Html.fromHtml(categories.get(i).getTitle()));
+                tabLayout.getTabAt(i).setCustomView(container);
+                tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
+            }
+
+            TabLayout.Tab firstTab = tabLayout.getTabAt(0);
+            TextViewExtraBold tv = firstTab.getCustomView().findViewById(R.id.tab_textview);
+            Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
+            if(Utils.getAppCurrentLang().equals("ar"))
+                tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+            tv.setTypeface(tf);
+
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
+                    Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
+                    if(Utils.getAppCurrentLang().equals("ar"))
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                    tv.setTypeface(tf);
+                    tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
+                }
+
+                @Override
+                public void onTabUnselected(TabLayout.Tab tab) {
+                    TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
+                    Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-ExtraBold.otf");
+                    if(Utils.getAppCurrentLang().equals("ar"))
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/din-next-lt-w23-regular.ttf");
+                    tv.setTypeface(tf);
+                }
+
+                @Override
+                public void onTabReselected(TabLayout.Tab tab) {
+                    TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
+                    Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
+                    if(Utils.getAppCurrentLang().equals("ar"))
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                    tv.setTypeface(tf);
+                    tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
+                }
+            });
+
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    if(position==categories.size()-1){
+                        startActivity(new Intent(mContext, AgendaActivity.class));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewPager.setCurrentItem(currentPage);
+                            }
+                        }, 1000);
+                        return;
+                    }
+                    currentPage = position;
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
+        else{
+            emptyTextView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void enableNotifs(){
+        if(!AppController.getSharedPreferences().contains("notif_enabled")) {
+            SharedPreferences.Editor editor = AppController.getSharedPreferences().edit();
+            FirebaseMessaging.getInstance().subscribeToTopic("snrtnews_story_"+Utils.getAppCurrentLang());
+            if(categories.size()>0){
+                for(int i=0;i<categories.size();i++) {
+                    FirebaseMessaging.getInstance().subscribeToTopic("snrtnews_" + categories.get(i).getId());
+                    editor.putBoolean("notif_"+categories.get(i).getId(), true);
+                }
+            }
+            editor.putBoolean("notif_enabled", true);
+            editor.putBoolean("notif_story", true);
+            editor.commit();
+        }
+    }
+}

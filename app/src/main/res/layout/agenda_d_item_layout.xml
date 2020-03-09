@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/post_container"
+    android:layout_width="140dp"
+    android:layout_height="180dp"
+    android:clickable="true"
+    app:cardCornerRadius="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/placeholder"
+            android:scaleType="centerCrop"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#33000000"
+            />
+
+        <LinearLayout
+            android:id="@+id/post_date_layout"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical"
+            >
+
+            <ma.snrt.news.ui.TextViewExtraBold
+                android:id="@+id/post_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:gravity="center"
+                android:background="@drawable/btn_day"
+                android:padding="2dp"
+                />
+
+            <ma.snrt.news.ui.TextViewExtraBold
+                android:id="@+id/post_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:gravity="center"
+                android:background="@drawable/btn_month"
+                android:textAllCaps="true"
+                android:padding="2dp"
+                android:maxLength="3"
+                />
+
+
+        </LinearLayout>
+
+        <ma.snrt.news.ui.TextViewRegular
+            android:id="@+id/post_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/app_white"
+            android:textSize="10sp"
+            android:clickable="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textAllCaps="true"
+            android:layout_toStartOf="@id/like_btn"
+            />
+
+        <ImageView
+            android:id="@+id/like_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/story_like"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:padding="2dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

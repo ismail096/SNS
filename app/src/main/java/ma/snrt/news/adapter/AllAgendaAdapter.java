@@ -1,0 +1,128 @@
+package ma.snrt.news.adapter;
+
+import android.content.Context;
+import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.JsonArray;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ma.snrt.news.AppController;
+import ma.snrt.news.R;
+import ma.snrt.news.model.CategoryAgenda;
+import ma.snrt.news.model.Post;
+import ma.snrt.news.network.ApiCall;
+import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.TextViewExtraBold;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+
+    ArrayList<CategoryAgenda> items;
+    Context context;
+
+    public AllAgendaAdapter(Context context, ArrayList<CategoryAgenda> items) {
+        this.context = context;
+        this.items = items;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemCount() {
+        return items.size();
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        final CategoryAgenda item = items.get(position);
+        if(holder instanceof ViewHolder) {
+            final ViewHolder mHolder = (ViewHolder) holder;
+            mHolder.name.setText(Html.fromHtml(item.getTitle()));
+            getAgenda(mHolder.recyclerView, item.getId());
+            if(position%2==0){
+                if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
+                else
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+            }
+            else
+                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.agenda_color));
+
+        }
+
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
+                                                      int viewType) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.agenda_all_item_layout, viewGroup, false);
+        return new ViewHolder(v);
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        RecyclerView recyclerView;
+        TextViewExtraBold name;
+        LinearLayout container;
+
+        public ViewHolder(View convertView) {
+            super(convertView);
+            recyclerView = convertView.findViewById(R.id.agenda_recyclerview);
+            name = convertView.findViewById(R.id.category_name);
+            container = convertView.findViewById(R.id.item_container);
+
+        }
+    }
+
+    private void getAgenda(RecyclerView rv, int catId){
+        ApiCall.getAgendaByCat(catId, "", "", "", 0, new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                if(response.body()!=null && response.isSuccessful()){
+                    ArrayList<Post> agendas = GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<Post>>(){}.getType());
+                    setAgendaAdapter(rv, agendas);
+                }
+                else
+                    rv.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                rv.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private void setAgendaAdapter(RecyclerView rv, ArrayList<Post> list){
+        if(list.size()>0){
+            ArrayList<Post> agendas = new ArrayList<>();
+            GridLayoutManager llm = new GridLayoutManager(context, 2);
+            rv.setLayoutManager(llm);
+            if(list.size()>2) {
+                agendas.addAll(list.subList(0, 2));
+            }
+            else
+                agendas.addAll(list);
+            AgendaAdapter2 agendaAdapter = new AgendaAdapter2(context, agendas, rv);
+            rv.setAdapter(agendaAdapter);
+        }
+        else{
+            rv.setVisibility(View.GONE);
+        }
+    }
+}

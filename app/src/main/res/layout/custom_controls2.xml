@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/player_controls"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/exo_progress_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        >
+
+        <com.google.android.exoplayer2.ui.DefaultTimeBar
+            android:id="@id/exo_progress"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            app:scrubber_color="@color/player_progress_active"
+            app:played_color="@color/player_progress_active"
+            app:unplayed_color="@color/player_progress_desactive"
+            app:buffered_color="@color/player_progress_desactive"
+            app:scrubber_enabled_size="0dp"
+            app:scrubber_disabled_size="0dp"
+            app:scrubber_dragged_size="0dp"
+            app:bar_height="8dp"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView android:id="@id/exo_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:includeFontPadding="false"
+        android:textColor="#FFFFFF"
+        android:layout_above="@+id/exo_progress_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="#99000000"
+        />
+
+    <ImageView
+        android:id="@id/exo_play"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play_red"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        />
+
+    <ImageView
+        android:id="@id/exo_pause"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pause_red"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:alpha="0.7"
+        />
+
+    <ImageView
+        android:id="@+id/exo_fullscreen"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_fullscreen"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:adjustViewBounds="true"
+        android:onClick="onClick"
+        />
+
+</RelativeLayout>

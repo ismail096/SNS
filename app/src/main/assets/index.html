@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir="{{direction}}">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+		<!-- begin : style -->
+		<style>
+			@font-face {
+				font-family: 'fontFr';
+				src: url('file:///android_asset/fonts/Averta-regular.otf');
+			}
+			@font-face {
+				font-family: 'fontAr';
+				src: url('file:///android_asset/fonts/din-next-lt-w23-regular.ttf');
+			}
+			body {
+			padding: 0px;
+			margin: 0px;
+			color: {{color}};
+			text-align: center;
+			background: {{bgColor}};
+			font-family: {{myFont}};
+			}
+			.text {
+				text-align: justify;
+				line-height: 1.6;
+			}
+			img, iframe{
+				width: 100%;
+				height: auto;
+			}
+    	</style>
+		<script src="iSpeechTTS.min.js"></script>
+	</head>
+
+	<body>
+		<div class="text">
+			{{content}}
+		</div>
+		<audio id="audioPlayer"></audio>
+	</body>
+
+<script>
+
+audioPlayer = document.getElementById('audioPlayer');
+initTts = function() {
+	audioPlayer = document.getElementById('audioPlayer');
+	tts = new iSpeechTTS(audioPlayer, {
+		apiKey: 'developerdemokeydeveloperdemokey',
+		voice: 'arabicmale',
+		onEnded: function() {
+			console.log("TTS playback ended");
+		}
+	    });
+    }
+
+startTts = function(value) {
+	tts.speak(value);
+}
+
+pauseTts = function() {
+	tts.pause();
+}
+
+resumeTts = function() {
+	tts.resume();
+}
+</script>
+</html>

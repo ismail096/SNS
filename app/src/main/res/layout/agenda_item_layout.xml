@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/agenda_item_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="@color/app_white"
+    app:cardElevation="2dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/post_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <ma.snrt.news.ui.RoundRectCornerImageView
+            android:id="@+id/post_img"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:orientation="vertical"
+                android:layout_marginEnd="20dp"
+                >
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:id="@+id/post_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:textSize="15sp"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/post_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:src="@drawable/clock"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                    <ma.snrt.news.ui.TextViewRegular
+                        android:id="@+id/post_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_grey"
+                        android:layout_marginStart="5dp"
+                        android:textSize="12sp"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:src="@drawable/pin"
+                        android:layout_marginStart="20dp"
+                        android:adjustViewBounds="true"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                    <ma.snrt.news.ui.TextViewRegular
+                        android:id="@+id/post_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_grey"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:textSize="12sp"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ma.snrt.news.ui.TextViewExtraBold
+                android:id="@+id/more_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/see_more"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/rounded_btn_yellow"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

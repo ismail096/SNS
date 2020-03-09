@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="@string/app_name"
+        android:id="@+id/home_icon"
+        android:icon="?attr/iconHome"
+        />
+    <item
+        android:title="@string/flash_news"
+        android:id="@+id/flash_icon"
+        android:icon="?attr/iconFlash"/>
+    <item
+        android:title="@string/videos"
+        android:id="@+id/media_icon"
+        android:icon="?attr/iconMedia"/>
+    <item
+        android:title="@string/favoris"
+        android:id="@+id/fav_icon"
+        android:icon="?attr/iconFavMenu"/>
+</menu>

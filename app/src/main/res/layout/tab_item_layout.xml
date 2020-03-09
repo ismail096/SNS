@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ma.snrt.news.ui.TextViewExtraBold
+        android:id="@+id/tab_textview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="14sp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textAllCaps="true"
+        />
+
+</LinearLayout>

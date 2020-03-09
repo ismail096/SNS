@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "212083060765",
+    "firebase_url": "https://snrt-news.firebaseio.com",
+    "project_id": "snrt-news",
+    "storage_bucket": "snrt-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212083060765:android:a013d259f92995b2",
+        "android_client_info": {
+          "package_name": "ma.snrt.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212083060765-dpr80pu3jrf6ql7nefmvirdj03bh6gj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPuAd0j2w84xR89kM5eFMleQH3v6S0nvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212083060765-dpr80pu3jrf6ql7nefmvirdj03bh6gj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        >
+
+        <View
+            android:id="@+id/category_bg"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:background="@drawable/half_circle"
+            android:layout_gravity="center_vertical"
+            />
+
+        <ma.snrt.news.ui.TextViewExtraBold
+            android:id="@+id/alerte_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/secondaryTextColor"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            />
+
+        <com.suke.widget.SwitchButton
+            android:id="@+id/alerte_switch"
+            android:layout_width="40dp"
+            android:layout_height="24dp"
+            app:sb_checked_color="@color/colorPrimary"
+            app:sb_uncheck_color="@color/switch_color_des"
+            app:sb_background="?attr/backgroundColor2"
+            app:sb_show_indicator="false"
+            />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/alerte_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/dividerColor"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        />
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ff0000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ff0000</color>
+    <color name="app_white">#ffffff</color>
+    <color name="app_black">#000000</color>
+    <color name="text_color_primary">#000000</color>
+    <color name="text_color_dark">#ffffff</color>
+    <color name="divider_primary">#ebebeb</color>
+    <color name="divider_dark">#33FFFFFF</color>
+    <color name="bgGrey">#f0f0f0</color>
+    <color name="bgGreyDark">#1f1f1f</color>
+    <color name="bgGrey2">#e3e3e3</color>
+    <color name="bgGrey2Dark">#2d2d2d</color>
+    <color name="text_grey">#838383</color>
+    <color name="text_grey2">#4a4a4a</color>
+    <color name="story_options_bg">#80000000</color>
+    <color name="player_bg">#CC000000</color>
+    <color name="agenda_color">#EEFF41</color>
+    <color name="bottom_nav_grey">#5A5A5A</color>
+    <color name="tab_agenda_select">#ff0031</color>
+    <color name="true_fake_color">#01C7FD</color>
+    <color name="switch_color_des">#D0CACA</color>
+
+    <color name="shadow_primary">#65EBEBEB</color>
+    <color name="shadow_dark">#2a2a2a</color>
+
+    <color name="ss_progress_startColor">#ff0000</color>
+    <color name="ss_progress_endColor">#ff0000</color>
+    <color name="ss_progress_centerColor">#ff0000</color>
+
+    <color name="ss_secondaryProgress_startColor">#80ffd300</color>
+    <color name="ss_secondaryProgress_endColor">#a0ffcb00</color>
+    <color name="ss_secondaryProgress_centerColor">#80ffb600</color>
+
+    <color name="ss_background_startColor">#ffebebeb</color>
+    <color name="ss_background_endColor">#ff9d9d9d</color>
+    <color name="ss_background_centerColor">#ff747474</color>
+
+    <color name="player_progress_active">#B2CF0E0E</color>
+    <color name="player_progress_desactive">#9AFFFFFF</color>
+</resources>

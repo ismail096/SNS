@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/true_fake_color"
+        app:theme="@style/ThemeOverlay.AppCompat"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="4dp"
+        >
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_dark"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="start|center_vertical"
+            android:onClick="onClick"
+            android:adjustViewBounds="true"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/true_fake"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        />
+
+    <ma.snrt.news.ui.TextViewRegular
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="?attr/secondaryTextColor"
+        android:text="@string/lorem_ipsum"
+        android:maxLines="2"
+        android:layout_margin="20dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/tf_quest_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="10"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/ask_ur_quest"
+        android:gravity="top"
+        android:background="@drawable/tf_edit_border"
+        android:padding="10dp"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/true_fake_color"
+        android:layout_margin="20dp"
+        android:textColor="@color/app_white"
+        android:text="@string/next"
+        android:drawableEnd="@drawable/ic_next_white"
+        android:layout_gravity="center_horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="20dp"
+        android:onClick="onClick"
+        />
+
+
+
+
+</LinearLayout>

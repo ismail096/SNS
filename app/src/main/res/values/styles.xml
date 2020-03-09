@@ -1,0 +1,158 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppThemeLight" parent="AppTheme.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="primaryTextColor">@color/colorPrimary</item>
+        <item name="secondaryTextColor">@color/text_color_primary</item>
+        <item name="backgroundColor">#FFFFFF</item>
+        <item name="backgroundColor2">@color/bgGrey</item>
+        <item name="backgroundColor3">@color/bgGrey2</item>
+        <item name="dividerColor">@color/divider_primary</item>
+        <item name="bottomNavItemColor">@color/bottom_nav_grey</item>
+        <item name="whiteTextColor">#FFFFFF</item>
+        <item name="bottomBarBg">#FFFFFF</item>
+        <item name="darkGrey">#707070</item>
+        <item name="iconHome">@drawable/home_icon</item>
+        <item name="iconMedia">@drawable/play_icon</item>
+        <item name="iconSearch">@drawable/search_menu</item>
+        <item name="iconSettings">@drawable/settings_icon</item>
+        <item name="iconSlider">@drawable/slider_aff</item>
+        <item name="iconListe1">@drawable/liste1_aff</item>
+        <item name="iconListe2">@drawable/liste2_aff</item>
+        <item name="iconGrid">@drawable/grid_aff</item>
+        <item name="iconLogo">@drawable/logo_home</item>
+        <item name="iconFontSize">@drawable/font_icon</item>
+        <item name="iconShare">@drawable/share</item>
+        <item name="iconSearch1">@drawable/ic_list_black</item>
+        <item name="iconSearch2">@drawable/ic_cam_black</item>
+        <item name="iconSearch3">@drawable/ic_video_black</item>
+        <item name="toolbarBg">#FFFFFF</item>
+        <item name="iconPlace">@drawable/ic_place</item>
+        <item name="iconDate">@drawable/ic_date_range</item>
+        <item name="iconFlash">@drawable/flash_actus</item>
+        <item name="shadowColor">@color/shadow_primary</item>
+        <item name="iconShare2">@drawable/share</item>
+        <item name="iconFav">@drawable/bookmarks_empty</item>
+        <item name="iconFavMenu">@drawable/fav_menu</item>
+        <item name="menuLogo">@drawable/menu_logo</item>
+        <item name="logoDetail">@drawable/snrt_star</item>
+        <item name="iconBack">@drawable/back</item>
+        <item name="iconMenu">@drawable/menu_drawer</item>
+        <item tools:targetApi="23" name="android:statusBarColor">@color/app_white</item>
+        <item tools:targetApi="23" name="android:windowLightStatusBar">true</item>
+        <!--<item name="iconPlaceholder">@drawable/i_light_plholder</item>-->
+    </style>
+
+    <style name="AppThemeDark" parent="AppTheme.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="primaryTextColor">@color/colorPrimary</item>
+        <item name="secondaryTextColor">@color/text_color_dark</item>
+        <item name="backgroundColor">@color/app_black</item>
+        <item name="backgroundColor2">@color/bgGreyDark</item>
+        <item name="backgroundColor3">@color/bgGrey2Dark</item>
+        <item name="dividerColor">@color/divider_dark</item>
+        <item name="bottomNavItemColor">@color/app_white</item>
+        <item name="whiteTextColor">#000000</item>
+        <item name="bottomBarBg">#0F0F12</item>
+        <item name="darkGrey">#FFFFFF</item>
+        <item name="iconHome">@drawable/home_icon_dark</item>
+        <item name="iconMedia">@drawable/play_icon_dark</item>
+        <item name="iconSearch">@drawable/search_menu_dark</item>
+        <item name="iconSettings">@drawable/settings_icon_dark</item>
+        <item name="iconSlider">@drawable/slider_aff_dark</item>
+        <item name="iconListe1">@drawable/liste1_aff_dark</item>
+        <item name="iconListe2">@drawable/liste2_aff_dark</item>
+        <item name="iconGrid">@drawable/grid_aff_dark</item>
+        <item name="iconLogo">@drawable/logo_home_dark</item>
+        <item name="iconFontSize">@drawable/font_icon_dark</item>
+        <item name="iconShare">@drawable/share_dark</item>
+        <item name="iconSearch1">@drawable/ic_list_white</item>
+        <item name="iconSearch2">@drawable/ic_cam_white</item>
+        <item name="iconSearch3">@drawable/ic_video_white</item>
+        <item name="toolbarBg">#1F1F1F</item>
+        <item name="iconPlace">@drawable/ic_place_dark</item>
+        <item name="iconDate">@drawable/ic_date_range_dark</item>
+        <item name="iconFlash">@drawable/flash_actus_dark</item>
+        <item name="shadowColor">@color/shadow_dark</item>
+        <item name="iconShare2">@drawable/share_dark</item>
+        <item name="iconFav">@drawable/bookmarks_dark</item>
+        <item name="iconFavMenu">@drawable/fav_menu_dark</item>
+        <item name="menuLogo">@drawable/menu_logo_dark</item>
+        <item name="logoDetail">@drawable/snrt_star_dark</item>
+        <item name="iconBack">@drawable/back_dark</item>
+        <item name="iconMenu">@drawable/menu_drawer_dark</item>
+        <item tools:targetApi="23" name="android:statusBarColor">@color/app_black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <!--<item name="iconPlaceholder">@drawable/i_light_plholder</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.FullScreen">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!-- Specific Feed activity theme -->
+    <style name="ActivityThemeLight" parent="AppThemeLight">
+        <item name="android:windowBackground">@color/app_white</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+    <style name="ActivityThemeDark" parent="AppThemeDark">
+        <item name="android:windowBackground">@color/app_black</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="Theme.Transparent" parent="AppTheme.FullScreen">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/player_bg</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="myCustomTablayout" parent="Base.Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#fff</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabBackground">@android:color/transparent</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabSelectedTextColor">#fff</item>
+        <item name="tabPaddingStart">15dp</item>
+        <item name="tabPaddingEnd">15dp</item>
+    </style>
+
+    <style name="myCustomTablayout2" parent="Base.Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabBackground">@android:color/transparent</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabSelectedTextColor">@color/text_grey</item>
+        <item name="tabPaddingStart">15dp</item>
+        <item name="tabPaddingEnd">15dp</item>
+    </style>
+
+    <style name="myCustomTablayout3" parent="Base.Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#fff</item>
+        <item name="tabIndicatorHeight">0dp</item>
+        <item name="tabBackground">@android:color/transparent</item>
+        <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
+        <item name="tabSelectedTextColor">#fff</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabPaddingEnd">0dp</item>
+    </style>
+
+</resources>
