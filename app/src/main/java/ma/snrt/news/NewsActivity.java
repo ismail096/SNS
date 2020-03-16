@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
@@ -37,7 +39,7 @@ public class NewsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextViewRegular emptyTextView;
     TextViewBold titleTextView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     ArrayList<Post> posts;
     int currentPage = 0;
     NewsAdapter newsAdapter;
@@ -83,8 +85,12 @@ public class NewsActivity extends AppCompatActivity {
 
         posts = new ArrayList<>();
 
-       callNewsApi();
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
 
+       callNewsApi();
     }
 
     private void callNewsApi(){

@@ -5,13 +5,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,7 +22,6 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -35,8 +38,11 @@ import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ma.snrt.news.adapter.RelatedAdapter;
 import ma.snrt.news.model.Post;
@@ -48,12 +54,15 @@ import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.MyContextWrapper;
-import ma.snrt.news.util.PlayAudioManager;
 import ma.snrt.news.util.Utils;
+import okhttp3.ResponseBody;
 import ozaydin.serkan.com.image_zoom_view.ImageViewZoom;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rm.com.audiowave.AudioWaveView;
+import rm.com.audiowave.OnProgressListener;
+
 
 import static ma.snrt.news.AppController.mFirebaseAnalytics;
 
@@ -68,7 +77,7 @@ public class PostDetailActivity extends AppCompatActivity {
     ImageView likeBtn, bookMarksBtn, fontBtn;
     ImageViewZoom postImageview;
     RecyclerView relatedRecyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SeekBar fontSeekBar;
     boolean isFontLayoutVisible;
     Post post;
@@ -77,6 +86,10 @@ public class PostDetailActivity extends AppCompatActivity {
     RelatedAdapter relatedAdapter;
     int descriptionTextSize = 15;
     LinearLayout ttsLayout;
+    private int audioDuration;
+    private AudioWaveView audioWaveView;
+    private MediaPlayer mediaPlayer;
+    private Runnable audioRunnable;
     //View ttsShadow;
     //RecyclerView tagsRecyclerView;
 
@@ -173,6 +186,11 @@ public class PostDetailActivity extends AppCompatActivity {
 
         setFontSize(0, oldProgress);
 
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
+
         descriptionWv.getSettings().setJavaScriptEnabled(true);
         descriptionWv.getSettings().setBuiltInZoomControls(false);
         fillPost();
@@ -183,15 +201,139 @@ public class PostDetailActivity extends AppCompatActivity {
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "post");
 
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+
+        setupProgress();
+        getAudioBytes();
+    }
+
+    private void getAudioBytes() {
+        ApiCall.getUrlBytes(post.getText_speech(), new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful() && response.body()!=null){
+                    audioWaveView.setRawData(getBytesFromResponse(response.body()));
+                    ttsLayout.setVisibility(View.VISIBLE);
+                    Animation animation = AnimationUtils.loadAnimation(PostDetailActivity.this, R.anim.slide_up2);
+                    ttsLayout.startAnimation(animation);
+
+                }
+                else
+                    ttsLayout.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                ttsLayout.setVisibility(View.GONE);
+            }
+        });
+    }
+
+    private byte[] getBytesFromResponse(ResponseBody body) {
+        byte[] fileReader = new byte[4096];
+        try {
+            InputStream inputStream = null;
+            try {
+                inputStream = body.byteStream();
+                while (true) {
+                    int read = inputStream.read(fileReader);
+                    if (read == -1) {
+                        break;
+                    }
+                }
+            } catch (IOException e) {
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            }
+        } catch (IOException e) {
+        }
+        return fileReader;
+    }
+
+
+    private void setupProgress(){
+        audioWaveView = findViewById(R.id.wave);
+        final Random random = new Random();
+        final byte[] data = new byte[1024 * 200];
+        random.nextBytes(data);
+        audioWaveView.setRawData(data);
+
+        audioWaveView.setOnProgressListener(new OnProgressListener() {
+            @Override
+            public void onStartTracking(float v) {
+
+            }
+
+            @Override
+            public void onStopTracking(float v) {
+
+            }
+
+            @Override
+            public void onProgressChanged(float v, boolean b) {
+                if(mediaPlayer.isPlaying() && b){
+                    int playPositionInMillisecconds = (audioDuration / 100) * (int)v;
+                    mediaPlayer.seekTo(playPositionInMillisecconds);
+                }
+            }
+        });
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
+            @Override
+            public void onBufferingUpdate(MediaPlayer mediaPlayer, int i) {
+                Log.e("AudioDetail", "progress: "+i);
+                if(i<100)
+                    audioWaveView.setProgress(i);
+            }
+        });
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+            }
+        });
+    }
+
+    private void playPauseAudio(){
+        try {
+            mediaPlayer.setDataSource(post.getText_speech());
+            mediaPlayer.prepare();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        audioDuration = mediaPlayer.getDuration(); // gets the song length in milliseconds from URL
+        if(!mediaPlayer.isPlaying()){
+            mediaPlayer.start();
+            //buttonPlayPause.setImageResource(R.drawable.button_pause);
+        }else {
+            mediaPlayer.pause();
+            //buttonPlayPause.setImageResource(R.drawable.button_play);
+        }
+        primaryProgressUpdater();
+    }
+
+    private final Handler handler = new Handler();
+    /** Method which updates the SeekBar primary progress by current song playing position*/
+    private void primaryProgressUpdater() {
+        audioWaveView.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/audioDuration)*100)); // This math construction give a percentage of "was playing"/"song length"
+        if (mediaPlayer.isPlaying()) {
+            audioRunnable = new Runnable() {
+                public void run() {
+                    primaryProgressUpdater();
+                }
+            };
+            handler.postDelayed(audioRunnable,1000);
+        }
     }
 
     private void setFontSize(int oldValue, int value) {
         float ratio = value-oldValue;
         float wvRatio = (value  - oldValue) * 2;
-        if(Utils.getAppCurrentLang().equals("ar")) {
+        /*if(Utils.getAppCurrentLang().equals("ar")) {
             //ratio *= Utils.spToPx(getResources(), 4);
             wvRatio = (value  - oldValue) * 4;
-        }else
+        }else*/
             ratio *= Utils.spToPx(getResources(), 2);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextView.getTextSize()  + ratio);
         dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dateTextView.getTextSize()  + ratio);
@@ -290,12 +432,10 @@ public class PostDetailActivity extends AppCompatActivity {
             }
 
             if(post.getText_speech()!=null && post.getText_speech().contains(".mp3")){
-                ttsLayout.setVisibility(View.VISIBLE);
-                //ttsShadow.setVisibility(View.VISIBLE);
+                getAudioBytes();
             }
             else {
                 ttsLayout.setVisibility(View.GONE);
-                //ttsShadow.setVisibility(View.GONE);
             }
 
             if(post.getTags()!=null && !post.getTags().isEmpty()) {
@@ -352,7 +492,12 @@ public class PostDetailActivity extends AppCompatActivity {
                     dir = "rtl";
                 }
                 String text = Utils.loadJSONFromAsset("index.html", this);
-                text = text.replace("{{content}}", post.getDescriptionArticle());
+                String description = "";
+                if(post.getResume()!=null && !post.getResume().isEmpty()){
+                    description = "<b>"+post.getResume()+"</b><br/>";
+                }
+                description += post.getDescriptionArticle();
+                text = text.replace("{{content}}", description);
                 text = text.replace("{{myFont}}", font);
                 text = text.replace("{{color}}", color);
                 text = text.replace("{{bgColor}}", bgColor);
@@ -511,11 +656,12 @@ public class PostDetailActivity extends AppCompatActivity {
             case R.id.read_text_btn:
                 //startActivity(new Intent(this, TTSActivity.class));
                 if(post.getText_speech()!=null && post.getText_speech().contains(".mp3")) {
-                        try {
+                        /*try {
                             PlayAudioManager.playAudio(this, post.getText_speech());
                         } catch (Exception e) {
                             Toast.makeText(this , getString(R.string.api_error), Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
+                        playPauseAudio();
                 }
                 else
                     Toast.makeText(this , getString(R.string.api_error), Toast.LENGTH_SHORT).show();
@@ -525,8 +671,10 @@ public class PostDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if(PlayAudioManager.mediaPlayer!=null)
-            PlayAudioManager.killMediaPlayer();
+        if(mediaPlayer!=null)
+            mediaPlayer.release();
+        if(handler!=null)
+            handler.removeCallbacks(audioRunnable);
         descriptionWv.setVisibility(View.GONE);
         super.onDestroy();
     }

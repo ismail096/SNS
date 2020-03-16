@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
@@ -53,7 +54,7 @@ public class SearchTFActivity extends AppCompatActivity {
     private static final int RESULT_SPEECH = 112;
     RecyclerView recyclerView;
     TextViewRegular emptyTextView, resultCountTV, cancelBtn;
-    ProgressBar progressBar;
+    ImageView progressBar;
     ImageView searchBtn, micBtn;
     RelativeLayout listLayout, micLayout;
     AppCompatEditText searchEditText;
@@ -103,6 +104,11 @@ public class SearchTFActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(llm);
 
         posts = new ArrayList<>();
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override

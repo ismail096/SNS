@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -21,6 +22,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -49,7 +51,7 @@ public class AgendaActivity extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     LinearLayout contentLayout;
     boolean isDate1Clicked, isFiltreVisible;
     LinearLayout filtreLayout;
@@ -86,7 +88,14 @@ public class AgendaActivity extends AppCompatActivity {
 
         viewPager.setOffscreenPageLimit(3);
         categories = new ArrayList<>();
-        categories.add(new CategoryAgenda(2020, getString(R.string.all), "#ff0000"));
+        //categories.add(new CategoryAgenda(2020, getString(R.string.all), "#ff0000"));
+
+        page = getIntent().getIntExtra("position", 0);
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -231,7 +240,7 @@ public class AgendaActivity extends AppCompatActivity {
 
             tabLayout.addOnTabSelectedListener(tabListener);
 
-            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            /*viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -250,7 +259,8 @@ public class AgendaActivity extends AppCompatActivity {
                 public void onPageScrollStateChanged(int state) {
 
                 }
-            });
+            });*/
+            viewPager.setCurrentItem(page);
         }
         else{
             emptyTextView.setVisibility(View.VISIBLE);
@@ -284,10 +294,11 @@ public class AgendaActivity extends AppCompatActivity {
                     filtreLayout.startAnimation(animation);
                     filtreLayout.setVisibility(View.GONE);
                     blackView.setVisibility(View.GONE);
+                    Utils.closeKeyboard(this, positionEdit);
                 }
                 isFiltreVisible = false;
                 position = positionEdit.getText().toString();
-                if(page>0){
+                //if(page>0){
                     tabLayout.removeOnTabSelectedListener(tabListener);
                     adapter.notifyDataSetChanged();
 
@@ -307,7 +318,7 @@ public class AgendaActivity extends AppCompatActivity {
                     tv.setTextColor(ContextCompat.getColor(AgendaActivity.this, R.color.app_white));
                     tv.setBackgroundColor(ContextCompat.getColor(AgendaActivity.this, R.color.tab_agenda_select));
                     tabLayout.addOnTabSelectedListener(tabListener);
-                }
+                //}
                 break;
         }
     }

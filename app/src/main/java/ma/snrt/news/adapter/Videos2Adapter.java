@@ -211,6 +211,7 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if(item.getDatePublication()!=null) {
             mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
         }
+        setAnimation(mHolder.itemView, position);
     }
 
     private void setAnimation(View viewToAnimate, int position) {

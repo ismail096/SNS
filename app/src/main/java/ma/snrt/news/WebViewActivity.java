@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 
 import ma.snrt.news.model.Page;
@@ -29,7 +31,7 @@ public class WebViewActivity extends AppCompatActivity {
     WebView webView;
     TextViewRegular emptyView;
     TextViewBold pageTitle;
-    ProgressBar progressBar;
+    ImageView progressBar;
     Page page;
 
 
@@ -52,6 +54,11 @@ public class WebViewActivity extends AppCompatActivity {
             webView.getSettings().setDefaultFontSize(18);
         else
             webView.getSettings().setDefaultFontSize(15);
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
 
         int pageId =  getIntent().getIntExtra("pageId", 0);
         loadPage(pageId);

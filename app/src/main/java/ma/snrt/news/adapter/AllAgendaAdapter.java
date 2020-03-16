@@ -1,6 +1,7 @@
 package ma.snrt.news.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AgendaActivity;
 import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.model.CategoryAgenda;
@@ -63,9 +65,15 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             }
             else
                 mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.agenda_color));
-
+            mHolder.container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, AgendaActivity.class);
+                    intent.putExtra("position", position);
+                    context.startActivity(intent);
+                }
+            });
         }
-
     }
 
     @Override

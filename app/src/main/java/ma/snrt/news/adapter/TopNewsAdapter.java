@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
@@ -61,12 +62,12 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private ArrayList<Post> videos;
     private ArrayList<Post> agendas;
 
-    public TopNewsAdapter(Context context, ArrayList<Post> items) {
+    public TopNewsAdapter(Context context, ArrayList<Post> items, ArrayList<User> users, ArrayList<Post> videos, ArrayList<Post> agendas) {
         this.context = context;
         this.items = items;
-        this.users = new ArrayList<>();
-        this.videos = new ArrayList<>();
-        this.agendas = new ArrayList<>();
+        this.users = users;
+        this.videos = videos;
+        this.agendas = agendas;
     }
 
     @Override
@@ -174,8 +175,6 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
             });
-            //setAnimation(mHolder.itemView, position);
-
             if(getItemViewType(position) == TYPE_NORMAL) {
                 if (position == 3 || position == 9 || position == items.size()-1) {
                     mHolder.divider.setVisibility(View.GONE);
@@ -183,21 +182,32 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 else
                     mHolder.divider.setVisibility(View.VISIBLE);
             }
+            setAnimation(mHolder.itemView, position);
         }
         else if(holder instanceof StoriesHolder){
             StoriesHolder mHolder = (StoriesHolder) holder;
-            getStories(mHolder.recyclerView);
+            if(users.size()>0)
+                setStoriesAdapter(mHolder.recyclerView);
+            else
+                mHolder.itemView.setVisibility(View.GONE);
         }
         else if(holder instanceof AgendaHolder){
             AgendaHolder mHolder = (AgendaHolder) holder;
-            getAgenda(mHolder.recyclerView);
-            mHolder.seeMore.setOnClickListener(view -> {
+            if(agendas.size()>0) {
+                setAgendaAdapter(mHolder.recyclerView);
+                mHolder.seeMore.setOnClickListener(view -> {
                     context.startActivity(new Intent(context, AgendaActivity.class));
-            });
+                });
+            }
+            else
+                mHolder.itemView.setVisibility(View.GONE);
         }
         else if(holder instanceof VideosHolder){
             VideosHolder mHolder = (VideosHolder) holder;
-            getVideos(mHolder.recyclerView);
+            if(videos.size()>0)
+                setVideosAdapter(mHolder.recyclerView);
+            else
+                mHolder.itemView.setVisibility(View.GONE);
         }
 
     }
@@ -279,152 +289,63 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     class StoriesHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
+        LinearLayout container;
 
         public StoriesHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.stories_recycler);
+            container = convertView.findViewById(R.id.stories_container);
         }
     }
 
     class AgendaHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
+        LinearLayout container;
         TextViewExtraBold seeMore;
 
         public AgendaHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.agenda_recycler);
             seeMore = convertView.findViewById(R.id.see_more);
+            container = convertView.findViewById(R.id.agendas_container);
         }
     }
 
     class VideosHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
+        LinearLayout container;
 
         public VideosHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.videos_recycler);
+            container = convertView.findViewById(R.id.videos_container);
         }
     }
 
-    private void getStories(RecyclerView rv){
-        ApiCall.getStories(new Callback<JsonArray>() {
-            @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                if(response.body()!=null && response.isSuccessful()){
-                    users = GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<User>>(){}.getType());
-                    Cache.putPermanentObject(response.body().toString(), "stories_"+Utils.getAppCurrentLang());
-                }
-                else {
-                    String resultFromCache = (String) Cache.getPermanentObject("stories_"+ Utils.getAppCurrentLang());
-                    if(resultFromCache!=null)
-                        users = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<User>>(){}.getType());
-                    //Toast.makeText(context, mContext.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show();
-                }
-                setStoriesAdapter(rv);
-            }
-
-            @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
-                String resultFromCache = (String) Cache.getPermanentObject("stories_"+ Utils.getAppCurrentLang());
-                if(resultFromCache!=null)
-                    users = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<User>>(){}.getType());
-                setStoriesAdapter(rv);
-            }
-        });
-    }
-
     private void setStoriesAdapter(RecyclerView rv){
-        if(users.size()>0){
             LinearLayoutManager llm = new LinearLayoutManager(context);
             llm.setOrientation(LinearLayoutManager.HORIZONTAL);
             rv.setHasFixedSize(true);
             rv.setLayoutManager(llm);
             StoryAdapter storyAdapter = new StoryAdapter(context, users);
             rv.setAdapter(storyAdapter);
-        }
-        else{
-            rv.setVisibility(View.GONE);
-        }
-    }
-
-    private void getAgenda(RecyclerView rv){
-        ApiCall.getLatestAgenda( new Callback<JsonArray>() {
-            @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                if(response.body()!=null && response.isSuccessful()){
-                    agendas = GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<Post>>(){}.getType());
-                    Cache.putPermanentObject(response.body().toString(), "agenda_"+Utils.getAppCurrentLang());
-                }
-                else {
-                    String resultFromCache = (String) Cache.getPermanentObject("agenda_"+ Utils.getAppCurrentLang());
-                    if(resultFromCache!=null)
-                        agendas = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Post>>(){}.getType());
-                    //Toast.makeText(context, mContext.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show();
-                }
-                setAgendaAdapter(rv);
-            }
-
-            @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
-                String resultFromCache = (String) Cache.getPermanentObject("agenda_"+ Utils.getAppCurrentLang());
-                if(resultFromCache!=null)
-                    agendas = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Post>>(){}.getType());
-                setAgendaAdapter(rv);
-            }
-        });
     }
 
     private void setAgendaAdapter(RecyclerView rv){
-        if(agendas.size()>0){
             LinearLayoutManager llm = new LinearLayoutManager(context);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             rv.setHasFixedSize(true);
             rv.setLayoutManager(llm);
             AgendaAdapter storyAdapter = new AgendaAdapter(context, agendas, rv);
             rv.setAdapter(storyAdapter);
-        }
-        else{
-            rv.setVisibility(View.GONE);
-        }
-    }
-
-    private void getVideos(RecyclerView rv){
-        ApiCall.getVideos(false,0, 3, new Callback<JsonArray>() {
-            @Override
-            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                if(response.body()!=null && response.isSuccessful()){
-                    videos = GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<Post>>(){}.getType());
-                    Cache.putPermanentObject(response.body().toString(), "videos_"+Utils.getAppCurrentLang());
-                }
-                else {
-                    String resultFromCache = (String) Cache.getPermanentObject("videos_"+ Utils.getAppCurrentLang());
-                    if(resultFromCache!=null)
-                        videos = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Post>>(){}.getType());
-                }
-                setVideosAdapter(rv);
-            }
-
-            @Override
-            public void onFailure(Call<JsonArray> call, Throwable t) {
-                String resultFromCache = (String) Cache.getPermanentObject("videos_"+ Utils.getAppCurrentLang());
-                if(resultFromCache!=null)
-                    videos = GsonHelper.getGson().fromJson(resultFromCache, new TypeToken<List<Post>>(){}.getType());
-                setVideosAdapter(rv);
-            }
-        });
     }
 
     private void setVideosAdapter(RecyclerView rv){
-        if(users.size()>0){
             LinearLayoutManager llm = new LinearLayoutManager(context);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             rv.setHasFixedSize(true);
             rv.setLayoutManager(llm);
             VideosAdapter adapter = new VideosAdapter(context, videos, rv);
             rv.setAdapter(adapter);
-        }
-        else{
-            rv.setVisibility(View.GONE);
-        }
     }
 }

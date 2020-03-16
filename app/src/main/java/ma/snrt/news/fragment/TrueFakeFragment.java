@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
@@ -24,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.SearchActivity;
 import ma.snrt.news.SearchTFActivity;
@@ -49,7 +52,7 @@ public class TrueFakeFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView, tagsRecyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -85,6 +88,11 @@ public class TrueFakeFragment extends Fragment {
         layoutManager.setJustifyContent(JustifyContent.FLEX_END);
         tagsRecyclerView.setLayoutManager(layoutManager);
 
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+
         posts = new ArrayList<>();
         tags = new ArrayList<>();
 
@@ -94,6 +102,8 @@ public class TrueFakeFragment extends Fragment {
                 newsPage = 0;
                 posts.clear();
                 tags.clear();
+                recyclerView.setVisibility(View.GONE);
+                emptyTextView.setVisibility(View.GONE);
                 getNews();
                 getTags();
             }
@@ -174,6 +184,7 @@ public class TrueFakeFragment extends Fragment {
 
     private void setListAdapter(){
         if(posts.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
             if(newsPage ==0){
                 newsAdapter = new NewsFavAdapter(mContext, posts, recyclerView);
                 recyclerView.setAdapter(newsAdapter);

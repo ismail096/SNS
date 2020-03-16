@@ -212,6 +212,8 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
         else
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+
+        //setAnimation(mHolder.itemView, position);
     }
 
     private void setAnimation(View viewToAnimate, int position) {

@@ -6,20 +6,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.adapter.AllAgendaAdapter;
 import ma.snrt.news.adapter.TopAgendaAdapter;
@@ -27,6 +31,7 @@ import ma.snrt.news.model.CategoryAgenda;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.CenterZoomLayoutManager;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.Utils;
@@ -41,19 +46,21 @@ public class TopAgendaFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView, topRecyclerview;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<CategoryAgenda> categories;
     AllAgendaAdapter adapter;
     TopAgendaAdapter topAdapter;
     ArrayList<Post> tops;
+    LinearSnapHelper snapHelper;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category_agenda, container, false);
+        Cache.initFavorisAgenda();
         recyclerView = rootView.findViewById(R.id.agenda_recyclerview);
         topRecyclerview = rootView.findViewById(R.id.agenda_top_recyclerview);
         emptyTextView = rootView.findViewById(R.id.empty_textview);
@@ -68,12 +75,10 @@ public class TopAgendaFragment extends Fragment {
         recyclerView.setLayoutManager(llm);
         recyclerView.setPadding(0, 0, 0, 0);
 
-        final LinearLayoutManager llm2 = new LinearLayoutManager(mContext);
+        /*final LinearLayoutManager llm2 = new LinearLayoutManager(mContext);
         llm2.setOrientation(LinearLayoutManager.HORIZONTAL);
         topRecyclerview.setHasFixedSize(false);
-        topRecyclerview.setLayoutManager(llm2);
-
-        recyclerView.setLayoutManager(llm);
+        topRecyclerview.setLayoutManager(llm2);*/
 
         categories = new ArrayList<>();
         tops = new ArrayList<>();
@@ -83,10 +88,18 @@ public class TopAgendaFragment extends Fragment {
             public void onRefresh() {
                 categories.clear();
                 tops.clear();
+                recyclerView.setVisibility(View.GONE);
+                topRecyclerview.setVisibility(View.GONE);
+                emptyTextView.setVisibility(View.GONE);
                 getCategories();
                 getTopAgendas();
             }
         });
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
 
         getCategories();
 
@@ -131,6 +144,7 @@ public class TopAgendaFragment extends Fragment {
 
     private void setListAdapter(){
         if(categories.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
             adapter = new AllAgendaAdapter(mContext, categories);
             recyclerView.setAdapter(adapter);
             getTopAgendas();
@@ -175,8 +189,28 @@ public class TopAgendaFragment extends Fragment {
     private void setTopListAdapter(){
         if(tops.size()>0){
             topRecyclerview.setVisibility(View.VISIBLE);
+            CenterZoomLayoutManager layoutManager =
+                    new CenterZoomLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+            topRecyclerview.setLayoutManager(layoutManager);
             topAdapter = new TopAgendaAdapter(mContext, tops);
             topRecyclerview.setAdapter(topAdapter);
+            // Scroll to the position we want to snap to
+            layoutManager.scrollToPosition(tops.size() / 2);
+            // Wait until the RecyclerView is laid out.
+            topRecyclerview.post(new Runnable() {
+                @Override
+                public void run() {
+                    // Shift the view to snap  near the center of the screen.
+                    // This does not have to be precise.
+                    int dx = (topRecyclerview.getWidth() - topRecyclerview.getChildAt(0).getWidth()) / 2;
+                    topRecyclerview.scrollBy(-dx, 0);
+                    // Assign the LinearSnapHelper that will initially snap the near-center view.
+                    if(snapHelper==null) {
+                        snapHelper = new LinearSnapHelper();
+                        snapHelper.attachToRecyclerView(topRecyclerview);
+                    }
+                }
+            });
         }
         else{
             topRecyclerview.setVisibility(View.GONE);

@@ -209,7 +209,7 @@ public class NewsFavAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             else
                 mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
         }
-        //setAnimation(mHolder.itemView, position);
+        setAnimation(mHolder.itemView, position);
     }
 
     private void setAnimation(View viewToAnimate, int position) {

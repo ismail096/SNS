@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -42,7 +44,7 @@ public class VideosFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     LinearLayout contentLayout;
 
     @Override
@@ -59,6 +61,12 @@ public class VideosFragment extends Fragment {
 
         categories = new ArrayList<>();
         categories.add(new Category(0, getString(R.string.all), "#eeeeee"));
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+
         getCategories();
         return rootView;
     }
@@ -116,7 +124,7 @@ public class VideosFragment extends Fragment {
             TextViewExtraBold tv = firstTab.getCustomView().findViewById(R.id.tab_textview);
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
             if(Utils.getAppCurrentLang().equals("ar"))
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
             tv.setTypeface(tf);
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -125,7 +133,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
                     tv.setTypeface(tf);
                 }
 
@@ -134,7 +142,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-ExtraBold.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/din-next-lt-w23-regular.ttf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Medium.otf");
                     tv.setTypeface(tf);
                 }
 
@@ -143,7 +151,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
                     tv.setTypeface(tf);
                 }
             });

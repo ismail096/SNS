@@ -194,8 +194,6 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
             });
-            //setAnimation(mHolder.itemView, position);
-
             if(position%2==0) {
                 if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
                     mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
@@ -208,6 +206,7 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 else
                     mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
             }
+            setAnimation(mHolder.itemView, position);
         }
         else if(holder instanceof VideoHolder){
             final VideoHolder mHolder = (VideoHolder) holder;
@@ -318,6 +317,7 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
             else
                 mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+            setAnimation(mHolder.itemView, position);
         }
     }
 

@@ -3,6 +3,7 @@ package ma.snrt.news;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -28,17 +29,21 @@ import ma.snrt.news.util.Utils;
 
 public class SplashActivity extends AppCompatActivity {
     PlayerView playerView;
-    SimpleExoPlayer player;
+    //SimpleExoPlayer player;
     TextView frBtn, arBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        boolean isNightModeEnabled = AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false);
+        if (isNightModeEnabled) {
+            setTheme(R.style.FullScreenDark);
+        }
         setContentView(R.layout.activity_splash);
         playerView = findViewById(R.id.player_view);
         frBtn = findViewById(R.id.lang_fr_btn);
         arBtn = findViewById(R.id.lang_ar_btn);
-        player = ExoPlayerFactory.newSimpleInstance(this);
+        /*player = ExoPlayerFactory.newSimpleInstance(this);
         playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
         playerView.setPlayer(player);
         player.setPlayWhenReady(true);
@@ -85,10 +90,35 @@ public class SplashActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
-
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(Utils.getAppCurrentLang().equals("")){
+                    frBtn.setVisibility(View.VISIBLE);
+                    arBtn.setVisibility(View.VISIBLE);
+                }
+                else {
+                    Bundle extras = getIntent().getExtras();
+                    if(extras!=null && extras.containsKey("id")){
+                        Post post = new Post();
+                        post.setId(Integer.parseInt(extras.getString("id")));
+                        post.setTitle(extras.getString("title"));
+                        post.setDatePublication(extras.getString("date"));
+                        post.setImage(extras.getString("image"));
+                        post.setPosition(extras.getString("localisation"));
+                        post.setTags(extras.getString("tags"));
+                        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                        intent.putExtra("post", post);
+                        startActivity(intent);
+                        finish();
+                        return;
+                    }
+                    startMainActivity();
+                }
+            }
+        }, 2000);
 
     }
 
@@ -117,8 +147,8 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if(player!=null)
-            player.release();
+        /*if(player!=null)
+            player.release();*/
         super.onDestroy();
     }
 }

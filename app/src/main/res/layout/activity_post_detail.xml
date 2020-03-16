@@ -248,16 +248,12 @@
         android:textSize="16sp"
         android:visibility="gone" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+    <ImageView
         android:id="@+id/progress_bar"
-        android:indeterminateDrawable="@drawable/circular_progress_bar"
-        android:indeterminateDuration="700"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        />
+        android:visibility="gone" />
 
    <!-- <View
         android:id="@+id/bottom_shadow"
@@ -279,6 +275,25 @@
         android:visibility="gone"
         >
 
+        <rm.com.audiowave.AudioWaveView
+            android:id="@+id/wave"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:animateExpansion="false"
+            app:chunkWidth="2dp"
+            app:chunkHeight="20dp"
+            app:minChunkHeight="2dp"
+            app:chunkSpacing="2dp"
+            app:chunkRadius="1dp"
+            app:touchable="true"
+            app:waveColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="10dp"
+            />
+
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -290,6 +305,7 @@
             android:layout_marginEnd="20dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            android:visibility="gone"
             />
 
         <View

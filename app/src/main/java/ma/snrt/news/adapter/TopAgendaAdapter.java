@@ -87,7 +87,7 @@ public class TopAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             mHolder.position.setText(item.getPosition());
         mHolder.title.setClickable(false);
 
-        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mHolder.container.getLayoutParams();
+        /*RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mHolder.container.getLayoutParams();
         if(position == 0) {
             lp.height = (int) (lp.height * 1.2);
             lp.width = (int) (lp.width * 1.2);
@@ -97,7 +97,7 @@ public class TopAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             lp.height = Utils.dpToPx(context.getResources(), 260);
             lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         }
-        mHolder.container.setLayoutParams(lp);
+        mHolder.container.setLayoutParams(lp);*/
     }
 
     @Override

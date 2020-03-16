@@ -114,4 +114,10 @@ public class PermissionsHelper {
             activity.requestPermissions(new String[]{Manifest.permission.CAMERA}, USE_CAMERA);
         }
     }
+
+    public static void askPermission(AppCompatActivity activity, String permission, int requestCode) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            activity.requestPermissions(new String[]{permission}, requestCode);
+        }
+    }
 }

@@ -38,6 +38,7 @@
         <attr name="logoDetail" format="integer"/>
         <attr name="iconBack" format="integer"/>
         <attr name="iconMenu" format="integer"/>
+        <attr name="loaderIcon" format="integer"/>
     </declare-styleable>
     <declare-styleable name="SpannedGridLayoutManager">
         <attr name="android:orientation" />

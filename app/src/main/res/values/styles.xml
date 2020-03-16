@@ -48,6 +48,7 @@
         <item name="iconMenu">@drawable/menu_drawer</item>
         <item tools:targetApi="23" name="android:statusBarColor">@color/app_white</item>
         <item tools:targetApi="23" name="android:windowLightStatusBar">true</item>
+        <item name="loaderIcon">@raw/loader</item>
         <!--<item name="iconPlaceholder">@drawable/i_light_plholder</item>-->
     </style>
 
@@ -91,6 +92,7 @@
         <item name="iconMenu">@drawable/menu_drawer_dark</item>
         <item tools:targetApi="23" name="android:statusBarColor">@color/app_black</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="loaderIcon">@raw/loader_dark</item>
         <!--<item name="iconPlaceholder">@drawable/i_light_plholder</item>-->
     </style>
 
@@ -104,6 +106,24 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="FullScreenLight" parent="AppThemeLight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item tools:targetApi="23" name="android:statusBarColor">@color/app_white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+    </style>
+
+    <style name="FullScreenDark" parent="AppThemeDark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item tools:targetApi="23" name="android:statusBarColor">@color/app_black</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
     <!-- Specific Feed activity theme -->

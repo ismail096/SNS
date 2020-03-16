@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':audiowave'
 rootProject.name='SnrtNewsV2'

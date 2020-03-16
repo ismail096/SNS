@@ -11,6 +11,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.JsonArray;
@@ -49,7 +51,7 @@ public class HomeFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     LinearLayout contentLayout;
     int currentPage = 0;
 
@@ -66,6 +68,12 @@ public class HomeFragment extends Fragment {
         progressBar = rootView.findViewById(R.id.progress_bar);
         categories = new ArrayList<>();
         categories.add(new Category(2020, getString(R.string.top_news), "#ff0000"));
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+
         getCategories();
         return rootView;
     }
@@ -122,7 +130,7 @@ public class HomeFragment extends Fragment {
             TextViewExtraBold tv = firstTab.getCustomView().findViewById(R.id.tab_textview);
             Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
             if(Utils.getAppCurrentLang().equals("ar"))
-                tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
             tv.setTypeface(tf);
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -131,7 +139,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
                     tv.setTypeface(tf);
                     tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
                 }
@@ -141,7 +149,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-ExtraBold.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/din-next-lt-w23-regular.ttf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Medium.otf");
                     tv.setTypeface(tf);
                 }
 
@@ -150,7 +158,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
                     tv.setTypeface(tf);
                     tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
                 }
@@ -164,7 +172,7 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onPageSelected(int position) {
-                    if(position==categories.size()-1){
+                    /*if(position==categories.size()-1){
                         startActivity(new Intent(mContext, AgendaActivity.class));
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -173,7 +181,7 @@ public class HomeFragment extends Fragment {
                             }
                         }, 1000);
                         return;
-                    }
+                    }*/
                     currentPage = position;
                 }
 

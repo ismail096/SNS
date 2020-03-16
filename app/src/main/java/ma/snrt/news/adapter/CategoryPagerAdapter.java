@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.List;
 
 import ma.snrt.news.fragment.CategoryFragment;
+import ma.snrt.news.fragment.TopAgendaFragment;
 import ma.snrt.news.fragment.TopNewsFragment;
 import ma.snrt.news.fragment.TrueFakeFragment;
 import ma.snrt.news.model.Category;
@@ -28,13 +29,19 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         if(position==0)
             fragment = new TopNewsFragment();
-        else if(position==categories.size()-1)
-            fragment = new Fragment();
+        /*else if(position==categories.size()-1)
+            fragment = new Fragment();*/
         else if(categories.get(position).getId() == 10 || categories.get(position).getId() == 155) {
             fragment = new TrueFakeFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("category", categories.get(position));
             fragment.setArguments(bundle);
+        }
+        else if(categories.get(position).getId() == 2022) {
+            fragment = new TopAgendaFragment();
+            /*Bundle bundle = new Bundle();
+            bundle.putSerializable("category", categories.get(position));
+            fragment.setArguments(bundle);*/
         }
         else{
             fragment = new CategoryFragment();

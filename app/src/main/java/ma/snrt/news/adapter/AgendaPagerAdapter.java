@@ -27,15 +27,15 @@ public class AgendaPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
-        if(position!=0) {
+        //if(position!=0) {
             fragment = new CategoryAgendaFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("category", categories.get(position));
             //bundle.putInt("position", position);
             fragment.setArguments(bundle);
-        }
+        /*}
         else
-            fragment = new TopAgendaFragment();
+            fragment = new TopAgendaFragment();*/
         return fragment;
     }
 

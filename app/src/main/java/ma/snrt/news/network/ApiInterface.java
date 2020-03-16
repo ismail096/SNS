@@ -3,11 +3,13 @@ package ma.snrt.news.network;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public interface ApiInterface {
 
@@ -101,4 +103,7 @@ public interface ApiInterface {
 
     @GET("articles/live")
     Call<JsonArray> getLive(@Query("lang") String lang);
+
+    @GET
+    Call<ResponseBody> getUrlBytes(@Url String url);
 }

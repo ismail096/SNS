@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -15,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.adapter.FlashAdapter;
 import ma.snrt.news.model.Post;
@@ -43,7 +46,7 @@ public class FlashFragment extends Fragment {
     TextViewRegular emptyTextView;
     TextViewExtraBold dayTextView;
     RecyclerView recyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -67,8 +70,6 @@ public class FlashFragment extends Fragment {
         final LinearLayoutManager llm = new LinearLayoutManager(mContext);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
-
         recyclerView.setLayoutManager(llm);
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -95,6 +96,11 @@ public class FlashFragment extends Fragment {
             }
         });
 
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+
         posts = new ArrayList<>();
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -102,6 +108,8 @@ public class FlashFragment extends Fragment {
             public void onRefresh() {
                 newsPage = 0;
                 posts.clear();
+                recyclerView.setVisibility(View.GONE);
+                emptyTextView.setVisibility(View.GONE);
                 getFlashNews();
             }
         });
@@ -162,6 +170,7 @@ public class FlashFragment extends Fragment {
 
     private void setListAdapter(){
         if(posts.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
             if(newsPage ==0){
                 newsAdapter = new FlashAdapter(mContext, posts, recyclerView);
                 recyclerView.setAdapter(newsAdapter);

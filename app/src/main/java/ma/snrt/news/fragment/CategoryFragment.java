@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
@@ -23,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.adapter.NewsAdapter;
 import ma.snrt.news.adapter.TagAdapter;
@@ -45,7 +48,7 @@ public class CategoryFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView, tagsRecyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -89,10 +92,17 @@ public class CategoryFragment extends Fragment {
                 newsPage = 0;
                 posts.clear();
                 tags.clear();
+                emptyTextView.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
                 getNews();
                 getTags();
             }
         });
+
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
 
         getNews();
         getTags();
@@ -152,6 +162,7 @@ public class CategoryFragment extends Fragment {
 
     private void setListAdapter(){
         if(posts.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
             if(newsPage ==0){
                 newsAdapter = new NewsAdapter(mContext, posts, recyclerView);
                 recyclerView.setAdapter(newsAdapter);

@@ -32,6 +32,7 @@ public class Post implements Serializable {
     private int customCategory;
     private String type_contenu;
     private String text_speech;
+    private String resume;
 
     public Post() {
     }
@@ -255,5 +256,13 @@ public class Post implements Serializable {
 
     public void setText_speech(String text_speech) {
         this.text_speech = text_speech;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 }

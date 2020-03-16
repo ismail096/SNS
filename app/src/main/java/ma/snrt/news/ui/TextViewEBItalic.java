@@ -30,8 +30,8 @@ public class TextViewEBItalic extends TextView {
         if (!isInEditMode()) {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-ExtraBoldItalic.otf");
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Hacen-Beirut-Poster.ttf");
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 4));
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 4));
             }
             setTypeface(tf);
             //setClickable(true);

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -35,7 +37,7 @@ import retrofit2.Response;
 
 public class AlertesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     TextViewRegular emptyTextView;
     ArrayList<Category> categories;
     SwitchButton globalBtn, storyBtn;
@@ -61,6 +63,10 @@ public class AlertesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(llm);
 
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(this).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(this).load(R.raw.loader).into(progressBar);
         categories = new ArrayList<>();
         getCategoriesFromApi();
     }

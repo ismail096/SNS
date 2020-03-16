@@ -192,7 +192,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
         });
-        //setAnimation(mHolder.itemView, position);
+        setAnimation(mHolder.itemView, position);
     }
 
     private void setAnimation(View viewToAnimate, int position) {

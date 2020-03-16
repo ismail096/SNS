@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 
 import ma.snrt.news.AppController;
 import ma.snrt.news.util.Utils;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -157,6 +158,11 @@ public class ApiCall {
 
     public static void getLive(Callback<JsonArray> callback) {
         Call<JsonArray> call = AppController.getAPIService().getLive(Utils.getAppCurrentLang());
+        call.enqueue(callback);
+    }
+
+    public static void getUrlBytes(String url, Callback<ResponseBody> callback) {
+        Call<ResponseBody> call = AppController.getAPIService().getUrlBytes(url);
         call.enqueue(callback);
     }
 

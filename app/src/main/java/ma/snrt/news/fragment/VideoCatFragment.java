@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -14,12 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.R;
 import ma.snrt.news.adapter.Videos2Adapter;
 import ma.snrt.news.model.Category;
@@ -40,7 +43,7 @@ public class VideoCatFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView;
-    ProgressBar progressBar;
+    ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -74,9 +77,15 @@ public class VideoCatFragment extends Fragment {
             public void onRefresh() {
                 page = 0;
                 posts.clear();
+                emptyTextView.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
                 getVideos();
             }
         });
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+        else
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);
 
         getVideos();
 
@@ -135,6 +144,7 @@ public class VideoCatFragment extends Fragment {
 
     private void setListAdapter(){
         if(posts.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
             if(page ==0){
                 adapter = new Videos2Adapter(mContext, posts, recyclerView);
                 recyclerView.setAdapter(adapter);
