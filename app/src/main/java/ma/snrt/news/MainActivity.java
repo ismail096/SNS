@@ -21,6 +21,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonArray;
 
@@ -40,7 +42,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
-    public ViewPager viewPager;
+    public RtlViewPager viewPager;
     public DrawerLayout drawerLayout;
     ImageView liveBtn, mainLogo;
     TextViewBold title;
@@ -113,7 +115,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLive() {
-
+        if(Utils.getAppCurrentLang().equals("fr"))
+            Glide.with(this).load(R.raw.live_fr).into(liveBtn);
+        else
+            Glide.with(this).load(R.raw.live_ar).into(liveBtn);
         ApiCall.getLive(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {

@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -48,7 +49,7 @@ import retrofit2.Response;
 
 public class AgendaActivity extends AppCompatActivity {
     List<CategoryAgenda> categories;
-    ViewPager viewPager;
+    RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
     ImageView progressBar;

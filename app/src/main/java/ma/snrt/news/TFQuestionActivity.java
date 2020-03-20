@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
@@ -69,14 +70,20 @@ public class TFQuestionActivity extends AppCompatActivity {
     }
 
     public void onClick(View view){
-        if(view.getId() == R.id.back_btn)
+        if (view.getId() == R.id.back_btn || view.getId() == R.id.close_btn) {
             finish();
-        else if(view.getId() == R.id.next_btn)
-        {
+        } else if (view.getId() == R.id.next_btn) {
             Intent intent = new Intent(this, TFQuestion2Activity.class);
             intent.putExtra("question", questionEdit.getText().toString());
-            startActivity(intent);
+            startActivityForResult(intent, 1);
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode == RESULT_OK)
+            finish();
     }
 
     @Override

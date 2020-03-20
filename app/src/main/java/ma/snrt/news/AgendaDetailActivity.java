@@ -158,17 +158,22 @@ public class AgendaDetailActivity extends AppCompatActivity {
                 String font = "fontFr";
                 String color = "#000000";
                 String bgColor = "#ffffff";
+                String dir= "ltr";
+
                 if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)) {
                     color = "#ffffff";
                     bgColor = "#000000";
                 }
-                if (Utils.getAppCurrentLang().equals("ar"))
+                if(Utils.getAppCurrentLang().equals("ar")) {
                     font = "fontAr";
+                    dir = "rtl";
+                }
                 String text = Utils.loadJSONFromAsset("index.html", this);
                 text = text.replace("{{content}}", post.getDescription());
                 text = text.replace("{{myFont}}", font);
                 text = text.replace("{{color}}", color);
                 text = text.replace("{{bgColor}}", bgColor);
+                text = text.replace("{{direction}}", dir);
                 descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
             } else
                 descriptionWv.setVisibility(View.GONE);

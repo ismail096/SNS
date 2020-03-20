@@ -26,6 +26,7 @@ import ma.snrt.news.model.Post;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
 import ma.snrt.news.ui.TextViewExtraBold;
+import ma.snrt.news.ui.TextViewRegular;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -56,7 +57,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if(holder instanceof ViewHolder) {
             final ViewHolder mHolder = (ViewHolder) holder;
             mHolder.name.setText(Html.fromHtml(item.getTitle()));
-            getAgenda(mHolder.recyclerView, item.getId());
+            getAgenda(mHolder.recyclerView, mHolder.emptyTextView, item.getId());
             if(position%2==0){
                 if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
                     mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
@@ -64,7 +65,12 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
             }
             else
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.agenda_color));
+            {
+                if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+                else
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
+            }
             mHolder.container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -86,6 +92,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
         TextViewExtraBold name;
+        TextViewRegular emptyTextView;
         LinearLayout container;
 
         public ViewHolder(View convertView) {
@@ -93,31 +100,36 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             recyclerView = convertView.findViewById(R.id.agenda_recyclerview);
             name = convertView.findViewById(R.id.category_name);
             container = convertView.findViewById(R.id.item_container);
-
+            emptyTextView = convertView.findViewById(R.id.empty_textview);
         }
     }
 
-    private void getAgenda(RecyclerView rv, int catId){
+    private void getAgenda(RecyclerView rv, TextViewRegular emptyView, int catId){
         ApiCall.getAgendaByCat(catId, "", "", "", 0, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(response.body()!=null && response.isSuccessful()){
                     ArrayList<Post> agendas = GsonHelper.getGson().fromJson(response.body(), new TypeToken<List<Post>>(){}.getType());
-                    setAgendaAdapter(rv, agendas);
+                    setAgendaAdapter(rv, emptyView, agendas);
                 }
-                else
+                else {
                     rv.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFailure(Call<JsonArray> call, Throwable t) {
                 rv.setVisibility(View.GONE);
+                emptyView.setVisibility(View.VISIBLE);
             }
         });
     }
 
-    private void setAgendaAdapter(RecyclerView rv, ArrayList<Post> list){
+    private void setAgendaAdapter(RecyclerView rv, TextViewRegular emptyView, ArrayList<Post> list){
         if(list.size()>0){
+            rv.setVisibility(View.VISIBLE);
+            emptyView.setVisibility(View.GONE);
             ArrayList<Post> agendas = new ArrayList<>();
             GridLayoutManager llm = new GridLayoutManager(context, 2);
             rv.setLayoutManager(llm);
@@ -131,6 +143,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
         else{
             rv.setVisibility(View.GONE);
+            emptyView.setVisibility(View.VISIBLE);
         }
     }
 }

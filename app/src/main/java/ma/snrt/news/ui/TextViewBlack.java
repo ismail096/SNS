@@ -31,7 +31,8 @@ public class TextViewBlack extends TextView {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
                 tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
-                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 4));
+                setIncludeFontPadding(false);
+                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 2));
             }
             setTypeface(tf);
             //setClickable(true);

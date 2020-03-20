@@ -369,7 +369,7 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     class VideoHolder extends RecyclerView.ViewHolder {
         TextViewBold title;
-        TextViewExtraBold date;
+        TextViewRegular date;
         TextViewEBItalic category;
         ImageView imageView, playBtn, shareBtn, favBtn;
         LinearLayout container;

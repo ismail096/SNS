@@ -181,8 +181,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
             }
         });
-        if(Utils.getAppCurrentLang().equals("ar"))
-            descriptionTextSize = 18;
+        /*if(Utils.getAppCurrentLang().equals("ar"))
+            descriptionTextSize = 18;*/
 
         setFontSize(0, oldProgress);
 

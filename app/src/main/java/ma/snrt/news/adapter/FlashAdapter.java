@@ -104,6 +104,7 @@ public class FlashAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             mHolder.date.setText(DateTimeUtils.getHourFromDate(item.getDatePublication()));
         }
         mHolder.category.setText(Html.fromHtml(item.getCategory()));
+        if(item.getColor()!=null && item.getColor().length()==7)
         mHolder.category.setTextColor(Color.parseColor(item.getColor()));
         if(item.getLive()==1) {
             mHolder.liveImg.setVisibility(View.VISIBLE);

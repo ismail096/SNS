@@ -29,6 +29,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import ma.snrt.news.model.Story;
 import ma.snrt.news.model.User;
 import ma.snrt.news.network.ApiCall;
+import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.StoryStatusView;
@@ -46,7 +47,8 @@ public class StatusStoriesActivity extends AppCompatActivity implements StorySta
     private static StoryStatusView storyStatusView;
     private ImageView image, likeBtn, pauseBtn;
     CircleImageView userImageView;
-    TextViewExtraBold usernameTextView, dateTextView, descTextView;
+    TextViewExtraBold usernameTextView, dateTextView;
+    TextViewBold descTextView;
     TextViewRegular positionTextView, likeTextView;
     PlayerView playerView;
     SimpleExoPlayer player;
@@ -106,14 +108,17 @@ public class StatusStoriesActivity extends AppCompatActivity implements StorySta
                     if(stories.get(counter).getType().equals("video"))
                         pausePlayer();
                     isStoryPaused = true;
-                } else {
+                    return true;
+                }
+                if(motionEvent.getActionMasked() == MotionEvent.ACTION_UP) {
                     storyStatusView.resume();
                     pauseBtn.setImageResource(R.drawable.story_pause);
                     if(stories.get(counter).getType().equals("video"))
                         startPlayer();
                     isStoryPaused = false;
+                    return true;
                 }
-                return true;
+                return false;
             }
         });
     }

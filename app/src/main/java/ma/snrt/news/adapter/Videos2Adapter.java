@@ -33,6 +33,7 @@ import ma.snrt.news.model.Post;
 import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.TextViewEBItalic;
+import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.Utils;
 
@@ -232,7 +233,7 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextViewBold title;
-        TextViewExtraBold date;
+        TextViewRegular date;
         TextViewEBItalic category;
         ImageView imageView, playBtn, shareBtn, favBtn;
         LinearLayout container;

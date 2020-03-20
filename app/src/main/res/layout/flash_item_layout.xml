@@ -23,7 +23,6 @@
         android:orientation="vertical"
         android:layout_marginTop="5dp"
         android:layout_marginStart="10dp"
-        android:layoutDirection="ltr"
         >
 
         <ImageView
@@ -31,12 +30,14 @@
             android:layout_height="wrap_content"
             android:src="@drawable/flash_triangle"
             android:adjustViewBounds="true"
+            android:tint="#C4C4C4"
             />
 
         <View
-            android:layout_width="0.5dp"
+            android:layout_width="0.33dp"
             android:layout_height="wrap_content"
             android:background="#C4C4C4"
+            android:layout_gravity="start"
             />
 
     </LinearLayout>

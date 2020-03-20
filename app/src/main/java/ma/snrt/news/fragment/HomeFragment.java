@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.JsonArray;
@@ -48,7 +50,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     Context mContext;
     List<Category> categories;
-    ViewPager viewPager;
+    RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
     ImageView progressBar;
@@ -114,10 +116,19 @@ public class HomeFragment extends Fragment {
         if(categories.size()>0){
             viewPager.setOffscreenPageLimit(categories.size());
             contentLayout.setVisibility(View.VISIBLE);
-            categories.add(new Category(2022, getString(R.string.agenda), "#EEFF41"));
+            categories.add(new Category(2022, getString(R.string.agenda), "#FF265D"));
             CategoryPagerAdapter adapter = new CategoryPagerAdapter(categories, ((AppCompatActivity) mContext).getSupportFragmentManager());
             viewPager.setAdapter(adapter);
             tabLayout.setupWithViewPager(viewPager);
+
+            /*LinearLayout linearLayout = (LinearLayout)tabLayout.getChildAt(0);
+            linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
+            GradientDrawable drawable = new GradientDrawable();
+            drawable.setColor(Color.WHITE);
+            drawable.setSize(2, 1);
+            linearLayout.setDividerPadding(10);
+            linearLayout.setDividerDrawable(drawable);*/
+
             for (int i = 0; i < tabLayout.getTabCount(); i++) {
                 View container = LayoutInflater.from(mContext).inflate(R.layout.tab_item_layout,null);
                 TextViewExtraBold tv = container.findViewById(R.id.tab_textview);

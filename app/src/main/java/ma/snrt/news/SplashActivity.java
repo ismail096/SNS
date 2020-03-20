@@ -43,6 +43,10 @@ public class SplashActivity extends AppCompatActivity {
         playerView = findViewById(R.id.player_view);
         frBtn = findViewById(R.id.lang_fr_btn);
         arBtn = findViewById(R.id.lang_ar_btn);
+        if(isNightModeEnabled)
+            arBtn.setBackgroundResource(R.drawable.btn_white);
+        else
+            arBtn.setBackgroundResource(R.drawable.btn_black);
         /*player = ExoPlayerFactory.newSimpleInstance(this);
         playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
         playerView.setPlayer(player);

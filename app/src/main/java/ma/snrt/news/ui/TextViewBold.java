@@ -31,7 +31,9 @@ public class TextViewBold extends TextView {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Bold.otf");
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
                 tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Medium.otf");
-                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 4));
+                setIncludeFontPadding(false);
+                setLineSpacing(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5f,  getResources().getDisplayMetrics()), 1.0f);
+                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 2));
             }
             setTypeface(tf);
             //setClickable(true);

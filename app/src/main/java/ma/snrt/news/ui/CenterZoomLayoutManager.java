@@ -18,7 +18,6 @@ public class CenterZoomLayoutManager extends LinearLayoutManager {
     public int scrollHorizontallyBy(int dx, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int orientation = getOrientation();
         if (orientation == HORIZONTAL) {
-
             int scrolled = super.scrollHorizontallyBy(dx, recycler, state);
             float midpoint = getWidth() / 2.f;
             float d0 = 0.f;

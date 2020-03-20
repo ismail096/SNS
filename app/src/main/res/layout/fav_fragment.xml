@@ -26,7 +26,6 @@
                         android:paddingTop="20dp"
                         android:paddingEnd="40dp"
                         android:paddingBottom="20dp"
-                        android:layoutDirection="ltr"
                         android:background="@color/bgGrey"
                         >
 
@@ -42,7 +41,6 @@
                             android:text="@string/articles"
                             android:textColor="@color/app_white"
                             android:textSize="14sp"
-                            
                             />
 
                         <ma.snrt.news.ui.TextViewExtraBold

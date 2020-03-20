@@ -56,8 +56,8 @@
 
     <ImageView
         android:id="@id/exo_play"
-        android:layout_width="64dp"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/play_red"
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
@@ -65,8 +65,8 @@
 
     <ImageView
         android:id="@id/exo_pause"
-        android:layout_width="64dp"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:src="@drawable/pause_red"
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
@@ -76,7 +76,7 @@
     <ImageView
         android:id="@+id/exo_fullscreen"
         android:layout_width="24dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:src="@drawable/ic_fullscreen"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"

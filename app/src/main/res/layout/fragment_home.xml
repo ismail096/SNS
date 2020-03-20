@@ -24,10 +24,11 @@
            app:tabIndicatorFullWidth="false"
            />
 
-        <androidx.viewpager.widget.ViewPager
+        <com.duolingo.open.rtlviewpager.RtlViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            />
 
     </LinearLayout>
 

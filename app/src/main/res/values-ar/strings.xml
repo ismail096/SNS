@@ -43,27 +43,37 @@
     <string name="agenda_title">7/7</string>
     <string name="lorem_ipsum"></string>
     <string name="live">مباشر</string>
-    <string name="configuration">ضبط الإعدادات</string>
+    <string name="configuration">إعدادات</string>
     <string name="reception_alerte">تفعيل الإشعارات</string>
     <string name="personnalisation">تخصيص</string>
     <string name="alertes_perso_text">حدد <b> السمات المفضلة </b> لتلقي <b> إشعارات في الوقت الفعلي </b></string>
     <string name="redaction">تحرير</string>
-    <string name="story">الستوري</string>
+    <string name="story">سطوري</string>
     <string name="articles">مقالات</string>
     <string name="select_all">حدد الكل</string>
-    <string name="flash_news">أخبار فلاش</string>
+    <string name="flash_news">أخبار عاجلة</string>
     <string name="ignore">تجاهل</string>
 
 
     <!-- new version -->
 
-    <string name="top_news">أهم الأخبار</string>
-    <string name="stories">ستوري</string>
-    <string name="agenda">مفكرة</string>
-    <string name="top_videos">أهم الفيديوهات</string>
+    <string name="top_news">آخر الأخبار</string>
+    <string name="stories">سطوري</string>
+    <string name="agenda">مذكرة ثقافية</string>
+    <string name="top_videos">الأكثر مشاهدة</string>
     <string name="all">الكل</string>
+    <string name="all_videos">جميع الفيديوهات</string>
     <string name="search">البحث</string>
     <string name="cancel">إلغاء</string>
     <string name="results">نتيجة</string>
+    <string name="submit">تأكيد</string>
+    <string name="find_response">ابحث عن إجابة</string>
+    <string name="ask_quest">اطرح سؤالا</string>
+    <string name="ask_ur_quest">اطرح سؤالك</string>
+    <string name="next">التالي</string>
+    <string name="name">الإ سم</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="submit_quest">تأكيد سؤالي</string>
+    <string name="quest_send_success">تم إرسال سؤالك</string>
 
 </resources>

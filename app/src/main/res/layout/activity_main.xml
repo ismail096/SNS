@@ -78,13 +78,13 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.viewpager.widget.ViewPager
+        <com.duolingo.open.rtlviewpager.RtlViewPager
             android:id="@+id/home_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/toolbar"
             android:layout_above="@+id/bottom_nav"
-            ></androidx.viewpager.widget.ViewPager>
+            ></com.duolingo.open.rtlviewpager.RtlViewPager>
 
         <View
             android:id="@+id/bottom_nav_divider"

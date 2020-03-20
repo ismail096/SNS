@@ -85,6 +85,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_toEndOf="@id/search_edittext"
                 android:layout_marginStart="-42dp"
+                android:adjustViewBounds="true"
                 />
 
             <ma.snrt.news.ui.TextViewRegular
@@ -255,6 +256,7 @@
                 android:layout_centerInParent="true"
                 android:id="@+id/search_mic_btn"
                 android:padding="6dp"
+                android:adjustViewBounds="true"
                 />
 
         </RelativeLayout>

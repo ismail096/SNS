@@ -10,7 +10,7 @@
 
         <gradient android:type="sweep" android:useLevel="false"
             android:startColor="?attr/backgroundColor" android:centerColor="?attr/backgroundColor"
-            android:centerY="0.50" android:endColor="@color/agenda_color" />
+            android:centerY="0.50" android:endColor="@color/tab_agenda_select" />
 
     </shape>
 

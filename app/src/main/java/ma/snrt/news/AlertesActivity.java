@@ -112,7 +112,7 @@ public class AlertesActivity extends AppCompatActivity {
             else
                 category.setId(12041);
             category.setTitle(getString(R.string.agenda));
-            category.setColor("#eeff41");
+            category.setColor("#FF265D");
             categories.add(category);
             AlertesAdapter adapter = new AlertesAdapter(this, categories);
             recyclerView.setAdapter(adapter);

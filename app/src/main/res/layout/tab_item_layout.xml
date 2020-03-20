@@ -5,12 +5,13 @@
 
     <ma.snrt.news.ui.TextViewExtraBold
         android:id="@+id/tab_textview"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:textSize="14sp"
         android:textColor="#fff"
         android:gravity="center"
         android:textAllCaps="true"
+        android:layout_weight="1"
         />
 
 </LinearLayout>

@@ -61,9 +61,10 @@
 
     <string name="top_news">Top news</string>
     <string name="stories">Stories</string>
-    <string name="agenda">Agenda</string>
+    <string name="agenda">Agenda Culturel</string>
     <string name="top_videos">Top Vidéos</string>
     <string name="all">Tous</string>
+    <string name="all_videos">Tous</string>
     <string name="search">Recherche</string>
     <string name="cancel">Annuler</string>
     <string name="results">Résultats</string>

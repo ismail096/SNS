@@ -129,10 +129,10 @@ public class PopupPlayerActivity extends AppCompatActivity {
             findViewById(R.id.close_btn).setVisibility(View.GONE);
             fullscreenImage.setImageResource(R.drawable.exo_controls_fullscreen_exit);
 
-            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 120);
-            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 120);
-            fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), 48);
-            timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 64);
+            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 64);
+            fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), 32);
+            timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 
             playerControls.setPadding(0, 0, 0, Utils.dpToPx(getResources(), 10));
         }
@@ -145,8 +145,8 @@ public class PopupPlayerActivity extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             findViewById(R.id.close_btn).setVisibility(View.VISIBLE);
             fullscreenImage.setImageResource(R.drawable.ic_fullscreen);
-            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 80);
-            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 80);
+            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 48);
+            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 48);
             fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), 24);
             timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
             playerControls.setPadding(0, 0, 0, 0);

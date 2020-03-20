@@ -5,9 +5,13 @@ import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -27,6 +31,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     ArrayList<User> items;
     Context context;
+    private int lastPosition = -1;
 
     public StoryAdapter(Context context, ArrayList<User> items) {
         this.context = context;
@@ -55,17 +60,35 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 intent.putExtra(StatusStoriesActivity.STATUS_RESOURCES_KEY, item);
                 Bundle bundle = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                    Pair<View, String> p1 = Pair.create(mHolder.storyImage, mHolder.storyImage.getTransitionName());
+                    Pair<View, String> p2 = Pair.create(mHolder.imageView, mHolder.imageView.getTransitionName());
                     bundle = ActivityOptions.makeSceneTransitionAnimation(
                             (Activity) context,
-                            mHolder.imageView,
-                            mHolder.imageView.getTransitionName())
+                            p1, p2)
                             .toBundle();
                 }
                 context.startActivity(intent, bundle);
             }
         });
-        setImage(mHolder.imageView, item.getImage());
-        setImage(mHolder.storyImage, item.getStories().get(0).getImage());
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setImage(mHolder.imageView, item.getImage());
+                setImage(mHolder.storyImage, item.getStories().get(0).getImage());
+                //setAnimation(mHolder.itemView, position);
+            }
+        }, 500);
+
+    }
+
+    private void setAnimation(View viewToAnimate, int position) {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition) {
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_zoom);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     private void setImage(ImageView imageView, String imageUrl){

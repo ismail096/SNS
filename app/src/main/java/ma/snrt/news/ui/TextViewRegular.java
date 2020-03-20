@@ -32,6 +32,7 @@ public class TextViewRegular extends TextView {
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
                 tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Regular.otf");
                 setIncludeFontPadding(false);
+                setLineSpacing(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5f,  getResources().getDisplayMetrics()), 1.0f);
                 //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 2));
             }
             setTypeface(tf);

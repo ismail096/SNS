@@ -27,6 +27,17 @@
             android:adjustViewBounds="true"
             />
 
+        <ImageView
+            android:id="@+id/close_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/close_vf"
+            android:layout_marginEnd="16dp"
+            android:layout_gravity="end|center_vertical"
+            android:onClick="onClick"
+            android:adjustViewBounds="true"
+            />
+
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
@@ -92,7 +103,7 @@
             />
 
         <ImageView
-            android:id="@+id/next_btn"
+            android:id="@+id/submit_btn"
             android:layout_width="48dp"
             android:layout_height="40dp"
             android:background="@color/true_fake_color"

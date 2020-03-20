@@ -29,6 +29,7 @@
             android:textSize="16sp"
             android:layout_marginStart="10dp"
             android:text="@string/top_videos"
+            android:textAllCaps="true"
             />
 
 

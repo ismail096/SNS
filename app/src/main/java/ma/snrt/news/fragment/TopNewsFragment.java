@@ -74,6 +74,14 @@ public class TopNewsFragment extends Fragment {
         agendas = new ArrayList<>();
         users = new ArrayList<>();
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                recyclerView.setEnabled(llm.findFirstCompletelyVisibleItemPosition() == 0); // 0 is for first item position
+            }
+        });
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

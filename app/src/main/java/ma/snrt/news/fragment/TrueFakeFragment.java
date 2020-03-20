@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -88,11 +89,13 @@ public class TrueFakeFragment extends Fragment {
         layoutManager.setJustifyContent(JustifyContent.FLEX_END);
         tagsRecyclerView.setLayoutManager(layoutManager);
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)) {
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
-        else
+            rootView.findViewById(R.id.top_layout).setBackgroundColor(ContextCompat.getColor(mContext, R.color.bgGreyDark));
+        }
+        else {
             Glide.with(mContext).load(R.raw.loader).into(progressBar);
-
+        }
         posts = new ArrayList<>();
         tags = new ArrayList<>();
 

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -323,12 +324,18 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void setStoriesAdapter(RecyclerView rv){
-            LinearLayoutManager llm = new LinearLayoutManager(context);
-            llm.setOrientation(LinearLayoutManager.HORIZONTAL);
-            rv.setHasFixedSize(true);
-            rv.setLayoutManager(llm);
-            StoryAdapter storyAdapter = new StoryAdapter(context, users);
-            rv.setAdapter(storyAdapter);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    LinearLayoutManager llm = new LinearLayoutManager(context);
+                    llm.setOrientation(LinearLayoutManager.HORIZONTAL);
+                    rv.setHasFixedSize(true);
+                    rv.setLayoutManager(llm);
+                    StoryAdapter storyAdapter = new StoryAdapter(context, users);
+                    rv.setAdapter(storyAdapter);
+                }
+            }, 200);
+
     }
 
     private void setAgendaAdapter(RecyclerView rv){

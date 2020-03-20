@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.duolingo.open.rtlviewpager.RtlViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
@@ -41,7 +42,7 @@ import retrofit2.Response;
 public class VideosFragment extends Fragment {
     Context mContext;
     List<Category> categories;
-    ViewPager viewPager;
+    RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
     ImageView progressBar;
@@ -60,7 +61,7 @@ public class VideosFragment extends Fragment {
         progressBar = rootView.findViewById(R.id.progress_bar);
 
         categories = new ArrayList<>();
-        categories.add(new Category(0, getString(R.string.all), "#eeeeee"));
+        categories.add(new Category(0, getString(R.string.all_videos), "#eeeeee"));
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);

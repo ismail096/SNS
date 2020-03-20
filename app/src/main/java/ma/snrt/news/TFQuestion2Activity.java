@@ -37,9 +37,14 @@ public class TFQuestion2Activity extends AppCompatActivity {
     public void onClick(View view){
         if(view.getId() == R.id.back_btn)
             finish();
+        else if(view.getId() == R.id.close_btn){
+            setResult(RESULT_OK);
+            finish();
+        }
         else if(view.getId() == R.id.submit_btn)
         {
             Toast.makeText(this, getString(R.string.quest_send_success), Toast.LENGTH_SHORT).show();
+            setResult(RESULT_OK);
             finish();
         }
     }

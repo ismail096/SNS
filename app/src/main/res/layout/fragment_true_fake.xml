@@ -29,8 +29,9 @@
                 <ImageView
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/true_fake"
+                    android:src="?attr/trueFakeLogo"
                     android:layout_gravity="center_horizontal"
+                    android:adjustViewBounds="true"
                     />
 
                 <LinearLayout
