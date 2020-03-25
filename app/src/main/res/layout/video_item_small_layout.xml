@@ -16,14 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="10dp"
         >
 
         <RelativeLayout
             android:id="@+id/post_image_layout"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="10dp"
-            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/small_item_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="top"
             >
 
             <ImageView
@@ -57,7 +57,7 @@
                 android:background="#80000000"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-                android:textSize="8sp"
+                android:textSize="@dimen/small_date_size"
                 />
 
         </RelativeLayout>
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.6"
             android:orientation="vertical"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
             >
 
             <RelativeLayout
@@ -82,29 +82,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_grey"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/small_icon_size"
                     android:textAllCaps="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentStart="true"
                     android:layout_toStartOf="@+id/share_btn"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="@dimen/font_rm_padding"
+                    android:maxLines="1"
+                    android:ellipsize="end"
                     />
 
                 <ImageView
                     android:id="@+id/share_btn"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/small_icon_size"
+                    android:layout_height="@dimen/small_icon_size"
                     android:src="?attr/iconShare2"
-                    android:padding="2dp"
                     android:layout_toStartOf="@+id/fav_btn"
                     />
 
                 <ImageView
                     android:id="@+id/fav_btn"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="@dimen/small_icon_size"
+                    android:layout_height="@dimen/small_icon_size"
                     android:src="@drawable/bookmarks_empty"
-                    android:padding="2dp"
                     android:layout_marginStart="10dp"
                     android:layout_alignParentEnd="true"
                     />
@@ -115,13 +115,13 @@
                 android:id="@+id/post_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="@dimen/title_size"
                 android:textColor="?attr/secondaryTextColor"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/small_title_margin"
                 android:minLines="3"
                 android:maxLines="3"
                 android:ellipsize="end"
-                android:lineSpacingExtra="2dp"
+                android:lineSpacingExtra="@dimen/heading_line_spacing"
                 />
 
         </LinearLayout>

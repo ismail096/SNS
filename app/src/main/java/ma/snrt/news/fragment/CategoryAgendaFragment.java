@@ -22,6 +22,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import ma.snrt.news.AgendaActivity;
@@ -215,13 +217,14 @@ public class CategoryAgendaFragment extends Fragment implements  Updateable{
 
     private void setTopListAdapter(){
         if(tops.size()>0){
+            if(Utils.getAppCurrentLang().equals("ar"))
+                Collections.reverse(tops);
             topRecyclerview.setVisibility(View.VISIBLE);
             CenterZoomLayoutManager layoutManager =
                     new CenterZoomLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
             topRecyclerview.setLayoutManager(layoutManager);
             topAdapter = new TopAgendaAdapter(mContext, tops);
             topRecyclerview.setAdapter(topAdapter);
-
             // Scroll to the position we want to snap to
             layoutManager.scrollToPosition(tops.size() / 2);
             // Wait until the RecyclerView is laid out.

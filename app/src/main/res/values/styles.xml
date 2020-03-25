@@ -31,12 +31,7 @@
         <item name="iconLogo">@drawable/logo_home</item>
         <item name="iconFontSize">@drawable/font_icon</item>
         <item name="iconShare">@drawable/share</item>
-        <item name="iconSearch1">@drawable/ic_list_black</item>
-        <item name="iconSearch2">@drawable/ic_cam_black</item>
-        <item name="iconSearch3">@drawable/ic_video_black</item>
         <item name="toolbarBg">#FFFFFF</item>
-        <item name="iconPlace">@drawable/ic_place</item>
-        <item name="iconDate">@drawable/ic_date_range</item>
         <item name="iconFlash">@drawable/flash_actus</item>
         <item name="shadowColor">@color/shadow_primary</item>
         <item name="iconShare2">@drawable/share</item>
@@ -76,12 +71,7 @@
         <item name="iconLogo">@drawable/logo_home_dark</item>
         <item name="iconFontSize">@drawable/font_icon_dark</item>
         <item name="iconShare">@drawable/share_dark</item>
-        <item name="iconSearch1">@drawable/ic_list_white</item>
-        <item name="iconSearch2">@drawable/ic_cam_white</item>
-        <item name="iconSearch3">@drawable/ic_video_white</item>
         <item name="toolbarBg">#1F1F1F</item>
-        <item name="iconPlace">@drawable/ic_place_dark</item>
-        <item name="iconDate">@drawable/ic_date_range_dark</item>
         <item name="iconFlash">@drawable/flash_actus_dark</item>
         <item name="shadowColor">@color/shadow_dark</item>
         <item name="iconShare2">@drawable/share_dark</item>
@@ -108,24 +98,6 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-    </style>
-
-    <style name="FullScreenLight" parent="AppThemeLight">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item tools:targetApi="23" name="android:statusBarColor">@color/app_white</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
-    </style>
-
-    <style name="FullScreenDark" parent="AppThemeDark">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item tools:targetApi="23" name="android:statusBarColor">@color/app_black</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
     <!-- Specific Feed activity theme -->

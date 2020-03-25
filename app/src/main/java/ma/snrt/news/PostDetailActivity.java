@@ -31,6 +31,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -70,11 +72,10 @@ import static ma.snrt.news.AppController.mFirebaseAnalytics;
 
 public class PostDetailActivity extends AppCompatActivity {
     TextViewBold titleTextView;
-    TextViewExtraBold likeTextView, relatedTextView, tagsTextView;
-    TextViewEBItalic categoryTextView;
+    TextViewExtraBold relatedTextView, tagsTextView;
     TextViewRegular dateTextView, authorTextView;
     WebView descriptionWv;
-    ImageView likeBtn, bookMarksBtn, fontBtn;
+    ImageView bookMarksBtn, fontBtn;
     ImageViewZoom postImageview;
     RecyclerView relatedRecyclerView;
     ImageView progressBar;
@@ -84,14 +85,12 @@ public class PostDetailActivity extends AppCompatActivity {
     ArrayList<Post> related;
     int oldProgress = 0;
     RelatedAdapter relatedAdapter;
-    int descriptionTextSize = 15;
+    int descriptionTextSize = 13;
     LinearLayout ttsLayout;
     private int audioDuration;
     private AudioWaveView audioWaveView;
     private MediaPlayer mediaPlayer;
     private Runnable audioRunnable;
-    //View ttsShadow;
-    //RecyclerView tagsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,40 +106,24 @@ public class PostDetailActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.post_title);
         dateTextView = findViewById(R.id.post_date);
         authorTextView = findViewById(R.id.post_author);
-        categoryTextView = findViewById(R.id.post_category);
         descriptionWv = findViewById(R.id.post_description);
         postImageview = findViewById(R.id.post_image);
         progressBar = findViewById(R.id.progress_bar);
         relatedRecyclerView = findViewById(R.id.related_recyclerview);
-        likeBtn = findViewById(R.id.like_btn);
-        likeTextView = findViewById(R.id.like_title);
         relatedTextView = findViewById(R.id.related_title);
         fontSeekBar = findViewById(R.id.font_seekBar);
         bookMarksBtn = findViewById(R.id.bookmark_btn);
         tagsTextView = findViewById(R.id.post_tags);
         fontBtn = findViewById(R.id.fontBtn);
         ttsLayout = findViewById(R.id.post_bottom_layout);
-        //ttsShadow = findViewById(R.id.bottom_shadow);
-        //tagsRecyclerView = findViewById(R.id.tags_recyclerview);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         relatedRecyclerView.setHasFixedSize(true);
         relatedRecyclerView.setLayoutManager(llm);
 
-        /*LinearLayoutManager llm2 = new LinearLayoutManager(this);
-        llm2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        tagsRecyclerView.setHasFixedSize(true);
-        tagsRecyclerView.setLayoutManager(llm2);*/
-
         post = (Post) getIntent().getSerializableExtra("post");
         related = new ArrayList<>();
-        getPostFromApi(post.getId());
-
-        if(Cache.existsInLikes(post.getId()+""))
-            likeBtn.setImageResource(R.drawable.like_full);
-        else
-            likeBtn.setImageResource(R.drawable.like_empty);
 
         if(Cache.existsInFavoris(post.getId()+"")){
             bookMarksBtn.setImageResource(R.drawable.bookmarks);
@@ -152,13 +135,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 bookMarksBtn.setImageResource(R.drawable.bookmarks_empty);
         }
 
-        likeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                postLike(!Cache.existsInLikes(post.getId()+""));
-            }
-        });
-        oldProgress = AppController.getSharedPreferences().getInt("font_scale", 0);
+        oldProgress = AppController.getSharedPreferences().getInt("font_scale", 2);
         fontSeekBar.setProgress(oldProgress);
         fontSeekBar.setMax(4);
         fontSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -193,7 +170,6 @@ public class PostDetailActivity extends AppCompatActivity {
 
         descriptionWv.getSettings().setJavaScriptEnabled(true);
         descriptionWv.getSettings().setBuiltInZoomControls(false);
-        fillPost();
 
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, post.getId()+"");
@@ -204,6 +180,9 @@ public class PostDetailActivity extends AppCompatActivity {
 
         setupProgress();
         getAudioBytes();
+
+        fillPost();
+        //getPostFromApi(post.getId());
     }
 
     private void getAudioBytes() {
@@ -213,8 +192,8 @@ public class PostDetailActivity extends AppCompatActivity {
                 if(response.isSuccessful() && response.body()!=null){
                     audioWaveView.setRawData(getBytesFromResponse(response.body()));
                     ttsLayout.setVisibility(View.VISIBLE);
-                    Animation animation = AnimationUtils.loadAnimation(PostDetailActivity.this, R.anim.slide_up2);
-                    ttsLayout.startAnimation(animation);
+                    //Animation animation = AnimationUtils.loadAnimation(PostDetailActivity.this, R.anim.slide_up2);
+                    //ttsLayout.startAnimation(animation);
 
                 }
                 else
@@ -282,7 +261,6 @@ public class PostDetailActivity extends AppCompatActivity {
         mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
             @Override
             public void onBufferingUpdate(MediaPlayer mediaPlayer, int i) {
-                Log.e("AudioDetail", "progress: "+i);
                 if(i<100)
                     audioWaveView.setProgress(i);
             }
@@ -328,7 +306,7 @@ public class PostDetailActivity extends AppCompatActivity {
     }
 
     private void setFontSize(int oldValue, int value) {
-        float ratio = value-oldValue;
+        float ratio = value - oldValue;
         float wvRatio = (value  - oldValue) * 2;
         /*if(Utils.getAppCurrentLang().equals("ar")) {
             //ratio *= Utils.spToPx(getResources(), 4);
@@ -339,8 +317,6 @@ public class PostDetailActivity extends AppCompatActivity {
         dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dateTextView.getTextSize()  + ratio);
         authorTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, authorTextView.getTextSize()  + ratio);
         tagsTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, tagsTextView.getTextSize()  + ratio);
-        categoryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, categoryTextView.getTextSize()  + ratio);
-        likeTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, likeTextView.getTextSize()  + ratio);
         relatedTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, relatedTextView.getTextSize()  + ratio);
         if(relatedAdapter!=null)
             relatedAdapter.notifyDataSetChanged();
@@ -349,13 +325,13 @@ public class PostDetailActivity extends AppCompatActivity {
     }
 
     private void getPostFromApi(int postId){
-        //progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         final String cacheTag = "post_"+postId+"_"+ Utils.getAppCurrentLang();
         ApiCall.getDetailNews(postId, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-                /*if(progressBar!=null)
-                    progressBar.setVisibility(View.GONE);*/
+                if(progressBar!=null)
+                    progressBar.setVisibility(View.GONE);
                 if(response.body()!=null && response.isSuccessful() && response.body().size()>0){
                     post = GsonHelper.getGson().fromJson(response.body().get(0), Post.class);
                     Cache.putPermanentObject(response.body().get(0).toString(), cacheTag);
@@ -368,19 +344,19 @@ public class PostDetailActivity extends AppCompatActivity {
                         Toast.makeText(PostDetailActivity.this, getString(R.string.error_load_data), Toast.LENGTH_SHORT).show();
 
                 }
-                fillPost();
+                loadDescription();
             }
 
             @Override
             public void onFailure(Call<JsonArray> call, Throwable t) {
-                /*if(progressBar!=null)
-                    progressBar.setVisibility(View.GONE);*/
+                if(progressBar!=null)
+                    progressBar.setVisibility(View.GONE);
                 String resultFromCache = (String) Cache.getPermanentObject(cacheTag);
                 if(resultFromCache!=null)
                     post = GsonHelper.getGson().fromJson(resultFromCache, Post.class);
                 else
                     Toast.makeText(PostDetailActivity.this, getString(R.string.check_internet), Toast.LENGTH_SHORT).show();
-                fillPost();
+                loadDescription();
             }
         });
     }
@@ -397,37 +373,17 @@ public class PostDetailActivity extends AppCompatActivity {
                 authorTextView.setVisibility(View.GONE);
                 findViewById(R.id.post_author_divider).setVisibility(View.GONE);
             }
-            if(post.getCategory()!=null)
-            categoryTextView.setText(Html.fromHtml(post.getCategory()));
-
-            if(Utils.getAppCurrentLang().equals("ar"))
-                categoryTextView.setBackgroundResource(R.drawable.category_bg_ar);
-            else
-                categoryTextView.setBackgroundResource(R.drawable.category_bg);
-            if(post.getColor()!=null)
-                categoryTextView.getBackground().setColorFilter(Color.parseColor(post.getColor()), PorterDuff.Mode.SRC_ATOP);
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.placeholder);
+            requestOptions.error(R.drawable.placeholder);
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
             try {
-                Picasso.with(this)
+
+                Glide.with(this)
                         .load(post.getImage())
-                        .networkPolicy(NetworkPolicy.OFFLINE)
-                        .error(R.drawable.placeholder)
-                        .placeholder(R.drawable.placeholder)
-                        .into(postImageview, new com.squareup.picasso.Callback() {
-                            @Override
-                            public void onSuccess() {
-
-                            }
-
-                            @Override
-                            public void onError() {
-                                Picasso.with(PostDetailActivity.this)
-                                        .load(post.getImage())
-                                         .error(R.drawable.placeholder)
-                                        .placeholder(R.drawable.placeholder)
-                                        .into(postImageview);
-                            }
-                        });
-            } catch (Exception ex) {
+                        .apply(requestOptions)
+                        .into(postImageview);
+            }catch(Exception e){
                 postImageview.setImageResource(R.drawable.placeholder);
             }
 
@@ -474,39 +430,8 @@ public class PostDetailActivity extends AppCompatActivity {
             }
             else
                 tagsTextView.setVisibility(View.GONE);
-            //setTagsAdapter();
-            getRelatedNews();
-            findViewById(R.id.detail_scroll).setVisibility(View.VISIBLE);
-            if(post.getDescriptionArticle()!=null)
-            {
-                String font = "fontFr";
-                String color = "#000000";
-                String bgColor = "#ffffff";
-                String dir= "ltr";
-                if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)) {
-                    color = "#ffffff";
-                    bgColor = "#000000";
-                }
-                if(Utils.getAppCurrentLang().equals("ar")) {
-                    font = "fontAr";
-                    dir = "rtl";
-                }
-                String text = Utils.loadJSONFromAsset("index.html", this);
-                String description = "";
-                if(post.getResume()!=null && !post.getResume().isEmpty()){
-                    description = "<b>"+post.getResume()+"</b><br/>";
-                }
-                description += post.getDescriptionArticle();
-                text = text.replace("{{content}}", description);
-                text = text.replace("{{myFont}}", font);
-                text = text.replace("{{color}}", color);
-                text = text.replace("{{bgColor}}", bgColor);
-                text = text.replace("{{direction}}", dir);
-                descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
-                descriptionWv.setVisibility(View.VISIBLE);
-            }
-            else
-                descriptionWv.setVisibility(View.GONE);
+
+            loadDescription();
         }
         else{
             findViewById(R.id.detail_scroll).setVisibility(View.GONE);
@@ -515,9 +440,42 @@ public class PostDetailActivity extends AppCompatActivity {
             findViewById(R.id.related_title).setVisibility(View.GONE);
             findViewById(R.id.related_divider).setVisibility(View.GONE);
         }
-
     }
 
+    private void loadDescription(){
+        if(post.getDescriptionArticle()!=null)
+        {
+            String font = "fontFr";
+            String color = "#000000";
+            String bgColor = "#ffffff";
+            String dir= "ltr";
+            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)) {
+                color = "#ffffff";
+                bgColor = "#000000";
+            }
+            if(Utils.getAppCurrentLang().equals("ar")) {
+                font = "fontAr";
+                dir = "rtl";
+            }
+            String text = Utils.loadJSONFromAsset("index.html", this);
+            String description = "";
+            if(post.getResume()!=null && !post.getResume().isEmpty()){
+                description = "<b>"+post.getResume()+"</b><br/>";
+            }
+            description += post.getDescriptionArticle();
+            text = text.replace("{{content}}", description);
+            text = text.replace("{{myFont}}", font);
+            text = text.replace("{{color}}", color);
+            text = text.replace("{{bgColor}}", bgColor);
+            text = text.replace("{{direction}}", dir);
+            descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
+            descriptionWv.setVisibility(View.VISIBLE);
+        }
+        else
+            descriptionWv.setVisibility(View.GONE);
+
+        getRelatedNews();
+    }
     /*private void setTagsAdapter(){
         if(post!=null && post.getTags()!=null && !post.getTags().isEmpty()) {
             ArrayList<Tag> tags = new ArrayList<>();
@@ -563,35 +521,6 @@ public class PostDetailActivity extends AppCompatActivity {
             findViewById(R.id.related_title).setVisibility(View.GONE);
             findViewById(R.id.related_divider).setVisibility(View.GONE);
         }
-    }
-
-    private void postLike(final boolean like){
-        ApiCall.likePost(like, post.getId(), "article", new Callback<JsonObject>(){
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if(response.isSuccessful() && response.body()!=null){
-                    if(response.body().has("status") && response.body().get("status").getAsBoolean()){
-                        if(like){
-                            Cache.likePost(post.getId()+"");
-                            likeBtn.setImageResource(R.drawable.like_full);
-                            Utils.setAnimation(PostDetailActivity.this, likeBtn, R.anim.bounce_in);
-                        }
-                        else{
-                            Cache.unLikePost(post.getId()+"");
-                            likeBtn.setImageResource(R.drawable.like_empty);
-                            Utils.setAnimation(PostDetailActivity.this, likeBtn, R.anim.bounce_out);
-                        }
-                        return;
-                    }
-                }
-                Toast.makeText(PostDetailActivity.this, getString(R.string.api_error), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(PostDetailActivity.this, getString(R.string.check_internet), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void togglefontLayout(){

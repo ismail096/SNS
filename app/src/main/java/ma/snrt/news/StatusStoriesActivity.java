@@ -1,5 +1,6 @@
 package ma.snrt.news;
 
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -7,8 +8,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
@@ -168,7 +176,7 @@ public class StatusStoriesActivity extends AppCompatActivity implements StorySta
     }
 
     public void setImage(final ImageView imageView, final String url, final boolean resumeStory){
-        try {
+        /*try {
             Picasso.with(StatusStoriesActivity.this)
                     .load(url)
                     .noFade()
@@ -221,7 +229,40 @@ public class StatusStoriesActivity extends AppCompatActivity implements StorySta
                 imageView.setAlpha(0f);
                 imageView.animate().setDuration(200).alpha(1f).start();
             }
-        }
+        }*/
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.error(R.drawable.placeholder);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+        Glide.with(this)
+                .load(url)
+                .apply(requestOptions)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        if(storyStatusView!=null && resumeStory) {
+                            isStoryPaused= false;
+                            storyStatusView.resume();
+                            imageView.setAlpha(0f);
+                            imageView.animate().setDuration(200).alpha(1f).start();
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, com.bumptech.glide.load.DataSource dataSource, boolean isFirstResource) {
+                        if(storyStatusView!=null && resumeStory) {
+                            isStoryPaused= false;
+                            storyStatusView.resume();
+                            imageView.setAlpha(0f);
+                            imageView.animate().setDuration(200).alpha(1f).start();
+                        }
+                        return false;
+                    }
+                })
+                .into(imageView);
     }
 
     private void postLike(final boolean like,final int postId){

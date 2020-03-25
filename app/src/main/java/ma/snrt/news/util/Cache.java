@@ -18,10 +18,10 @@ public class Cache {
 
 	private static final String CACHE_NAME = "SnrtNews" ;
 	private static final String APP_NAME = "SnrtNews";
-	private static final String FAV_NAME = "favoris_news_"+Utils.getAppCurrentLang();
-	private static final String FAV_VIDEO_NAME = "favoris_video_"+Utils.getAppCurrentLang();
-	private static final String FAV_AG_NAME = "favoris_agenda_"+Utils.getAppCurrentLang();
-	private static final String LIKE_NAME = "liked_news_"+Utils.getAppCurrentLang();
+	private static final String FAV_NAME = "favoris_news_";
+	private static final String FAV_VIDEO_NAME = "favoris_video_";
+	private static final String FAV_AG_NAME = "favoris_agenda_";
+	private static final String LIKE_NAME = "liked_news_";
 	private static String _permanentDir;
 
 	protected static String getPermanentDir() { return _permanentDir;}
@@ -56,33 +56,33 @@ public class Cache {
 	}
 
 	public static void initFavoris(){
-		f_posts = (HashMap<String, Post>) Cache.getPermanentObject(FAV_NAME);
+		f_posts = (HashMap<String, Post>) Cache.getPermanentObject(FAV_NAME+Utils.getAppCurrentLang());
 		if(f_posts == null){
-			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_NAME);
+			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_NAME+Utils.getAppCurrentLang());
 			f_posts = new HashMap<String, Post>();
 		}
 	}
 
 	public static void initFavorisVideos(){
-		f_videos = (HashMap<String, Post>) Cache.getPermanentObject(FAV_VIDEO_NAME);
+		f_videos = (HashMap<String, Post>) Cache.getPermanentObject(FAV_VIDEO_NAME+Utils.getAppCurrentLang());
 		if(f_videos == null){
-			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_VIDEO_NAME);
+			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_VIDEO_NAME+Utils.getAppCurrentLang());
 			f_videos = new HashMap<String, Post>();
 		}
 	}
 
 	public static void initFavorisAgenda(){
-		f_agendas = (HashMap<String, Post>) Cache.getPermanentObject(FAV_AG_NAME);
+		f_agendas = (HashMap<String, Post>) Cache.getPermanentObject(FAV_AG_NAME+Utils.getAppCurrentLang());
 		if(f_agendas == null){
-			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_AG_NAME);
+			Cache.putPermanentObject(new HashMap<String, Post>(), FAV_AG_NAME+Utils.getAppCurrentLang());
 			f_agendas = new HashMap<String, Post>();
 		}
 	}
 
 	public static void initLikedPosts(){
-		liked_posts = (ArrayList<String>) Cache.getPermanentObject(LIKE_NAME);
+		liked_posts = (ArrayList<String>) Cache.getPermanentObject(LIKE_NAME+Utils.getAppCurrentLang());
 		if(liked_posts == null){
-			Cache.putPermanentObject(new ArrayList<>(), LIKE_NAME);
+			Cache.putPermanentObject(new ArrayList<>(), LIKE_NAME+Utils.getAppCurrentLang());
 			liked_posts = new ArrayList<>();
 		}
 	}
@@ -111,42 +111,42 @@ public class Cache {
 	public static void putPost(String id, Post post) {
 		if(!f_posts.containsKey(id)){
 			f_posts.put(id, post);
-			Cache.putPermanentObject(f_posts, FAV_NAME);
+			Cache.putPermanentObject(f_posts, FAV_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void removePost(String id) {
 		if(f_posts.containsKey(id)){
 			f_posts.remove(id);
-			Cache.putPermanentObject(f_posts, FAV_NAME);
+			Cache.putPermanentObject(f_posts, FAV_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void putVidToFav(String id, Post post) {
 		if(!f_videos.containsKey(id)){
 			f_videos.put(id, post);
-			Cache.putPermanentObject(f_videos, FAV_VIDEO_NAME);
+			Cache.putPermanentObject(f_videos, FAV_VIDEO_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void removeVidFromFav(String id) {
 		if(f_videos.containsKey(id)){
 			f_videos.remove(id);
-			Cache.putPermanentObject(f_videos, FAV_VIDEO_NAME);
+			Cache.putPermanentObject(f_videos, FAV_VIDEO_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void putAgendaToFav(String id, Post post) {
 		if(!f_agendas.containsKey(id)){
 			f_agendas.put(id, post);
-			Cache.putPermanentObject(f_agendas, FAV_AG_NAME);
+			Cache.putPermanentObject(f_agendas, FAV_AG_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void removeAgendaFromFav(String id) {
 		if(f_agendas.containsKey(id)){
 			f_agendas.remove(id);
-			Cache.putPermanentObject(f_agendas, FAV_AG_NAME);
+			Cache.putPermanentObject(f_agendas, FAV_AG_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
@@ -175,14 +175,14 @@ public class Cache {
 
 		if(!liked_posts.contains(id)){
 			liked_posts.add(id);
-			Cache.putPermanentObject(liked_posts, LIKE_NAME);
+			Cache.putPermanentObject(liked_posts, LIKE_NAME+Utils.getAppCurrentLang());
 		}
 	}
 
 	public static void unLikePost(String id) {
 		if(liked_posts.contains(id)){
 			liked_posts.remove(id);
-			Cache.putPermanentObject(liked_posts, LIKE_NAME);
+			Cache.putPermanentObject(liked_posts, LIKE_NAME+Utils.getAppCurrentLang());
 		}
 	}
 

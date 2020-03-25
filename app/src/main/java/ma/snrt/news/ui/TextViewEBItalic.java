@@ -1,6 +1,7 @@
 package ma.snrt.news.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -28,14 +29,15 @@ public class TextViewEBItalic extends TextView {
 
     private void init() {
         if (!isInEditMode()) {
-            Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-ExtraBoldItalic.otf");
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
-                setIncludeFontPadding(false);
-                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 2));
+                Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
+                setTypeface(tf);
             }
-            setTypeface(tf);
-            //setClickable(true);
+            else {
+                Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-ExtraBoldItalic.otf");
+                setTypeface(tf);
+            }
+            setIncludeFontPadding(false);
         }
     }
 }

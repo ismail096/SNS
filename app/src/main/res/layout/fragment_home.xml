@@ -22,6 +22,8 @@
            app:tabMode="scrollable"
            android:background="@color/colorPrimary"
            app:tabIndicatorFullWidth="false"
+           app:tabIndicator="@drawable/tab_indicator"
+           android:elevation="2dp"
            />
 
         <com.duolingo.open.rtlviewpager.RtlViewPager

@@ -95,7 +95,7 @@
         <ma.snrt.news.ui.TextViewExtraBold
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="@dimen/titles_size"
             android:textColor="?attr/secondaryTextColor"
             android:text="@string/submit_quest"
             android:textAllCaps="true"

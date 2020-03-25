@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:textAllCaps="true"
             android:textColor="@color/tab_agenda_select"
-            android:textSize="18sp"
+            android:textSize="@dimen/page_title"
             android:text="@string/agenda"
             android:layout_centerInParent="true"
             />

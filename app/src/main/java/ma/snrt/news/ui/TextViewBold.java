@@ -1,6 +1,7 @@
 package ma.snrt.news.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -30,13 +31,10 @@ public class TextViewBold extends TextView {
         if (!isInEditMode()) {
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Bold.otf");
             if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Medium.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
                 setIncludeFontPadding(false);
-                setLineSpacing(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5f,  getResources().getDisplayMetrics()), 1.0f);
-                //setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize() + Utils.spToPx(getResources(), 2));
             }
             setTypeface(tf);
-            //setClickable(true);
         }
     }
 }

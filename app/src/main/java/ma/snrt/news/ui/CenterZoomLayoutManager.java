@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CenterZoomLayoutManager extends LinearLayoutManager {
     private final float mShrinkAmount = 0.15f;
-    private final float mShrinkDistance = 0.9f;
+    private final float mShrinkDistance = 1f;
 
     public CenterZoomLayoutManager(Context context, int orientation, boolean reverseLayout) {
         super(context, orientation, reverseLayout);
@@ -30,8 +30,8 @@ public class CenterZoomLayoutManager extends LinearLayoutManager {
                         (getDecoratedRight(child) + getDecoratedLeft(child)) / 2.f;
                 float d = Math.min(d1, Math.abs(midpoint - childMidpoint));
                 float scale = s0 + (s1 - s0) * (d - d0) / (d1 - d0);
-                child.setScaleX(scale);
-                child.setScaleY(scale);
+                child.setScaleX(scale+0.025f);
+                child.setScaleY(scale+0.025f);
             }
             return scrolled;
         } else return 0;

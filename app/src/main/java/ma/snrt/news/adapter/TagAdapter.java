@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.NewsActivity;
 import ma.snrt.news.R;
 import ma.snrt.news.model.Tag;
+import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewExtraBold;
 
 public class TagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -50,6 +53,9 @@ public class TagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         });
 
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+            mHolder.name.setTextColor(ContextCompat.getColor(context, R.color.text_grey));
+
         mHolder.name.setText("#"+item.getName());
     }
 
@@ -61,7 +67,7 @@ public class TagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextViewExtraBold name;
+        TextViewBold name;
         RelativeLayout container;
 
         public ViewHolder(View convertView) {

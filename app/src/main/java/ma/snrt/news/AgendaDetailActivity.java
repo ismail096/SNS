@@ -29,6 +29,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -105,7 +107,7 @@ public class AgendaDetailActivity extends AppCompatActivity {
             }
         });
 
-        setFontSize(0, oldProgress);
+        //setFontSize(0, oldProgress);
 
         if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
@@ -116,6 +118,7 @@ public class AgendaDetailActivity extends AppCompatActivity {
 
         descriptionWv.getSettings().setJavaScriptEnabled(true);
         descriptionWv.getSettings().setBuiltInZoomControls(false);
+        descriptionWv.getSettings().setDefaultFontSize(descriptionTextSize);
     }
 
     private void setFontSize(int oldValue, int value) {
@@ -187,28 +190,18 @@ public class AgendaDetailActivity extends AppCompatActivity {
     }
 
     private void setImage(ImageView imageView, String url) {
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.error(R.drawable.placeholder);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
         try {
-            Picasso.with(this)
+
+            Glide.with(this)
                     .load(url)
-                    .networkPolicy(NetworkPolicy.OFFLINE)
-                    .error(R.drawable.placeholder)
-                    .placeholder(R.drawable.placeholder)
-                    .into(imageView, new com.squareup.picasso.Callback() {
-                        @Override
-                        public void onSuccess() {
-
-                        }
-
-                        @Override
-                        public void onError() {
-                            Picasso.with(AgendaDetailActivity.this)
-                                    .load(url)
-                                    .error(R.drawable.placeholder)
-                                    .placeholder(R.drawable.placeholder)
-                                    .into(imageView);
-                        }
-                    });
-        } catch (Exception ex) {
+                    .apply(requestOptions)
+                    .into(imageView);
+        }catch(Exception e){
             imageView.setImageResource(R.drawable.placeholder);
         }
     }

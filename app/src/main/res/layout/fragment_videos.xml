@@ -25,6 +25,7 @@
            app:tabMode="scrollable"
            android:background="?attr/backgroundColor2"
            app:tabIndicatorFullWidth="false"
+           app:tabIndicator="@drawable/tab_video_indicator"
            />
 
         <com.duolingo.open.rtlviewpager.RtlViewPager

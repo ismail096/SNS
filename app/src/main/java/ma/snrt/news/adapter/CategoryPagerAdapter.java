@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.List;
 
+import ma.snrt.news.AppController;
 import ma.snrt.news.fragment.CategoryFragment;
 import ma.snrt.news.fragment.TopAgendaFragment;
 import ma.snrt.news.fragment.TopNewsFragment;
@@ -37,11 +38,8 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
             bundle.putSerializable("category", categories.get(position));
             fragment.setArguments(bundle);
         }
-        else if(categories.get(position).getId() == 2022) {
+        else if(categories.get(position).getId() == AppController.AGENDA_FR_ID || categories.get(position).getId() == AppController.AGENDA_AR_ID) {
             fragment = new TopAgendaFragment();
-            /*Bundle bundle = new Bundle();
-            bundle.putSerializable("category", categories.get(position));
-            fragment.setArguments(bundle);*/
         }
         else{
             fragment = new CategoryFragment();

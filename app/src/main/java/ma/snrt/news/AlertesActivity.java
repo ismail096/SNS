@@ -108,9 +108,9 @@ public class AlertesActivity extends AppCompatActivity {
         if(categories.size()>0){
             Category category = new Category();
             if(Utils.getAppCurrentLang().equals("fr"))
-                category.setId(12040);
+                category.setId(2022);
             else
-                category.setId(12041);
+                category.setId(2022);
             category.setTitle(getString(R.string.agenda));
             category.setColor("#FF265D");
             categories.add(category);

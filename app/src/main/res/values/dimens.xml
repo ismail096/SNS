@@ -2,4 +2,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="design_fab_image_size" tools:override="true">36dp</dimen>
     <dimen name="item_offset">5dp</dimen>
+    <dimen name="heading_line_spacing">2dp</dimen>
+    <dimen name="big_line_spacing">5dp</dimen>
+    <dimen name="title_size">15sp</dimen>
+    <dimen name="big_title_size">15sp</dimen>
+    <dimen name="titles_size">16sp</dimen>
+    <dimen name="date_size">10sp</dimen>
+    <dimen name="small_date_size">8sp</dimen>
+    <dimen name="big_date_size">12sp</dimen>
+    <dimen name="page_title">18sp</dimen>
+    <dimen name="story_title">24sp</dimen>
+    <dimen name="story_date">14sp</dimen>
+    <dimen name="tab_size">14sp</dimen>
+    <dimen name="category_padding">0dp</dimen>
+    <dimen name="title_top_margin">10dp</dimen>
+    <dimen name="small_title_margin">5dp</dimen>
+    <dimen name="font_rm_padding">-2.5dp</dimen>
+    <dimen name="small_icon_size">15sp</dimen>
+    <dimen name="big_icon_size">17sp</dimen>
+    <dimen name="standard_icon_size">24dp</dimen>
+    <dimen name="small_item_width">120dp</dimen>
+    <dimen name="big_item_height">220dp</dimen>
+    <dimen name="video_item_height">180dp</dimen>
+
 </resources>

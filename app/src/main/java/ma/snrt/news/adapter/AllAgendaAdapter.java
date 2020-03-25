@@ -79,6 +79,14 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     context.startActivity(intent);
                 }
             });
+            mHolder.moreBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, AgendaActivity.class);
+                    intent.putExtra("position", position);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -91,7 +99,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     class ViewHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
-        TextViewExtraBold name;
+        TextViewExtraBold name, moreBtn;
         TextViewRegular emptyTextView;
         LinearLayout container;
 
@@ -101,6 +109,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             name = convertView.findViewById(R.id.category_name);
             container = convertView.findViewById(R.id.item_container);
             emptyTextView = convertView.findViewById(R.id.empty_textview);
+            moreBtn = convertView.findViewById(R.id.see_more);
         }
     }
 

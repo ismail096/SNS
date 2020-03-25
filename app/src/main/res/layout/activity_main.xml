@@ -51,7 +51,7 @@
                 android:layout_gravity="center"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp"
+                android:textSize="@dimen/page_title"
                 android:visibility="gone"
                 />
 

@@ -17,6 +17,10 @@ import android.widget.RelativeLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -26,6 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import ma.snrt.news.R;
 import ma.snrt.news.StatusStoriesActivity;
 import ma.snrt.news.model.User;
+import ma.snrt.news.util.Utils;
 
 public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -78,7 +83,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 setImage(mHolder.storyImage, item.getStories().get(0).getImage());
                 //setAnimation(mHolder.itemView, position);
             }
-        }, 500);
+        }, 200);
 
     }
 
@@ -92,30 +97,15 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     private void setImage(ImageView imageView, String imageUrl){
-        try {
-            Picasso.with(context)
-                    .load(imageUrl)
-                    .networkPolicy(NetworkPolicy.OFFLINE)
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.placeholder)
-                    .into(imageView, new com.squareup.picasso.Callback() {
-                        @Override
-                        public void onSuccess() {
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.error(R.drawable.placeholder);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-                        }
-
-                        @Override
-                        public void onError() {
-                            Picasso.with(context)
-                                    .load(imageUrl)
-                                    .placeholder(R.drawable.placeholder)
-                                    .error(R.drawable.placeholder)
-                                    .into(imageView);
-                        }
-                    });
-        } catch (Exception ex) {
-            imageView.setImageResource(R.drawable.placeholder);
-        }
+        Glide.with(context)
+                .load(imageUrl)
+                .apply(requestOptions)
+                .into(imageView);
     }
 
     @Override

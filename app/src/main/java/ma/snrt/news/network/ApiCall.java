@@ -139,8 +139,8 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
-    public static void getLatestAgenda(Callback<JsonArray> callback) {
-        Call<JsonArray> call = AppController.getAPIService().getAgendaByCat(Utils.getAppCurrentLang(), 0, "", "", "", 0, 3);
+    public static void getLatestAgenda(int count, Callback<JsonArray> callback) {
+        Call<JsonArray> call = AppController.getAPIService().getAgendaByCat(Utils.getAppCurrentLang(), 0, "", "", "", 0, count);
         call.enqueue(callback);
     }
 

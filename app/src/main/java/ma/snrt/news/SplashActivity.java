@@ -37,7 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         boolean isNightModeEnabled = AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false);
         if (isNightModeEnabled) {
-            setTheme(R.style.FullScreenDark);
+            setTheme(R.style.AppThemeDark);
         }
         setContentView(R.layout.activity_splash);
         playerView = findViewById(R.id.player_view);

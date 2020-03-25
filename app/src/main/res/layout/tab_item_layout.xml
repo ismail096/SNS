@@ -7,7 +7,7 @@
         android:id="@+id/tab_textview"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:textSize="14sp"
+        android:textSize="@dimen/tab_size"
         android:textColor="#fff"
         android:gravity="center"
         android:textAllCaps="true"

@@ -21,6 +21,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ma.snrt.news.AppController;
@@ -157,7 +158,7 @@ public class TopAgendaFragment extends Fragment {
 
     private void getTopAgendas(){
         String cacheTag = "top_agenda_"+ Utils.getAppCurrentLang();
-        ApiCall.getLatestAgenda( new Callback<JsonArray>() {
+        ApiCall.getLatestAgenda(20, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(swipeRefreshLayout!=null)
@@ -188,6 +189,8 @@ public class TopAgendaFragment extends Fragment {
 
     private void setTopListAdapter(){
         if(tops.size()>0){
+            if(Utils.getAppCurrentLang().equals("ar"))
+                Collections.reverse(tops);
             topRecyclerview.setVisibility(View.VISIBLE);
             CenterZoomLayoutManager layoutManager =
                     new CenterZoomLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);

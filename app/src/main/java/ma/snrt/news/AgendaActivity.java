@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,7 +90,6 @@ public class AgendaActivity extends AppCompatActivity {
 
         viewPager.setOffscreenPageLimit(3);
         categories = new ArrayList<>();
-        //categories.add(new CategoryAgenda(2020, getString(R.string.all), "#ff0000"));
 
         page = getIntent().getIntExtra("position", 0);
 
@@ -120,7 +120,6 @@ public class AgendaActivity extends AppCompatActivity {
                     dateFin = year+"-"+month+"-"+day;
                 }
             }
-
         };
 
         date1Edit.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +227,8 @@ public class AgendaActivity extends AppCompatActivity {
                 TextViewExtraBold tv = container.findViewById(R.id.tab_textview);
                 tv.setText(Html.fromHtml(categories.get(i).getTitle()));
                 tv.setTextColor(ContextCompat.getColor(this, R.color.app_black));
+                if(Utils.getAppCurrentLang().equals("ar"))
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 tv.setBackgroundColor(ContextCompat.getColor(AgendaActivity.this, R.color.agenda_color));
                 tabLayout.getTabAt(i).setCustomView(container);
                 ViewGroup.LayoutParams layoutParams = new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

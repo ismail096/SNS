@@ -9,6 +9,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,23 +117,24 @@ public class HomeFragment extends Fragment {
         if(categories.size()>0){
             viewPager.setOffscreenPageLimit(categories.size());
             contentLayout.setVisibility(View.VISIBLE);
-            categories.add(new Category(2022, getString(R.string.agenda), "#FF265D"));
+            if(Utils.getAppCurrentLang().equals("fr"))
+                categories.add(new Category(AppController.AGENDA_FR_ID, getString(R.string.agenda), "#FF265D"));
+            else
+                categories.add(new Category(AppController.AGENDA_AR_ID, getString(R.string.agenda), "#FF265D"));
             CategoryPagerAdapter adapter = new CategoryPagerAdapter(categories, ((AppCompatActivity) mContext).getSupportFragmentManager());
             viewPager.setAdapter(adapter);
             tabLayout.setupWithViewPager(viewPager);
 
-            /*LinearLayout linearLayout = (LinearLayout)tabLayout.getChildAt(0);
-            linearLayout.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
-            GradientDrawable drawable = new GradientDrawable();
-            drawable.setColor(Color.WHITE);
-            drawable.setSize(2, 1);
-            linearLayout.setDividerPadding(10);
-            linearLayout.setDividerDrawable(drawable);*/
 
             for (int i = 0; i < tabLayout.getTabCount(); i++) {
                 View container = LayoutInflater.from(mContext).inflate(R.layout.tab_item_layout,null);
                 TextViewExtraBold tv = container.findViewById(R.id.tab_textview);
                 tv.setText(Html.fromHtml(categories.get(i).getTitle()));
+                Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-ExtraBold.otf");
+                if(Utils.getAppCurrentLang().equals("ar")) {
+                    tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
+                }
+                tv.setTypeface(tf);
                 tabLayout.getTabAt(i).setCustomView(container);
                 tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
             }
@@ -141,7 +143,7 @@ public class HomeFragment extends Fragment {
             TextViewExtraBold tv = firstTab.getCustomView().findViewById(R.id.tab_textview);
             Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
             if(Utils.getAppCurrentLang().equals("ar"))
-                tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
             tv.setTypeface(tf);
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -150,7 +152,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
                     tv.setTypeface(tf);
                     tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
                 }
@@ -160,7 +162,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-ExtraBold.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Medium.otf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
                     tv.setTypeface(tf);
                 }
 
@@ -169,7 +171,7 @@ public class HomeFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                        tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
                     tv.setTypeface(tf);
                     tabLayout.setBackgroundColor(Color.parseColor((String) tab.getTag()));
                 }

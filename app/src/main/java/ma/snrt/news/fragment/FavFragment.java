@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class FavFragment extends Fragment {
     ArrayList<Post> posts;
     int selectedMode = 0;
     Context mContext;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +49,7 @@ public class FavFragment extends Fragment {
         emptyTextView = rootView.findViewById(R.id.empty_textview);
         newsBtn = rootView.findViewById(R.id.news_btn);
         videosBtn = rootView.findViewById(R.id.video_btn);
+        swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         
         mContext = getActivity();
 
@@ -59,6 +62,16 @@ public class FavFragment extends Fragment {
         });
 
         posts = new ArrayList<>();
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                if(selectedMode == 0)
+                    getNews();
+                else if(selectedMode ==1)
+                    getVideos();
+            }
+        });
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)){
             rootView.findViewById(R.id.fav_menu).setBackgroundColor(ContextCompat.getColor(mContext, R.color.bgGrey2Dark));
@@ -77,6 +90,8 @@ public class FavFragment extends Fragment {
     }
 
     private void getNews(){
+        if(swipeRefreshLayout!=null)
+            swipeRefreshLayout.setRefreshing(false);
         selectedMode = 0;
         newsBtn.setTextColor(ContextCompat.getColor(mContext, R.color.app_white));
         newsBtn.setBackgroundResource(R.drawable.btn_red_left);
@@ -100,6 +115,8 @@ public class FavFragment extends Fragment {
     }
 
     private void getVideos(){
+        if(swipeRefreshLayout!=null)
+            swipeRefreshLayout.setRefreshing(false);
         selectedMode = 1;
         newsBtn.setTextColor(ContextCompat.getColor(mContext, R.color.app_black));
         newsBtn.setBackgroundResource(R.drawable.btn_grey_left);

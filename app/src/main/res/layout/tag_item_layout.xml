@@ -6,17 +6,17 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
-    android:background="#eee"
+    android:background="?attr/backgroundColor2"
     >
 
-    <ma.snrt.news.ui.TextViewExtraBold
+    <ma.snrt.news.ui.TextViewBold
         android:id="@+id/post_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_grey"
-        android:textSize="14sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:textColor="@color/text_grey2"
+        android:textSize="12.5sp"
+        android:layout_marginStart="7.5dp"
+        android:layout_marginEnd="7.5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         />

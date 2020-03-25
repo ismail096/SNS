@@ -36,6 +36,8 @@ public class AppController extends Application {
     public static FirebaseAnalytics mFirebaseAnalytics;
     public static OkHttpClient okHttpClient;
     public static String API_KEY = "AIzaSyBgD-Ser1WWDIOeF7IhsbpFjMmfdAVYSd0";
+    public static int AGENDA_FR_ID = 2020;
+    public static int AGENDA_AR_ID = 2021;
 
     public static ApiInterface getAPIService() {
         if(service == null)
@@ -73,12 +75,12 @@ public class AppController extends Application {
                 .cache(null)
                 .build();
 
-        Picasso.Builder builder = new Picasso.Builder(this);
+        /*Picasso.Builder builder = new Picasso.Builder(this);
         builder.downloader(new OkHttp3Downloader(this, Integer.MAX_VALUE));
         Picasso built = builder.build();
         built.setIndicatorsEnabled(false);
         built.setLoggingEnabled(false);
-        Picasso.setSingletonInstance(built);
+        Picasso.setSingletonInstance(built);*/
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL + "/api/")

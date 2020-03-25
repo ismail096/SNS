@@ -20,6 +20,9 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -128,28 +131,17 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
             if(item.getCategory()!=null)
             mHolder.category.setText(Html.fromHtml(item.getCategory()));
-            try {
-                Picasso.with(context)
-                        .load(item.getImage())
-                        .networkPolicy(NetworkPolicy.OFFLINE)
-                        .error(R.drawable.placeholder)
-                        .into(mHolder.imageView, new com.squareup.picasso.Callback() {
-                            @Override
-                            public void onSuccess() {
 
-                            }
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.placeholder);
+            requestOptions.error(R.drawable.placeholder);
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-                            @Override
-                            public void onError() {
-                                Picasso.with(context)
-                                        .load(item.getImage())
-                                        .error(R.drawable.placeholder)
-                                        .into(mHolder.imageView);
-                            }
-                        });
-            } catch (Exception ex) {
-                mHolder.imageView.setImageResource(R.drawable.placeholder);
-            }
+            Glide.with(context)
+                    .load(item.getImage())
+                    .apply(requestOptions)
+                    .into(mHolder.imageView);
+
             if(item.getColor()!=null && item.getColor().length()==7)
                 mHolder.category.setTextColor(Color.parseColor(item.getColor()));
             else
@@ -243,28 +235,16 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             });
             mHolder.title.setText(Html.fromHtml(item.getTitle()));
             mHolder.category.setText(Html.fromHtml(item.getCategory()));
-            try {
-                Picasso.with(context)
-                        .load(item.getImage())
-                        .networkPolicy(NetworkPolicy.OFFLINE)
-                        .error(R.drawable.placeholder)
-                        .into(mHolder.imageView, new com.squareup.picasso.Callback() {
-                            @Override
-                            public void onSuccess() {
 
-                            }
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.placeholder(R.drawable.placeholder);
+            requestOptions.error(R.drawable.placeholder);
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-                            @Override
-                            public void onError() {
-                                Picasso.with(context)
-                                        .load(item.getImage())
-                                        .error(R.drawable.placeholder)
-                                        .into(mHolder.imageView);
-                            }
-                        });
-            } catch (Exception ex) {
-                mHolder.imageView.setImageResource(R.drawable.placeholder);
-            }
+            Glide.with(context)
+                    .load(item.getImage())
+                    .apply(requestOptions)
+                    .into(mHolder.imageView);
 
             if(item.getDatePublication()!=null) {
                 mHolder.date.setVisibility(View.VISIBLE);

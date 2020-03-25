@@ -64,9 +64,7 @@ public class TopNewsFragment extends Fragment {
 
         final LinearLayoutManager llm = new LinearLayoutManager(mContext);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
-
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(llm);
 
         posts = new ArrayList<>();
@@ -74,11 +72,26 @@ public class TopNewsFragment extends Fragment {
         agendas = new ArrayList<>();
         users = new ArrayList<>();
 
+
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                recyclerView.setEnabled(llm.findFirstCompletelyVisibleItemPosition() == 0); // 0 is for first item position
+                //recyclerView.setEnabled(llm.findFirstCompletelyVisibleItemPosition() == 0); // 0 is for first item position
+                try {
+                    int firstPos = llm.findFirstCompletelyVisibleItemPosition();
+                    if (firstPos > 0) {
+                        swipeRefreshLayout.setEnabled(false);
+                    } else {
+                        swipeRefreshLayout.setEnabled(true);
+                        if(recyclerView.getScrollState() == 1)
+                            if(swipeRefreshLayout.isRefreshing())
+                                recyclerView.stopScroll();
+                    }
+
+                }catch(Exception e) {
+                }
             }
         });
 
@@ -134,7 +147,7 @@ public class TopNewsFragment extends Fragment {
     }
 
     private void getAgenda(){
-        ApiCall.getLatestAgenda( new Callback<JsonArray>() {
+        ApiCall.getLatestAgenda(2, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(response.body()!=null && response.isSuccessful()){
@@ -228,9 +241,9 @@ public class TopNewsFragment extends Fragment {
             if(posts.size()>4 && users.size()>0)
                 posts.add(4, new Post(1));
             if(posts.size()>5 && agendas.size()>0)
-                posts.add(5, new Post(2));
+                posts.add(5, new Post(3));
             if(posts.size()>10 && videos.size()>0)
-                posts.add(10, new Post(3));
+                posts.add(10, new Post(2));
             newsAdapter = new TopNewsAdapter(mContext, new ArrayList<>(posts.subList(0, posts.size())), users, videos, agendas);
             recyclerView.setAdapter(newsAdapter);
         }

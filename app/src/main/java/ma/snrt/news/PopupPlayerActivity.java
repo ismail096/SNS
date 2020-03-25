@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
@@ -84,28 +87,16 @@ public class PopupPlayerActivity extends AppCompatActivity {
 
     private void loadThumbImage() {
         final String image = getIntent().getStringExtra("video_image");
-        try {
-            Picasso.with(this)
-                    .load(image)
-                    .networkPolicy(NetworkPolicy.OFFLINE)
-                    .error(R.drawable.placeholder)
-                    .into(thumbImageView, new com.squareup.picasso.Callback() {
-                        @Override
-                        public void onSuccess() {
 
-                        }
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.error(R.drawable.placeholder);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-                        @Override
-                        public void onError() {
-                            Picasso.with(PopupPlayerActivity.this)
-                                    .load(image)
-                                    .error(R.drawable.placeholder)
-                                    .into(thumbImageView);
-                        }
-                    });
-        } catch (Exception ex) {
-            thumbImageView.setImageResource(R.drawable.placeholder);
-        }
+        Glide.with(this)
+                .load(image)
+                .apply(requestOptions)
+                .into(thumbImageView);
     }
 
     public void onClick(View view){

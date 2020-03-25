@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,6 +118,11 @@ public class VideosFragment extends Fragment {
                     tv.setTextColor(ContextCompat.getColor(mContext, R.color.app_black));
                 else
                     tv.setTextColor(ContextCompat.getColor(mContext, R.color.app_white));
+                Typeface tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/Averta-ExtraBold.otf");
+                if(Utils.getAppCurrentLang().equals("ar")) {
+                    tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
+                }
+                tv.setTypeface(tf);
                 tabLayout.getTabAt(i).setCustomView(container);
                 tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
             }
@@ -125,7 +131,7 @@ public class VideosFragment extends Fragment {
             TextViewExtraBold tv = firstTab.getCustomView().findViewById(R.id.tab_textview);
             Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
             if(Utils.getAppCurrentLang().equals("ar"))
-                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
             tv.setTypeface(tf);
 
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -134,7 +140,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
                     tv.setTypeface(tf);
                 }
 
@@ -143,7 +149,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-ExtraBold.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Medium.otf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
                     tv.setTypeface(tf);
                 }
 
@@ -152,7 +158,7 @@ public class VideosFragment extends Fragment {
                     TextViewExtraBold tv = tab.getCustomView().findViewById(R.id.tab_textview);
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/Averta-Black.otf");
                     if(Utils.getAppCurrentLang().equals("ar"))
-                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ApercuArabicPro-Bold.otf");
+                        tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/ArbFONTS-DroidKufi-Bold.ttf");
                     tv.setTypeface(tf);
                 }
             });

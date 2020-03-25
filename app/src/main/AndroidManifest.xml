@@ -34,7 +34,7 @@
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/FullScreenLight">
+            android:theme="@style/AppThemeLight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

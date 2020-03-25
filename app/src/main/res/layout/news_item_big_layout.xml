@@ -10,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/post_image_layout"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="@dimen/big_item_height"
         >
 
         <ImageView
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:textSize="10sp"
+            android:textSize="@dimen/date_size"
             android:layout_alignParentBottom="true"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
@@ -62,29 +62,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_grey"
-                android:textSize="19sp"
+                android:textSize="@dimen/big_icon_size"
                 android:textAllCaps="true"
-                android:layout_centerVertical="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/font_rm_padding"
                 />
 
             <ImageView
                 android:id="@+id/share_btn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/big_icon_size"
+                android:layout_height="@dimen/big_icon_size"
                 android:src="?attr/iconShare2"
-                android:padding="2dp"
                 android:layout_marginStart="10dp"
                 android:layout_toStartOf="@+id/fav_btn"
+                android:adjustViewBounds="true"
                 />
 
             <ImageView
                 android:id="@+id/fav_btn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="@dimen/big_icon_size"
+                android:layout_height="@dimen/big_icon_size"
                 android:src="@drawable/bookmarks_empty"
-                android:padding="2dp"
                 android:layout_marginStart="10dp"
                 android:layout_alignParentEnd="true"
+                android:adjustViewBounds="true"
                 />
 
          </RelativeLayout>
@@ -93,16 +94,16 @@
             android:id="@+id/post_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="@dimen/big_title_size"
             android:textColor="?attr/secondaryTextColor"
             android:maxLines="3"
             android:ellipsize="end"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/title_top_margin"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:textAllCaps="true"
-            android:lineSpacingExtra="5dp"
+            android:lineSpacingExtra="@dimen/big_line_spacing"
             />
 
     </LinearLayout>

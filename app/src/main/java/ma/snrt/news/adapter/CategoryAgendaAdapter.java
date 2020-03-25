@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
@@ -60,28 +63,17 @@ public class CategoryAgendaAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         });
 
         mHolder.title.setText(Html.fromHtml(item.getTitle()));
-        try {
-            Picasso.with(context)
-                    .load(item.getImage())
-                    .networkPolicy(NetworkPolicy.OFFLINE)
-                    .error(R.drawable.placeholder)
-                    .into(mHolder.image, new com.squareup.picasso.Callback() {
-                        @Override
-                        public void onSuccess() {
 
-                        }
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.placeholder);
+        requestOptions.error(R.drawable.placeholder);
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-                        @Override
-                        public void onError() {
-                            Picasso.with(context)
-                                    .load(item.getImage())
-                                    .error(R.drawable.placeholder)
-                                    .into(mHolder.image);
-                        }
-                    });
-        } catch (Exception ex) {
-            mHolder.image.setImageResource(R.drawable.placeholder);
-        }
+        Glide.with(context)
+                .load(item.getImage())
+                .apply(requestOptions)
+                .into(mHolder.image);
+
         if(item.isSelected()) {
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) mHolder.container.getLayoutParams();
             layoutParams.width = Utils.dpToPx(context.getResources(), 160);

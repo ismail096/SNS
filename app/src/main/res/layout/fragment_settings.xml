@@ -41,7 +41,7 @@
                 android:text="@string/favoris"
                 android:textAllCaps="true"
                 android:textColor="?attr/primaryTextColor"
-                android:textSize="18sp"
+                android:textSize="@dimen/page_title"
                 android:textStyle="bold" />
 
             <ImageView
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/langues"
                 android:textColor="?attr/secondaryTextColor"
-                android:textSize="15sp"
+                android:textSize="@dimen/title_size"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
@@ -111,7 +111,7 @@
                     android:gravity="center"
                     android:text="@string/fr"
                     android:textColor="#fff"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/date_size"
                     android:textStyle="bold" />
 
                 <ma.snrt.news.ui.TextViewExtraBold
@@ -123,7 +123,7 @@
                     android:gravity="center"
                     android:text="@string/ar"
                     android:textColor="?attr/secondaryTextColor"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/date_size"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/dark_mode"
                 android:textColor="?attr/secondaryTextColor"
-                android:textSize="15sp"
+                android:textSize="@dimen/title_size"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
@@ -209,7 +209,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/noter_app"
                 android:textColor="?attr/secondaryTextColor"
-                android:textSize="15sp"
+                android:textSize="@dimen/title_size"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
@@ -248,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/notifications"
                 android:textColor="?attr/secondaryTextColor"
-                android:textSize="15sp"
+                android:textSize="@dimen/title_size"
                 android:textStyle="bold"
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
