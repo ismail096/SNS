@@ -33,6 +33,7 @@ public class Post implements Serializable {
     private String type_contenu;
     private String text_speech;
     private String resume;
+    private int category_id;
 
     public Post() {
     }
@@ -264,5 +265,13 @@ public class Post implements Serializable {
 
     public void setResume(String resume) {
         this.resume = resume;
+    }
+
+    public int getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(int category_id) {
+        this.category_id = category_id;
     }
 }

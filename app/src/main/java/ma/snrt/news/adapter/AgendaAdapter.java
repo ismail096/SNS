@@ -24,6 +24,7 @@ import ma.snrt.news.AgendaActivity;
 import ma.snrt.news.AgendaDetailActivity;
 import ma.snrt.news.AppController;
 import ma.snrt.news.R;
+import ma.snrt.news.model.CategoryAgenda;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewRegular;
@@ -96,7 +97,10 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, AgendaActivity.class);
-                intent.putExtra("position", 0);
+                CategoryAgenda category = new CategoryAgenda();
+                category.setId(item.getCategory_id());
+                category.setTitle(item.getCategory());
+                intent.putExtra("category", category);
                 context.startActivity(intent);
             }
         });

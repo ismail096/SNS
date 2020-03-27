@@ -15,6 +15,7 @@
     <color name="bgGrey2Dark">#2d2d2d</color>
     <color name="text_grey">#838383</color>
     <color name="text_grey2">#4a4a4a</color>
+    <color name="text_grey3">#BDBDBD</color>
     <color name="story_options_bg">#80000000</color>
     <color name="player_bg">#CC000000</color>
     <color name="agenda_color">#EEFF41</color>

@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/home_btn_img"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:padding="2dp"
             android:src="?attr/iconHome"
             />
@@ -38,8 +38,8 @@
 
         <ImageView
             android:id="@+id/flash_btn_img"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:padding="2dp"
             android:src="?attr/iconFlash"
             />
@@ -58,8 +58,8 @@
 
         <ImageView
             android:id="@+id/media_btn_img"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:padding="2dp"
             android:src="?attr/iconMedia" />
 
@@ -77,8 +77,8 @@
 
         <ImageView
             android:id="@+id/fav_btn_img"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:padding="2dp"
             android:src="?attr/iconSearch" />
 

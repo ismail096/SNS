@@ -107,6 +107,12 @@
             android:theme="@style/ActivityThemeLight"
             />
 
+        <activity
+            android:name=".StoryActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ActivityThemeLight"
+            />
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_launcher" />

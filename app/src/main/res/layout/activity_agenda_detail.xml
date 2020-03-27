@@ -90,6 +90,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:lineSpacingExtra="@dimen/detail_title_spacing"
                         />
 
                     <ImageView
@@ -211,11 +212,11 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/empty_view"
-        android:textColor="?attr/primaryTextColor"
+        android:textColor="?attr/secondaryTextColor"
+        android:textSize="@dimen/titles_size"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:gravity="center"
-        android:textSize="@dimen/titles_size"
         android:visibility="gone" />
 
     <ImageView
@@ -305,7 +306,7 @@
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="28dp"
+            android:layout_width="@dimen/detail_icon_size"
             android:layout_height="wrap_content"
             android:src="?attr/iconBack"
             android:layout_alignParentStart="true"
@@ -317,40 +318,42 @@
 
         <ImageView
             android:id="@+id/share_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="?attr/iconShare2"
             android:layout_toStartOf="@+id/fav_btn"
             android:layout_centerVertical="true"
             android:clickable="true"
             android:adjustViewBounds="true"
             android:onClick="onClick"
+            android:padding="@dimen/detail_icon_padding"
             />
 
         <ImageView
             android:id="@+id/fav_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="?attr/iconFav"
-            android:padding="2dp"
+            android:padding="@dimen/detail_icon_padding"
             android:clickable="true"
             android:layout_toStartOf="@+id/pinBtn"
             android:layout_centerVertical="true"
             android:onClick="onClick"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/detail_icon_margin"
+            android:layout_marginEnd="@dimen/detail_icon_margin"
             android:visibility="gone"
             />
 
         <ImageView
             android:id="@+id/pinBtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="@drawable/agenda_pin"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/detail_icon_margin"
+            android:layout_marginEnd="@dimen/detail_icon_margin"
+            android:padding="@dimen/detail_icon_padding"
             android:onClick="onClick"
             />
 
@@ -365,12 +368,13 @@
 
         <ImageView
             android:id="@+id/fontBtn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="?attr/iconFontSize"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/detail_icon_margin"
+            android:padding="@dimen/detail_icon_padding"
             android:onClick="onClick"
             android:visibility="gone"
             />

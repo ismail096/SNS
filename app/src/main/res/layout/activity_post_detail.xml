@@ -21,6 +21,18 @@
             android:orientation="vertical"
             >
 
+            <ma.snrt.news.ui.TextViewEBItalic
+                android:id="@+id/post_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_grey"
+                android:textSize="18sp"
+                android:textAllCaps="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                />
+
             <ma.snrt.news.ui.TextViewBold
                 android:id="@+id/post_title"
                 android:layout_width="match_parent"
@@ -31,6 +43,7 @@
                 android:textSize="18sp"
                 android:textColor="?attr/secondaryTextColor"
                 android:textAllCaps="true"
+                android:lineSpacingExtra="@dimen/detail_title_spacing"
                 />
 
             <LinearLayout
@@ -188,7 +201,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/empty_view"
-        android:textColor="?attr/primaryTextColor"
+        android:textColor="?attr/secondaryTextColor"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:gravity="center"
@@ -349,7 +362,7 @@
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="28dp"
+            android:layout_width="@dimen/detail_icon_size"
             android:layout_height="wrap_content"
             android:src="?attr/iconBack"
             android:layout_alignParentStart="true"
@@ -361,38 +374,41 @@
 
         <ImageView
             android:id="@+id/fontBtn"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="?attr/iconFontSize"
             android:layout_toStartOf="@+id/share_btn"
             android:layout_centerVertical="true"
             android:onClick="onClick"
             android:adjustViewBounds="true"
+            android:padding="@dimen/detail_icon_padding"
             />
 
         <ImageView
             android:id="@+id/share_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="?attr/iconShare"
             android:layout_toStartOf="@+id/bookmark_btn"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="@dimen/detail_icon_margin"
             android:onClick="onClick"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
+            android:padding="@dimen/detail_icon_padding"
             />
 
         <ImageView
             android:id="@+id/bookmark_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="@drawable/bookmarks_empty"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/detail_icon_margin"
+            android:layout_marginEnd="@dimen/detail_icon_margin"
             android:onClick="onClick"
             android:layout_centerVertical="true"
             android:adjustViewBounds="true"
+            android:padding="2dp"
             />
 
     </RelativeLayout>

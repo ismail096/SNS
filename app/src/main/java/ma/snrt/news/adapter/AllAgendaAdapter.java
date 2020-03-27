@@ -75,7 +75,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, AgendaActivity.class);
-                    intent.putExtra("position", position);
+                    intent.putExtra("category", item);
                     context.startActivity(intent);
                 }
             });
@@ -83,7 +83,7 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, AgendaActivity.class);
-                    intent.putExtra("position", position);
+                    intent.putExtra("category", item);
                     context.startActivity(intent);
                 }
             });

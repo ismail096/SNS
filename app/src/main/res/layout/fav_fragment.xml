@@ -10,6 +10,7 @@
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fillViewport="true"
                 >
 
                 <LinearLayout
@@ -59,25 +60,36 @@
 
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="?attr/backgroundColor"
-                        />
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="?attr/backgroundColor"
+                            />
+
+                        <ma.snrt.news.ui.TextViewRegular
+                            android:id="@+id/empty_textview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/empty_list_text"
+                            android:textColor="?attr/secondaryTextColor"
+                            android:textSize="@dimen/titles_size"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginEnd="40dp"
+                            android:gravity="center"
+                            android:visibility="gone" />
+                    </RelativeLayout>
 
                 </LinearLayout>
 
             </androidx.core.widget.NestedScrollView>
 
-            <ma.snrt.news.ui.TextViewRegular
-                android:id="@+id/empty_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/empty_list_text"
-                android:textColor="?attr/secondaryTextColor"
-                android:visibility="gone" />
+
 
             <ProgressBar
                 style="?android:attr/progressBarStyleLarge"

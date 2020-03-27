@@ -15,7 +15,7 @@
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="28dp"
+            android:layout_width="@dimen/detail_icon_size"
             android:layout_height="wrap_content"
             android:src="?attr/iconBack"
             android:layout_alignParentStart="true"
@@ -46,12 +46,13 @@
 
         <ImageView
             android:id="@+id/filtre_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/detail_icon_size"
+            android:layout_height="@dimen/detail_icon_size"
             android:src="@drawable/filtre_btn"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/detail_icon_margin"
+            android:padding="@dimen/detail_icon_padding"
             android:onClick="onClick"
             android:visibility="visible"
             />
@@ -63,30 +64,44 @@
         android:layout_height="match_parent"
        >
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            >
+
+         <LinearLayout
             android:id="@+id/content_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?attr/backgroundColor"
             android:orientation="vertical"
-            android:visibility="gone"
             >
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tablayout"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/agenda_top_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                style="@style/myCustomTablayout3"
-                app:tabMode="scrollable"
-                android:background="?attr/backgroundColor"
-                app:tabIndicator="@null"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingStart="5dp"
+                android:paddingBottom="10dp"
+                android:background="?attr/backgroundColor2"
+                android:layoutDirection="ltr"
+                android:visibility="gone"
                 />
 
-            <com.duolingo.open.rtlviewpager.RtlViewPager
-                android:id="@+id/viewpager"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/agenda_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                />
 
         </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
         <ma.snrt.news.ui.TextViewRegular
             android:id="@+id/empty_textview"
@@ -95,6 +110,10 @@
             android:layout_centerInParent="true"
             android:text="@string/empty_list_text"
             android:textColor="?attr/secondaryTextColor"
+            android:textSize="@dimen/titles_size"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center"
             android:visibility="gone" />
 
         <ImageView

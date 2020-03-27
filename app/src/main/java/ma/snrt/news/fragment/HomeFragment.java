@@ -51,7 +51,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
     Context mContext;
     List<Category> categories;
-    RtlViewPager viewPager;
+    public RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
     ImageView progressBar;
@@ -207,6 +207,10 @@ public class HomeFragment extends Fragment {
         else{
             emptyTextView.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void selectTopNews(){
+        viewPager.setCurrentItem(0);
     }
 
     private void enableNotifs(){

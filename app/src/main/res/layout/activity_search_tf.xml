@@ -17,7 +17,7 @@
 
         <ImageView
             android:id="@+id/back_btn"
-            android:layout_width="28dp"
+            android:layout_width="@dimen/detail_icon_size"
             android:layout_height="wrap_content"
             android:src="?attr/iconBack"
             android:layout_marginStart="16dp"
@@ -153,6 +153,10 @@
                 android:layout_centerInParent="true"
                 android:text="@string/empty_search_text"
                 android:textColor="?attr/secondaryTextColor"
+                android:textSize="@dimen/titles_size"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:gravity="center"
                 android:visibility="gone" />
 
         </RelativeLayout>

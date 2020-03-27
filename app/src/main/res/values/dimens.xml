@@ -24,5 +24,9 @@
     <dimen name="small_item_width">120dp</dimen>
     <dimen name="big_item_height">220dp</dimen>
     <dimen name="video_item_height">180dp</dimen>
+    <dimen name="detail_title_spacing">0dp</dimen>
+    <dimen name="detail_icon_size">28dp</dimen>
+    <dimen name="detail_icon_padding">2dp</dimen>
+    <dimen name="detail_icon_margin">14dp</dimen>
 
 </resources>

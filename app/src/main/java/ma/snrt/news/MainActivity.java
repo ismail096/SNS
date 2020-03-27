@@ -27,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonArray;
 
 import ma.snrt.news.adapter.HomePagerAdapter;
+import ma.snrt.news.fragment.HomeFragment;
 import ma.snrt.news.fragment.SettingsFragment;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.network.ApiCall;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView liveBtn, mainLogo;
     TextViewBold title;
     Post livePost;
+    HomePagerAdapter homePagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupHome() {
-        viewPager.setAdapter(new HomePagerAdapter(getSupportFragmentManager()));
+        homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(homePagerAdapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -199,15 +202,26 @@ public class MainActivity extends AppCompatActivity {
                 switch (position){
                     case 0:
                         bottomNavigationView.getMenu().findItem(R.id.home_icon).setChecked(true);
+                        mainLogo.setVisibility(View.VISIBLE);
+                        title.setVisibility(View.GONE);
                         break;
                     case 1:
                         bottomNavigationView.getMenu().findItem(R.id.flash_icon).setChecked(true);
+                        mainLogo.setVisibility(View.GONE);
+                        title.setVisibility(View.VISIBLE);
+                        title.setText(getString(R.string.flash_news));
                         break;
                     case 2:
                         bottomNavigationView.getMenu().findItem(R.id.media_icon).setChecked(true);
+                        mainLogo.setVisibility(View.GONE);
+                        title.setVisibility(View.VISIBLE);
+                        title.setText(getString(R.string.videos));
                         break;
                     case 3:
                         bottomNavigationView.getMenu().findItem(R.id.fav_icon).setChecked(true);
+                        mainLogo.setVisibility(View.GONE);
+                        title.setVisibility(View.VISIBLE);
+                        title.setText(getString(R.string.favoris));
                         break;
                 }
             }
@@ -228,6 +242,14 @@ public class MainActivity extends AppCompatActivity {
             }
             else
                 drawerLayout.openDrawer(GravityCompat.START);
+        }
+        else if(v.getId() == R.id.main_logo){
+            if(viewPager.getCurrentItem() == 0 && homePagerAdapter!=null){
+                HomeFragment frag1 = (HomeFragment) viewPager
+                        .getAdapter()
+                        .instantiateItem(viewPager, viewPager.getCurrentItem());
+                frag1.selectTopNews();
+            }
         }
     }
     @Override

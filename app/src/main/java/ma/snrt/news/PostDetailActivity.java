@@ -74,6 +74,7 @@ public class PostDetailActivity extends AppCompatActivity {
     TextViewBold titleTextView;
     TextViewExtraBold relatedTextView, tagsTextView;
     TextViewRegular dateTextView, authorTextView;
+    TextViewEBItalic categoryTextView;
     WebView descriptionWv;
     ImageView bookMarksBtn, fontBtn;
     ImageViewZoom postImageview;
@@ -106,6 +107,7 @@ public class PostDetailActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.post_title);
         dateTextView = findViewById(R.id.post_date);
         authorTextView = findViewById(R.id.post_author);
+        categoryTextView = findViewById(R.id.post_category);
         descriptionWv = findViewById(R.id.post_description);
         postImageview = findViewById(R.id.post_image);
         progressBar = findViewById(R.id.progress_bar);
@@ -315,6 +317,7 @@ public class PostDetailActivity extends AppCompatActivity {
             ratio *= Utils.spToPx(getResources(), 2);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextView.getTextSize()  + ratio);
         dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dateTextView.getTextSize()  + ratio);
+        categoryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, categoryTextView.getTextSize()  + ratio);
         authorTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, authorTextView.getTextSize()  + ratio);
         tagsTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, tagsTextView.getTextSize()  + ratio);
         relatedTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, relatedTextView.getTextSize()  + ratio);
@@ -373,6 +376,12 @@ public class PostDetailActivity extends AppCompatActivity {
                 authorTextView.setVisibility(View.GONE);
                 findViewById(R.id.post_author_divider).setVisibility(View.GONE);
             }
+            categoryTextView.setText(Html.fromHtml(post.getCategory()));
+            if(post.getColor()!=null && post.getColor().length()==7)
+                categoryTextView.setTextColor(Color.parseColor(post.getColor()));
+            else
+                categoryTextView.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
+
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.placeholder(R.drawable.placeholder);
             requestOptions.error(R.drawable.placeholder);

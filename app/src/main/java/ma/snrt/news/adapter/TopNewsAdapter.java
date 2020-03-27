@@ -179,6 +179,8 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         else if(holder instanceof StoriesHolder){
             StoriesHolder mHolder = (StoriesHolder) holder;
+            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                mHolder.title.setTextColor(ContextCompat.getColor(context, R.color.text_grey3));
             if(users.size()>0)
                 setStoriesAdapter(mHolder.recyclerView);
             else
@@ -186,6 +188,8 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
         else if(holder instanceof AgendaHolder){
             AgendaHolder mHolder = (AgendaHolder) holder;
+            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                mHolder.title.setTextColor(ContextCompat.getColor(context, R.color.text_grey3));
             mHolder.recyclerView.setNestedScrollingEnabled(false);
             if(agendas.size()>0) {
                 setAgendaAdapter(mHolder.recyclerView);
@@ -285,24 +289,27 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class StoriesHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
         LinearLayout container;
+        TextViewExtraBold title;
 
         public StoriesHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.stories_recycler);
             container = convertView.findViewById(R.id.stories_container);
+            title = convertView.findViewById(R.id.top_title);
         }
     }
 
     class AgendaHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
         LinearLayout container;
-        TextViewExtraBold seeMore;
+        TextViewExtraBold seeMore, title;
 
         public AgendaHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.agenda_recycler);
             seeMore = convertView.findViewById(R.id.see_more);
             container = convertView.findViewById(R.id.agendas_container);
+            title = convertView.findViewById(R.id.top_title);
         }
     }
 

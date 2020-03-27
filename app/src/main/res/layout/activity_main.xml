@@ -42,6 +42,7 @@
                 android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:scaleType="fitStart"
+                android:onClick="onClick"
                 />
 
             <ma.snrt.news.ui.TextViewBold

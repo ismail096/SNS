@@ -66,13 +66,12 @@ public class TopNewsFragment extends Fragment {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(llm);
+        recyclerView.setNestedScrollingEnabled(true);
 
         posts = new ArrayList<>();
         videos = new ArrayList<>();
         agendas = new ArrayList<>();
         users = new ArrayList<>();
-
-
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 import ma.snrt.news.R;
 import ma.snrt.news.StatusStoriesActivity;
+import ma.snrt.news.StoryActivity;
 import ma.snrt.news.model.User;
 import ma.snrt.news.util.Utils;
 
@@ -73,6 +74,9 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .toBundle();
                 }
                 context.startActivity(intent, bundle);
+                /*Intent intent = new Intent(context, StoryActivity.class);
+                intent.putExtra("user", item);
+                context.startActivity(intent);*/
             }
         });
 
@@ -83,7 +87,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 setImage(mHolder.storyImage, item.getStories().get(0).getImage());
                 //setAnimation(mHolder.itemView, position);
             }
-        }, 200);
+        }, 500);
 
     }
 
