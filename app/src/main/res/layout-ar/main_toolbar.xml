@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="?attr/toolbarBg"
+    app:theme="@style/ThemeOverlay.AppCompat"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    android:elevation="4dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/menu_drawer"
+        android:layout_width="@dimen/standard_icon_size"
+        android:layout_height="@dimen/standard_icon_size"
+        android:src="?attr/iconMenu"
+        android:layout_gravity="start|center_vertical"
+        android:adjustViewBounds="true"
+        android:layout_margin="5dp"
+        android:onClick="onClick"
+        />
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/logo_height"
+        android:src="?attr/iconLogo"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:onClick="onClick"
+        />
+
+    <ma.snrt.news.ui.TextViewBold
+        android:id="@+id/main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/page_title"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/liveBtn"
+        android:layout_width="@dimen/standard_icon_size"
+        android:layout_height="@dimen/standard_icon_size"
+        android:src="@drawable/live_btn"
+        android:layout_gravity="center|end"
+        android:adjustViewBounds="true"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/searchBtn"
+        android:layout_width="@dimen/standard_icon_size"
+        android:layout_height="@dimen/standard_icon_size"
+        android:src="?attr/iconSearch"
+        android:layout_gravity="center|end"
+        android:adjustViewBounds="true"
+        android:layout_marginEnd="10dp"
+        />
+
+</androidx.appcompat.widget.Toolbar>

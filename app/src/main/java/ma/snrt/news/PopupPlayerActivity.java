@@ -120,9 +120,9 @@ public class PopupPlayerActivity extends AppCompatActivity {
             findViewById(R.id.close_btn).setVisibility(View.GONE);
             fullscreenImage.setImageResource(R.drawable.exo_controls_fullscreen_exit);
 
-            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 64);
-            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 64);
-            fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), 32);
+            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), getResources().getDimensionPixelSize(R.dimen.play_btn));
+            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), getResources().getDimensionPixelSize(R.dimen.play_btn));
+            fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), getResources().getDimensionPixelSize(R.dimen.small_icon_size));
             timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
 
             playerControls.setPadding(0, 0, 0, Utils.dpToPx(getResources(), 10));
@@ -136,9 +136,9 @@ public class PopupPlayerActivity extends AppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
             findViewById(R.id.close_btn).setVisibility(View.VISIBLE);
             fullscreenImage.setImageResource(R.drawable.ic_fullscreen);
-            playBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 48);
-            pauseBtn.getLayoutParams().width = Utils.dpToPx(getResources(), 48);
-            fullscreenImage.getLayoutParams().width = Utils.dpToPx(getResources(), 24);
+            playBtn.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.small_play_btn);
+            pauseBtn.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.small_play_btn);
+            fullscreenImage.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.standard_icon_size);
             timeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
             playerControls.setPadding(0, 0, 0, 0);
         }

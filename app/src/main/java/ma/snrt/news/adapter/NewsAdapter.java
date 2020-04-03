@@ -199,6 +199,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {
         if(position==0 || position%4==0)
             return TYPE_BIG;
+        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%5==0))
+            return TYPE_BIG;*/
         return TYPE_NORMAL;
     }
 

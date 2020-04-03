@@ -3,35 +3,22 @@
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="general">عام</string>
     <string name="langues">اللغة</string>
-    <string name="affichage">عرض</string>
     <string name="dark_mode">الوضع المظلم</string>
-    <string name="taille_texte">حجم النص</string>
     <string name="notifications">إشعارات</string>
-    <string name="conditions_privacy">الشروط والخصوصية</string>
-    <string name="condition_gen">شروط الخدمة</string>
-    <string name="privacy_options">خيارات الخصوصية</string>
     <string name="noter_app">تنقيط التطبيق</string>
     <string name="a_propos">نبذة عن SNRT NEWS</string>
-    <string name="app_version">نسخة التطبيق</string>
     <string name="fr">FR</string>
     <string name="ar">AR</string>
     <string name="empty_list_text">لا توجد عناصر متاحة</string>
     <string name="error_load_data">لا يمكن تحميل البيانات في الوقت الحالي</string>
     <string name="see_more">المزيد ...</string>
-    <string name="like_post_text">هل يعجبك هذا المقال؟</string>
     <string name="related_posts">مقالات ذات صلة</string>
     <string name="empty_view">لا يمكن تحميل الصفحة ، يرجى المحاولة مرة أخرى لاحقًا</string>
     <string name="share">مشاركة</string>
     <string name="api_error">شكرا! لديك مشكلة ... يرجى المحاولة مرة أخرى لاحقًا</string>
-    <string name="add_to_bookmarks">يضاف إلى المفضلة</string>
-    <string name="remove_from_bookmarks">تم الحذف من المفضلة</string>
     <string name="share_post"></string>
     <string name="check_internet">تحقق من اتصالك بالإنترنت</string>
-    <string name="recents">الأحدث</string>
-    <string name="populaire">الأشهر</string>
     <string name="videos">الفيديو</string>
-    <string name="images">الصور</string>
-    <string name="plus">المزيد</string>
     <string name="error_play_video">لا يمكنك تشغيل الفيديو في الوقت الحالي</string>
     <string name="empty_search_text">لم يتم العثور على عناصر لهذا البحث</string>
     <string name="search_hint">اكتب بحثك هنا</string>
@@ -39,20 +26,14 @@
     <string name="stt_not_supported">لا يدعم جهازك هذه الميزة</string>
     <string name="permissions_needed">شكرًا لك على السماح بالأذونات لهذه الميزة</string>
     <string name="favoris">المفضلة</string>
-    <string name="le">Le</string>
-    <string name="agenda_title">7/7</string>
     <string name="lorem_ipsum"></string>
-    <string name="live">مباشر</string>
     <string name="configuration">إعدادات</string>
     <string name="reception_alerte">تفعيل الإشعارات</string>
-    <string name="personnalisation">تخصيص</string>
     <string name="alertes_perso_text">حدد <b> السمات المفضلة </b> لتلقي <b> إشعارات في الوقت الفعلي </b></string>
-    <string name="redaction">تحرير</string>
     <string name="story">سطوري</string>
     <string name="articles">مقالات</string>
     <string name="select_all">حدد الكل</string>
     <string name="flash_news">أخبار عاجلة</string>
-    <string name="ignore">تجاهل</string>
 
 
     <!-- new version -->

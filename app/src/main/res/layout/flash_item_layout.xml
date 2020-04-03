@@ -10,7 +10,7 @@
 
     <ma.snrt.news.ui.TextViewExtraBold
         android:id="@+id/post_date"
-        android:layout_width="48dp"
+        android:layout_width="@dimen/flash_date_width"
         android:layout_height="wrap_content"
         android:textColor="?attr/secondaryTextColor"
         android:textSize="@dimen/titles_size"

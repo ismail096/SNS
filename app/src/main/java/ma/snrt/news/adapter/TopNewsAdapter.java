@@ -169,9 +169,13 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
             if(getItemViewType(position) == TYPE_NORMAL) {
-                if (position == 3 || position == 9 || position == items.size()-1) {
+                if (position == 3 || position == 9 || position == items.size()-1)
                     mHolder.divider.setVisibility(View.GONE);
-                }
+                /*else if (context.getResources().getBoolean(R.bool.is_tablet)
+                        && (position == 3 || position == 4 || position == 10 || position == 11
+                        || position == items.size()-2 || position == items.size()-1)) {
+                    mHolder.divider.setVisibility(View.GONE);
+                }*/
                 else
                     mHolder.divider.setVisibility(View.VISIBLE);
             }
@@ -230,6 +234,8 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return TYPE_VIDEOS;
         if(position==0 || position==6 || position==11)
             return TYPE_BIG;
+        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==7 || position==13))
+            return TYPE_BIG;*/
         return TYPE_NORMAL;
     }
 

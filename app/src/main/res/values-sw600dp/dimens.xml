@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--<dimen name="heading_line_spacing">2dp</dimen>
+    <dimen name="big_line_spacing">5dp</dimen>-->
+    <dimen name="title_size">19sp</dimen>
+    <dimen name="big_title_size">19sp</dimen>
+    <dimen name="titles_size">20sp</dimen>
+    <dimen name="date_size">13sp</dimen>
+    <dimen name="small_date_size">12sp</dimen>
+    <dimen name="big_date_size">14sp</dimen>
+    <dimen name="page_title">22sp</dimen>
+    <dimen name="story_title">24sp</dimen>
+    <dimen name="story_date">16sp</dimen>
+    <dimen name="tab_size">18sp</dimen>
+    <!--<dimen name="title_top_margin">10dp</dimen>
+    <dimen name="small_title_margin">5dp</dimen>
+    <dimen name="font_rm_padding">-2.5dp</dimen>
+    <dimen name="detail_title_spacing">0dp</dimen>-->
+
+    <dimen name="small_icon_size">17sp</dimen>
+    <dimen name="big_icon_size">19sp</dimen>
+    <dimen name="standard_icon_size">32dp</dimen>
+    <dimen name="small_item_width">140dp</dimen>
+    <dimen name="big_item_height">320dp</dimen>
+    <dimen name="video_item_height">280dp</dimen>
+    <dimen name="detail_icon_size">36dp</dimen>
+    <dimen name="detail_icon_padding">2dp</dimen>
+    <dimen name="detail_icon_margin">14dp</dimen>
+
+    <!-- tablet version -->
+
+    <dimen name="menu_width">460dp</dimen>
+    <dimen name="logo_height">52dp</dimen>
+    <dimen name="agenda_home_height">120dp</dimen>
+    <dimen name="top_agenda_width">220dp</dimen>
+    <dimen name="top_agenda_height">320dp</dimen>
+    <dimen name="agenda_shadow">220dp</dimen>
+    <dimen name="agenda_item_height">240dp</dimen>
+    <dimen name="story_item_width">130dp</dimen>
+    <dimen name="story_item_height">220dp</dimen>
+    <dimen name="menu_logo_width">140dp</dimen>
+    <dimen name="menu_logo_margin">40dp</dimen>
+    <dimen name="tf_btn_height">35dp</dimen>
+    <dimen name="tf_logo_width">140dp</dimen>
+    <dimen name="tf_btn_size">12sp</dimen>
+    <dimen name="tf_btn_triangle">6dp</dimen>
+    <dimen name="flash_date_width">50dp</dimen>
+    <dimen name="story_avatar">56dp</dimen>
+    <dimen name="story_avatar_border">66dp</dimen>
+    <dimen name="play_btn">56dp</dimen>
+    <dimen name="small_play_btn">40dp</dimen>
+    <dimen name="tag_size">14sp</dimen>
+
+    <bool name="is_tablet">true</bool>
+
+</resources>

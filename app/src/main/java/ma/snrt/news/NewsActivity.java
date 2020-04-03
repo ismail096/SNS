@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,10 +75,27 @@ public class NewsActivity extends AppCompatActivity {
         titleTextView = findViewById(R.id.news_title);
 
         recyclerView.setItemAnimator(null);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
+
+        if(!getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(this);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+        }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(this, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    if(position==0 || position%5==0)
+                        return 2;
+                    return 1;
+                }
+            });
+            recyclerView.setLayoutManager(lm);
+        }
+
+        recyclerView.setHasFixedSize(false);
 
         tag = getIntent().getStringExtra("tag");
 

@@ -122,10 +122,11 @@ public class Utils {
     public static String getPostRelativeDate(Context context, String date){
         String result = "";
         if(Utils.getAppCurrentLang().equals("fr")) {
-            result = context.getString(R.string.le)+" "+ DateTimeUtils.getFlashFormatFr(date);
+            result = DateTimeUtils.getTimeAgoFr(date);
+        //DateTimeUtils.getFlashFormatFr(date);
         }
         else
-            result = DateTimeUtils.getFlashFormatAr(date);
+            result = DateTimeUtils.getTimeAgoAr(date);
         return result;
     }
 

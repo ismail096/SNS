@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -73,10 +74,25 @@ public class CategoryFragment extends Fragment {
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        final LinearLayoutManager llm = new LinearLayoutManager(mContext);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
+        //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+        /*}
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                    if(position==0 || position%5==0)
+                        return 2;
+                    return 1;
+                }
+            });
+            recyclerView.setLayoutManager(lm);
+        }*/
+        recyclerView.setHasFixedSize(false);
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(mContext);
         layoutManager.setFlexDirection(FlexDirection.ROW);

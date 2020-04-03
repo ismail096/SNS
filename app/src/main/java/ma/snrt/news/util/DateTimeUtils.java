@@ -15,43 +15,8 @@ public class DateTimeUtils {
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
 
 
-    public static String getRelativeDateAr(long time) {
-        if (time < 1000000000000L) {
-            time *= 1000;
-        }
-        long now = System.currentTimeMillis();
-        if (time > now || time <= 0) {
-            return "منذ لحظات";
-        }
-
-        final long diff = now - time;
-        if (diff < MINUTE_MILLIS) {
-            return "منذ لحظات";
-        } else if (diff < 2 * MINUTE_MILLIS) {
-            return "منذ دقيقة";
-        } else if (diff < 3 * MINUTE_MILLIS) {
-            return "منذ دقيقتين";
-        } else if (diff < 11 * MINUTE_MILLIS) {
-            return "منذ " + diff / MINUTE_MILLIS + " دقائق";
-        } else if (diff < 50 * MINUTE_MILLIS) {
-            return "منذ " + diff / MINUTE_MILLIS + " دقيقة";
-        } else if (diff < 90 * MINUTE_MILLIS) {
-            return "منذ ساعة";
-        } else if (diff < 180 * MINUTE_MILLIS) {
-            return "منذ ساعتان";
-        } else if (diff < 11 * HOUR_MILLIS) {
-            return "منذ " + diff / HOUR_MILLIS + " ساعات";
-        } else if (diff < 24 * HOUR_MILLIS) {
-            return "منذ " + diff / HOUR_MILLIS + " ساعة";
-        } else if (diff < 48 * HOUR_MILLIS) {
-            return "منذ اﻷمس";
-        }
-        else {
-            return "";
-        }
-    }
-
-    public static String getTimeAgoFr(long time) {
+    public static String getTimeAgoFr(String date) {
+        long time = getTimeStamp(date);
         if (time < 1000000000000L) {
             time *= 1000;
         }
@@ -64,56 +29,58 @@ public class DateTimeUtils {
         if (diff < MINUTE_MILLIS) {
             return "maintenant";
         } else if (diff < 60 * MINUTE_MILLIS) {
-            return diff / MINUTE_MILLIS +"m";
+            return "Il y a "+diff / MINUTE_MILLIS +" m";
         } else if (diff < 24 * HOUR_MILLIS) {
-            return diff / HOUR_MILLIS + "h";
+            return "Il y a "+diff / HOUR_MILLIS + " h";
         }
-        else if(diff >= 24 * HOUR_MILLIS){
-            return  diff / DAY_MILLIS + "j";
+        else if (diff < 48 * HOUR_MILLIS) {
+            return "Hier";
+        }
+        else if(diff < 168 * HOUR_MILLIS){
+            return  "Il y a "+diff / DAY_MILLIS + " j";
         }
         else {
-            return "";
+            return getFlashFormat(date);
         }
     }
 
-    public static String getTimeAgoAr(long time) {
+    public static String getTimeAgoAr(String date) {
+        long time = getTimeStamp(date);
         if (time < 1000000000000L) {
             time *= 1000;
         }
         long now = System.currentTimeMillis();
         if (time > now || time <= 0) {
-            return "منذ لحظات";
+            return "لحظات";
         }
 
         final long diff = now - time;
         if (diff < MINUTE_MILLIS) {
             return "منذ لحظات";
         } else if (diff < 2 * MINUTE_MILLIS) {
-            return "دقيقة";
+            return "منذ دقيقة";
         } else if (diff < 3 * MINUTE_MILLIS) {
-            return "دقيقتين";
-        } else if (diff < 11 * MINUTE_MILLIS) {
-            return diff / MINUTE_MILLIS + " دقائق";
-        } else if (diff < 60 * MINUTE_MILLIS) {
-            return diff / MINUTE_MILLIS + " دقيقة";
+            return "منذ دقيقتين";
+        }
+        else if (diff < 60 * MINUTE_MILLIS) {
+            return "منذ "+diff / MINUTE_MILLIS + " د";
         } else if (diff < 120 * MINUTE_MILLIS) {
-            return "ساعة";
-        } else if (diff < 180 * MINUTE_MILLIS) {
-            return "ساعتان";
-        } else if (diff < 11 * HOUR_MILLIS) {
-            return diff / HOUR_MILLIS + " ساعات";
+            return "منذ "+"ساعة";
+        }
+        else if (diff < 11 * HOUR_MILLIS) {
+            return "منذ "+diff / HOUR_MILLIS + " ساعات";
         } else if (diff < 24 * HOUR_MILLIS) {
-            return diff / HOUR_MILLIS + " ساعة";
+            return "منذ "+diff / HOUR_MILLIS + " ساعة";
+        }
+        else if (diff < 48 * HOUR_MILLIS) {
+            return "الأمس";
+        }
+        else if (diff < 7 * DAY_MILLIS) {
+            return "منذ "+diff / DAY_MILLIS + " أيام";
         }
         else {
-            return "";
+            return getFlashFormat(date);
         }
-    }
-
-    public static String getTimeAgo(String date){
-        if(getRelativeDateAr(getTimeStamp(date)).equals(""))
-            return getFlashFormatFr(date);
-        return getRelativeDateAr(getTimeStamp(date));
     }
 
     public static long getTimeStamp(String date){
@@ -129,7 +96,7 @@ public class DateTimeUtils {
 
     }
 
-    public static String getFlashFormatFr(String dateString) {
+    public static String getFlashFormat(String dateString) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy - hh:mm", Locale.US);
         DateFormat targetFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String formattedDate = null;
@@ -144,20 +111,6 @@ public class DateTimeUtils {
         return formattedDate;
     }
 
-    public static String getFlashFormatAr(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy - hh:mm", Locale.US);
-        DateFormat targetFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String formattedDate = null;
-        Date convertedDate = new Date();
-        try {
-            convertedDate = dateFormat.parse(dateString);
-            System.out.println(dateString);
-            formattedDate = targetFormat.format(convertedDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return formattedDate;
-    }
 
     public static String getDayFromDate(String dateAsString){
         String day = "";

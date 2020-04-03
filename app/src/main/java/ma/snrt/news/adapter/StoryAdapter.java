@@ -62,7 +62,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         mHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), StatusStoriesActivity.class);
+                /*Intent intent = new Intent(view.getContext(), StatusStoriesActivity.class);
                 intent.putExtra(StatusStoriesActivity.STATUS_RESOURCES_KEY, item);
                 Bundle bundle = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -73,10 +73,11 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             p1, p2)
                             .toBundle();
                 }
-                context.startActivity(intent, bundle);
-                /*Intent intent = new Intent(context, StoryActivity.class);
-                intent.putExtra("user", item);
-                context.startActivity(intent);*/
+                context.startActivity(intent, bundle);*/
+                Intent intent = new Intent(context, StoryActivity.class);
+                intent.putExtra("users", items);
+                intent.putExtra("user_index", position);
+                context.startActivity(intent);
             }
         });
 

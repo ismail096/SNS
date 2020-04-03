@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -61,38 +62,51 @@ public class TopNewsFragment extends Fragment {
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
 
         mContext = getActivity();
+        //if(!getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+            recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    //recyclerView.setEnabled(llm.findFirstCompletelyVisibleItemPosition() == 0); // 0 is for first item position
+                    try {
+                        int firstPos = llm.findFirstCompletelyVisibleItemPosition();
+                        if (firstPos > 0) {
+                            swipeRefreshLayout.setEnabled(false);
+                        } else {
+                            swipeRefreshLayout.setEnabled(true);
+                            if(recyclerView.getScrollState() == 1)
+                                if(swipeRefreshLayout.isRefreshing())
+                                    recyclerView.stopScroll();
+                        }
 
-        final LinearLayoutManager llm = new LinearLayoutManager(mContext);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    }catch(Exception e) {
+                    }
+                }
+            });
+       /* }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+                @Override
+                public int getSpanSize(int position) {
+                     if(position==0 || position==5 || position==6 || position==7 || position==12 || position==13)
+                        return 2;
+                     return 1;
+                }
+            });
+            recyclerView.setLayoutManager(lm);
+        }*/
         recyclerView.setHasFixedSize(false);
-        recyclerView.setLayoutManager(llm);
         recyclerView.setNestedScrollingEnabled(true);
 
         posts = new ArrayList<>();
         videos = new ArrayList<>();
         agendas = new ArrayList<>();
         users = new ArrayList<>();
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                //recyclerView.setEnabled(llm.findFirstCompletelyVisibleItemPosition() == 0); // 0 is for first item position
-                try {
-                    int firstPos = llm.findFirstCompletelyVisibleItemPosition();
-                    if (firstPos > 0) {
-                        swipeRefreshLayout.setEnabled(false);
-                    } else {
-                        swipeRefreshLayout.setEnabled(true);
-                        if(recyclerView.getScrollState() == 1)
-                            if(swipeRefreshLayout.isRefreshing())
-                                recyclerView.stopScroll();
-                    }
-
-                }catch(Exception e) {
-                }
-            }
-        });
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -237,13 +251,23 @@ public class TopNewsFragment extends Fragment {
     private void setListAdapter(){
         if(posts.size()>0){
             recyclerView.setVisibility(View.VISIBLE);
-            if(posts.size()>4 && users.size()>0)
-                posts.add(4, new Post(1));
-            if(posts.size()>5 && agendas.size()>0)
-                posts.add(5, new Post(3));
-            if(posts.size()>10 && videos.size()>0)
-                posts.add(10, new Post(2));
-            newsAdapter = new TopNewsAdapter(mContext, new ArrayList<>(posts.subList(0, posts.size())), users, videos, agendas);
+            //if(!getResources().getBoolean(R.bool.is_tablet)) {
+                if (posts.size() > 4 && users.size() > 0)
+                    posts.add(4, new Post(1));
+                if (posts.size() > 5 && videos.size() > 0)
+                    posts.add(5, new Post(3));
+                if (posts.size() > 10 && agendas.size() > 0)
+                    posts.add(10, new Post(2));
+            /*}
+            else{
+                if (posts.size() > 5 && users.size() > 0)
+                    posts.add(5, new Post(1));
+                if (posts.size() > 6 && videos.size() > 0)
+                    posts.add(6, new Post(3));
+                if (posts.size() > 12 && agendas.size() > 0)
+                    posts.add(12, new Post(2));
+            }*/
+            newsAdapter = new TopNewsAdapter(mContext, posts, users, videos, agendas);
             recyclerView.setAdapter(newsAdapter);
         }
         else{

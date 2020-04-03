@@ -160,8 +160,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
             }
         });
-        /*if(Utils.getAppCurrentLang().equals("ar"))
-            descriptionTextSize = 18;*/
+        if(getResources().getBoolean(R.bool.is_tablet))
+            descriptionTextSize = 15;
 
         setFontSize(0, oldProgress);
 
@@ -308,13 +308,16 @@ public class PostDetailActivity extends AppCompatActivity {
     }
 
     private void setFontSize(int oldValue, int value) {
+        int factor = 2;
+        if(getResources().getBoolean(R.bool.is_tablet))
+            factor = 3;
         float ratio = value - oldValue;
-        float wvRatio = (value  - oldValue) * 2;
+        float wvRatio = (value  - oldValue) * factor;
         /*if(Utils.getAppCurrentLang().equals("ar")) {
             //ratio *= Utils.spToPx(getResources(), 4);
             wvRatio = (value  - oldValue) * 4;
         }else*/
-            ratio *= Utils.spToPx(getResources(), 2);
+            ratio *= Utils.spToPx(getResources(), factor);
         titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextView.getTextSize()  + ratio);
         dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dateTextView.getTextSize()  + ratio);
         categoryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, categoryTextView.getTextSize()  + ratio);

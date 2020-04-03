@@ -13,7 +13,7 @@
     <ImageView
         android:id="@+id/video_thumb"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="@dimen/big_item_height"
         android:transitionName="videoThumb"
         android:layout_centerInParent="true"
         />
@@ -21,7 +21,7 @@
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/player_view"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="@dimen/big_item_height"
         app:controller_layout_id="@layout/custom_controls2"
         android:layout_centerInParent="true"
         android:background="@color/black"

@@ -3,35 +3,22 @@
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
     <string name="general">Général</string>
     <string name="langues">Langues</string>
-    <string name="affichage">Affichage</string>
     <string name="dark_mode">Dark mode</string>
-    <string name="taille_texte">Taille du texte</string>
     <string name="notifications">Notifications</string>
-    <string name="conditions_privacy">Conditions &amp; privacy</string>
-    <string name="condition_gen">Conditions générales d\'utilisation</string>
-    <string name="privacy_options">Privacy options</string>
     <string name="noter_app">Noter l\'application</string>
     <string name="a_propos">à propos de SNRT NEWS</string>
-    <string name="app_version">Version de l\'application</string>
     <string name="fr">FR</string>
     <string name="ar">AR</string>
     <string name="empty_list_text">Aucun élément disponible</string>
     <string name="error_load_data">Impossible de charger les données pour le moment</string>
     <string name="see_more">Voir Plus</string>
-    <string name="like_post_text">Aimez-vous cette article?</string>
     <string name="related_posts">Articles en relation</string>
     <string name="empty_view">Impossible de charger la page, veuillez réessayer plus tard</string>
     <string name="share">Partager</string>
     <string name="api_error">Oups ! Petit soucis... veuillez réessayer plus tard</string>
-    <string name="add_to_bookmarks">Ajouté à la favoris</string>
-    <string name="remove_from_bookmarks">Supprimé de la favoris</string>
     <string name="share_post"></string>
     <string name="check_internet">Vérifier que vous étes bien connecté à internet</string>
-    <string name="recents">Récents</string>
-    <string name="populaire">Populaires</string>
     <string name="videos">Vidéos</string>
-    <string name="images">Images</string>
-    <string name="plus">Plus</string>
     <string name="error_play_video">Vous pouvez pas lire la vidéo pour le moment</string>
     <string name="empty_search_text">Aucun élément trouvé pour cette recherche</string>
     <string name="search_hint">Tapez votre recherche ici</string>
@@ -39,22 +26,16 @@
     <string name="stt_not_supported">Ton appareil ne supporte pas cette fonctionnalité</string>
     <string name="permissions_needed">Merci d\'autoriser les permissions pour cette fonctionnalité</string>
     <string name="favoris">Favoris</string>
-    <string name="le">Le</string>
-    <string name="agenda_title">7/7</string>
     <string name="lorem_ipsum">Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu\'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</string>
-    <string name="live">Live</string>
     <string name="francais">Français</string>
     <string name="arabe">العربية</string>
     <string name="configuration">Configuration</string>
     <string name="reception_alerte">Activer les notifications</string>
-    <string name="personnalisation">Personnalisation</string>
     <string name="alertes_perso_text">Sélectionnez vos <b>thématiques préferées</b> pour recevoir des <b>notifications en temps réél</b></string>
-    <string name="redaction">Rédaction</string>
     <string name="story">Story</string>
     <string name="articles">Articles</string>
     <string name="select_all">Sélectionner tout</string>
     <string name="flash_news">Flash news</string>
-    <string name="ignore">Ignorer</string>
 
 
     <!-- new version -->

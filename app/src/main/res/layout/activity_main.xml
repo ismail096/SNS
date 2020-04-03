@@ -13,71 +13,7 @@
         android:layout_height="match_parent"
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/toolbarBg"
-            app:theme="@style/ThemeOverlay.AppCompat"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp"
-            >
-
-            <ImageView
-                android:id="@+id/menu_drawer"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="?attr/iconMenu"
-                android:layout_gravity="start|center_vertical"
-                android:adjustViewBounds="true"
-                android:layout_margin="5dp"
-                android:onClick="onClick"
-                />
-
-            <ImageView
-                android:id="@+id/main_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:src="?attr/iconLogo"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitStart"
-                android:onClick="onClick"
-                />
-
-            <ma.snrt.news.ui.TextViewBold
-                android:id="@+id/main_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/page_title"
-                android:visibility="gone"
-                />
-
-            <ImageView
-                android:id="@+id/searchBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:src="?attr/iconSearch"
-                android:layout_gravity="center|end"
-                android:adjustViewBounds="true"
-                android:layout_marginEnd="16dp"
-                />
-
-            <ImageView
-                android:id="@+id/liveBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:src="@drawable/live_btn"
-                android:layout_gravity="center|end"
-                android:adjustViewBounds="true"
-                android:layout_marginEnd="16dp"
-                android:visibility="gone"
-                />
-
-        </androidx.appcompat.widget.Toolbar>
+        <include layout="@layout/main_toolbar"/>
 
         <com.duolingo.open.rtlviewpager.RtlViewPager
             android:id="@+id/home_viewpager"
@@ -106,7 +42,7 @@
             app:menu="@menu/menu_bottom"
             app:labelVisibilityMode="unlabeled"
             app:itemIconTint="@color/bottom_nav_color"
-            app:itemIconSize="28dp"
+            app:itemIconSize="@dimen/standard_icon_size"
             />
 
     </RelativeLayout>

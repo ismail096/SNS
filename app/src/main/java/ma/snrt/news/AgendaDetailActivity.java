@@ -108,6 +108,14 @@ public class AgendaDetailActivity extends AppCompatActivity {
         });
 
         //setFontSize(0, oldProgress);
+        if(getResources().getBoolean(R.bool.is_tablet)) {
+            descriptionTextSize = 18;
+            float ratio = Utils.spToPx(getResources(), 4);
+            categoryTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, categoryTextView.getTextSize() + ratio);
+            titleTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleTextView.getTextSize() + ratio);
+            dateTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, dateTextView.getTextSize() + ratio);
+            positionTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, positionTextView.getTextSize() + ratio);
+        }
 
         if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);

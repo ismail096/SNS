@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -99,10 +100,17 @@ public class FavFragment extends Fragment {
         videosBtn.setBackgroundResource(R.drawable.btn_grey_right);
         posts = new ArrayList<>(Cache.getFavoris().values());
         if(posts.size()>0){
-            LinearLayoutManager llm = new LinearLayoutManager(mContext);
-            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+                final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(llm);
+            /*}
+            else{
+                final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+                lm.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(lm);
+            }*/
             recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(llm);
             NewsFavAdapter adapter = new NewsFavAdapter(mContext, posts, recyclerView);
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(View.VISIBLE);

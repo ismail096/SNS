@@ -136,11 +136,11 @@ public class StatusStoriesActivity extends AppCompatActivity implements StorySta
         isStoryPaused = true;
         storyStatusView.pause();
         if(Utils.getAppCurrentLang().equals("fr")) {
-            String result = DateTimeUtils.getTimeAgoFr(DateTimeUtils.getTimeStamp(story.getDatePublication()));
+            String result = DateTimeUtils.getTimeAgoFr(story.getDatePublication());
             dateTextView.setText(result);
         }
         else
-            dateTextView.setText(DateTimeUtils.getTimeAgoAr(DateTimeUtils.getTimeStamp(story.getDatePublication())));
+            dateTextView.setText(DateTimeUtils.getTimeAgoAr(story.getDatePublication()));
         if(stories.get(counter).getPosition()!=null)
             positionTextView.setText(story.getPosition());
         else

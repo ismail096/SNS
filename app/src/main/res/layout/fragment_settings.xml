@@ -13,13 +13,11 @@
         >
 
         <ImageView
-            android:layout_width="120dp"
+            android:layout_width="@dimen/menu_logo_width"
             android:layout_height="wrap_content"
             android:src="?attr/menuLogo"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
+            android:layout_margin="@dimen/menu_logo_margin"
             android:adjustViewBounds="true"
             />
 
@@ -28,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="@dimen/menu_logo_margin"
             android:layout_marginEnd="30dp"
             android:visibility="gone"
             >
@@ -71,7 +69,6 @@
             android:textSize="17sp"
             android:textStyle="bold"
             android:textAllCaps="true"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="10dp"
             />
@@ -309,12 +306,12 @@
 
     <ImageView
         android:id="@+id/close_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/standard_icon_size"
+        android:layout_height="@dimen/standard_icon_size"
         android:src="@drawable/close_menu"
-        android:layout_margin="16dp"
+        android:layout_margin="@dimen/detail_icon_margin"
         android:layout_alignParentEnd="true"
-        android:padding="4dp"
+        android:padding="2dp"
         />
 
 </RelativeLayout>

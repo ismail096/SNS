@@ -137,13 +137,16 @@ public class AllAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private void setAgendaAdapter(RecyclerView rv, TextViewRegular emptyView, ArrayList<Post> list){
         if(list.size()>0){
+            int itemsCount = 2;
+            if(context.getResources().getBoolean(R.bool.is_tablet))
+                itemsCount = 3;
             rv.setVisibility(View.VISIBLE);
             emptyView.setVisibility(View.GONE);
             ArrayList<Post> agendas = new ArrayList<>();
-            GridLayoutManager llm = new GridLayoutManager(context, 2);
+            GridLayoutManager llm = new GridLayoutManager(context, itemsCount);
             rv.setLayoutManager(llm);
-            if(list.size()>2) {
-                agendas.addAll(list.subList(0, 2));
+            if(list.size()>itemsCount) {
+                agendas.addAll(list.subList(0, itemsCount));
             }
             else
                 agendas.addAll(list);

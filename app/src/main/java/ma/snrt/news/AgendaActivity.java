@@ -105,9 +105,12 @@ public class AgendaActivity extends AppCompatActivity {
         date2Edit = findViewById(R.id.filtre_date2);
         blackView = findViewById(R.id.blackview);
 
-
-        category = (CategoryAgenda) getIntent().getSerializableExtra("category");
-        pageTitle.setText(Html.fromHtml(category.getTitle()));
+        if(getIntent().hasExtra("category")) {
+            category = (CategoryAgenda) getIntent().getSerializableExtra("category");
+            pageTitle.setText(Html.fromHtml(category.getTitle()));
+        }
+        else
+            category = new CategoryAgenda();
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
@@ -157,8 +160,10 @@ public class AgendaActivity extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
-        GridLayoutManager llm = new GridLayoutManager(this, 2);
+        int itemsCount = 2;
+        if(getResources().getBoolean(R.bool.is_tablet))
+            itemsCount = 3;
+        GridLayoutManager llm = new GridLayoutManager(this, itemsCount);
         recyclerView.setLayoutManager(llm);
 
         setPositionAutoCompelete();

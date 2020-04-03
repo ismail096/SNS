@@ -38,8 +38,8 @@
 
             <ImageView
                 android:id="@+id/play_btn"
-                android:layout_width="32dp"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/small_play_btn"
+                android:layout_height="@dimen/small_play_btn"
                 android:src="@drawable/play_red"
                 android:adjustViewBounds="true"
                 android:layout_centerInParent="true"

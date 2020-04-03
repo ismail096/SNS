@@ -13,6 +13,7 @@ public class CategoryAgenda implements Serializable {
     private boolean isSelected;
 
     public CategoryAgenda() {
+        this.id = 0;
     }
 
     public CategoryAgenda(int id, String title, String color) {

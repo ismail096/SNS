@@ -79,29 +79,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(false);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-       /* ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        drawerLayout.addDrawerListener(toggle);
-
-        toggle.setDrawerIndicatorEnabled(false);
-        int drawerRes = R.drawable.menu_drawer;
-        if(isNightModeEnabled)
-            drawerRes = R.drawable.menu_drawer_dark;
-        Drawable drawable = ResourcesCompat.getDrawable(getResources(), drawerRes, getTheme());
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        Drawable d = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, Utils.dpToPx(getResources(), 14), Utils.dpToPx(getResources(), 14), true));
-        toggle.setHomeAsUpIndicator(d);
-        toggle.syncState();
-
-        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else {
-                    drawerLayout.openDrawer(GravityCompat.START);
-                }
-            }
-        });*/
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
