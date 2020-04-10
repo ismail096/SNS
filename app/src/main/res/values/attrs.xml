@@ -9,6 +9,7 @@
         <attr name="backgroundColor" format="color"/>
         <attr name="backgroundColor2" format="color"/>
         <attr name="backgroundColor3" format="color"/>
+        <attr name="backgroundColor4" format="color"/>
         <attr name="shadowColor" format="color"/>
         <attr name="iconPlaceholder" format="integer"/>
         <attr name="bottomBarBg" format="color"/>

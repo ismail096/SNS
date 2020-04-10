@@ -488,20 +488,6 @@ public class PostDetailActivity extends AppCompatActivity {
 
         getRelatedNews();
     }
-    /*private void setTagsAdapter(){
-        if(post!=null && post.getTags()!=null && !post.getTags().isEmpty()) {
-            ArrayList<Tag> tags = new ArrayList<>();
-            String[] tagsAsString = post.getTags().split(",");
-            for(int i=0;i<30;i++)
-                tags.add(new Tag(i+1, tagsAsString[0]));
-            TagAdapter adapter = new TagAdapter(this, tags);
-            tagsRecyclerView.setAdapter(adapter);
-            tagsRecyclerView.setVisibility(View.VISIBLE);
-        }
-        else {
-            tagsRecyclerView.setVisibility(View.GONE);
-        }
-    }*/
 
     private void getRelatedNews(){
         ApiCall.getRelatedNews(post.getId(), new Callback<JsonArray>() {
@@ -595,17 +581,20 @@ public class PostDetailActivity extends AppCompatActivity {
                 togglefontLayout();
                 break;
             case R.id.read_text_btn:
-                //startActivity(new Intent(this, TTSActivity.class));
                 if(post.getText_speech()!=null && post.getText_speech().contains(".mp3")) {
-                        /*try {
-                            PlayAudioManager.playAudio(this, post.getText_speech());
-                        } catch (Exception e) {
-                            Toast.makeText(this , getString(R.string.api_error), Toast.LENGTH_SHORT).show();
-                        }*/
                         playPauseAudio();
                 }
                 else
                     Toast.makeText(this , getString(R.string.api_error), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.smallFontBtn:
+                fontSeekBar.setProgress(0);
+                break;
+            case R.id.mediumFontBtn:
+                fontSeekBar.setProgress(2);
+                break;
+            case R.id.bigFontBtn:
+                fontSeekBar.setProgress(4);
                 break;
         }
     }

@@ -59,4 +59,6 @@
     <string name="submit_quest">Valider ma question</string>
     <string name="quest_send_success">Votre question a été bien envoyée</string>
 
+    <string name="recommanded">Recommandés pour vous</string>
+
 </resources>

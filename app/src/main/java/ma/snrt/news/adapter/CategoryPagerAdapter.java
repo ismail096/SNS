@@ -11,6 +11,8 @@ import java.util.List;
 
 import ma.snrt.news.AppController;
 import ma.snrt.news.fragment.CategoryFragment;
+import ma.snrt.news.fragment.LifeFragment;
+import ma.snrt.news.fragment.TechFragment;
 import ma.snrt.news.fragment.TopAgendaFragment;
 import ma.snrt.news.fragment.TopNewsFragment;
 import ma.snrt.news.fragment.TrueFakeFragment;
@@ -34,6 +36,18 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
             fragment = new Fragment();*/
         else if(categories.get(position).getId() == 10 || categories.get(position).getId() == 155) {
             fragment = new TrueFakeFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("category", categories.get(position));
+            fragment.setArguments(bundle);
+        }
+        else if(categories.get(position).getId() == 184 || categories.get(position).getId() == 210) {
+            fragment = new TechFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("category", categories.get(position));
+            fragment.setArguments(bundle);
+        }
+        else if(categories.get(position).getId() == 8 || categories.get(position).getId() == 153) {
+            fragment = new LifeFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("category", categories.get(position));
             fragment.setArguments(bundle);

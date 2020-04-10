@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/life_top_width"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="?attr/backgroundColor"
+    >
+    <LinearLayout
+        android:id="@+id/post_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:id="@+id/post_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/life_top_height"
+            >
+
+            <ImageView
+                android:id="@+id/post_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:transitionName="imageMain"
+                android:layout_alignParentStart="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder" />
+
+            <ma.snrt.news.ui.TextViewRegular
+                android:id="@+id/post_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="@dimen/date_size"
+                android:layout_alignParentBottom="true"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/app_white"
+                android:background="#80000000"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/post_data_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+
+                <ma.snrt.news.ui.TextViewEBItalic
+                    android:id="@+id/post_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey"
+                    android:textSize="@dimen/small_icon_size"
+                    android:textAllCaps="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/font_rm_padding"
+                    />
+
+                <ImageView
+                    android:id="@+id/share_btn"
+                    android:layout_width="@dimen/small_icon_size"
+                    android:layout_height="@dimen/small_icon_size"
+                    android:src="?attr/iconShare2"
+                    android:layout_marginStart="10dp"
+                    android:layout_toStartOf="@+id/fav_btn"
+                    android:adjustViewBounds="true"
+                    />
+
+                <ImageView
+                    android:id="@+id/fav_btn"
+                    android:layout_width="@dimen/small_icon_size"
+                    android:layout_height="@dimen/small_icon_size"
+                    android:src="@drawable/bookmarks_empty"
+                    android:layout_marginStart="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:adjustViewBounds="true"
+                    />
+
+             </RelativeLayout>
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/small_title_size"
+                android:textColor="?attr/secondaryTextColor"
+                android:maxLines="3"
+                android:minLines="3"
+                android:ellipsize="end"
+                android:layout_marginTop="@dimen/title_top_margin"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="@dimen/title_top_margin"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -46,7 +46,7 @@ public class StoryActivity extends AppCompatActivity
     private ImageView  likeBtn, pauseBtn;
     TextViewRegular positionTextView, likeTextView;
     boolean isStoryPaused;
-    int storyIndex = 0;
+    //int storyIndex = 0;
     int userIndex = 0;
     private List<StoryItem> storyItem;
     private List<List<StoryItem>> storyuser;
@@ -143,7 +143,7 @@ public class StoryActivity extends AppCompatActivity
             @Override
             public void onNextCalled(@NotNull StoryItem storyItem, int index)
             {
-                storyIndex = index;
+                /*storyIndex = index;
                 Story currentStory = users.get(userIndex).getStories().get(index);
                 if(Cache.existsInLikes(currentStory.getId()+""))
                     likeBtn.setImageResource(R.drawable.like_full);
@@ -152,7 +152,7 @@ public class StoryActivity extends AppCompatActivity
                 positionTextView.setText(currentStory.getPosition());
                 likeTextView.setText(currentStory.getLikes_numbers()+"");
                 if(index==users.get(userIndex).getStories().size()-1)
-                    userIndex++;
+                    userIndex++;*/
             }
 
             @Override
@@ -167,7 +167,7 @@ public class StoryActivity extends AppCompatActivity
         story.start(userIndex);
     }
 
-    private void postLike(final boolean like,final int postId){
+    /*private void postLike(final boolean like,final int postId){
         ApiCall.likePost(like, postId, "story", new Callback<JsonObject>(){
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -220,5 +220,5 @@ public class StoryActivity extends AppCompatActivity
                 story.next();
                 break;
         }
-    }
+    }*/
 }

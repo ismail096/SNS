@@ -137,7 +137,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home_icon:
-                        viewPager.setCurrentItem(0);
+                        if(viewPager.getCurrentItem() == 0 && homePagerAdapter!=null){
+                            HomeFragment frag1 = (HomeFragment) viewPager
+                                    .getAdapter()
+                                    .instantiateItem(viewPager, viewPager.getCurrentItem());
+                            frag1.selectTopNews();
+                        }
+                        else
+                            viewPager.setCurrentItem(0);
                         mainLogo.setVisibility(View.VISIBLE);
                         title.setVisibility(View.GONE);
                        break;
@@ -220,14 +227,14 @@ public class MainActivity extends AppCompatActivity {
             else
                 drawerLayout.openDrawer(GravityCompat.START);
         }
-        else if(v.getId() == R.id.main_logo){
+       /* else if(v.getId() == R.id.main_logo){
             if(viewPager.getCurrentItem() == 0 && homePagerAdapter!=null){
                 HomeFragment frag1 = (HomeFragment) viewPager
                         .getAdapter()
                         .instantiateItem(viewPager, viewPager.getCurrentItem());
                 frag1.selectTopNews();
             }
-        }
+        }*/
     }
     @Override
     protected void attachBaseContext(Context newBase) {

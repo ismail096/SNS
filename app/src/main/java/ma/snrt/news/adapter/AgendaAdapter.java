@@ -30,6 +30,7 @@ import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.RoundRectCornerImageView;
+import ma.snrt.news.ui.TextViewSemiBold;
 import ma.snrt.news.util.Utils;
 
 public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -148,7 +149,7 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextViewBold title;
-        TextViewExtraBold moreBtn;
+        TextViewSemiBold moreBtn;
         TextViewRegular date, position;
         CardView container;
         RoundRectCornerImageView imageView;

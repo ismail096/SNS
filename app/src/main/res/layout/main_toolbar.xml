@@ -54,12 +54,11 @@
 
     <ImageView
         android:id="@+id/liveBtn"
-        android:layout_width="@dimen/standard_icon_size"
-        android:layout_height="@dimen/standard_icon_size"
-        android:src="@drawable/live_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center|end"
         android:adjustViewBounds="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="6dp"
         android:visibility="gone"
         />
 

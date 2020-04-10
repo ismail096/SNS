@@ -15,6 +15,7 @@
         <item name="backgroundColor">#FFFFFF</item>
         <item name="backgroundColor2">@color/bgGrey</item>
         <item name="backgroundColor3">@color/bgGrey2</item>
+        <item name="backgroundColor4">@color/bgGrey</item>
         <item name="dividerColor">@color/divider_primary</item>
         <item name="bottomNavItemColor">@color/bottom_nav_grey</item>
         <item name="whiteTextColor">#FFFFFF</item>
@@ -55,6 +56,7 @@
         <item name="backgroundColor">@color/app_black</item>
         <item name="backgroundColor2">@color/bgGreyDark</item>
         <item name="backgroundColor3">@color/bgGrey2Dark</item>
+        <item name="backgroundColor4">@color/bgGrey2Dark</item>
         <item name="dividerColor">@color/divider_dark</item>
         <item name="bottomNavItemColor">@color/app_white</item>
         <item name="whiteTextColor">#000000</item>

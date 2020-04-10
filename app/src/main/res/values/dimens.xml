@@ -25,6 +25,8 @@
     <dimen name="detail_icon_size">28dp</dimen>
     <dimen name="detail_icon_padding">2dp</dimen>
     <dimen name="detail_icon_margin">14dp</dimen>
+    <dimen name="margin_top_app">10dp</dimen>
+    <dimen name="margin_home_titles">10dp</dimen>
 
     <dimen name="menu_width">300dp</dimen>
     <dimen name="logo_height">48dp</dimen>
@@ -47,6 +49,13 @@
     <dimen name="play_btn">48dp</dimen>
     <dimen name="small_play_btn">32dp</dimen>
     <dimen name="tag_size">12.5sp</dimen>
+
+    <dimen name="tech_small_height">100dp</dimen>
+    <dimen name="tech_big_height">280dp</dimen>
+    <dimen name="life_top_height">140dp</dimen>
+    <dimen name="life_top_width">240dp</dimen>
+    <dimen name="small_title_size">13sp</dimen>
+    <dimen name="life_tab_size">13sp</dimen>
 
     <bool name="is_tablet">false</bool>
 

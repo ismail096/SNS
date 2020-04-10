@@ -28,16 +28,17 @@
                 android:textColor="@color/text_grey"
                 android:textSize="18sp"
                 android:textAllCaps="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:paddingTop="@dimen/font_rm_padding"
                 />
 
             <ma.snrt.news.ui.TextViewBold
                 android:id="@+id/post_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:textSize="18sp"
@@ -50,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 >
 
                 <ImageView
@@ -60,7 +61,6 @@
                     android:adjustViewBounds="true"
                     android:layout_marginStart="16dp"
                     />
-
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_grey"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:textSize="12sp"
@@ -121,7 +121,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
                 android:transitionName="imageMain"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 />
 
             <WebView
@@ -157,7 +157,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 android:layout_marginStart="10dp"
                 >
 
@@ -187,7 +187,7 @@
                 android:id="@+id/related_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/margin_top_app"
                 android:visibility="gone"
                 />
 
@@ -311,6 +311,7 @@
             />
 
         <TextView
+            android:id="@+id/smallFontBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -321,9 +322,11 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10sp"
             android:textStyle="bold"
+            android:onClick="onClick"
             />
 
         <TextView
+            android:id="@+id/mediumFontBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="?attr/secondaryTextColor"
@@ -333,9 +336,11 @@
             android:layout_marginTop="6sp"
             android:textSize="@dimen/titles_size"
             android:textStyle="bold"
+            android:onClick="onClick"
             />
 
         <TextView
+            android:id="@+id/bigFontBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -346,6 +351,7 @@
             android:layout_marginEnd="20dp"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:onClick="onClick"
             />
 
     </RelativeLayout>
