@@ -106,4 +106,7 @@ public interface ApiInterface {
 
     @GET
     Call<ResponseBody> getUrlBytes(@Url String url);
+
+    @GET
+    Call<JsonObject> getUrlAsJsonObject(@Url String url);
 }

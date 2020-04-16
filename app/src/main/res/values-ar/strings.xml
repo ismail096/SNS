@@ -56,5 +56,8 @@
     <string name="email">البريد الإلكتروني</string>
     <string name="submit_quest">تأكيد سؤالي</string>
     <string name="quest_send_success">تم إرسال سؤالك</string>
+    <string name="recommanded">مُقترَح لك</string>
+    <string name="top_matches">أهم مباريات اليوم</string>
+    <string name="botola">البطولة</string>
 
 </resources>

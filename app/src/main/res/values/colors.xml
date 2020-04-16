@@ -24,6 +24,8 @@
     <color name="true_fake_color">#01C7FD</color>
     <color name="switch_color_des">#D0CACA</color>
     <color name="life_color">#813798</color>
+    <color name="sport_color">#00D1C5</color>
+    <color name="match_grey">#B4B4B4</color>
 
     <color name="shadow_primary">#65EBEBEB</color>
     <color name="shadow_dark">#2a2a2a</color>

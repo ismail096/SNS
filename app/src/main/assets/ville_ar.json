@@ -1,1972 +1,1972 @@
 [
   {
     "id": "1",
-    "ville": "Aïn Harrouda",
+    "ville": "عين حرودة",
     "region": "6"
   },
   {
     "id": "2",
-    "ville": "Ben Yakhlef",
+    "ville": "بني يخلف",
     "region": "6"
   },
   {
     "id": "3",
-    "ville": "Bouskoura",
+    "ville": "بوسكورة",
     "region": "6"
   },
   {
     "id": "4",
-    "ville": "Casablanca",
+    "ville": "الدار البيضاء",
     "region": "6"
   },
   {
     "id": "5",
-    "ville": "Médiouna",
+    "ville": "مديونة",
     "region": "6"
   },
   {
     "id": "6",
-    "ville": "Mohammadia",
+    "ville": "المحمدية",
     "region": "6"
   },
   {
     "id": "7",
-    "ville": "Tit Mellil",
+    "ville": "تيط مليل",
     "region": "6"
   },
   {
     "id": "8",
-    "ville": "Ben Yakhlef",
+    "ville": "بني يخلف",
     "region": "6"
   },
   {
     "id": "9",
-    "ville": "Bejaâd",
+    "ville": "أبي الجعد",
     "region": "5"
   },
   {
     "id": "10",
-    "ville": "Ben Ahmed",
+    "ville": "بن احمد",
     "region": "6"
   },
   {
     "id": "11",
-    "ville": "Benslimane",
+    "ville": "بنسليمان",
     "region": "6"
   },
   {
     "id": "12",
-    "ville": "Berrechid",
+    "ville": "برشيد",
     "region": "6"
   },
   {
     "id": "13",
-    "ville": "Boujniba",
+    "ville": "بوجنيبة",
     "region": "5"
   },
   {
     "id": "14",
-    "ville": "Boulanouare",
+    "ville": "بولنوار",
     "region": "5"
   },
   {
     "id": "15",
-    "ville": "Bouznika",
+    "ville": "بوزنيقة",
     "region": "6"
   },
   {
     "id": "16",
-    "ville": "Deroua",
+    "ville": "الدروة",
     "region": "6"
   },
   {
     "id": "17",
-    "ville": "El Borouj",
+    "ville": "البروج",
     "region": "6"
   },
   {
     "id": "18",
-    "ville": "El Gara",
+    "ville": "الكارة",
     "region": "6"
   },
   {
     "id": "19",
-    "ville": "Guisser",
+    "ville": "الكيسر",
     "region": "6"
   },
   {
     "id": "20",
-    "ville": "Hattane",
+    "ville": "حطان",
     "region": "5"
   },
   {
     "id": "21",
-    "ville": "Khouribga",
+    "ville": "خريبكة",
     "region": "5"
   },
   {
     "id": "22",
-    "ville": "Loulad",
+    "ville": "لولاد",
     "region": "6"
   },
   {
     "id": "23",
-    "ville": "Oued Zem",
+    "ville": "واد زم",
     "region": "5"
   },
   {
     "id": "24",
-    "ville": "Oulad Abbou",
+    "ville": "اولاد عبو",
     "region": "6"
   },
   {
     "id": "25",
-    "ville": "Oulad H'Riz Sahel",
+    "ville": "اولاد حريز ساهل",
     "region": "6"
   },
   {
     "id": "26",
-    "ville": "Oulad M'rah",
+    "ville": "اولاد مراح",
     "region": "6"
   },
   {
     "id": "27",
-    "ville": "Oulad Saïd",
+    "ville": "اولاد سعيد",
     "region": "6"
   },
   {
     "id": "28",
-    "ville": "Oulad Sidi Ben Daoud",
+    "ville": "اولاد سيدي بنداود",
     "region": "6"
   },
   {
     "id": "29",
-    "ville": "Ras El Aïn",
+    "ville": "راس العين",
     "region": "6"
   },
   {
     "id": "30",
-    "ville": "Settat",
+    "ville": "سطات",
     "region": "6"
   },
   {
     "id": "31",
-    "ville": "Sidi Rahhal Chataï",
+    "ville": "سيدي رحال الشاطئ",
     "region": "6"
   },
   {
     "id": "32",
-    "ville": "Soualem",
+    "ville": "السوالم",
     "region": "6"
   },
   {
     "id": "33",
-    "ville": "Azemmour",
+    "ville": "أزمور",
     "region": "6"
   },
   {
     "id": "34",
-    "ville": "Bir Jdid",
+    "ville": "بير جديد",
     "region": "6"
   },
   {
     "id": "35",
-    "ville": "Bouguedra",
+    "ville": "بوكدرة",
     "region": "7"
   },
   {
     "id": "36",
-    "ville": "Echemmaia",
+    "ville": "الشماعية",
     "region": "7"
   },
   {
     "id": "37",
-    "ville": "El Jadida",
+    "ville": "الجديدة",
     "region": "6"
   },
   {
     "id": "38",
-    "ville": "Hrara",
+    "ville": "حرارة",
     "region": "7"
   },
   {
     "id": "39",
-    "ville": "Ighoud",
+    "ville": "إغود",
     "region": "7"
   },
   {
     "id": "40",
-    "ville": "Jamâat Shaim",
+    "ville": "جمعة سحيم",
     "region": "7"
   },
   {
     "id": "41",
-    "ville": "Jorf Lasfar",
+    "ville": "الجرف الأصفر",
     "region": "6"
   },
   {
     "id": "42",
-    "ville": "Khemis Zemamra",
+    "ville": "خميس زمامرة",
     "region": "6"
   },
   {
     "id": "43",
-    "ville": "Laaounate",
+    "ville": "العونات",
     "region": "6"
   },
   {
     "id": "44",
-    "ville": "Moulay Abdallah",
+    "ville": "مولاي عبد الله",
     "region": "6"
   },
   {
     "id": "45",
-    "ville": "Oualidia",
+    "ville": "الواليدية",
     "region": "6"
   },
   {
     "id": "46",
-    "ville": "Oulad Amrane",
+    "ville": "اولاد عمران",
     "region": "6"
   },
   {
     "id": "47",
-    "ville": "Oulad Frej",
+    "ville": "اولاد فرج",
     "region": "6"
   },
   {
     "id": "48",
-    "ville": "Oulad Ghadbane",
+    "ville": "اولاد غضبان",
     "region": "6"
   },
   {
     "id": "49",
-    "ville": "Safi",
+    "ville": "آسفي",
     "region": "7"
   },
   {
     "id": "50",
-    "ville": "Sebt El Maârif",
+    "ville": "سبت المعاريف",
     "region": "6"
   },
   {
     "id": "51",
-    "ville": "Sebt Gzoula",
+    "ville": "سبت كزولة",
     "region": "7"
   },
   {
     "id": "52",
-    "ville": "Sidi Ahmed",
+    "ville": "سيدي احمد",
     "region": "7"
   },
   {
     "id": "53",
-    "ville": "Sidi Ali Ban Hamdouche",
+    "ville": "سيدي علي بن حمدوش",
     "region": "6"
   },
   {
     "id": "54",
-    "ville": "Sidi Bennour",
+    "ville": "سيدي بنور",
     "region": "6"
   },
   {
     "id": "55",
-    "ville": "Sidi Bouzid",
+    "ville": "سيدي بوزيد",
     "region": "6"
   },
   {
     "id": "56",
-    "ville": "Sidi Smaïl",
+    "ville": "سيدي اسماعيل",
     "region": "6"
   },
   {
     "id": "57",
-    "ville": "Youssoufia",
+    "ville": "اليوسفية",
     "region": "7"
   },
   {
     "id": "58",
-    "ville": "Fès",
+    "ville": "فاس",
     "region": "3"
   },
   {
     "id": "59",
-    "ville": "Aïn Cheggag",
+    "ville": "عين شكاك",
     "region": "3"
   },
   {
     "id": "60",
-    "ville": "Bhalil",
+    "ville": "البهاليل",
     "region": "3"
   },
   {
     "id": "61",
-    "ville": "Boulemane",
+    "ville": "بولمان",
     "region": "3"
   },
   {
     "id": "62",
-    "ville": "El Menzel",
+    "ville": "المنزل",
     "region": "3"
   },
   {
     "id": "63",
-    "ville": "Guigou",
+    "ville": "كيكو",
     "region": "3"
   },
   {
     "id": "64",
-    "ville": "Imouzzer Kandar",
+    "ville": "إيموزار كندار",
     "region": "3"
   },
   {
     "id": "65",
-    "ville": "Imouzzer Marmoucha",
+    "ville": "إيموزار مرموشة",
     "region": "3"
   },
   {
     "id": "66",
-    "ville": "Missour",
+    "ville": "ميسور",
     "region": "3"
   },
   {
     "id": "67",
-    "ville": "Moulay Yaâcoub",
+    "ville": "مولاي يعقوب",
     "region": "3"
   },
   {
     "id": "68",
-    "ville": "Ouled Tayeb",
+    "ville": "اولاد الطيب",
     "region": "3"
   },
   {
     "id": "69",
-    "ville": "Outat El Haj",
+    "ville": "اوطاط الحاج",
     "region": "3"
   },
   {
     "id": "70",
-    "ville": "Ribate El Kheir",
+    "ville": "رباط الخير",
     "region": "3"
   },
   {
     "id": "71",
-    "ville": "Séfrou",
+    "ville": "صفرو",
     "region": "3"
   },
   {
     "id": "72",
-    "ville": "Skhinate",
+    "ville": "السخينات",
     "region": "3"
   },
   {
     "id": "73",
-    "ville": "Tafajight",
+    "ville": "تفاجيغت",
     "region": "3"
   },
   {
     "id": "74",
-    "ville": "Arbaoua",
+    "ville": "عرباوة",
     "region": "4"
   },
   {
     "id": "75",
-    "ville": "Aïn Dorij",
+    "ville": "عين دريج",
     "region": "1"
   },
   {
     "id": "76",
-    "ville": "Dar Gueddari",
+    "ville": "دار كداري",
     "region": "4"
   },
   {
     "id": "77",
-    "ville": "Had Kourt",
+    "ville": "حد كرت",
     "region": "4"
   },
   {
     "id": "78",
-    "ville": "Jorf El Melha",
+    "ville": "جرف الملحة",
     "region": "4"
   },
   {
     "id": "79",
-    "ville": "Kénitra",
+    "ville": "القنيطرة",
     "region": "4"
   },
   {
     "id": "80",
-    "ville": "Khenichet",
+    "ville": "الخنيشات",
     "region": "4"
   },
   {
     "id": "81",
-    "ville": "Lalla Mimouna",
+    "ville": "لالة ميمونة",
     "region": "4"
   },
   {
     "id": "82",
-    "ville": "Mechra Bel Ksiri",
+    "ville": "مشرع بلقصيري",
     "region": "4"
   },
   {
     "id": "83",
-    "ville": "Mehdia",
+    "ville": "مهدية",
     "region": "4"
   },
   {
     "id": "84",
-    "ville": "Moulay Bousselham",
+    "ville": "مولاي بوسلهام",
     "region": "4"
   },
   {
     "id": "85",
-    "ville": "Sidi Allal Tazi",
+    "ville": "سيدي علال التازي",
     "region": "4"
   },
   {
     "id": "86",
-    "ville": "Sidi Kacem",
+    "ville": "سيدي قاسم",
     "region": "4"
   },
   {
     "id": "87",
-    "ville": "Sidi Slimane",
+    "ville": "سيدي سليمان",
     "region": "4"
   },
   {
     "id": "88",
-    "ville": "Sidi Taibi",
+    "ville": "سيدي الطيبي",
     "region": "4"
   },
   {
     "id": "89",
-    "ville": "Sidi Yahya El Gharb",
+    "ville": "سيدي يحيى الغرب",
     "region": "4"
   },
   {
     "id": "90",
-    "ville": "Souk El Arbaa",
+    "ville": "سوق الأربعاء",
     "region": "4"
   },
   {
     "id": "91",
-    "ville": "Akka",
+    "ville": "أقا",
     "region": "9"
   },
   {
     "id": "92",
-    "ville": "Assa",
+    "ville": "أسا",
     "region": "10"
   },
   {
     "id": "93",
-    "ville": "Bouizakarne",
+    "ville": "بويزكارن",
     "region": "10"
   },
   {
     "id": "94",
-    "ville": "El Ouatia",
+    "ville": "الواطية",
     "region": "10"
   },
   {
     "id": "95",
-    "ville": "Es-Semara",
+    "ville": "السمارة",
     "region": "11"
   },
   {
     "id": "96",
-    "ville": "Fam El Hisn",
+    "ville": "Fفم الحصن",
     "region": "9"
   },
   {
     "id": "97",
-    "ville": "Foum Zguid",
+    "ville": "فم زكيد",
     "region": "9"
   },
   {
     "id": "98",
-    "ville": "Guelmim",
+    "ville": "كلميم",
     "region": "10"
   },
   {
     "id": "99",
-    "ville": "Taghjijt",
+    "ville": "تاغجيجت",
     "region": "10"
   },
   {
     "id": "100",
-    "ville": "Tan-Tan",
+    "ville": "طانطان",
     "region": "10"
   },
   {
     "id": "101",
-    "ville": "Tata",
+    "ville": "طاطا",
     "region": "9"
   },
   {
     "id": "102",
-    "ville": "Zag",
+    "ville": "الزاك",
     "region": "10"
   },
   {
     "id": "103",
-    "ville": "Marrakech",
+    "ville": "مراكش",
     "region": "7"
   },
   {
     "id": "104",
-    "ville": "Ait Daoud",
+    "ville": "ايت داود",
     "region": "7"
   },
   {
     "id": "115",
-    "ville": "Amizmiz",
+    "ville": "أمزميز",
     "region": "7"
   },
   {
     "id": "116",
-    "ville": "Assahrij",
+    "ville": "الصهريج",
     "region": "7"
   },
   {
     "id": "117",
-    "ville": "Aït Ourir",
+    "ville": "ايت أورير",
     "region": "7"
   },
   {
     "id": "118",
-    "ville": "Ben Guerir",
+    "ville": "بن كرير",
     "region": "7"
   },
   {
     "id": "119",
-    "ville": "Chichaoua",
+    "ville": "شيشاوة",
     "region": "7"
   },
   {
     "id": "120",
-    "ville": "El Hanchane",
+    "ville": "الحنشان",
     "region": "7"
   },
   {
     "id": "121",
-    "ville": "El Kelaâ des Sraghna",
+    "ville": "قلعة السراغنة",
     "region": "7"
   },
   {
     "id": "122",
-    "ville": "Essaouira",
+    "ville": "الصويرة",
     "region": "7"
   },
   {
     "id": "123",
-    "ville": "Fraïta",
+    "ville": "فرايطة",
     "region": "7"
   },
   {
     "id": "124",
-    "ville": "Ghmate",
+    "ville": "اغمات",
     "region": "7"
   },
   {
     "id": "125",
-    "ville": "Ighounane",
+    "ville": "إغونان",
     "region": "8"
   },
   {
     "id": "126",
-    "ville": "Imintanoute",
+    "ville": "إيمنتانوت",
     "region": "7"
   },
   {
     "id": "127",
-    "ville": "Kattara",
+    "ville": "قطارة",
     "region": "7"
   },
   {
     "id": "128",
-    "ville": "Lalla Takerkoust",
+    "ville": "لالة تاكركوست",
     "region": "7"
   },
   {
     "id": "129",
-    "ville": "Loudaya",
+    "ville": "الأوداية",
     "region": "7"
   },
   {
     "id": "130",
-    "ville": "Lâattaouia",
+    "ville": "العطاوية",
     "region": "7"
   },
   {
     "id": "131",
-    "ville": "Moulay Brahim",
+    "ville": "مولاي براهيم",
     "region": "7"
   },
   {
     "id": "132",
-    "ville": "Mzouda",
+    "ville": "مزودة",
     "region": "7"
   },
   {
     "id": "133",
-    "ville": "Ounagha",
+    "ville": "أوناكة",
     "region": "7"
   },
   {
     "id": "134",
-    "ville": "Sid L'Mokhtar",
+    "ville": "سيد المختار",
     "region": "7"
   },
   {
     "id": "135",
-    "ville": "Sid Zouin",
+    "ville": "سيد الزوين",
     "region": "7"
   },
   {
     "id": "136",
-    "ville": "Sidi Abdallah Ghiat",
+    "ville": "سيدي عبد الله غيات",
     "region": "7"
   },
   {
     "id": "137",
-    "ville": "Sidi Bou Othmane",
+    "ville": "سيدي بوعثمان",
     "region": "7"
   },
   {
     "id": "138",
-    "ville": "Sidi Rahhal",
+    "ville": "سيدي رحال",
     "region": "7"
   },
   {
     "id": "139",
-    "ville": "Skhour Rehamna",
+    "ville": "صخور الرحامنة",
     "region": "7"
   },
   {
     "id": "140",
-    "ville": "Smimou",
+    "ville": "سميمو",
     "region": "7"
   },
   {
     "id": "141",
-    "ville": "Tafetachte",
+    "ville": "تافتاشت",
     "region": "7"
   },
   {
     "id": "142",
-    "ville": "Tahannaout",
+    "ville": "تاحناوت",
     "region": "7"
   },
   {
     "id": "143",
-    "ville": "Talmest",
+    "ville": "تالمست",
     "region": "7"
   },
   {
     "id": "144",
-    "ville": "Tamallalt",
+    "ville": "تاملالت",
     "region": "7"
   },
   {
     "id": "145",
-    "ville": "Tamanar",
+    "ville": "تامنار",
     "region": "7"
   },
   {
     "id": "146",
-    "ville": "Tamansourt",
+    "ville": "تامنصورت",
     "region": "7"
   },
   {
     "id": "147",
-    "ville": "Tameslouht",
+    "ville": "تامصلوحت",
     "region": "7"
   },
   {
     "id": "148",
-    "ville": "Tanalt",
+    "ville": "تانالت",
     "region": "9"
   },
   {
     "id": "149",
-    "ville": "Zeubelemok",
+    "ville": "زبلموك",
     "region": "7"
   },
   {
     "id": "150",
-    "ville": "Meknès‎",
+    "ville": "مكناس‎",
     "region": "3"
   },
   {
     "id": "151",
-    "ville": "Khénifra",
+    "ville": "الخنيفرة",
     "region": "5"
   },
   {
     "id": "152",
-    "ville": "Agourai",
+    "ville": "أكوراي",
     "region": "3"
   },
   {
     "id": "153",
-    "ville": "Ain Taoujdate",
+    "ville": "عين تاوجطات",
     "region": "3"
   },
   {
     "id": "154",
-    "ville": "MyAliCherif",
+    "ville": "مولاي علي الشريف",
     "region": "8"
   },
   {
     "id": "155",
-    "ville": "Rissani",
+    "ville": "الريصاني",
     "region": "8"
   },
   {
     "id": "156",
-    "ville": "Amalou Ighriben",
+    "ville": "أمالو إغريبن",
     "region": "5"
   },
   {
     "id": "157",
-    "ville": "Aoufous",
+    "ville": "أوفوس",
     "region": "8"
   },
   {
     "id": "158",
-    "ville": "Arfoud",
+    "ville": "أرفود",
     "region": "8"
   },
   {
     "id": "159",
-    "ville": "Azrou",
+    "ville": "أزرو",
     "region": "3"
   },
   {
     "id": "160",
-    "ville": "Aïn Jemaa",
+    "ville": "عين جامع",
     "region": "3"
   },
   {
     "id": "161",
-    "ville": "Aïn Karma",
+    "ville": "عين كرمة",
     "region": "3"
   },
   {
     "id": "162",
-    "ville": "Aïn Leuh",
+    "ville": "عين اللوح",
     "region": "3"
   },
   {
     "id": "163",
-    "ville": "Aït Boubidmane",
+    "ville": "ايت بوبيدمان",
     "region": "3"
   },
   {
     "id": "164",
-    "ville": "Aït Ishaq",
+    "ville": "يت إسحاق",
     "region": "5"
   },
   {
     "id": "165",
-    "ville": "Boudnib",
+    "ville": "بودنيب",
     "region": "8"
   },
   {
     "id": "166",
-    "ville": "Boufakrane",
+    "ville": "بوفكران",
     "region": "3"
   },
   {
     "id": "167",
-    "ville": "Boumia",
+    "ville": "بومية",
     "region": "8"
   },
   {
     "id": "168",
-    "ville": "El Hajeb",
+    "ville": "الحاجب",
     "region": "3"
   },
   {
     "id": "169",
-    "ville": "Elkbab",
+    "ville": "القباب",
     "region": "5"
   },
   {
     "id": "170",
-    "ville": "Er-Rich",
+    "ville": "الريش",
     "region": "5"
   },
   {
     "id": "171",
-    "ville": "Errachidia",
+    "ville": "الراشيدية",
     "region": "8"
   },
   {
     "id": "172",
-    "ville": "Gardmit",
+    "ville": "كاردميت",
     "region": "8"
   },
   {
     "id": "173",
-    "ville": "Goulmima",
+    "ville": "كلميمة",
     "region": "8"
   },
   {
     "id": "174",
-    "ville": "Gourrama",
+    "ville": "كرامة",
     "region": "8"
   },
   {
     "id": "175",
-    "ville": "Had Bouhssoussen",
+    "ville": "حد بوحسوسن",
     "region": "5"
   },
   {
     "id": "176",
-    "ville": "Haj Kaddour",
+    "ville": "حج قدور",
     "region": "3"
   },
   {
     "id": "177",
-    "ville": "Ifrane",
+    "ville": "إفران",
     "region": "3"
   },
   {
     "id": "178",
-    "ville": "Itzer",
+    "ville": "ايتزر",
     "region": "8"
   },
   {
     "id": "179",
-    "ville": "Jorf",
+    "ville": "الجرف",
     "region": "8"
   },
   {
     "id": "180",
-    "ville": "Kehf Nsour",
+    "ville": "كهف نصور",
     "region": "5"
   },
   {
     "id": "181",
-    "ville": "Kerrouchen",
+    "ville": "كروشن",
     "region": "5"
   },
   {
     "id": "182",
-    "ville": "M'haya",
+    "ville": "مهاية",
     "region": "3"
   },
   {
     "id": "183",
-    "ville": "M'rirt",
+    "ville": "مريرت",
     "region": "5"
   },
   {
     "id": "184",
-    "ville": "Midelt",
+    "ville": "ميدلت",
     "region": "8"
   },
   {
     "id": "185",
-    "ville": "Moulay Ali Cherif",
+    "ville": "مولاي علي الشريف",
     "region": "8"
   },
   {
     "id": "186",
-    "ville": "Moulay Bouazza",
+    "ville": "مولاي بوعزة",
     "region": "5"
   },
   {
     "id": "187",
-    "ville": "Moulay Idriss Zerhoun",
+    "ville": "مولاي ادريس زرهون",
     "region": "3"
   },
   {
     "id": "188",
-    "ville": "Moussaoua",
+    "ville": "مساوة",
     "region": "3"
   },
   {
     "id": "189",
-    "ville": "N'Zalat Bni Amar",
+    "ville": "نزالات بني عمار",
     "region": "3"
   },
   {
     "id": "190",
-    "ville": "Ouaoumana",
+    "ville": "واومانة",
     "region": "5"
   },
   {
     "id": "191",
-    "ville": "Oued Ifrane",
+    "ville": "واد إفران",
     "region": "3"
   },
   {
     "id": "192",
-    "ville": "Sabaa Aiyoun",
+    "ville": "سبع عيون",
     "region": "3"
   },
   {
     "id": "193",
-    "ville": "Sebt Jahjouh",
+    "ville": "سبت جهجوه",
     "region": "3"
   },
   {
     "id": "194",
-    "ville": "Sidi Addi",
+    "ville": "سيدي عدي",
     "region": "3"
   },
   {
     "id": "195",
-    "ville": "Tichoute",
+    "ville": "تيشوت",
     "region": "8"
   },
   {
     "id": "196",
-    "ville": "Tighassaline",
+    "ville": "تيغسالين",
     "region": "5"
   },
   {
     "id": "197",
-    "ville": "Tighza",
+    "ville": "تيغزا",
     "region": "5"
   },
   {
     "id": "198",
-    "ville": "Timahdite",
+    "ville": "تيمحضيت",
     "region": "3"
   },
   {
     "id": "199",
-    "ville": "Tinejdad",
+    "ville": "تينجداد",
     "region": "8"
   },
   {
     "id": "200",
-    "ville": "Tizguite",
+    "ville": "تيزكيت",
     "region": "3"
   },
   {
     "id": "201",
-    "ville": "Toulal",
+    "ville": "تولال",
     "region": "3"
   },
   {
     "id": "202",
-    "ville": "Tounfite",
+    "ville": "تونفيت",
     "region": "8"
   },
   {
     "id": "203",
-    "ville": "Zaouia d'Ifrane",
+    "ville": "زاوية إفران",
     "region": "3"
   },
   {
     "id": "204",
-    "ville": "Zaïda",
+    "ville": "وايدة",
     "region": "8"
   },
   {
     "id": "205",
-    "ville": "Ahfir",
+    "ville": "أحفير",
     "region": "2"
   },
   {
     "id": "206",
-    "ville": "Aklim",
+    "ville": "أكليم",
     "region": "2"
   },
   {
     "id": "207",
-    "ville": "Al Aroui",
+    "ville": "العروي",
     "region": "2"
   },
   {
     "id": "208",
-    "ville": "Aïn Bni Mathar",
+    "ville": "عين بني مطهر",
     "region": "2"
   },
   {
     "id": "209",
-    "ville": "Aïn Erreggada",
+    "ville": "عين الركادة",
     "region": "2"
   },
   {
     "id": "210",
-    "ville": "Ben Taïeb",
+    "ville": "بن الطيب",
     "region": "2"
   },
   {
     "id": "211",
-    "ville": "Berkane",
+    "ville": "بركان",
     "region": "2"
   },
   {
     "id": "212",
-    "ville": "Bni Ansar",
+    "ville": "بني نصار",
     "region": "2"
   },
   {
     "id": "213",
-    "ville": "Bni Chiker",
+    "ville": "بني شيكر",
     "region": "2"
   },
   {
     "id": "214",
-    "ville": "Bni Drar",
+    "ville": "بني درار",
     "region": "2"
   },
   {
     "id": "215",
-    "ville": "Bni Tadjite",
+    "ville": "بني تادجيت",
     "region": "2"
   },
   {
     "id": "216",
-    "ville": "Bouanane",
+    "ville": "بوانان",
     "region": "2"
   },
   {
     "id": "217",
-    "ville": "Bouarfa",
+    "ville": "بوعرفة",
     "region": "2"
   },
   {
     "id": "218",
-    "ville": "Bouhdila",
+    "ville": "بوهديلة",
     "region": "2"
   },
   {
     "id": "219",
-    "ville": "Dar El Kebdani",
+    "ville": "دار الكبداني",
     "region": "2"
   },
   {
     "id": "220",
-    "ville": "Debdou",
+    "ville": "دبدو",
     "region": "2"
   },
   {
     "id": "221",
-    "ville": "Douar Kannine",
+    "ville": "دوار كنين",
     "region": "2"
   },
   {
     "id": "222",
-    "ville": "Driouch",
+    "ville": "دريوش",
     "region": "2"
   },
   {
     "id": "223",
-    "ville": "El Aïoun Sidi Mellouk",
+    "ville": "العيون سيدي ملوك",
     "region": "2"
   },
   {
     "id": "224",
-    "ville": "Farkhana",
+    "ville": "فرخانة",
     "region": "2"
   },
   {
     "id": "225",
-    "ville": "Figuig",
+    "ville": "فكيك",
     "region": "2"
   },
   {
     "id": "226",
-    "ville": "Ihddaden",
+    "ville": "إحدادن",
     "region": "2"
   },
   {
     "id": "227",
-    "ville": "Jaâdar",
+    "ville": "جعدار",
     "region": "2"
   },
   {
     "id": "228",
-    "ville": "Jerada",
+    "ville": "جرادة",
     "region": "2"
   },
   {
     "id": "229",
-    "ville": "Kariat Arekmane",
+    "ville": "قرية أركمان",
     "region": "2"
   },
   {
     "id": "230",
-    "ville": "Kassita",
+    "ville": "كاسيطا",
     "region": "2"
   },
   {
     "id": "231",
-    "ville": "Kerouna",
+    "ville": "كرونة",
     "region": "2"
   },
   {
     "id": "232",
-    "ville": "Laâtamna",
+    "ville": "لعطامنة",
     "region": "2"
   },
   {
     "id": "233",
-    "ville": "Madagh",
+    "ville": "مداغ",
     "region": "2"
   },
   {
     "id": "234",
-    "ville": "Midar",
+    "ville": "ميدار",
     "region": "2"
   },
   {
     "id": "235",
-    "ville": "Nador",
+    "ville": "الناظور",
     "region": "2"
   },
   {
     "id": "236",
-    "ville": "Naima",
+    "ville": "نعيمة",
     "region": "2"
   },
   {
     "id": "237",
-    "ville": "Oued Heimer",
+    "ville": "واد حيمر",
     "region": "2"
   },
   {
     "id": "238",
-    "ville": "Oujda",
+    "ville": "وجدة",
     "region": "2"
   },
   {
     "id": "239",
-    "ville": "Ras El Ma",
+    "ville": "راس الما",
     "region": "2"
   },
   {
     "id": "240",
-    "ville": "Saïdia",
+    "ville": "السعيدية",
     "region": "2"
   },
   {
     "id": "241",
-    "ville": "Selouane",
+    "ville": "سلوان",
     "region": "2"
   },
   {
     "id": "242",
-    "ville": "Sidi Boubker",
+    "ville": "سيدي بوبكر",
     "region": "2"
   },
   {
     "id": "243",
-    "ville": "Sidi Slimane Echcharaa",
+    "ville": "سيدي سليمان الشرع",
     "region": "2"
   },
   {
     "id": "244",
-    "ville": "Talsint",
+    "ville": "تالسينت",
     "region": "2"
   },
   {
     "id": "245",
-    "ville": "Taourirt",
+    "ville": "تاوريرت",
     "region": "2"
   },
   {
     "id": "246",
-    "ville": "Tendrara",
+    "ville": "تيندرارة",
     "region": "2"
   },
   {
     "id": "247",
-    "ville": "Tiztoutine",
+    "ville": "تيزتونين",
     "region": "2"
   },
   {
     "id": "248",
-    "ville": "Touima",
+    "ville": "تويمة",
     "region": "2"
   },
   {
     "id": "249",
-    "ville": "Touissit",
+    "ville": "تويسيت",
     "region": "2"
   },
   {
     "id": "250",
-    "ville": "Zaïo",
+    "ville": "زايو",
     "region": "2"
   },
   {
     "id": "251",
-    "ville": "Zeghanghane",
+    "ville": "زغنغن",
     "region": "2"
   },
   {
     "id": "252",
-    "ville": "Rabat",
+    "ville": "الرباط",
     "region": "4"
   },
   {
     "id": "253",
-    "ville": "Salé",
+    "ville": "سلا",
     "region": "4"
   },
   {
     "id": "254",
-    "ville": "Ain El Aouda",
+    "ville": "عيد عودة",
     "region": "4"
   },
   {
     "id": "255",
-    "ville": "Harhoura",
+    "ville": "هرهورة",
     "region": "4"
   },
   {
     "id": "256",
-    "ville": "Khémisset",
+    "ville": "الخميسات",
     "region": "4"
   },
   {
     "id": "257",
-    "ville": "Oulmès",
+    "ville": "أولماس",
     "region": "4"
   },
   {
     "id": "258",
-    "ville": "Rommani",
+    "ville": "الرماني",
     "region": "4"
   },
   {
     "id": "259",
-    "ville": "Sidi Allal El Bahraoui",
+    "ville": "سيدي علال البحراوي",
     "region": "4"
   },
   {
     "id": "260",
-    "ville": "Sidi Bouknadel",
+    "ville": "سيدي بوقنادل",
     "region": "4"
   },
   {
     "id": "261",
-    "ville": "Skhirate",
+    "ville": "الصخيرات",
     "region": "4"
   },
   {
     "id": "262",
-    "ville": "Tamesna",
+    "ville": "تامسنا",
     "region": "4"
   },
   {
     "id": "263",
-    "ville": "Témara",
+    "ville": "تمارة",
     "region": "4"
   },
   {
     "id": "264",
-    "ville": "Tiddas",
+    "ville": "تيداس",
     "region": "4"
   },
   {
     "id": "265",
-    "ville": "Tiflet",
+    "ville": "تيفلت",
     "region": "4"
   },
   {
     "id": "266",
-    "ville": "Touarga",
+    "ville": "تواركة",
     "region": "4"
   },
   {
     "id": "267",
-    "ville": "Agadir",
+    "ville": "أكادير",
     "region": "9"
   },
   {
     "id": "268",
-    "ville": "Agdz",
+    "ville": "أطدز",
     "region": "8"
   },
   {
     "id": "269",
-    "ville": "Agni Izimmer",
+    "ville": "أكني إزيمر",
     "region": "9"
   },
   {
     "id": "270",
-    "ville": "Aït Melloul",
+    "ville": "ايت ملول",
     "region": "9"
   },
   {
     "id": "271",
-    "ville": "Alnif",
+    "ville": "النيف",
     "region": "8"
   },
   {
     "id": "272",
-    "ville": "Anzi",
+    "ville": "أنزي",
     "region": "9"
   },
   {
     "id": "273",
-    "ville": "Aoulouz",
+    "ville": "أولوز",
     "region": "9"
   },
   {
     "id": "274",
-    "ville": "Aourir",
+    "ville": "أورير",
     "region": "9"
   },
   {
     "id": "275",
-    "ville": "Arazane",
+    "ville": "أرزان",
     "region": "9"
   },
   {
     "id": "276",
-    "ville": "Aït Baha",
+    "ville": "ايت باها",
     "region": "9"
   },
   {
     "id": "277",
-    "ville": "Aït Iaâza",
+    "ville": "ايت إعزا",
     "region": "9"
   },
   {
     "id": "278",
-    "ville": "Aït Yalla",
+    "ville": "ايت يلا",
     "region": "8"
   },
   {
     "id": "279",
-    "ville": "Ben Sergao",
+    "ville": "بن سركاو",
     "region": "9"
   },
   {
     "id": "280",
-    "ville": "Biougra",
+    "ville": "بيوكرى",
     "region": "9"
   },
   {
     "id": "281",
-    "ville": "Boumalne-Dadès",
+    "ville": "بولمان دادس",
     "region": "8"
   },
   {
     "id": "282",
-    "ville": "Dcheira El Jihadia",
+    "ville": "الدشيرة الجهادية",
     "region": "9"
   },
   {
     "id": "283",
-    "ville": "Drargua",
+    "ville": "دراركة",
     "region": "9"
   },
   {
     "id": "284",
-    "ville": "El Guerdane",
+    "ville": "الكردان",
     "region": "9"
   },
   {
     "id": "285",
-    "ville": "Harte Lyamine",
+    "ville": "حارة اليمين",
     "region": "8"
   },
   {
     "id": "286",
-    "ville": "Ida Ougnidif",
+    "ville": "إدا أوكنيديف",
     "region": "9"
   },
   {
     "id": "287",
-    "ville": "Ifri",
+    "ville": "إفري",
     "region": "8"
   },
   {
     "id": "288",
-    "ville": "Igdamen",
+    "ville": "إكدامن",
     "region": "9"
   },
   {
     "id": "289",
-    "ville": "Ighil n'Oumgoun",
+    "ville": "إغيل نومكون",
     "region": "8"
   },
   {
     "id": "290",
-    "ville": "Imassine",
+    "ville": "إيماسين",
     "region": "8"
   },
   {
     "id": "291",
-    "ville": "Inezgane",
+    "ville": "إنزكان",
     "region": "9"
   },
   {
     "id": "292",
-    "ville": "Irherm",
+    "ville": "إغرم",
     "region": "9"
   },
   {
     "id": "293",
-    "ville": "Kelaat-M'Gouna",
+    "ville": "قلعة مكونة",
     "region": "8"
   },
   {
     "id": "294",
-    "ville": "Lakhsas",
+    "ville": "لخصاص",
     "region": "9"
   },
   {
     "id": "295",
-    "ville": "Lakhsass",
+    "ville": "لخصاص",
     "region": "9"
   },
   {
     "id": "296",
-    "ville": "Lqliâa",
+    "ville": "القليعة",
     "region": "9"
   },
   {
     "id": "297",
-    "ville": "M'semrir",
+    "ville": "امسمرير",
     "region": "8"
   },
   {
     "id": "298",
-    "ville": "Massa (Maroc)",
+    "ville": "ماسة",
     "region": "9"
   },
   {
     "id": "299",
-    "ville": "Megousse",
+    "ville": "مكوس",
     "region": "9"
   },
   {
     "id": "300",
-    "ville": "Ouarzazate",
+    "ville": "ورزازات",
     "region": "8"
   },
   {
     "id": "301",
-    "ville": "Oulad Berhil",
+    "ville": "اولاد برحيل",
     "region": "9"
   },
   {
     "id": "302",
-    "ville": "Oulad Teïma",
+    "ville": "اولاد تايمة",
     "region": "9"
   },
   {
     "id": "303",
-    "ville": "Sarghine",
+    "ville": "سرغين",
     "region": "8"
   },
   {
     "id": "304",
-    "ville": "Sidi Ifni",
+    "ville": "سيدي إفني",
     "region": "10"
   },
   {
     "id": "305",
-    "ville": "Skoura",
+    "ville": "سكورة",
     "region": "8"
   },
   {
     "id": "306",
-    "ville": "Tabounte",
+    "ville": "تابونت",
     "region": "8"
   },
   {
     "id": "307",
-    "ville": "Tafraout",
+    "ville": "تافراوت",
     "region": "9"
   },
   {
     "id": "308",
-    "ville": "Taghzout",
+    "ville": "تغزوت",
     "region": "1"
   },
   {
     "id": "309",
-    "ville": "Tagzen",
+    "ville": "تاكزن",
     "region": "9"
   },
   {
     "id": "310",
-    "ville": "Taliouine",
+    "ville": "تاليوين",
     "region": "9"
   },
   {
     "id": "311",
-    "ville": "Tamegroute",
+    "ville": "تامكروت",
     "region": "8"
   },
   {
     "id": "312",
-    "ville": "Tamraght",
+    "ville": "تامراغت",
     "region": "9"
   },
   {
     "id": "313",
-    "ville": "Tanoumrite Nkob Zagora",
+    "ville": "تانوميرت نكب زاكورة",
     "region": "8"
   },
   {
     "id": "314",
-    "ville": "Taourirt ait zaghar",
+    "ville": "تاوريرت ايت ازغار",
     "region": "8"
   },
   {
     "id": "315",
-    "ville": "Taroudannt",
+    "ville": "تارودانت",
     "region": "9"
   },
   {
     "id": "316",
-    "ville": "Temsia",
+    "ville": "تمسيا",
     "region": "9"
   },
   {
     "id": "317",
-    "ville": "Tifnit",
+    "ville": "تيفنيت",
     "region": "9"
   },
   {
     "id": "318",
-    "ville": "Tisgdal",
+    "ville": "تيسكدال",
     "region": "9"
   },
   {
     "id": "319",
-    "ville": "Tiznit",
+    "ville": "تيزنيت",
     "region": "9"
   },
   {
     "id": "320",
-    "ville": "Toundoute",
+    "ville": "توندوت",
     "region": "8"
   },
   {
     "id": "321",
-    "ville": "Zagora",
+    "ville": "زاكورة",
     "region": "8"
   },
   {
     "id": "322",
-    "ville": "Afourar",
+    "ville": "أفورار",
     "region": "5"
   },
   {
     "id": "323",
-    "ville": "Aghbala",
+    "ville": "أغبالة",
     "region": "5"
   },
   {
     "id": "324",
-    "ville": "Azilal",
+    "ville": "أزيلال",
     "region": "5"
   },
   {
     "id": "325",
-    "ville": "Aït Majden",
+    "ville": "ايت ماجدن",
     "region": "5"
   },
   {
     "id": "326",
-    "ville": "Beni Ayat",
+    "ville": "بني عياط",
     "region": "5"
   },
   {
     "id": "327",
-    "ville": "Béni Mellal",
+    "ville": "بني ملال",
     "region": "5"
   },
   {
     "id": "328",
-    "ville": "Bin elouidane",
+    "ville": "بين الويدان",
     "region": "5"
   },
   {
     "id": "329",
-    "ville": "Bradia",
+    "ville": "برادية",
     "region": "5"
   },
   {
     "id": "330",
-    "ville": "Bzou",
+    "ville": "بزو",
     "region": "5"
   },
   {
     "id": "331",
-    "ville": "Dar Oulad Zidouh",
+    "ville": "دار ولاد زيدوح",
     "region": "5"
   },
   {
     "id": "332",
-    "ville": "Demnate",
+    "ville": "دمنات",
     "region": "5"
   },
   {
     "id": "333",
-    "ville": "Dra'a",
+    "ville": "درعة",
     "region": "8"
   },
   {
     "id": "334",
-    "ville": "El Ksiba",
+    "ville": "القصيبة",
     "region": "5"
   },
   {
     "id": "335",
-    "ville": "Foum Jamaa",
+    "ville": "فم الجامع",
     "region": "5"
   },
   {
     "id": "336",
-    "ville": "Fquih Ben Salah",
+    "ville": "فقيه بن صالح",
     "region": "5"
   },
   {
     "id": "337",
-    "ville": "Kasba Tadla",
+    "ville": "قصبة تادلة",
     "region": "5"
   },
   {
     "id": "338",
-    "ville": "Ouaouizeght",
+    "ville": "واويزغت",
     "region": "5"
   },
   {
     "id": "339",
-    "ville": "Oulad Ayad",
+    "ville": "اولاد عياد",
     "region": "5"
   },
   {
     "id": "340",
-    "ville": "Oulad M'Barek",
+    "ville": "اولاد مبارك",
     "region": "5"
   },
   {
     "id": "341",
-    "ville": "Oulad Yaich",
+    "ville": "اولاد يعيش",
     "region": "5"
   },
   {
     "id": "342",
-    "ville": "Sidi Jaber",
+    "ville": "سيدي جابر",
     "region": "5"
   },
   {
     "id": "343",
-    "ville": "Souk Sebt Oulad Nemma",
+    "ville": "سوق السبت اولاد النمة",
     "region": "5"
   },
   {
     "id": "344",
-    "ville": "Zaouïat Cheikh",
+    "ville": "زاوية الشيخ",
     "region": "5"
   },
   {
     "id": "345",
-    "ville": "Tanger‎",
+    "ville": "طنجة‎",
     "region": "1"
   },
   {
     "id": "346",
-    "ville": "Tétouan‎",
+    "ville": "تطوان‎",
     "region": "1"
   },
   {
     "id": "347",
-    "ville": "Akchour",
+    "ville": "أقشور",
     "region": "1"
   },
   {
     "id": "348",
-    "ville": "Assilah",
+    "ville": "أصيلة",
     "region": "1"
   },
   {
     "id": "349",
-    "ville": "Bab Berred",
+    "ville": "باب برد",
     "region": "1"
   },
   {
     "id": "350",
-    "ville": "Bab Taza",
+    "ville": "باب تازة",
     "region": "1"
   },
   {
     "id": "351",
-    "ville": "Brikcha",
+    "ville": "بريطشة",
     "region": "1"
   },
   {
     "id": "352",
-    "ville": "Chefchaouen",
+    "ville": "شفشاون",
     "region": "1"
   },
   {
     "id": "353",
-    "ville": "Dar Bni Karrich",
+    "ville": "دار بني كريش",
     "region": "1"
   },
   {
     "id": "354",
-    "ville": "Dar Chaoui",
+    "ville": "دار الشاوي",
     "region": "1"
   },
   {
     "id": "355",
-    "ville": "Fnideq",
+    "ville": "الفنيدق",
     "region": "1"
   },
   {
     "id": "356",
-    "ville": "Gueznaia",
+    "ville": "اكزناية",
     "region": "1"
   },
   {
     "id": "357",
-    "ville": "Jebha",
+    "ville": "الجبهة",
     "region": "1"
   },
   {
     "id": "358",
-    "ville": "Karia",
+    "ville": "القرية",
     "region": "3"
   },
   {
     "id": "359",
-    "ville": "Khémis Sahel",
+    "ville": "خميس الساهل",
     "region": "1"
   },
   {
     "id": "360",
-    "ville": "Ksar El Kébir",
+    "ville": "القصر الكبير",
     "region": "1"
   },
   {
     "id": "361",
-    "ville": "Larache",
+    "ville": "العرائش",
     "region": "1"
   },
   {
     "id": "362",
-    "ville": "M'diq",
+    "ville": "المضيق",
     "region": "1"
   },
   {
     "id": "363",
-    "ville": "Martil",
+    "ville": "مارتيل",
     "region": "1"
   },
   {
     "id": "364",
-    "ville": "Moqrisset",
+    "ville": "مقريصات",
     "region": "1"
   },
   {
     "id": "365",
-    "ville": "Oued Laou",
+    "ville": "واد لو",
     "region": "1"
   },
   {
     "id": "366",
-    "ville": "Oued Rmel",
+    "ville": "واد الرمل",
     "region": "1"
   },
   {
     "id": "367",
-    "ville": "Ouazzane",
+    "ville": "وزان",
     "region": "1"
   },
   {
     "id": "368",
-    "ville": "Point Cires",
+    "ville": "بونتا سيريس‎",
     "region": "1"
   },
   {
     "id": "369",
-    "ville": "Sidi Lyamani",
+    "ville": "سيدي اليماني",
     "region": "1"
   },
   {
     "id": "370",
-    "ville": "Sidi Mohamed ben Abdallah el-Raisuni",
+    "ville": "سيدي محمد بن عبد الله الريسوني",
     "region": "1"
   },
   {
     "id": "371",
-    "ville": "Zinat",
+    "ville": "زينات",
     "region": "1"
   },
   {
     "id": "372",
-    "ville": "Ajdir‎",
+    "ville": "أجدير‎",
     "region": "1"
   },
   {
     "id": "373",
-    "ville": "Aknoul‎",
+    "ville": "أكنول‎",
     "region": "3"
   },
   {
     "id": "374",
-    "ville": "Al Hoceïma‎",
+    "ville": "الحسيمة‎",
     "region": "1"
   },
   {
     "id": "375",
-    "ville": "Aït Hichem‎",
+    "ville": "ايت هشام",
     "region": "1"
   },
   {
     "id": "376",
-    "ville": "Bni Bouayach‎",
+    "ville": "بني بوعياش‎",
     "region": "1"
   },
   {
     "id": "377",
-    "ville": "Bni Hadifa‎",
+    "ville": "بني حديفة",
     "region": "1"
   },
   {
     "id": "378",
-    "ville": "Ghafsai‎",
+    "ville": "غافساي‎",
     "region": "3"
   },
   {
     "id": "379",
-    "ville": "Guercif‎",
+    "ville": "كرسيف‎",
     "region": "2"
   },
   {
     "id": "380",
-    "ville": "Imzouren‎",
+    "ville": "إمزورن‎",
     "region": "1"
   },
   {
     "id": "381",
-    "ville": "Inahnahen‎",
+    "ville": "إنحناحن‎",
     "region": "1"
   },
   {
     "id": "382",
-    "ville": "Issaguen (Ketama)‎",
+    "ville": "إساكن كتامة‎",
     "region": "1"
   },
   {
     "id": "383",
-    "ville": "Karia (El Jadida)‎",
+    "ville": "قرية الجديدة‎",
     "region": "6"
   },
   {
     "id": "384",
-    "ville": "Karia Ba Mohamed‎",
+    "ville": "قرية با محمد‎",
     "region": "3"
   },
   {
     "id": "385",
-    "ville": "Oued Amlil‎",
+    "ville": "واد إمليل",
     "region": "3"
   },
   {
     "id": "386",
-    "ville": "Oulad Zbair‎",
+    "ville": "اولاد زبير",
     "region": "3"
   },
   {
     "id": "387",
-    "ville": "Tahla‎",
+    "ville": "تاهلة‎",
     "region": "3"
   },
   {
     "id": "388",
-    "ville": "Tala Tazegwaght‎",
+    "ville": "تالة تازغاغت",
     "region": "1"
   },
   {
     "id": "389",
-    "ville": "Tamassint‎",
+    "ville": "تماسينت‎",
     "region": "1"
   },
   {
     "id": "390",
-    "ville": "Taounate‎",
+    "ville": "تاونات‎",
     "region": "3"
   },
   {
     "id": "391",
-    "ville": "Targuist‎",
+    "ville": "تاركيست‎",
     "region": "1"
   },
   {
     "id": "392",
-    "ville": "Taza‎",
+    "ville": "تازة‎",
     "region": "3"
   },
   {
     "id": "393",
-    "ville": "Taïnaste‎",
+    "ville": "تيناست‎",
     "region": "3"
   },
   {
     "id": "394",
-    "ville": "Thar Es-Souk‎",
+    "ville": "ظهر السوق",
     "region": "3"
   },
   {
     "id": "395",
-    "ville": "Tissa‎",
+    "ville": "تيسا‎",
     "region": "3"
   },
   {
     "id": "396",
-    "ville": "Tizi Ouasli‎",
+    "ville": "تيزي وسلي",
     "region": "3"
   },
   {
     "id": "397",
-    "ville": "Laayoune‎",
+    "ville": "العيون‎",
     "region": "11"
   },
   {
     "id": "398",
-    "ville": "El Marsa‎",
+    "ville": "المرسى‎",
     "region": "11"
   },
   {
     "id": "399",
-    "ville": "Tarfaya‎",
+    "ville": "طرفاية‎",
     "region": "11"
   },
   {
     "id": "400",
-    "ville": "Boujdour‎",
+    "ville": "بوجدور",
     "region": "11"
   },
   {
     "id": "401",
-    "ville": "Awsard",
+    "ville": "أوسرد",
     "region": "12"
   },
   {
     "id": "402",
-    "ville": "Oued-Eddahab",
+    "ville": "واد الذهب",
     "region": "12"
   },
   {
     "id": "403",
-    "ville": "Stehat",
+    "ville": "اسطيحات",
     "region": "1"
   },
   {
     "id": "404",
-    "ville": "Aït Attab",
+    "ville": "ايت اعتاب",
     "region": "5"
   }
 ]

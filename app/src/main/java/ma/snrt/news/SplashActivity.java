@@ -47,54 +47,6 @@ public class SplashActivity extends AppCompatActivity {
             arBtn.setBackgroundResource(R.drawable.btn_white);
         else
             arBtn.setBackgroundResource(R.drawable.btn_black);
-        /*player = ExoPlayerFactory.newSimpleInstance(this);
-        playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM);
-        playerView.setPlayer(player);
-        player.setPlayWhenReady(true);
-
-        Log.e("Splash", "fcm token: "+ AppController.getSharedPreferences().getString("device_token", ""));
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
-                Util.getUserAgent(this, getString(R.string.app_name)));
-
-        MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                .setExtractorsFactory(new DefaultExtractorsFactory())
-                .createMediaSource(RawResourceDataSource.buildRawResourceUri(R.raw.splash_video));
-        player.prepare(mediaSource);
-        player.addListener(new Player.EventListener() {
-            @Override
-            public void onPlayerError(ExoPlaybackException error) {
-                Log.e("PlayerActivity", "exo player error: "+error.getMessage());
-            }
-
-            @Override
-            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
-                if (playbackState == Player.STATE_ENDED){
-                    //player back ended
-                    if(Utils.getAppCurrentLang().equals("")){
-                        frBtn.setVisibility(View.VISIBLE);
-                        arBtn.setVisibility(View.VISIBLE);
-                    }
-                    else {
-                        Bundle extras = getIntent().getExtras();
-                        if(extras!=null && extras.containsKey("id")){
-                            Post post = new Post();
-                            post.setId(Integer.parseInt(extras.getString("id")));
-                            post.setTitle(extras.getString("title"));
-                            post.setDatePublication(extras.getString("date"));
-                            post.setImage(extras.getString("image"));
-                            post.setPosition(extras.getString("localisation"));
-                            post.setTags(extras.getString("tags"));
-                            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                            intent.putExtra("post", post);
-                            startActivity(intent);
-                            finish();
-                            return;
-                        }
-                        startMainActivity();
-                    }
-                }
-            }
-        });*/
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -127,7 +79,10 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void startMainActivity(){
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        if(AppController.getSharedPreferences().getBoolean("isTutorialShowed", false))
+            startActivity(new Intent(this, MainActivity.class));
+        else
+            startActivity(new Intent(this, TutorialActivity.class));
         finish();
     }
 

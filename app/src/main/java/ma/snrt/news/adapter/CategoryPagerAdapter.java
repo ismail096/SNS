@@ -12,6 +12,7 @@ import java.util.List;
 import ma.snrt.news.AppController;
 import ma.snrt.news.fragment.CategoryFragment;
 import ma.snrt.news.fragment.LifeFragment;
+import ma.snrt.news.fragment.SportFragment;
 import ma.snrt.news.fragment.TechFragment;
 import ma.snrt.news.fragment.TopAgendaFragment;
 import ma.snrt.news.fragment.TopNewsFragment;
@@ -48,6 +49,12 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
         }
         else if(categories.get(position).getId() == 8 || categories.get(position).getId() == 153) {
             fragment = new LifeFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("category", categories.get(position));
+            fragment.setArguments(bundle);
+        }
+        else if(categories.get(position).getId() == 7 || categories.get(position).getId() == 152) {
+            fragment = new SportFragment();
             Bundle bundle = new Bundle();
             bundle.putSerializable("category", categories.get(position));
             fragment.setArguments(bundle);

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/match_item_width"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="?attr/backgroundColor"
+    android:layout_marginBottom="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:id="@+id/match_status_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            >
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/white_circle"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="7.5dp"
+                android:layout_marginBottom="2dp"
+                />
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/match_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="7.5dp"
+                android:text="Live"
+                android:textAllCaps="true"
+                android:textColor="@color/app_white"
+                android:textSize="@dimen/date_size"
+                android:includeFontPadding="false"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.3">
+                
+                <ImageView
+                    android:id="@+id/team_a_img"
+                    android:layout_width="@dimen/team_size"
+                    android:layout_height="@dimen/team_size"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:id="@+id/team_a_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:textSize="@dimen/team_text_size"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    />
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                >
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:id="@+id/team_a_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:textSize="@dimen/match_score_size"
+                    android:gravity="center"
+                    android:text="0"
+                    />
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_grey"
+                    android:text=":"
+                    android:textSize="@dimen/match_score_size"
+                    android:gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:id="@+id/team_b_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:text="0"
+                    android:textSize="@dimen/match_score_size"
+                    android:gravity="center"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.3">
+
+                <ImageView
+                    android:id="@+id/team_b_img"
+                    android:layout_width="@dimen/team_size"
+                    android:layout_height="@dimen/team_size"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <ma.snrt.news.ui.TextViewBold
+                    android:id="@+id/team_b_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="?attr/secondaryTextColor"
+                    android:textSize="@dimen/team_text_size"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@color/match_grey"/>
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/match_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textAllCaps="true"
+                android:textColor="@color/app_white"
+                android:textSize="@dimen/big_date_size"
+                android:includeFontPadding="false"
+                android:background="@color/match_grey"
+                android:paddingTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@color/match_grey"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

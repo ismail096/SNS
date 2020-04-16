@@ -1,12 +1,20 @@
 package ma.snrt.news;
 
 import android.content.Context;
+import android.net.http.SslError;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
+import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,10 +58,6 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(false);
-        if(Utils.getAppCurrentLang().equals("ar"))
-            webView.getSettings().setDefaultFontSize(18);
-        else
-            webView.getSettings().setDefaultFontSize(15);
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
@@ -61,7 +65,38 @@ public class WebViewActivity extends AppCompatActivity {
             Glide.with(this).load(R.raw.loader).into(progressBar);
 
         int pageId =  getIntent().getIntExtra("pageId", 0);
-        loadPage(pageId);
+        if(pageId != 0) {
+            if(Utils.getAppCurrentLang().equals("ar"))
+                webView.getSettings().setDefaultFontSize(18);
+            else
+                webView.getSettings().setDefaultFontSize(15);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) webView.getLayoutParams();
+            int marg = Utils.dpToPx(getResources(), 10);
+            lp.setMargins(marg, 0, marg, 0);
+            webView.setLayoutParams(lp);
+            loadPage(pageId);
+        }
+        else {
+            progressBar.setVisibility(View.VISIBLE);
+            webView.setBackground(null);
+            webView.getSettings().setSupportZoom(false);
+            webView.getSettings().setDomStorageEnabled(true);
+            webView.setWebViewClient(new WebViewClient(){
+
+                @Override
+                public void onPageFinished(WebView view, String url) {
+                    super.onPageFinished(view, url);
+                    progressBar.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError er) {
+                    handler.proceed();
+                }
+
+            });
+            webView.loadUrl("http://botola.snrt.ma/resultats");
+        }
     }
 
     private void loadPage(final int pageId) {

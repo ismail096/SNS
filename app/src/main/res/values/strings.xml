@@ -60,5 +60,7 @@
     <string name="quest_send_success">Votre question a été bien envoyée</string>
 
     <string name="recommanded">Recommandés pour vous</string>
+    <string name="top_matches">Top matchs du jour</string>
+    <string name="botola">Botola</string>
 
 </resources>

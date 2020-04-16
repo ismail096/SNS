@@ -121,7 +121,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
                 android:transitionName="imageMain"
-                android:layout_marginTop="@dimen/margin_top_app"
+                android:layout_marginTop="10dp"
                 />
 
             <WebView

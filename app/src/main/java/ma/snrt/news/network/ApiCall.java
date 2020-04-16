@@ -166,4 +166,9 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
+    public static void getLiveMatches(Callback<JsonObject> callback) {
+        Call<JsonObject> call = AppController.getAPIService().getUrlAsJsonObject(AppController.LIVE_MATCHES_URL+"?lang="+Utils.getAppCurrentLang());
+        call.enqueue(callback);
+    }
+
 }

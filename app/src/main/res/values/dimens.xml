@@ -57,6 +57,11 @@
     <dimen name="small_title_size">13sp</dimen>
     <dimen name="life_tab_size">13sp</dimen>
 
+    <dimen name="match_item_width">320dp</dimen>
+    <dimen name="team_size">64dp</dimen>
+    <dimen name="team_text_size">12sp</dimen>
+    <dimen name="match_score_size">30sp</dimen>
+
     <bool name="is_tablet">false</bool>
 
 </resources>

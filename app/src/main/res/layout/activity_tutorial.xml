@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TutorialActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <!--<com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/pager_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:padding="10dp"
+        app:fillColor="@color/colorPrimary"
+        app:pageColor="@color/app_white"
+        app:radius="5dp"
+        app:strokeWidth="0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_above="@+id/ignore_btn"
+        />
+
+    <LinearLayout
+        android:id="@+id/ignore_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="onClick"
+        >
+        <ma.snrt.news.ui.CustomTextViewBold
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ignore"
+            android:textColor="#B6B6B6"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:src="@drawable/arrow_settings"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            />
+    </LinearLayout>-->
+</RelativeLayout>
