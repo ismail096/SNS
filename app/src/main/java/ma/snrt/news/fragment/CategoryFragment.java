@@ -74,25 +74,25 @@ public class CategoryFragment extends Fragment {
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+        if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
             final LinearLayoutManager llm = new LinearLayoutManager(mContext);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(llm);
-        /*}
+        }
         else{
-            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 3);
             lm.setOrientation(LinearLayoutManager.VERTICAL);
             lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if(position==0 || position%5==0)
-                        return 2;
+                    if(position==0 || position%4==0)
+                        return 3;
                     return 1;
                 }
             });
             recyclerView.setLayoutManager(lm);
-        }*/
-        recyclerView.setHasFixedSize(false);
+        }
+        recyclerView.setHasFixedSize(true);
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(mContext);
         layoutManager.setFlexDirection(FlexDirection.ROW);

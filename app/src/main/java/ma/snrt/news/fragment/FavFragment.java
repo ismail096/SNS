@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -21,9 +23,9 @@ import ma.snrt.news.R;
 import ma.snrt.news.adapter.NewsFavAdapter;
 import ma.snrt.news.adapter.Videos2Adapter;
 import ma.snrt.news.model.Post;
-import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.util.Cache;
+import ma.snrt.news.util.Utils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +33,7 @@ import ma.snrt.news.util.Cache;
 public class FavFragment extends Fragment {
 
     RecyclerView recyclerView;
-    TextViewRegular emptyTextView;
+    LinearLayout emptyLayout;
     TextViewExtraBold newsBtn, videosBtn;
     ArrayList<Post> posts;
     int selectedMode = 0;
@@ -47,12 +49,28 @@ public class FavFragment extends Fragment {
         Cache.initFavorisVideos();
         Cache.initLikedPosts();
         recyclerView = rootView.findViewById(R.id.recyclerview);
-        emptyTextView = rootView.findViewById(R.id.empty_textview);
+        emptyLayout = rootView.findViewById(R.id.empty_layout);
         newsBtn = rootView.findViewById(R.id.news_btn);
         videosBtn = rootView.findViewById(R.id.video_btn);
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
         
         mContext = getActivity();
+
+        if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+        }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(lm);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(margin, margin *2 , margin, margin * 2);
+            recyclerView.setLayoutParams(lp);
+        }
+        recyclerView.setHasFixedSize(true);
 
         videosBtn.setOnClickListener(v->{
             getVideos();
@@ -84,10 +102,7 @@ public class FavFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(selectedMode == 0)
-            getNews();
-        else if(selectedMode ==1)
-            getVideos();
+        update();
     }
 
     private void getNews(){
@@ -100,25 +115,14 @@ public class FavFragment extends Fragment {
         videosBtn.setBackgroundResource(R.drawable.btn_grey_right);
         posts = new ArrayList<>(Cache.getFavoris().values());
         if(posts.size()>0){
-            //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
-                final LinearLayoutManager llm = new LinearLayoutManager(mContext);
-                llm.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(llm);
-            /*}
-            else{
-                final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
-                lm.setOrientation(LinearLayoutManager.VERTICAL);
-                recyclerView.setLayoutManager(lm);
-            }*/
-            recyclerView.setHasFixedSize(true);
             NewsFavAdapter adapter = new NewsFavAdapter(mContext, posts, recyclerView);
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(View.VISIBLE);
-            emptyTextView.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.GONE);
         }
         else{
             recyclerView.setVisibility(View.GONE);
-            emptyTextView.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.VISIBLE);
         }
     }
 
@@ -132,18 +136,21 @@ public class FavFragment extends Fragment {
         videosBtn.setBackgroundResource(R.drawable.btn_red_right);
         posts = new ArrayList<>(Cache.getFavVideos().values());
         if(posts.size()>0){
-            LinearLayoutManager llm = new LinearLayoutManager(mContext);
-            llm.setOrientation(LinearLayoutManager.VERTICAL);
-            recyclerView.setHasFixedSize(true);
-            recyclerView.setLayoutManager(llm);
             Videos2Adapter adapter = new Videos2Adapter(mContext, posts, recyclerView);
             recyclerView.setAdapter(adapter);
             recyclerView.setVisibility(View.VISIBLE);
-            emptyTextView.setVisibility(View.GONE);
+            emptyLayout.setVisibility(View.GONE);
         }
         else{
             recyclerView.setVisibility(View.GONE);
-            emptyTextView.setVisibility(View.VISIBLE);
+            emptyLayout.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void update(){
+        if(selectedMode == 0)
+            getNews();
+        else if(selectedMode ==1)
+            getVideos();
     }
 }

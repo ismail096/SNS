@@ -17,13 +17,16 @@
        <com.google.android.material.tabs.TabLayout
            android:id="@+id/tablayout"
            android:layout_width="match_parent"
-           android:layout_height="40dp"
+           android:layout_height="@dimen/tablayout_height"
            style="@style/myCustomTablayout"
            app:tabMode="scrollable"
            android:background="@color/colorPrimary"
-           app:tabIndicatorFullWidth="false"
+           app:tabIndicatorFullWidth="true"
            app:tabIndicator="@drawable/tab_indicator"
            android:elevation="2dp"
+           app:tabPaddingStart="@dimen/tab_padding"
+           app:tabPaddingEnd="@dimen/tab_padding"
+           android:measureAllChildren="true"
            />
 
         <com.duolingo.open.rtlviewpager.RtlViewPager

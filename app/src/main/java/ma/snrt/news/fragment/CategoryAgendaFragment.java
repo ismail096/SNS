@@ -57,7 +57,8 @@ public class CategoryAgendaFragment extends Fragment implements  Updateable{
     ImageView progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
-    ArrayList<Post> posts, tops;
+    ArrayList<Post> posts;
+    List<Post> tops;
     int page = 0;
     boolean isListLoaded;
     AgendaAdapter2 agendaAdapter;
@@ -217,6 +218,8 @@ public class CategoryAgendaFragment extends Fragment implements  Updateable{
 
     private void setTopListAdapter(){
         if(tops.size()>0){
+            if(tops.size()>4)
+                tops = tops.subList(0, 4);
             if(Utils.getAppCurrentLang().equals("ar"))
                 Collections.reverse(tops);
             topRecyclerview.setVisibility(View.VISIBLE);

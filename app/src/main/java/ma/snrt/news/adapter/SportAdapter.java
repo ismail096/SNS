@@ -44,6 +44,8 @@ public class SportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     private boolean loading;
     private OnLoadMoreListener onLoadMoreListener;
     private int lastPosition = -1;
+    private static int TYPE_BIG = 1;
+    private static int TYPE_NORMAL = 2;
 
     public SportAdapter(Context context, ArrayList<Post> items, RecyclerView recyclerView) {
         this.context = context;
@@ -183,6 +185,27 @@ public class SportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 }
             }
         });
+
+        if(context.getResources().getBoolean(R.bool.is_tablet) && getItemViewType(position) == TYPE_NORMAL){
+            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+            if((position+1) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
+                lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
+            }
+            else if((position+2) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 7);
+                //lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+            }
+            else if((position+3) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+            }
+            int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 13);
+            lp.width = width;
+            mHolder.itemView.setLayoutParams(lp);
+            holder.setIsRecyclable(false);
+            mHolder.title.setMaxLines(2);
+        }
         //setAnimation(mHolder.itemView, position);
     }
 
@@ -196,10 +219,21 @@ public class SportAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%4==0))
+            return TYPE_BIG;
+        return TYPE_NORMAL;
+    }
+
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.sport_item_layout, viewGroup, false);
-            return new ViewHolder(v);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.sport_item_layout, viewGroup, false);
+        if(context.getResources().getBoolean(R.bool.is_tablet) && viewType == TYPE_NORMAL)
+            v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_tab_item_layout, viewGroup, false);
+        else if(context.getResources().getBoolean(R.bool.is_tablet) && viewType == TYPE_BIG)
+            v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_big_layout, viewGroup, false);
+        return new ViewHolder(v);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

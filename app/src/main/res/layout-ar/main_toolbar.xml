@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="wrap_content"
     android:background="?attr/toolbarBg"
     app:theme="@style/ThemeOverlay.AppCompat"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -29,6 +29,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         android:onClick="onClick"
+        android:padding="@dimen/toolbar_logo_margin"
         />
 
     <ma.snrt.news.ui.TextViewBold

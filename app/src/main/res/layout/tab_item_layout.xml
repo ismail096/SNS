@@ -6,11 +6,12 @@
     <ma.snrt.news.ui.TextViewExtraBold
         android:id="@+id/tab_textview"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/tab_size"
         android:textColor="#fff"
         android:gravity="center"
         android:textAllCaps="true"
+        android:layout_gravity="center"
         android:layout_weight="1"
         />
 

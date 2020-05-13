@@ -14,8 +14,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -203,6 +205,22 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         if(item.getDatePublication()!=null) {
             mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
         }
+        if(context.getResources().getBoolean(R.bool.is_tablet)){
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mHolder.imageLayout.getLayoutParams();
+            lp.setMargins(0, 0, 0, Utils.dpToPx(context.getResources(), 10));
+            mHolder.imageLayout.setLayoutParams(lp);
+
+            RecyclerView.LayoutParams lp2 = (RecyclerView.LayoutParams) mHolder.parent.getLayoutParams();
+            int margin = Utils.dpToPx(context.getResources(), 5);
+            lp2.setMargins(margin, margin , margin, margin);
+            mHolder.parent.setLayoutParams(lp2);
+        }
+        else{
+            RecyclerView.LayoutParams lp2 = (RecyclerView.LayoutParams) mHolder.parent.getLayoutParams();
+            int margin = Utils.dpToPx(context.getResources(), 5);
+            lp2.setMargins(margin * 2, margin , margin * 2, margin);
+            mHolder.parent.setLayoutParams(lp2);
+        }
         setAnimation(mHolder.itemView, position);
     }
 
@@ -228,6 +246,8 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextViewEBItalic category;
         ImageView imageView, playBtn, shareBtn, favBtn;
         LinearLayout container;
+        RelativeLayout imageLayout;
+        CardView parent;
 
         public ViewHolder(View convertView) {
             super(convertView);
@@ -239,6 +259,8 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             favBtn = convertView.findViewById(R.id.fav_btn);
             category = convertView.findViewById(R.id.post_category);
             date = convertView.findViewById(R.id.post_date);
+            imageLayout = convertView.findViewById(R.id.post_image_layout);
+            parent = convertView.findViewById(R.id.post_item_parent);
         }
     }
 }

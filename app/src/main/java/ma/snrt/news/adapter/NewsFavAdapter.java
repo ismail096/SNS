@@ -187,19 +187,21 @@ public class NewsFavAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         /*if(position==items.size()-1)
             mHolder.divider.setVisibility(View.GONE);
         else*/
-            mHolder.divider.setVisibility(View.GONE);
+        if(!context.getResources().getBoolean(R.bool.is_tablet)) {
+            if (mHolder.divider != null)
+                mHolder.divider.setVisibility(View.GONE);
 
-        if(position%2==0) {
-            if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
-            else
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
-        }
-        else {
-            if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
-            else
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+            if (position % 2 == 0) {
+                if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+                else
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
+            } else {
+                if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
+                else
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+            }
         }
         setAnimation(mHolder.itemView, position);
     }
@@ -217,6 +219,8 @@ public class NewsFavAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
             View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+            if(context.getResources().getBoolean(R.bool.is_tablet))
+             v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.life_item_layout, viewGroup, false);
             return new ViewHolder(v);
     }
 

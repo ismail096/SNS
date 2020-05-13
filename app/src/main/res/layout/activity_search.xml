@@ -141,45 +141,39 @@
                     <ma.snrt.news.ui.TextViewExtraBold
                         android:id="@+id/search_all_btn"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/btn_height"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_red_left"
                         android:gravity="center"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:text="@string/all"
                         android:textColor="@color/app_white"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/titles_size"
 
                         />
 
                     <ma.snrt.news.ui.TextViewExtraBold
                         android:id="@+id/search_news_btn"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/btn_height"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_grey_center"
                         android:gravity="center"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:text="@string/articles"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/titles_size"
 
                         />
 
                     <ma.snrt.news.ui.TextViewExtraBold
                         android:id="@+id/search_video_btn"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/btn_height"
                         android:layout_weight="0.5"
                         android:background="@drawable/btn_grey_right"
                         android:gravity="center"
-                        android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:text="@string/videos"
                         android:textColor="@color/app_black"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/titles_size"
                         />
 
                 </LinearLayout>

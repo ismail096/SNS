@@ -53,7 +53,7 @@ public class TopAgendaFragment extends Fragment {
     ArrayList<CategoryAgenda> categories;
     AllAgendaAdapter adapter;
     TopAgendaAdapter topAdapter;
-    ArrayList<Post> tops;
+    List<Post> tops;
     LinearSnapHelper snapHelper;
 
     @Override
@@ -158,7 +158,7 @@ public class TopAgendaFragment extends Fragment {
 
     private void getTopAgendas(){
         String cacheTag = "top_agenda_"+ Utils.getAppCurrentLang();
-        ApiCall.getLatestAgenda(20, new Callback<JsonArray>() {
+        ApiCall.getFeaturedAgenda(0, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(swipeRefreshLayout!=null)
@@ -189,6 +189,8 @@ public class TopAgendaFragment extends Fragment {
 
     private void setTopListAdapter(){
         if(tops.size()>0){
+            if(tops.size()>4)
+                tops = tops.subList(0, 5);
             if(Utils.getAppCurrentLang().equals("ar"))
                 Collections.reverse(tops);
             topRecyclerview.setVisibility(View.VISIBLE);

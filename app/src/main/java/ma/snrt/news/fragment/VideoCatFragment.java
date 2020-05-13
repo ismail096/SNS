@@ -7,10 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -65,10 +68,23 @@ public class VideoCatFragment extends Fragment {
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        final LinearLayoutManager llm = new LinearLayoutManager(mContext);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
+        if(!getResources().getBoolean(R.bool.is_tablet)) {
+
+            final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(llm);
+        }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(lm);
+
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(margin, margin *2 , margin, margin * 2);
+            recyclerView.setLayoutParams(lp);
+        }
 
         posts = new ArrayList<>();
 

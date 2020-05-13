@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -107,10 +108,22 @@ public class SearchActivity extends AppCompatActivity {
         cancelBtn = findViewById(R.id.cancelSearchBtn);
 
         recyclerView.setItemAnimator(null);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        if(!getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(this);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+        }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(this, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(lm);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(margin, margin *2 , margin, margin * 2);
+            recyclerView.setLayoutParams(lp);
+        }
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
 
         posts = new ArrayList<>();
 

@@ -4,6 +4,8 @@ package ma.snrt.news.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -68,6 +72,9 @@ public class SportFragment extends Fragment {
     SportAdapter newsAdapter;
     TagAdapter tagAdapter;
     Category category;
+    private int dotsCount=4;
+    private ImageView[] dots;
+    LinearLayout linearLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,34 +89,34 @@ public class SportFragment extends Fragment {
         emptyTextView = rootView.findViewById(R.id.empty_textview);
         progressBar = rootView.findViewById(R.id.progress_bar);
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+        linearLayout = rootView.findViewById(R.id.viewPagerCountDots);
 
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+        if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
             final LinearLayoutManager llm = new LinearLayoutManager(mContext);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(llm);
-        /*}
+        }
         else{
-            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 3);
             lm.setOrientation(LinearLayoutManager.VERTICAL);
             lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                    if(position==0 || position%5==0)
-                        return 2;
+                    if(position==0 || position%4==0)
+                        return 3;
                     return 1;
                 }
             });
             recyclerView.setLayoutManager(lm);
-        }*/
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(0, 0 , 0, margin * 2 );
+            recyclerView.setLayoutParams(lp);
+        }
         recyclerView.setHasFixedSize(false);
-
-        LinearLayoutManager llm2 = new LinearLayoutManager(mContext);
-        llm2.setOrientation(LinearLayoutManager.HORIZONTAL);
-        matchesRecyclerView.setLayoutManager(llm2);
-        matchesRecyclerView.setHasFixedSize(true);
 
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(mContext);
@@ -271,13 +278,65 @@ public class SportFragment extends Fragment {
 
     private void setMatchesAdapter(){
         if(matches.size()>0){
+            LinearLayoutManager llm2 = new LinearLayoutManager(mContext);
+            llm2.setOrientation(LinearLayoutManager.HORIZONTAL);
+            matchesRecyclerView.setLayoutManager(llm2);
+            matchesRecyclerView.setHasFixedSize(true);
             matchesLayout.setVisibility(View.VISIBLE);
             MatchAdapter adapter = new MatchAdapter(mContext, matches);
             matchesRecyclerView.setAdapter(adapter);
-            matchesRecyclerView.addItemDecoration(new CirclePagerIndicatorDecoration());
+            dotsCount = matches.size();
+            drawPageSelectionIndicators(0);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    matchesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                        @Override
+                        public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                            super.onScrollStateChanged(recyclerView, newState);
+                        }
+
+                        @Override
+                        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                            super.onScrolled(recyclerView, dx, dy);
+                            try {
+                                int pos = llm2.findFirstCompletelyVisibleItemPosition();
+                                Log.e("Sport", "rv scroll pos: "+pos);
+                                if(pos != -1)
+                                    drawPageSelectionIndicators(pos);
+                            }catch(Exception e) {
+                            }
+                        }
+                    });
+                }
+            }, 700);
+            //matchesRecyclerView.addItemDecoration(new CirclePagerIndicatorDecoration());
         }
         else{
             matchesLayout.setVisibility(View.GONE);
+        }
+    }
+
+    private void drawPageSelectionIndicators(int mPosition){
+        if(linearLayout!=null) {
+            linearLayout.removeAllViews();
+        }
+        dots = new ImageView[dotsCount];
+        for (int i = 0; i < dotsCount; i++) {
+            dots[i] = new ImageView(mContext);
+            if(i==mPosition)
+                dots[i].setImageDrawable(getResources().getDrawable(R.drawable.sport_indicator_selected));
+            else
+                dots[i].setImageDrawable(getResources().getDrawable(R.drawable.sport_indicator_default));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            params.setMargins(Utils.dpToPx(getResources(), 4), 0, Utils.dpToPx(getResources(), 4), 0);
+            linearLayout.addView(dots[i], params);
         }
     }
 

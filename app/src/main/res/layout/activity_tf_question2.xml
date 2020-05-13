@@ -43,7 +43,7 @@
     <ImageView
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/true_fake"
+        android:src="?attr/trueFakeLogo"
         android:layout_marginTop="40dp"
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
@@ -69,6 +69,8 @@
         android:gravity="top"
         android:background="@drawable/tf_edit_border"
         android:padding="10dp"
+        android:textColor="?attr/secondaryTextColor"
+        android:textColorHint="@color/text_grey"
         />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -82,6 +84,8 @@
         android:gravity="top"
         android:background="@drawable/tf_edit_border"
         android:padding="10dp"
+        android:textColor="?attr/secondaryTextColor"
+        android:textColorHint="@color/text_grey"
         />
 
     <LinearLayout

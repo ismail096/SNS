@@ -127,8 +127,6 @@
         <item name="tabBackground">@android:color/transparent</item>
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">#fff</item>
-        <item name="tabPaddingStart">15dp</item>
-        <item name="tabPaddingEnd">15dp</item>
     </style>
 
     <style name="myCustomTablayout2" parent="Base.Widget.Design.TabLayout">

@@ -18,17 +18,25 @@
             android:background="?attr/backgroundColor2"
             >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/tags_recyclerview"
+            <RelativeLayout
+                android:id="@+id/tags_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:paddingTop="15dp"
                 android:paddingStart="5dp"
                 android:paddingBottom="15dp"
                 android:background="?attr/backgroundColor"
-                android:visibility="gone"
-                />
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/tags_recyclerview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:visibility="gone"
+                    />
+
+            </RelativeLayout>
 
             <ma.snrt.news.ui.TextViewBold
                 android:id="@+id/recommand_title"
@@ -40,7 +48,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:layout_below="@+id/tags_recyclerview"
+                android:layout_below="@+id/tags_layout"
                 />
 
             <androidx.recyclerview.widget.RecyclerView

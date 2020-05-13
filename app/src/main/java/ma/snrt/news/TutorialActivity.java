@@ -9,19 +9,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.duolingo.open.rtlviewpager.RtlViewPager;
+
 import ma.snrt.news.util.MyContextWrapper;
 import ma.snrt.news.util.Utils;
 
 public class TutorialActivity extends AppCompatActivity {
-    ViewPager viewPager;
-    int imagesFr[] =  {R.drawable.tuto1, R.drawable.tuto2, R.drawable.tuto3, R.drawable.tuto4, R.drawable.tuto4};
-    //int imagesAr[] =  {R.drawable.slider_1, R.drawable.slider_1, R.drawable.slider_1, R.drawable.slider_1};
+    RtlViewPager viewPager;
+
+    int images[] =  {R.drawable.tuto1, R.drawable.tuto2, R.drawable.tuto3, R.drawable.tuto4, R.drawable.tuto4};
+    private int dotsCount=4;
+    private ImageView[] dots;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +35,9 @@ public class TutorialActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tutorial);
 
         viewPager = findViewById(R.id.viewpager);
-        //if(Utils.getAppCurrentLang().equals("fr"))
-            viewPager.setAdapter(new TutorialPagerAdapter(imagesFr));
-        //else
-            //viewPager.setAdapter(new TutorialPagerAdapter(imagesAr));
+        viewPager.setAdapter(new TutorialPagerAdapter(images));
+
+        drawPageSelectionIndicators(0);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -42,8 +47,12 @@ public class TutorialActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int i) {
-                if(i == imagesFr.length - 1)
+
+                if(i == images.length - 1) {
                     setTutorialShowed();
+                    return;
+                }
+                drawPageSelectionIndicators(i);
             }
 
             @Override
@@ -53,21 +62,35 @@ public class TutorialActivity extends AppCompatActivity {
         });
     }
 
+    private void drawPageSelectionIndicators(int mPosition){
+        if(linearLayout!=null) {
+            linearLayout.removeAllViews();
+        }
+        linearLayout = findViewById(R.id.viewPagerCountDots);
+        dots = new ImageView[dotsCount];
+        for (int i = 0; i < dotsCount; i++) {
+            dots[i] = new ImageView(this);
+            if(i==mPosition)
+                dots[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_selected));
+            else
+                dots[i].setImageDrawable(getResources().getDrawable(R.drawable.page_indicator_default));
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+            params.setMargins(Utils.dpToPx(getResources(), 4), 0, Utils.dpToPx(getResources(), 4), 0);
+            linearLayout.addView(dots[i], params);
+        }
+    }
+
     private void setTutorialShowed() {
         SharedPreferences.Editor editor = AppController.getSharedPreferences().edit();
         editor.putBoolean("isTutorialShowed", true);
         editor.commit();
         startActivity(new Intent(this, MainActivity.class));
         finish();
-    }
-
-    public void onClick(View view){
-        /*switch (view.getId()){
-            case R.id.ignore_btn:
-                setTutorialShowed();
-                finish();
-                break;
-        }*/
     }
 
     class TutorialPagerAdapter extends PagerAdapter {

@@ -138,6 +138,12 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         else
             mHolder.container.setCardBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
 
+        if(context.getResources().getBoolean(R.bool.is_tablet)){
+            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+            lp.width = Utils.dpToPx(context.getResources(), 480);
+            mHolder.itemView.setLayoutParams(lp);
+        }
+
     }
 
     @Override

@@ -31,43 +31,14 @@
 			}
 			a{
 				text-decoration: none;
-				color: #4592E0;
+				color: #4592ED;
 			}
     	</style>
-		<script src="iSpeechTTS.min.js"></script>
 	</head>
 
 	<body>
 		<div class="text">
 			{{content}}
 		</div>
-		<audio id="audioPlayer"></audio>
 	</body>
-
-<script>
-
-audioPlayer = document.getElementById('audioPlayer');
-initTts = function() {
-	audioPlayer = document.getElementById('audioPlayer');
-	tts = new iSpeechTTS(audioPlayer, {
-		apiKey: 'developerdemokeydeveloperdemokey',
-		voice: 'arabicmale',
-		onEnded: function() {
-			console.log("TTS playback ended");
-		}
-	    });
-    }
-
-startTts = function(value) {
-	tts.speak(value);
-}
-
-pauseTts = function() {
-	tts.pause();
-}
-
-resumeTts = function() {
-	tts.resume();
-}
-</script>
 </html>

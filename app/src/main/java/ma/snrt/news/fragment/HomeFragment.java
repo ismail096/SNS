@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -137,6 +140,18 @@ public class HomeFragment extends Fragment {
                 tv.setTypeface(tf);
                 tabLayout.getTabAt(i).setCustomView(container);
                 tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
+
+                if(getResources().getBoolean(R.bool.is_tablet)) {
+                    Rect bounds = new Rect();
+                    Paint textPaint = tv.getPaint();
+                    textPaint.setTypeface(tf);
+                    textPaint.setTextSize(tv.getTextSize());
+                    textPaint.setStyle(Paint.Style.FILL);
+                    textPaint.getTextBounds(tv.getText().toString(), 0, tv.getText().toString().length(), bounds);
+                    int width = (int) textPaint.measureText(tv.getText().toString()) * 2;
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
+                    ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(i).setLayoutParams(layoutParams);
+                }
             }
 
             TabLayout.Tab firstTab = tabLayout.getTabAt(0);

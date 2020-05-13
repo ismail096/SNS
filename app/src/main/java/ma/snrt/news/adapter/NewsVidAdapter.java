@@ -14,8 +14,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -186,17 +188,18 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
             });
-            if(position%2==0) {
-                if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
-                else
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
-            }
-            else {
-                if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
-                else
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+            if(!context.getResources().getBoolean(R.bool.is_tablet)) {
+                if (position % 2 == 0) {
+                    if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+                    else
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
+                } else {
+                    if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
+                    else
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+                }
             }
             setAnimation(mHolder.itemView, position);
         }
@@ -293,10 +296,29 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             };
             mHolder.favBtn.setOnClickListener(onClickListener);
             mHolder.shareBtn.setOnClickListener(onClickListener);
-            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
-            else
-                mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+
+
+            if(context.getResources().getBoolean(R.bool.is_tablet)){
+                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mHolder.imageLayout.getLayoutParams();
+                lp.setMargins(0, 0, 0, Utils.dpToPx(context.getResources(), 10));
+                mHolder.imageLayout.setLayoutParams(lp);
+
+                RecyclerView.LayoutParams lp2 = (RecyclerView.LayoutParams) mHolder.parent.getLayoutParams();
+                int margin = Utils.dpToPx(context.getResources(), 5);
+                lp2.setMargins(margin, margin , margin, margin);
+                mHolder.parent.setLayoutParams(lp2);
+            }
+            else{
+                RecyclerView.LayoutParams lp2 = (RecyclerView.LayoutParams) mHolder.parent.getLayoutParams();
+                int margin = Utils.dpToPx(context.getResources(), 5);
+                lp2.setMargins(margin * 2, margin , margin * 2, margin);
+                mHolder.parent.setLayoutParams(lp2);
+
+                if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
+                else
+                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+            }
             setAnimation(mHolder.itemView, position);
         }
     }
@@ -321,6 +343,8 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
             View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+            if(context.getResources().getBoolean(R.bool.is_tablet))
+                v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.life_item_layout, viewGroup, false);
             if(viewType== TYPE_VIDEO) {
                 v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_layout2, viewGroup, false);
                 return new VideoHolder(v);
@@ -353,6 +377,9 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextViewEBItalic category;
         ImageView imageView, playBtn, shareBtn, favBtn;
         LinearLayout container;
+        RelativeLayout imageLayout;
+        CardView parent;
+
 
         public VideoHolder(View convertView) {
             super(convertView);
@@ -364,6 +391,8 @@ public class NewsVidAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             shareBtn = convertView.findViewById(R.id.share_btn);
             favBtn = convertView.findViewById(R.id.fav_btn);
             category = convertView.findViewById(R.id.post_category);
+            imageLayout = convertView.findViewById(R.id.post_image_layout);
+            parent = convertView.findViewById(R.id.post_item_parent);
         }
     }
 }

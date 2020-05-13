@@ -48,7 +48,7 @@ public class MatchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         mHolder.teamB.setText(item.getExtr());
         mHolder.teamAResult.setText(item.getS_dom()+"");
         mHolder.teamBResult.setText(item.getS_extr()+"");
-        mHolder.matchStatus.setText(item.getStatus());
+        //mHolder.matchStatus.setText(item.getStatus());
         mHolder.matchTime.setText(item.getTime());
 
         loadImage(mHolder.teamAImage, item.getDomImage());

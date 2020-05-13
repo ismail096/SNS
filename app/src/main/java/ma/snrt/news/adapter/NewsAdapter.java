@@ -183,6 +183,25 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
         });
+        if(context.getResources().getBoolean(R.bool.is_tablet) && getItemViewType(position) == TYPE_NORMAL){
+            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+            if((position+1) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
+                lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
+            }
+            else if((position+2) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 7);
+                //lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+            }
+            else if((position+3) % 4 == 0){
+                lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+            }
+            int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 13);
+            lp.width = width;
+            mHolder.itemView.setLayoutParams(lp);
+            holder.setIsRecyclable(false);
+        }
         setAnimation(mHolder.itemView, position);
     }
 
@@ -197,10 +216,10 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0 || position%4==0)
+        if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%3==0))
             return TYPE_BIG;
-        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%5==0))
-            return TYPE_BIG;*/
+        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%4==0))
+            return TYPE_BIG;
         return TYPE_NORMAL;
     }
 
@@ -208,6 +227,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
             View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+            if(context.getResources().getBoolean(R.bool.is_tablet))
+                v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_tab_item_layout, viewGroup, false);
             if(viewType==TYPE_BIG)
                 v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_big_layout, viewGroup, false);
             return new ViewHolder(v);

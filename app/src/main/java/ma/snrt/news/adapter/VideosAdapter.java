@@ -14,8 +14,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -204,7 +206,12 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
         else
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
-
+        if(context.getResources().getBoolean(R.bool.is_tablet)){
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mHolder.imageLayout.getLayoutParams();
+            lp.setMargins(0, 0, 0, Utils.dpToPx(context.getResources(), 10));
+            mHolder.imageLayout.setLayoutParams(lp);
+            mHolder.title.setMaxLines(2);
+        }
         //setAnimation(mHolder.itemView, position);
     }
 
@@ -228,7 +235,7 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
             View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_layout, viewGroup, false);
-            if(viewType==TYPE_NORMAL)
+            if(viewType==TYPE_NORMAL && ! context.getResources().getBoolean(R.bool.is_tablet))
                 v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_small_layout, viewGroup, false);
             return new ViewHolder(v);
     }
@@ -239,6 +246,8 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         TextViewEBItalic category;
         ImageView imageView, playBtn, shareBtn, favBtn;
         LinearLayout container;
+        RelativeLayout imageLayout;
+        CardView parent;
 
         public ViewHolder(View convertView) {
             super(convertView);
@@ -250,6 +259,8 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             shareBtn = convertView.findViewById(R.id.share_btn);
             favBtn = convertView.findViewById(R.id.fav_btn);
             category = convertView.findViewById(R.id.post_category);
+            imageLayout = convertView.findViewById(R.id.post_image_layout);
+            parent = convertView.findViewById(R.id.post_item_parent);
         }
     }
 }

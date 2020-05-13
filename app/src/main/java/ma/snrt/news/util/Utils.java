@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -77,12 +78,6 @@ public class Utils {
         return videoId;
     }
 
-    public static void showKeyboard(Context context){
-        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
-
-    }
-
     public static void closeKeyboard(Context context, View view){
         if(view!=null) {
             InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -97,26 +92,6 @@ public class Utils {
             inputMethodManager.hideSoftInputFromWindow(context.getCurrentFocus().getWindowToken(), 0);
             context.getCurrentFocus().clearFocus();
         }
-    }
-
-    public static Uri saveImage(Context context, Bitmap image) {
-        //TODO - Should be processed in another thread
-        File imagesFolder = new File(context.getCacheDir(), "images");
-        Uri uri = null;
-        try {
-            imagesFolder.mkdirs();
-            File file = new File(imagesFolder, "shared_image.png");
-
-            FileOutputStream stream = new FileOutputStream(file);
-            image.compress(Bitmap.CompressFormat.PNG, 90, stream);
-            stream.flush();
-            stream.close();
-            uri = FileProvider.getUriForFile(context, "com.snrt.news.fileprovider", file);
-
-        } catch (IOException e) {
-            Log.d("shareimage", "IOException while trying to write file for sharing: " + e.getMessage());
-        }
-        return uri;
     }
 
     public static String getPostRelativeDate(Context context, String date){
@@ -151,5 +126,9 @@ public class Utils {
         view.startAnimation(animation);
     }
 
-
+    public static int getScreenWidth(Activity activity){
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        return metrics.widthPixels;
+    }
 }

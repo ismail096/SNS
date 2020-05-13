@@ -62,5 +62,10 @@
     <string name="recommanded">Recommandés pour vous</string>
     <string name="top_matches">Top matchs du jour</string>
     <string name="botola">Botola</string>
-
+    <string name="finished">Terminé</string>
+    <string name="favoris_title">Trouvez vos articles et videos enregistrés</string>
+    <string name="favoris_empty_text">Lors de la lecture de l\’article, appuyer sur l\’icône pour l\’enregistrer. Vous pouvez revenir ici pour le lire plus tard</string>
+    <string name="position_hint">Sélectionner une ville</string>
+    <string name="start_date_hint">De</string>`
+    <string name="end_date_hint">À</string>
 </resources>

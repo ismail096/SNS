@@ -309,8 +309,8 @@ public class PostDetailActivity extends AppCompatActivity {
 
     private void setFontSize(int oldValue, int value) {
         int factor = 2;
-        if(getResources().getBoolean(R.bool.is_tablet))
-            factor = 3;
+        /*if(getResources().getBoolean(R.bool.is_tablet))
+            factor = 3;*/
         float ratio = value - oldValue;
         float wvRatio = (value  - oldValue) * factor;
         /*if(Utils.getAppCurrentLang().equals("ar")) {

@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_home_titles"
+        android:layout_marginTop="@dimen/default_margin_top"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/default_margin_top"
         >
 
         <View
@@ -32,8 +32,27 @@
             android:layout_marginStart="10dp"
             android:text="@string/top_videos"
             android:textAllCaps="true"
+            android:layout_weight="1"
             />
 
+        <ma.snrt.news.ui.TextViewExtraBold
+            android:id="@+id/see_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="12sp"
+            android:textAllCaps="true"
+            android:text="@string/see_more"
+            android:layout_gravity="end|center_vertical"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_next_red"
+            android:adjustViewBounds="true"
+            />
 
     </LinearLayout>
 

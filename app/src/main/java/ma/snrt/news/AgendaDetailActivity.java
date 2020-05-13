@@ -242,9 +242,10 @@ public class AgendaDetailActivity extends AppCompatActivity {
                 break;
             case R.id.share_btn:
                 try {
+                    String shareText = /*getString(R.string.share_post) +" "+;*/ post.getTitle()+" " + post.getUrl();
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-                    intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_post) + " " + post.getUrl());
+                    intent.putExtra(Intent.EXTRA_TEXT, shareText);
                     intent.setType("text/plain");
                     startActivity(Intent.createChooser(intent, getString(R.string.share)));
                 } catch (Exception e) {

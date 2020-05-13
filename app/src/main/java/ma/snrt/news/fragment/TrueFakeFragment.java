@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -32,7 +34,7 @@ import ma.snrt.news.R;
 import ma.snrt.news.SearchActivity;
 import ma.snrt.news.SearchTFActivity;
 import ma.snrt.news.TFQuestionActivity;
-import ma.snrt.news.adapter.NewsFavAdapter;
+import ma.snrt.news.adapter.TFAdapter;
 import ma.snrt.news.adapter.TagAdapter;
 import ma.snrt.news.model.Category;
 import ma.snrt.news.model.Post;
@@ -60,7 +62,7 @@ public class TrueFakeFragment extends Fragment {
     ArrayList<Tag> tags;
     int newsPage = 0;
     boolean isNewsListLoaded;
-    NewsFavAdapter newsAdapter;
+    TFAdapter newsAdapter;
     TagAdapter tagAdapter;
     Category category;
 
@@ -79,10 +81,21 @@ public class TrueFakeFragment extends Fragment {
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        final LinearLayoutManager llm = new LinearLayoutManager(mContext);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+            final LinearLayoutManager llm = new LinearLayoutManager(mContext);
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(llm);
+        }
+        else{
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            lm.setOrientation(LinearLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(lm);
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(margin, lp.topMargin, margin, lp.bottomMargin );
+            recyclerView.setLayoutParams(lp);
+        }
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(llm);
 
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(mContext);
         layoutManager.setFlexDirection(FlexDirection.ROW);
@@ -189,9 +202,9 @@ public class TrueFakeFragment extends Fragment {
         if(posts.size()>0){
             recyclerView.setVisibility(View.VISIBLE);
             if(newsPage ==0){
-                newsAdapter = new NewsFavAdapter(mContext, posts, recyclerView);
+                newsAdapter = new TFAdapter(mContext, posts, recyclerView);
                 recyclerView.setAdapter(newsAdapter);
-                newsAdapter.setOnLoadMoreListener(new NewsFavAdapter.OnLoadMoreListener() {
+                newsAdapter.setOnLoadMoreListener(new TFAdapter.OnLoadMoreListener() {
                     @Override
                     public void onLoadMore() {
                         if(!isNewsListLoaded){

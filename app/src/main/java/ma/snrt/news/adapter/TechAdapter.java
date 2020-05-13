@@ -189,19 +189,36 @@ public class TechAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
                 mHolder.container.setLayoutParams(lp);
             }
-
-            if (position > 2 && position % 2 != 0) {
-                if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
-                else
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
-            } else {
-                if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
-                else
-                    mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+            if(!context.getResources().getBoolean(R.bool.is_tablet)) {
+                if (position > 2 && position % 2 != 0) {
+                    if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
+                    else
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_black));
+                } else {
+                    if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey));
+                    else
+                        mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGreyDark));
+                }
+                mHolder.divider.setVisibility(View.GONE);
             }
-            mHolder.divider.setVisibility(View.GONE);
+            else{
+                RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+                if(position == 1 || position == 2){
+                    lp.topMargin = Utils.dpToPx(context.getResources(), 10);
+                }
+                if(position % 2 == 0){
+                    lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
+                    lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
+                }
+                else {
+                    lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                    lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+                }
+                mHolder.itemView.setLayoutParams(lp);
+                holder.setIsRecyclable(false);
+            }
         }
         else{
             final BigViewHolder mHolder = (BigViewHolder) holder;
@@ -227,8 +244,6 @@ public class TechAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (item.getDatePublication() != null) {
                 mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
             }
-            if(item.getColor() != null && item.getColor().length() == 7)
-                mHolder.date.setTextColor(Color.parseColor(item.getColor()));
 
             RequestOptions requestOptions = new RequestOptions();
             requestOptions.placeholder(R.drawable.placeholder);
@@ -258,17 +273,17 @@ public class TechAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemViewType(int position) {
         if(position==0)
             return TYPE_BIG;
-        else if(position == 1 || position == 2)
+        else if(!context.getResources().getBoolean(R.bool.is_tablet) && (position == 1 || position == 2))
             return TYPE_SMALL;
-        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%5==0))
-            return TYPE_BIG;*/
         return TYPE_NORMAL;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+            if(context.getResources().getBoolean(R.bool.is_tablet))
+                v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.life_item_layout, viewGroup, false);
             if(viewType == TYPE_BIG) {
                 v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.tech_big_layout, viewGroup, false);
                 return new BigViewHolder(v);

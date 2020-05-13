@@ -20,6 +20,7 @@ import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ma.snrt.news.AgendaDetailActivity;
 import ma.snrt.news.R;
@@ -30,10 +31,10 @@ import ma.snrt.news.util.Utils;
 
 public class TopAgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Post> items;
+    List<Post> items;
     Context context;
 
-    public TopAgendaAdapter(Context context, ArrayList<Post> items) {
+    public TopAgendaAdapter(Context context, List<Post> items) {
         this.context = context;
         this.items = items;
     }

@@ -7,9 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,24 +86,20 @@ public class LifeFragment extends Fragment {
         mContext = getActivity();
         category = (Category) getArguments().getSerializable("category");
 
-        //if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
+        if(!mContext.getResources().getBoolean(R.bool.is_tablet)) {
             final LinearLayoutManager llm = new LinearLayoutManager(mContext);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(llm);
-        /*}
+        }
         else{
             final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
             lm.setOrientation(LinearLayoutManager.VERTICAL);
-            lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                @Override
-                public int getSpanSize(int position) {
-                    if(position==0 || position%5==0)
-                        return 2;
-                    return 1;
-                }
-            });
             recyclerView.setLayoutManager(lm);
-        }*/
+            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) recyclerView.getLayoutParams();
+            int margin = Utils.dpToPx(getResources(), 5);
+            lp.setMargins(margin, lp.topMargin, margin, lp.bottomMargin );
+            recyclerView.setLayoutParams(lp);
+        }
         recyclerView.setHasFixedSize(false);
 
         /*FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(mContext);

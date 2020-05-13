@@ -89,8 +89,14 @@ public interface ApiInterface {
     Call<JsonArray> getCategoriesAgenda(@Query("lang") String lang);
 
     @GET("7_7")
-    Call<JsonArray> getAgendaByCat(@Query("lang") String lang, @Query("category") int categoryId, @Query("position") String position,
+    Call<JsonArray> getAgendaByCat(@Query("lang") String lang, @Query("category_id") int categoryId, @Query("position") String position,
                                    @Query("created_start") String date1, @Query("created_end") String date2, @Query("page") int page, @Query("items_per_page") int count);
+
+    @GET("7_7/is_featured")
+    Call<JsonArray> getAgendaFeatured(@Query("lang") String lang, @Query("category_id") int categoryId);
+
+    @GET("7_7/is_featured")
+    Call<JsonArray> getAllAgendaFeatured(@Query("lang") String lang);
 
     @POST("like/7_7/{id}")
     Call<JsonObject> postLike77(@Path("id") int id);
@@ -103,6 +109,9 @@ public interface ApiInterface {
 
     @GET("articles/live")
     Call<JsonArray> getLive(@Query("lang") String lang);
+
+    @GET("create_question/{question}/{email}/{nom}/{lang}")
+    Call<JsonObject> sendQuestion(@Path("lang") String lang, @Path("question") String question, @Path("email") String email, @Path("nom") String nom);
 
     @GET
     Call<ResponseBody> getUrlBytes(@Url String url);

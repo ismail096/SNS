@@ -164,6 +164,7 @@
                     android:textSize="12sp"
                     android:paddingStart="40dp"
                     android:background="@drawable/edit_border"
+                    android:hint="@string/position_hint"
                     />
 
             </RelativeLayout>
@@ -201,6 +202,7 @@
                         android:textSize="12sp"
                         android:background="@drawable/edit_border"
                         android:paddingStart="40dp"
+                        android:hint="@string/start_date_hint"
                         />
 
                 </RelativeLayout>
@@ -233,6 +235,7 @@
                         android:textSize="12sp"
                         android:background="@drawable/edit_border"
                         android:paddingStart="40dp"
+                        android:hint="@string/end_date_hint"
                         />
 
                 </RelativeLayout>

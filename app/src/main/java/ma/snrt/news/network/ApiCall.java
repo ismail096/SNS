@@ -139,6 +139,13 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
+    public static void getFeaturedAgenda(int categoryId, Callback<JsonArray> callback) {
+        Call<JsonArray> call = AppController.getAPIService().getAgendaFeatured(Utils.getAppCurrentLang(), categoryId);
+        if(categoryId == 0)
+            call = AppController.getAPIService().getAllAgendaFeatured(Utils.getAppCurrentLang());
+        call.enqueue(callback);
+    }
+
     public static void getLatestAgenda(int count, Callback<JsonArray> callback) {
         Call<JsonArray> call = AppController.getAPIService().getAgendaByCat(Utils.getAppCurrentLang(), 0, "", "", "", 0, count);
         call.enqueue(callback);
@@ -168,6 +175,11 @@ public class ApiCall {
 
     public static void getLiveMatches(Callback<JsonObject> callback) {
         Call<JsonObject> call = AppController.getAPIService().getUrlAsJsonObject(AppController.LIVE_MATCHES_URL+"?lang="+Utils.getAppCurrentLang());
+        call.enqueue(callback);
+    }
+
+    public static void sendQuestion(String question, String email, String nom, Callback<JsonObject> callback) {
+        Call<JsonObject> call = AppController.getAPIService().sendQuestion(Utils.getAppCurrentLang(), question, email, nom);
         call.enqueue(callback);
     }
 

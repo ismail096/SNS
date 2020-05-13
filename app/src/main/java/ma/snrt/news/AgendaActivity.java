@@ -73,7 +73,8 @@ public class AgendaActivity extends AppCompatActivity {
     public String position = "";
     View blackView;
     CategoryAgenda category;
-    ArrayList<Post> posts = new ArrayList<>(), tops = new ArrayList<>();
+    ArrayList<Post> posts = new ArrayList<>();
+    List<Post> tops = new ArrayList<>();
     int page = 0;
     boolean isListLoaded;
     AgendaAdapter2 agendaAdapter;
@@ -125,7 +126,7 @@ public class AgendaActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 String day = dayOfMonth+"";
-                String month = monthOfYear+"";
+                String month = (monthOfYear+1)+"";
                 if(dayOfMonth<10)
                     day = "0"+ day;
                 if(monthOfYear<10)
@@ -265,7 +266,7 @@ public class AgendaActivity extends AppCompatActivity {
 
     private void getTopAgendas(){
         String cacheTag = "top_agenda_"+category.getId()+"_"+ Utils.getAppCurrentLang();
-        ApiCall.getAgendaByCat(category.getId(), "", "", "", 0, new Callback<JsonArray>() {
+        ApiCall.getFeaturedAgenda(category.getId(), new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 /*if(swipeRefreshLayout!=null)
@@ -296,6 +297,8 @@ public class AgendaActivity extends AppCompatActivity {
 
     private void setTopListAdapter(){
         if(tops.size()>0){
+            if(tops.size()>4)
+                tops = tops.subList(0, 5);
             if(Utils.getAppCurrentLang().equals("ar"))
                 Collections.reverse(tops);
             topRecyclerview.setVisibility(View.VISIBLE);
@@ -362,10 +365,10 @@ public class AgendaActivity extends AppCompatActivity {
                     topRecyclerview.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.GONE);
                     emptyTextView.setVisibility(View.GONE);
+                    position = positionEdit.getText().toString();
                     getAgendas();
                 }
                 isFiltreVisible = false;
-                position = positionEdit.getText().toString();
                 break;
         }
     }

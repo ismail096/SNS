@@ -27,6 +27,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.JsonArray;
 
 import ma.snrt.news.adapter.HomePagerAdapter;
+import ma.snrt.news.fragment.FavFragment;
 import ma.snrt.news.fragment.HomeFragment;
 import ma.snrt.news.fragment.SettingsFragment;
 import ma.snrt.news.model.Post;
@@ -162,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.fav_icon:
                         viewPager.setCurrentItem(3);
+                        if(homePagerAdapter!=null){
+                            FavFragment frag1 = (FavFragment) viewPager
+                                    .getAdapter()
+                                    .instantiateItem(viewPager, viewPager.getCurrentItem());
+                            frag1.update();
+                        }
                         mainLogo.setVisibility(View.GONE);
                         title.setVisibility(View.VISIBLE);
                         title.setText(getString(R.string.favoris));
@@ -206,6 +213,12 @@ public class MainActivity extends AppCompatActivity {
                         mainLogo.setVisibility(View.GONE);
                         title.setVisibility(View.VISIBLE);
                         title.setText(getString(R.string.favoris));
+                        if(homePagerAdapter!=null){
+                            FavFragment frag1 = (FavFragment) viewPager
+                                    .getAdapter()
+                                    .instantiateItem(viewPager, viewPager.getCurrentItem());
+                            frag1.update();
+                        }
                         break;
                 }
             }

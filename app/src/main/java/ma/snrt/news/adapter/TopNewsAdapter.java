@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +35,7 @@ import java.util.List;
 
 import ma.snrt.news.AgendaActivity;
 import ma.snrt.news.AppController;
+import ma.snrt.news.MainActivity;
 import ma.snrt.news.PostDetailActivity;
 import ma.snrt.news.R;
 import ma.snrt.news.model.Post;
@@ -168,16 +170,39 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     }
                 }
             });
-            if(getItemViewType(position) == TYPE_NORMAL) {
+            if(getItemViewType(position) == TYPE_NORMAL && mHolder.divider != null) {
                 if (position == 3 || position == 9 || position == items.size()-1)
                     mHolder.divider.setVisibility(View.GONE);
-                /*else if (context.getResources().getBoolean(R.bool.is_tablet)
-                        && (position == 3 || position == 4 || position == 10 || position == 11
-                        || position == items.size()-2 || position == items.size()-1)) {
-                    mHolder.divider.setVisibility(View.GONE);
-                }*/
                 else
                     mHolder.divider.setVisibility(View.VISIBLE);
+            }
+            if(context.getResources().getBoolean(R.bool.is_tablet)){
+                if(getItemViewType(position) == TYPE_NORMAL){
+
+                    RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+                    int diff = 0;
+                    if(position>9)
+                        diff = 10;
+
+                    if (((position + 1) - diff) % 4 == 0) {
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
+                        lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
+                    } else if (((position + 2) - diff) % 4 == 0) {
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 7);
+                        //lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+                    } else if (((position + 3) - diff) % 4 == 0) {
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                        lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+                    }
+
+                    int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 13);
+                    lp.width = width;
+                    mHolder.itemView.setLayoutParams(lp);
+                    holder.setIsRecyclable(false);
+                }
+                else if(getItemViewType(position) == TYPE_BIG){
+                    mHolder.postDataLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+                }
             }
             //setAnimation(mHolder.itemView, position);
         }
@@ -207,6 +232,9 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         else if(holder instanceof VideosHolder){
             VideosHolder mHolder = (VideosHolder) holder;
             mHolder.recyclerView.setNestedScrollingEnabled(false);
+            mHolder.seeMore.setOnClickListener(view ->{
+                ((MainActivity) context).viewPager.setCurrentItem(2);
+            });
             if(videos.size()>0)
                 setVideosAdapter(mHolder.recyclerView);
             else
@@ -232,10 +260,10 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return TYPE_AGENDA;
         if(items.get(position).getCustomCategory() == 3)
             return TYPE_VIDEOS;
-        if(position==0 || position==6 || position==11)
+        if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==6 || position==11))
             return TYPE_BIG;
-        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==7 || position==13))
-            return TYPE_BIG;*/
+        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==5 || (position>9 && (position - 10) % 4 == 0)))
+            return TYPE_BIG;
         return TYPE_NORMAL;
     }
 
@@ -246,7 +274,10 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         View v;
         switch (viewType){
             case 1:
-                v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+                if(!context.getResources().getBoolean(R.bool.is_tablet))
+                    v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_item_layout, viewGroup, false);
+                else
+                    v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_tab_item_layout, viewGroup, false);
                 mViewHolder =  new ViewHolder(v);
                 break;
             case 2:
@@ -278,6 +309,7 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextViewRegular date;
         ImageView imageView, shareBtn, favBtn;
         View container, divider;
+        LinearLayout postDataLayout;
 
         public ViewHolder(View convertView) {
             super(convertView);
@@ -289,6 +321,7 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             shareBtn = convertView.findViewById(R.id.share_btn);
             favBtn = convertView.findViewById(R.id.fav_btn);
             divider = convertView.findViewById(R.id.news_item_divider);
+            postDataLayout = convertView.findViewById(R.id.post_data_layout);
         }
     }
 
@@ -322,11 +355,13 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     class VideosHolder extends RecyclerView.ViewHolder {
         RecyclerView recyclerView;
         LinearLayout container;
+        TextViewExtraBold seeMore;
 
         public VideosHolder(View convertView) {
             super(convertView);
             recyclerView = convertView.findViewById(R.id.videos_recycler);
             container = convertView.findViewById(R.id.videos_container);
+            seeMore = convertView.findViewById(R.id.see_more);
         }
     }
 
@@ -347,7 +382,10 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void setAgendaAdapter(RecyclerView rv){
             LinearLayoutManager llm = new LinearLayoutManager(context);
-            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            if(!context.getResources().getBoolean(R.bool.is_tablet))
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+            else
+                llm.setOrientation(LinearLayoutManager.HORIZONTAL);
             rv.setHasFixedSize(true);
             rv.setLayoutManager(llm);
             AgendaAdapter storyAdapter = new AgendaAdapter(context, agendas, rv);
@@ -355,11 +393,24 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void setVideosAdapter(RecyclerView rv){
-            LinearLayoutManager llm = new LinearLayoutManager(context);
-            llm.setOrientation(LinearLayoutManager.VERTICAL);
-            rv.setHasFixedSize(true);
-            rv.setLayoutManager(llm);
+            if(!context.getResources().getBoolean(R.bool.is_tablet)) {
+                LinearLayoutManager llm = new LinearLayoutManager(context);
+                llm.setOrientation(LinearLayoutManager.VERTICAL);
+                rv.setHasFixedSize(true);
+                rv.setLayoutManager(llm);
+            }
+            else{
+                GridLayoutManager glm = new GridLayoutManager(context, 3);
+                rv.setHasFixedSize(true);
+                rv.setLayoutManager(glm);
+            }
             VideosAdapter adapter = new VideosAdapter(context, videos, rv);
             rv.setAdapter(adapter);
+        if(context.getResources().getBoolean(R.bool.is_tablet)){
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) rv.getLayoutParams();
+            int margin = Utils.dpToPx(context.getResources(), 7);
+            lp.setMargins(margin, lp.topMargin, margin, lp.bottomMargin );
+            rv.setLayoutParams(lp);
+        }
     }
 }

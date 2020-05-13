@@ -62,7 +62,7 @@ public class TopNewsFragment extends Fragment {
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
 
         mContext = getActivity();
-        //if(!getResources().getBoolean(R.bool.is_tablet)) {
+        if(!getResources().getBoolean(R.bool.is_tablet)) {
             final LinearLayoutManager llm = new LinearLayoutManager(mContext);
             llm.setOrientation(LinearLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(llm);
@@ -86,20 +86,20 @@ public class TopNewsFragment extends Fragment {
                     }
                 }
             });
-       /* }
+       }
         else{
-            final GridLayoutManager lm = new GridLayoutManager(mContext, 2);
+            final GridLayoutManager lm = new GridLayoutManager(mContext, 3);
             lm.setOrientation(LinearLayoutManager.VERTICAL);
             lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                     if(position==0 || position==5 || position==6 || position==7 || position==12 || position==13)
-                        return 2;
+                     if(position==0 || position==4 || position==5 || position==9 || (position>9 && (position - 10) % 4 == 0))
+                        return 3;
                      return 1;
                 }
             });
             recyclerView.setLayoutManager(lm);
-        }*/
+        }
         recyclerView.setHasFixedSize(false);
         recyclerView.setNestedScrollingEnabled(true);
 
@@ -251,22 +251,20 @@ public class TopNewsFragment extends Fragment {
     private void setListAdapter(){
         if(posts.size()>0){
             recyclerView.setVisibility(View.VISIBLE);
-            //if(!getResources().getBoolean(R.bool.is_tablet)) {
+            if(!getResources().getBoolean(R.bool.is_tablet)) {
                 if (posts.size() > 4 && users.size() > 0)
                     posts.add(4, new Post(1));
                 if (posts.size() > 5 && videos.size() > 0)
                     posts.add(5, new Post(3));
                 if (posts.size() > 10 && agendas.size() > 0)
                     posts.add(10, new Post(2));
-            /*}
+            }
             else{
-                if (posts.size() > 5 && users.size() > 0)
-                    posts.add(5, new Post(1));
-                if (posts.size() > 6 && videos.size() > 0)
-                    posts.add(6, new Post(3));
-                if (posts.size() > 12 && agendas.size() > 0)
-                    posts.add(12, new Post(2));
-            }*/
+                if (posts.size() > 4 && videos.size() > 0)
+                    posts.add(4, new Post(3));
+                if (posts.size() > 9 && agendas.size() > 0)
+                    posts.add(9, new Post(2));
+            }
             newsAdapter = new TopNewsAdapter(mContext, posts, users, videos, agendas);
             recyclerView.setAdapter(newsAdapter);
         }
