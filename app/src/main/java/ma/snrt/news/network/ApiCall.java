@@ -136,6 +136,8 @@ public class ApiCall {
 
     public static void getAgendaByCat(int categoryId, String position, String date1, String date2, int page, Callback<JsonArray> callback) {
         Call<JsonArray> call = AppController.getAPIService().getAgendaByCat(Utils.getAppCurrentLang(), categoryId, position, date1, date2, page, 20);
+        if(categoryId == 0)
+            call = AppController.getAPIService().getAgendaWithoutCat(Utils.getAppCurrentLang(), position, date1, date2, page, 20);
         call.enqueue(callback);
     }
 
@@ -146,8 +148,8 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
-    public static void getLatestAgenda(int count, Callback<JsonArray> callback) {
-        Call<JsonArray> call = AppController.getAPIService().getAgendaByCat(Utils.getAppCurrentLang(), 0, "", "", "", 0, count);
+    public static void getLatestAgenda(Callback<JsonArray> callback) {
+        Call<JsonArray> call = AppController.getAPIService().getAgendaLatest(Utils.getAppCurrentLang(), 0,  2);
         call.enqueue(callback);
     }
 

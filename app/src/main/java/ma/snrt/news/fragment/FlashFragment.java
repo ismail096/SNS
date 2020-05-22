@@ -46,7 +46,7 @@ public class FlashFragment extends Fragment {
     TextViewRegular emptyTextView;
     TextViewExtraBold dayTextView;
     RecyclerView recyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -96,10 +96,10 @@ public class FlashFragment extends Fragment {
             }
         });
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         posts = new ArrayList<>();
 

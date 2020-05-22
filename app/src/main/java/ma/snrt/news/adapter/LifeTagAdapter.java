@@ -2,6 +2,7 @@ package ma.snrt.news.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +62,7 @@ public class LifeTagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
 
-        mHolder.name.setText(item.getName());
+        mHolder.name.setText(Html.fromHtml(item.getName()));
 
         if(item.isSelected()){
             mHolder.container.setBackgroundResource(R.drawable.life_tag_selected);

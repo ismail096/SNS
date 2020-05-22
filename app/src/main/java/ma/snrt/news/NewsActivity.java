@@ -40,7 +40,7 @@ public class NewsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextViewRegular emptyTextView;
     TextViewBold titleTextView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     ArrayList<Post> posts;
     int currentPage = 0;
     NewsAdapter newsAdapter;
@@ -102,10 +102,10 @@ public class NewsActivity extends AppCompatActivity {
 
         posts = new ArrayList<>();
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
        callNewsApi();
     }

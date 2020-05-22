@@ -26,6 +26,7 @@ import ma.snrt.news.MainActivity;
 import ma.snrt.news.R;
 import ma.snrt.news.model.Category;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.TextViewBlack;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.Utils;
@@ -34,7 +35,7 @@ import ma.snrt.news.util.Utils;
  * A simple {@link Fragment} subclass.
  */
 public class SettingsFragment extends Fragment {
-    TextViewExtraBold langFr, langAr;
+    TextViewBlack langFr, langAr;
     ImageView normalMode, darkMode, closeBtn;
     Context mContext;
 

@@ -216,7 +216,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%3==0))
+        if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%4==0))
             return TYPE_BIG;
         if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position%4==0))
             return TYPE_BIG;

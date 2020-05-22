@@ -76,6 +76,6 @@
     <dimen name="top_video_item_height">180dp</dimen>
     <dimen name="top_video_margin">10dp</dimen>
     <dimen name="top_video_play">56dp</dimen>
-    <dimen name="menu_category_size">19sp</dimen>
-    <dimen name="menu_item_size">17sp</dimen>
+    <dimen name="menu_category_size">20sp</dimen>
+    <dimen name="menu_item_size">18sp</dimen>
 </resources>

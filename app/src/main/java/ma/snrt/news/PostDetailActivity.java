@@ -22,6 +22,7 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -79,7 +80,7 @@ public class PostDetailActivity extends AppCompatActivity {
     ImageView bookMarksBtn, fontBtn;
     ImageViewZoom postImageview;
     RecyclerView relatedRecyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SeekBar fontSeekBar;
     boolean isFontLayoutVisible;
     Post post;
@@ -165,10 +166,10 @@ public class PostDetailActivity extends AppCompatActivity {
 
         setFontSize(0, oldProgress);
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+       /* if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
         descriptionWv.getSettings().setJavaScriptEnabled(true);
         descriptionWv.getSettings().setBuiltInZoomControls(false);
@@ -285,10 +286,10 @@ public class PostDetailActivity extends AppCompatActivity {
         audioDuration = mediaPlayer.getDuration(); // gets the song length in milliseconds from URL
         if(!mediaPlayer.isPlaying()){
             mediaPlayer.start();
-            //buttonPlayPause.setImageResource(R.drawable.button_pause);
+            ((ImageView) findViewById(R.id.read_text_btn)).setImageResource(R.drawable.pause_tts);
         }else {
             mediaPlayer.pause();
-            //buttonPlayPause.setImageResource(R.drawable.button_play);
+            ((ImageView) findViewById(R.id.read_text_btn)).setImageResource(R.drawable.play_tts);
         }
         primaryProgressUpdater();
     }

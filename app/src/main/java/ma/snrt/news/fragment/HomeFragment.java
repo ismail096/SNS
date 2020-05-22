@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
     public RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     LinearLayout contentLayout;
     int currentPage = 0;
 
@@ -75,10 +75,10 @@ public class HomeFragment extends Fragment {
         categories = new ArrayList<>();
         categories.add(new Category(2020, getString(R.string.top_news), "#ff0000"));
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getCategories();
         return rootView;

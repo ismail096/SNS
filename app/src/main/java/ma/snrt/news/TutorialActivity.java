@@ -24,8 +24,8 @@ import ma.snrt.news.util.Utils;
 public class TutorialActivity extends AppCompatActivity {
     RtlViewPager viewPager;
 
-    int images[] =  {R.drawable.tuto1, R.drawable.tuto2, R.drawable.tuto3, R.drawable.tuto4, R.drawable.tuto4};
-    private int dotsCount=4;
+    int images[] =  {R.drawable.tuto1, R.drawable.tuto2, R.drawable.tuto3, R.drawable.tuto4, R.drawable.tuto5, R.drawable.tuto5};
+    private int dotsCount= 5;
     private ImageView[] dots;
     LinearLayout linearLayout;
 

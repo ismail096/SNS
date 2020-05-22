@@ -31,7 +31,7 @@
             android:visibility="gone"
             >
 
-            <ma.snrt.news.ui.TextViewExtraBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -61,7 +61,7 @@
 
         <!-- General category -->
 
-        <ma.snrt.news.ui.TextViewExtraBold
+        <ma.snrt.news.ui.TextViewBlack
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/general"
@@ -78,10 +78,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             >
 
-            <ma.snrt.news.ui.TextViewBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/langues"
@@ -98,11 +98,11 @@
                 android:background="@drawable/settings_layout_bg"
                 >
 
-                <ma.snrt.news.ui.TextViewExtraBold
+                <ma.snrt.news.ui.TextViewBlack
                     android:id="@+id/lang_fr_btn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/oval_red"
                     android:clickable="true"
                     android:gravity="center"
@@ -111,11 +111,11 @@
                     android:textSize="@dimen/big_date_size"
                     android:textStyle="bold" />
 
-                <ma.snrt.news.ui.TextViewExtraBold
+                <ma.snrt.news.ui.TextViewBlack
                     android:id="@+id/lang_ar_btn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="8dp"
                     android:clickable="true"
                     android:gravity="center"
                     android:text="@string/ar"
@@ -131,20 +131,20 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?attr/dividerColor"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             >
 
-            <ma.snrt.news.ui.TextViewBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dark_mode"
@@ -165,7 +165,7 @@
                     android:id="@+id/normal_mode_btn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:background="@drawable/oval_red"
                     android:padding="8dp"
                     android:src="@drawable/soleil_active" />
@@ -174,7 +174,7 @@
                     android:id="@+id/dark_mode_btn"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:layout_marginEnd="4dp"
+                    android:layout_marginEnd="8dp"
                     android:padding="8dp"
                     android:src="@drawable/lune_inactive" />
 
@@ -187,21 +187,21 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?attr/dividerColor"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             />
 
         <LinearLayout
             android:id="@+id/note_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             >
 
-            <ma.snrt.news.ui.TextViewBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/noter_app"
@@ -226,21 +226,21 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?attr/dividerColor"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             />
 
         <LinearLayout
             android:id="@+id/alertes_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             >
 
-            <ma.snrt.news.ui.TextViewBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/notifications"
@@ -265,7 +265,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="?attr/dividerColor"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             />
 
         <!-- Snrt News category -->
@@ -273,13 +273,13 @@
         <RelativeLayout
             android:id="@+id/apropos_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             >
 
-            <ma.snrt.news.ui.TextViewExtraBold
+            <ma.snrt.news.ui.TextViewBlack
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/a_propos"
@@ -289,6 +289,7 @@
                 android:textAllCaps="true"
                 android:layout_alignParentStart="true"
                 android:layout_toEndOf="@+id/about_arrow"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="20dp"
                 />
 

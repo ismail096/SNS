@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         setupMenuDrawer();
         setupBottomMenu();
         setupHome();
-        checkLive();
+        //checkLive();
     }
 
     private void checkLive() {

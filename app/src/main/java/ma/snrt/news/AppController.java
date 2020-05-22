@@ -30,7 +30,9 @@ public class AppController extends Application {
 
     private static Retrofit retrofit;
     private static ApiInterface service;
-    public static final String BASE_URL = "https://snrtnews.aramobile.com";
+    //public static final String BASE_URL = "https://snrtnews.aramobile.com";
+    public static final String BASE_URL = "https://preprod.snrtnews.com";
+
     public static final String LIVE_MATCHES_URL = "https://apibotola.snrt.ma/ALaUne/index_website.php";
 
     //public static final String BASE_IMG_URL = BASE_URL + "uploads/";

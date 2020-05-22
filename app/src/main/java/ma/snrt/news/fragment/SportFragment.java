@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ public class SportFragment extends Fragment {
     RecyclerView recyclerView, matchesRecyclerView, tagsRecyclerView;
     RelativeLayout matchesLayout;
     LinearLayout botolaLink;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -143,10 +144,10 @@ public class SportFragment extends Fragment {
             }
         });
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         botolaLink.setOnClickListener(new View.OnClickListener() {
             @Override

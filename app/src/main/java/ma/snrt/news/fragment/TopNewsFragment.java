@@ -2,11 +2,13 @@ package ma.snrt.news.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,12 +28,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ma.snrt.news.AppController;
+import ma.snrt.news.MainActivity;
+import ma.snrt.news.PostDetailActivity;
 import ma.snrt.news.R;
 import ma.snrt.news.adapter.TopNewsAdapter;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.model.User;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.Utils;
@@ -44,12 +51,16 @@ public class TopNewsFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayout liveLayout, watchBtn;
+    ImageView liveImageView;
+    TextViewBold liveTitle;
     Context mContext;
     ArrayList<Post> posts, videos, agendas;
     ArrayList<User> users;
     TopNewsAdapter newsAdapter;
+    Post livePost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +71,10 @@ public class TopNewsFragment extends Fragment {
         emptyTextView = rootView.findViewById(R.id.empty_textview);
         progressBar = rootView.findViewById(R.id.progress_bar);
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+        liveLayout = rootView.findViewById(R.id.live_layout);
+        watchBtn = rootView.findViewById(R.id.watch_btn);
+        liveImageView = rootView.findViewById(R.id.live_image);
+        liveTitle = rootView.findViewById(R.id.live_title);
 
         mContext = getActivity();
         if(!getResources().getBoolean(R.bool.is_tablet)) {
@@ -113,22 +128,61 @@ public class TopNewsFragment extends Fragment {
             public void onRefresh() {
                 recyclerView.setVisibility(View.GONE);
                 emptyTextView.setVisibility(View.GONE);
+                liveLayout.setVisibility(View.GONE);
                 posts.clear();
                 agendas.clear();
                 videos.clear();
                 users.clear();
                 getStories();
+                checkLive();
             }
         });
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getStories();
+        checkLive();
 
         return rootView;
+    }
+
+    private void checkLive() {
+        ApiCall.getLive(new Callback<JsonArray>() {
+            @Override
+            public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
+                if(response.body()!=null && response.isSuccessful() && response.body().size()>0){
+                    livePost = GsonHelper.getGson().fromJson(response.body().get(0), Post.class);
+                    if(livePost!=null && mContext!=null) {
+                        liveLayout.setVisibility(View.VISIBLE);
+                        liveTitle.setText(livePost.getTitle());
+                        watchBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(mContext, PostDetailActivity.class);
+                                intent.putExtra("post", livePost);
+                                startActivity(intent);
+                            }
+                        });
+                        RequestOptions requestOptions = new RequestOptions();
+                        requestOptions.placeholder(R.drawable.placeholder);
+                        requestOptions.error(R.drawable.placeholder);
+                        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+                        Glide.with(mContext).load(livePost.getImage()).apply(requestOptions).into(liveImageView);
+                    }
+                }
+                else
+                    liveLayout.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonArray> call, Throwable t) {
+                liveLayout.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void getStories(){
@@ -160,7 +214,7 @@ public class TopNewsFragment extends Fragment {
     }
 
     private void getAgenda(){
-        ApiCall.getLatestAgenda(2, new Callback<JsonArray>() {
+        ApiCall.getLatestAgenda(new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(response.body()!=null && response.isSuccessful()){

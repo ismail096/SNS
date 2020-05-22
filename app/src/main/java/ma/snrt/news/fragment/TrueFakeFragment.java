@@ -55,7 +55,7 @@ public class TrueFakeFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView, tagsRecyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -103,12 +103,12 @@ public class TrueFakeFragment extends Fragment {
         tagsRecyclerView.setLayoutManager(layoutManager);
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)) {
-            Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
+            //Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
             rootView.findViewById(R.id.top_layout).setBackgroundColor(ContextCompat.getColor(mContext, R.color.bgGreyDark));
         }
-        else {
+        /*else {
             Glide.with(mContext).load(R.raw.loader).into(progressBar);
-        }
+        }*/
         posts = new ArrayList<>();
         tags = new ArrayList<>();
 

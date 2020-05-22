@@ -62,7 +62,7 @@ public class AgendaActivity extends AppCompatActivity {
 
     TextViewRegular emptyTextView;
     TextViewBold pageTitle;
-    ImageView progressBar;
+    ProgressBar progressBar;
     LinearLayout contentLayout, filtreLayout;
     RecyclerView recyclerView, topRecyclerview;
 
@@ -113,10 +113,10 @@ public class AgendaActivity extends AppCompatActivity {
         else
             category = new CategoryAgenda();
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
         final Calendar myCalendar = Calendar.getInstance();
 

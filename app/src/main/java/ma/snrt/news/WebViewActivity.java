@@ -39,7 +39,7 @@ public class WebViewActivity extends AppCompatActivity {
     WebView webView;
     TextViewRegular emptyView;
     TextViewBold pageTitle;
-    ImageView progressBar;
+    ProgressBar progressBar;
     Page page;
 
 
@@ -59,10 +59,10 @@ public class WebViewActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(false);
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
         int pageId =  getIntent().getIntExtra("pageId", 0);
         if(pageId != 0) {

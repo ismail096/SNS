@@ -49,7 +49,7 @@ public class VideosFragment extends Fragment {
     RtlViewPager viewPager;
     TabLayout tabLayout;
     TextViewRegular emptyTextView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     LinearLayout contentLayout;
 
     @Override
@@ -67,10 +67,10 @@ public class VideosFragment extends Fragment {
         categories = new ArrayList<>();
         categories.add(new Category(0, getString(R.string.all_videos), "#eeeeee"));
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getCategories();
         return rootView;

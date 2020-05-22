@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -57,10 +58,11 @@ public class LifeFragment extends Fragment {
     TextViewRegular emptyTextView;
     TextViewBold recommandedTitle;
     RecyclerView recyclerView, tagsRecyclerView, topRecyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
-    ArrayList<Post> posts, tops;
+    ArrayList<Post> posts;
+    List<Post> tops;
     ArrayList<Tag> tags;
     int newsPage = 0;
     boolean isNewsListLoaded, isNewsByTag;
@@ -130,10 +132,10 @@ public class LifeFragment extends Fragment {
             }
         });
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getTags();
         getTopNews();
@@ -317,6 +319,8 @@ public class LifeFragment extends Fragment {
 
     private void setTopsAdapter(){
         if(tops.size()>0){
+            if(tops.size()>5)
+                tops = tops.subList(0, 5);
             topRecyclerView.setVisibility(View.VISIBLE);
             recommandedTitle.setVisibility(View.VISIBLE);
             if(Utils.getAppCurrentLang().equals("ar"))

@@ -24,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ma.snrt.news.AppController;
 import ma.snrt.news.PostDetailActivity;
@@ -37,11 +38,11 @@ import ma.snrt.news.util.Utils;
 
 public class LifeTopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Post> items;
+    List<Post> items;
     Context context;
     private int lastPosition = -1;
 
-    public LifeTopAdapter(Context context, ArrayList<Post> items) {
+    public LifeTopAdapter(Context context, List<Post> items) {
         this.context = context;
         this.items = items;
     }

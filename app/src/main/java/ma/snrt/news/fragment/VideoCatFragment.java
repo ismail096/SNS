@@ -46,7 +46,7 @@ public class VideoCatFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<Post> posts;
@@ -98,10 +98,10 @@ public class VideoCatFragment extends Fragment {
                 getVideos();
             }
         });
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getVideos();
 

@@ -50,7 +50,7 @@ public class AgendaDetailActivity extends AppCompatActivity {
     TextViewRegular dateTextView, positionTextView;
     ImageView fontBtn, favBtn, postImageView, coverImageView;
     WebView descriptionWv;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SeekBar fontSeekBar;
     boolean isFontLayoutVisible;
     Post post;
@@ -117,10 +117,10 @@ public class AgendaDetailActivity extends AppCompatActivity {
             positionTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, positionTextView.getTextSize() + ratio);
         }
 
-        if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
         fillPost();
 

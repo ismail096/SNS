@@ -47,7 +47,7 @@ public class TopAgendaFragment extends Fragment {
 
     TextViewRegular emptyTextView;
     RecyclerView recyclerView, topRecyclerview;
-    ImageView progressBar;
+    ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context mContext;
     ArrayList<CategoryAgenda> categories;
@@ -97,10 +97,10 @@ public class TopAgendaFragment extends Fragment {
             }
         });
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(mContext).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(mContext).load(R.raw.loader).into(progressBar);
+            Glide.with(mContext).load(R.raw.loader).into(progressBar);*/
 
         getCategories();
 

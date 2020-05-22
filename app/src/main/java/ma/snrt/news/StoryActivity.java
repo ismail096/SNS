@@ -30,9 +30,7 @@ public class StoryActivity extends AppCompatActivity
     private int mProgressDrawable = R.drawable.white_lightgrey_drawable;
 
     private ConstraintLayout container;
-    private ImageView  likeBtn, pauseBtn;
     TextViewRegular positionTextView, likeTextView;
-    boolean isStoryPaused;
     //int storyIndex = 0;
     int userIndex = 0;
     private List<StoryItem> storyItem;
@@ -46,10 +44,8 @@ public class StoryActivity extends AppCompatActivity
         setContentView(R.layout.activity_story);
 
         container = findViewById(R.id.container);
-        pauseBtn = findViewById(R.id.story_pause);
         positionTextView = findViewById(R.id.story_pin_text);
         likeTextView = findViewById(R.id.story_like_text);
-        likeBtn = findViewById(R.id.story_like);
 
         users = (ArrayList<User>) getIntent().getSerializableExtra("users");
         userIndex = getIntent().getIntExtra("user_index", 0);

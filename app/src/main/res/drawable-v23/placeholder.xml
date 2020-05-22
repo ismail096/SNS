@@ -9,9 +9,8 @@
     </item>
     <item
         android:drawable="@drawable/logo_btn_home"
-        android:bottom="220dp"
-        android:left="220dp"
-        android:right="220dp"
-        android:top="220dp"
+        android:width="48dp"
+        android:height="48dp"
+        android:gravity="center"
         />
 </layer-list>

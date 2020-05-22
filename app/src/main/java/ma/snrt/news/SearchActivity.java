@@ -56,7 +56,7 @@ public class SearchActivity extends AppCompatActivity {
     private static final int RESULT_SPEECH = 112;
     RecyclerView recyclerView;
     TextViewRegular emptyTextView, resultCountTV;
-    ImageView progressBar;
+    ProgressBar progressBar;
     ImageView searchBtn, micBtn;
     TextViewExtraBold allBtn, newsBtn, videoBtn;
     TextViewRegular cancelBtn;
@@ -127,10 +127,10 @@ public class SearchActivity extends AppCompatActivity {
 
         posts = new ArrayList<>();
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override

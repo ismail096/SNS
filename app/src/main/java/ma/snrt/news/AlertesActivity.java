@@ -37,7 +37,7 @@ import retrofit2.Response;
 
 public class AlertesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    ImageView progressBar;
+    ProgressBar progressBar;
     TextViewRegular emptyTextView;
     ArrayList<Category> categories;
     SwitchButton globalBtn, storyBtn;
@@ -63,10 +63,10 @@ public class AlertesActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(llm);
 
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        /*if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             Glide.with(this).load(R.raw.loader_dark).into(progressBar);
         else
-            Glide.with(this).load(R.raw.loader).into(progressBar);
+            Glide.with(this).load(R.raw.loader).into(progressBar);*/
         categories = new ArrayList<>();
         getCategoriesFromApi();
     }

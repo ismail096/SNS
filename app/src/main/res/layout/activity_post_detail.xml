@@ -54,19 +54,19 @@
                 android:layout_marginTop="@dimen/margin_top_app"
                 >
 
-                <ImageView
+                <!--<ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:src="?attr/logoDetail"
                     android:adjustViewBounds="true"
                     android:layout_marginStart="@dimen/post_margin"
-                    />
+                    />-->
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="12dp"
                     android:src="@drawable/clock"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/post_margin"
                     android:adjustViewBounds="true"
                     android:layout_gravity="center_vertical"
                     />
@@ -136,12 +136,13 @@
                 android:visibility="gone"
                 />
 
-            <ImageView
+            <ProgressBar
                 android:id="@+id/progress_bar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
+                android:indeterminate="false"
                 android:visibility="gone" />
 
             <View
@@ -271,7 +272,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="end|center_vertical"
-            android:src="@drawable/play_button_red"
+            android:src="@drawable/play_tts"
             android:onClick="onClick"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"

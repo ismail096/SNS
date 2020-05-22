@@ -92,6 +92,13 @@ public interface ApiInterface {
     Call<JsonArray> getAgendaByCat(@Query("lang") String lang, @Query("category_id") int categoryId, @Query("position") String position,
                                    @Query("created_start") String date1, @Query("created_end") String date2, @Query("page") int page, @Query("items_per_page") int count);
 
+    @GET("7_7")
+    Call<JsonArray> getAgendaWithoutCat(@Query("lang") String lang, @Query("position") String position,
+                                   @Query("created_start") String date1, @Query("created_end") String date2, @Query("page") int page, @Query("items_per_page") int count);
+
+    @GET("7_7")
+    Call<JsonArray> getAgendaLatest(@Query("lang") String lang, @Query("page") int page, @Query("items_per_page") int count);
+
     @GET("7_7/is_featured")
     Call<JsonArray> getAgendaFeatured(@Query("lang") String lang, @Query("category_id") int categoryId);
 
