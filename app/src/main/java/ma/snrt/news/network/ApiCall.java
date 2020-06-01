@@ -45,19 +45,17 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
-    public static void getLatestNews(int page, int count, Callback<JsonArray> callback) {
-        Call<JsonArray> call = AppController.getAPIService().getLatestNews(Utils.getAppCurrentLang(), page, count);
-        call.enqueue(callback);
-    }
-
-    public static void getMosaic(int page, Callback<JsonObject> callback) {
-        Call<JsonObject> call = AppController.getAPIService().getMosaic(Utils.getAppCurrentLang(), page, 20);
-        call.enqueue(callback);
-    }
     public static void getNewsByCatOrTag(boolean isCat, int categoryId, String term, int page, Callback<JsonArray> callback) {
         Call<JsonArray> call = AppController.getAPIService().getNewsByTag(Utils.getAppCurrentLang(), term, page, 20);
         if(isCat)
             call = AppController.getAPIService().getNewsByCat(Utils.getAppCurrentLang(), categoryId,  page, 20);
+        call.enqueue(callback);
+    }
+
+    public static void getFeaturedByCatOrTag(boolean isCat, int categoryId, String term, int page, Callback<JsonArray> callback) {
+        Call<JsonArray> call = AppController.getAPIService().getFeaturedByTag(Utils.getAppCurrentLang(), term, page, 20);
+        if(isCat)
+            call = AppController.getAPIService().getFeaturedByCat(Utils.getAppCurrentLang(), categoryId,  page, 20);
         call.enqueue(callback);
     }
 
@@ -141,10 +139,10 @@ public class ApiCall {
         call.enqueue(callback);
     }
 
-    public static void getFeaturedAgenda(int categoryId, Callback<JsonArray> callback) {
-        Call<JsonArray> call = AppController.getAPIService().getAgendaFeatured(Utils.getAppCurrentLang(), categoryId);
+    public static void getFeaturedAgenda(int categoryId, String position, String date1, String date2, Callback<JsonArray> callback) {
+        Call<JsonArray> call = AppController.getAPIService().getAgendaFeatured(Utils.getAppCurrentLang(), categoryId, position, date1, date2, 0, 20);
         if(categoryId == 0)
-            call = AppController.getAPIService().getAllAgendaFeatured(Utils.getAppCurrentLang());
+            call = AppController.getAPIService().getAllAgendaFeatured(Utils.getAppCurrentLang(), position, date1, date2, 0, 20);
         call.enqueue(callback);
     }
 

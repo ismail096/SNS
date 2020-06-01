@@ -185,7 +185,8 @@ public class PostDetailActivity extends AppCompatActivity {
         getAudioBytes();
 
         fillPost();
-        //getPostFromApi(post.getId());
+        if(post.getDescriptionArticle() == null)
+            getPostFromApi(post.getId());
     }
 
     private void getAudioBytes() {
@@ -459,6 +460,7 @@ public class PostDetailActivity extends AppCompatActivity {
         if(post.getDescriptionArticle()!=null)
         {
             String font = "fontFr";
+            String fontSemi = "fontFrSemi";
             String color = "#000000";
             String bgColor = "#ffffff";
             String dir= "ltr";
@@ -468,19 +470,24 @@ public class PostDetailActivity extends AppCompatActivity {
             }
             if(Utils.getAppCurrentLang().equals("ar")) {
                 font = "fontAr";
+                fontSemi = "fontArBold";
                 dir = "rtl";
             }
             String text = Utils.loadJSONFromAsset("index.html", this);
-            String description = "";
+            //String description = "";
             if(post.getResume()!=null && !post.getResume().isEmpty()){
-                description = "<b>"+post.getResume()+"</b><br/>";
+                text = text.replace("{{resumeContent}}", post.getResume());
             }
-            description += post.getDescriptionArticle();
-            text = text.replace("{{content}}", description);
+            else
+                text = text.replace("{{resumeContent}}", "");
+            //description += post.getDescriptionArticle();
+            text = text.replace("{{content}}", post.getDescriptionArticle());
+            text = text.replace("{{myFontSemi}}", fontSemi);
             text = text.replace("{{myFont}}", font);
             text = text.replace("{{color}}", color);
             text = text.replace("{{bgColor}}", bgColor);
             text = text.replace("{{direction}}", dir);
+            text = text.replace("twitter-tweet", "twitter-tweet tw-align-center");
             descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
             descriptionWv.setVisibility(View.VISIBLE);
         }
@@ -552,7 +559,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 try {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.app_name));
-                    intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_post)+" "+post.getUrl());
+                    intent.putExtra(Intent.EXTRA_TEXT, post.getTitle()+"\n"+post.getUrl());
                     intent.setType("text/plain");
                     startActivity(Intent.createChooser(intent, getString(R.string.share)));
                 } catch(Exception e) {

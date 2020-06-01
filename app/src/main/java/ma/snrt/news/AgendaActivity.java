@@ -2,6 +2,7 @@ package ma.snrt.news;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.TypedValue;
@@ -40,7 +41,6 @@ import java.util.Collections;
 import java.util.List;
 
 import ma.snrt.news.adapter.AgendaAdapter2;
-import ma.snrt.news.adapter.AgendaPagerAdapter;
 import ma.snrt.news.adapter.TopAgendaAdapter;
 import ma.snrt.news.model.CategoryAgenda;
 import ma.snrt.news.model.Post;
@@ -48,6 +48,7 @@ import ma.snrt.news.model.Ville;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
 import ma.snrt.news.ui.CenterZoomLayoutManager;
+import ma.snrt.news.ui.EditTextRegular;
 import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
@@ -67,7 +68,7 @@ public class AgendaActivity extends AppCompatActivity {
     RecyclerView recyclerView, topRecyclerview;
 
     boolean isDate1Clicked, isFiltreVisible;
-    AppCompatEditText date1Edit, date2Edit;
+    EditTextRegular date1Edit, date2Edit;
     AutoCompleteTextView positionEdit;
     public String dateDebut = "", dateFin = "";
     public String position = "";
@@ -166,6 +167,13 @@ public class AgendaActivity extends AppCompatActivity {
             itemsCount = 3;
         GridLayoutManager llm = new GridLayoutManager(this, itemsCount);
         recyclerView.setLayoutManager(llm);
+
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/Averta-Regular.otf");
+        if(AppController.getSharedPreferences().getString("lang", "").equals("ar")) {
+            tf = Typeface.createFromAsset(getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
+            positionEdit.setIncludeFontPadding(false);
+        }
+        positionEdit.setTypeface(tf);
 
         setPositionAutoCompelete();
         getAgendas();
@@ -266,7 +274,7 @@ public class AgendaActivity extends AppCompatActivity {
 
     private void getTopAgendas(){
         String cacheTag = "top_agenda_"+category.getId()+"_"+ Utils.getAppCurrentLang();
-        ApiCall.getFeaturedAgenda(category.getId(), new Callback<JsonArray>() {
+        ApiCall.getFeaturedAgenda(category.getId(), position, dateDebut, dateFin, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 /*if(swipeRefreshLayout!=null)

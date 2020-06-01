@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -38,6 +39,7 @@ import ma.snrt.news.AppController;
 import ma.snrt.news.MainActivity;
 import ma.snrt.news.PostDetailActivity;
 import ma.snrt.news.R;
+import ma.snrt.news.fragment.HomeFragment;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.model.User;
 import ma.snrt.news.network.ApiCall;
@@ -145,7 +147,7 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-                        intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_post)+" "+item.getUrl());
+                        intent.putExtra(Intent.EXTRA_TEXT, item.getTitle()+"\n"+item.getUrl());
                         intent.setType("text/plain");
                         context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)));
                     } catch(Exception e) {
@@ -178,30 +180,48 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
             if(context.getResources().getBoolean(R.bool.is_tablet)){
                 if(getItemViewType(position) == TYPE_NORMAL){
-
-                    RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
                     int diff = 0;
                     if(position>9)
                         diff = 10;
+                    RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
 
-                    if (((position + 1) - diff) % 4 == 0) {
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
-                        lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
-                    } else if (((position + 2) - diff) % 4 == 0) {
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 7);
-                        //lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
-                    } else if (((position + 3) - diff) % 4 == 0) {
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
-                        lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+                    if(position != 6 || position != 7 || position != 8) {
+                        int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
+                        lp.width = width;
+                        if (((position + 1) - diff) % 4 == 0) {
+                            lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
+                        } else if (((position + 2) - diff) % 4 == 0) {
+                            lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                        } else if (((position + 3) - diff) % 4 == 0) {
+                            lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
+                        }
                     }
 
-                    int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 13);
-                    lp.width = width;
+                    if(position==6){
+                        int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
+                        lp.width = width;
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
+                        lp.rightMargin = 0;
+                    }
+                    if(position==7){
+                        int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
+                        lp.width = width;
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                        lp.rightMargin = 0;
+                    }
+                    if(position==8){
+                        int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
+                        lp.width = width;
+                        lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
+                        lp.rightMargin = 0;
+                    }
                     mHolder.itemView.setLayoutParams(lp);
                     holder.setIsRecyclable(false);
                 }
                 else if(getItemViewType(position) == TYPE_BIG){
                     mHolder.postDataLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+                    int p = Utils.dpToPx(context.getResources(), 10);
+                    mHolder.postDataLayout.setPadding(p, 0, p, 0);
                 }
             }
             //setAnimation(mHolder.itemView, position);
@@ -223,7 +243,16 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             if(agendas.size()>0) {
                 setAgendaAdapter(mHolder.recyclerView);
                 mHolder.seeMore.setOnClickListener(view -> {
-                    context.startActivity(new Intent(context, AgendaActivity.class));
+                    //context.startActivity(new Intent(context, AgendaActivity.class));
+                    if(context != null){
+                        ViewPager viewPager = ((MainActivity) context).viewPager;
+                        if(viewPager!=null) {
+                            HomeFragment frag1 = (HomeFragment) viewPager
+                                    .getAdapter()
+                                    .instantiateItem(viewPager, viewPager.getCurrentItem());
+                            frag1.selectAgenda();
+                        }
+                    }
                 });
             }
             else
@@ -262,7 +291,7 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return TYPE_VIDEOS;
         if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==6 || position==11))
             return TYPE_BIG;
-        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==5 || (position>9 && (position - 10) % 4 == 0)))
+        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==5 || position ==9 || (position>10 && (position - 10) % 4 == 0)))
             return TYPE_BIG;
         return TYPE_NORMAL;
     }

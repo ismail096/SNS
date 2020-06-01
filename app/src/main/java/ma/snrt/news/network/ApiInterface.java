@@ -34,9 +34,6 @@ public interface ApiInterface {
     @GET("articles/latest")
     Call<JsonArray> getLatestNews(@Query("lang") String lang, @Query("page") int page, @Query("items_per_page") int count);
 
-    @GET("mosaic/{lang}/{count}")
-    Call<JsonObject> getMosaic(@Path("lang") String lang, @Path("count") int count, @Query("page") int page);
-
     @GET("tags")
     Call<JsonArray> getTags(@Query("category_id") int catId, @Query("lang") String lang);
 
@@ -45,6 +42,13 @@ public interface ApiInterface {
 
     @GET("articles/by_tag")
     Call<JsonArray> getNewsByTag(@Query("lang") String lang, @Query("term") String term, @Query("page") int page, @Query("items_per_page") int count);
+
+    @GET("articles/featured")
+    Call<JsonArray> getFeaturedByCat(@Query("lang") String lang, @Query("category_id") int categoryId, @Query("page") int page, @Query("items_per_page") int count);
+
+    @GET("articles/featured")
+    Call<JsonArray> getFeaturedByTag(@Query("lang") String lang, @Query("term") String term, @Query("page") int page, @Query("items_per_page") int count);
+
 
     @GET("videos")
     Call<JsonArray> getLatestVideos(@Query("lang") String lang, @Query("page") int page, @Query("items_per_page") int count);
@@ -100,10 +104,12 @@ public interface ApiInterface {
     Call<JsonArray> getAgendaLatest(@Query("lang") String lang, @Query("page") int page, @Query("items_per_page") int count);
 
     @GET("7_7/is_featured")
-    Call<JsonArray> getAgendaFeatured(@Query("lang") String lang, @Query("category_id") int categoryId);
+    Call<JsonArray> getAgendaFeatured(@Query("lang") String lang, @Query("category_id") int categoryId, @Query("position") String position,
+                                      @Query("created_start") String date1, @Query("created_end") String date2, @Query("page") int page, @Query("items_per_page") int count);
 
     @GET("7_7/is_featured")
-    Call<JsonArray> getAllAgendaFeatured(@Query("lang") String lang);
+    Call<JsonArray> getAllAgendaFeatured(@Query("lang") String lang, @Query("position") String position,
+                                         @Query("created_start") String date1, @Query("created_end") String date2, @Query("page") int page, @Query("items_per_page") int count);
 
     @POST("like/7_7/{id}")
     Call<JsonObject> postLike77(@Path("id") int id);

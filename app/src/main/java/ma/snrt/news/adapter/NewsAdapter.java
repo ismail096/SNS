@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
@@ -158,7 +159,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 try {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-                    intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_post)+" "+item.getUrl());
+                    intent.putExtra(Intent.EXTRA_TEXT, item.getTitle()+"\n"+item.getUrl());
                     intent.setType("text/plain");
                     context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)));
                 } catch(Exception e) {
@@ -183,24 +184,28 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
         });
-        if(context.getResources().getBoolean(R.bool.is_tablet) && getItemViewType(position) == TYPE_NORMAL){
-            RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
-            if((position+1) % 4 == 0){
-                lp.leftMargin = Utils.dpToPx(context.getResources(), 5);
-                lp.rightMargin = Utils.dpToPx(context.getResources(), 10);
+        if(context.getResources().getBoolean(R.bool.is_tablet)) {
+            if (getItemViewType(position) == TYPE_NORMAL) {
+                RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
+                if ((position + 1) % 4 == 0) {
+                    lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
+                } else if ((position + 2) % 4 == 0) {
+                    lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                } else if ((position + 3) % 4 == 0) {
+                    lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
+                }
+                int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
+                lp.width = width;
+                mHolder.itemView.setLayoutParams(lp);
+                holder.setIsRecyclable(false);
             }
-            else if((position+2) % 4 == 0){
-                lp.leftMargin = Utils.dpToPx(context.getResources(), 7);
-                //lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
+            else{
+                mHolder.postDataLayout.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+                int p = Utils.dpToPx(context.getResources(), 10);
+                mHolder.postDataLayout.setPadding(p, 0, p, 0);
+                mHolder.divider.setVisibility(View.VISIBLE);
+                //mHolder.divider.setPadding(p, 0, p, 0);
             }
-            else if((position+3) % 4 == 0){
-                lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
-                lp.rightMargin = Utils.dpToPx(context.getResources(), 5);
-            }
-            int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 13);
-            lp.width = width;
-            mHolder.itemView.setLayoutParams(lp);
-            holder.setIsRecyclable(false);
         }
         setAnimation(mHolder.itemView, position);
     }
@@ -239,7 +244,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextViewEBItalic category;
         TextViewRegular date;
         ImageView imageView, shareBtn, favBtn;
-        View container;
+        View container, divider;
+        LinearLayout postDataLayout;
 
         public ViewHolder(View convertView) {
             super(convertView);
@@ -250,6 +256,8 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imageView = convertView.findViewById(R.id.post_image);
             shareBtn = convertView.findViewById(R.id.share_btn);
             favBtn = convertView.findViewById(R.id.fav_btn);
+            postDataLayout = convertView.findViewById(R.id.post_data_layout);
+            divider = convertView.findViewById(R.id.news_item_divider);
         }
     }
 }

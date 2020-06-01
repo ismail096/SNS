@@ -40,6 +40,7 @@ import ma.snrt.news.model.Category;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.EditTextRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
@@ -58,7 +59,7 @@ public class SearchTFActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ImageView searchBtn, micBtn;
     RelativeLayout listLayout, micLayout;
-    AppCompatEditText searchEditText;
+    EditTextRegular searchEditText;
     ArrayList<Post> posts;
     int currentPage = 0;
     boolean isListLoaded, isMicLayoutVisible;
@@ -167,6 +168,13 @@ public class SearchTFActivity extends AppCompatActivity {
                 }
                 return false;
             }
+        });
+
+        searchBtn.setOnClickListener(v -> {
+            currentPage = 0;
+            posts.clear();
+            isListLoaded = false;
+            callSearchApi();
         });
 
     }

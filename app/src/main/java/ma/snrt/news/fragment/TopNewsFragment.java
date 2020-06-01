@@ -4,6 +4,7 @@ package ma.snrt.news.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,7 @@ public class TopNewsFragment extends Fragment {
             lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                     if(position==0 || position==4 || position==5 || position==9 || (position>9 && (position - 10) % 4 == 0))
+                     if(position==0 || position==4 || position==5 || position==9 || position==10 || (position>10 && (position - 10) % 4 == 0))
                         return 3;
                      return 1;
                 }
@@ -157,7 +158,7 @@ public class TopNewsFragment extends Fragment {
                     livePost = GsonHelper.getGson().fromJson(response.body().get(0), Post.class);
                     if(livePost!=null && mContext!=null) {
                         liveLayout.setVisibility(View.VISIBLE);
-                        liveTitle.setText(livePost.getTitle());
+                        liveTitle.setText(Html.fromHtml(livePost.getTitle()));
                         watchBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -314,10 +315,12 @@ public class TopNewsFragment extends Fragment {
                     posts.add(10, new Post(2));
             }
             else{
-                if (posts.size() > 4 && videos.size() > 0)
-                    posts.add(4, new Post(3));
-                if (posts.size() > 9 && agendas.size() > 0)
-                    posts.add(9, new Post(2));
+                if (posts.size() > 4 && users.size() > 0)
+                    posts.add(4, new Post(1));
+                if (posts.size() > 5 && videos.size() > 0)
+                    posts.add(5, new Post(3));
+                if (posts.size() > 10 && agendas.size() > 0)
+                    posts.add(10, new Post(2));
             }
             newsAdapter = new TopNewsAdapter(mContext, posts, users, videos, agendas);
             recyclerView.setAdapter(newsAdapter);

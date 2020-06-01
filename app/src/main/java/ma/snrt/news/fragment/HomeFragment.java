@@ -228,6 +228,10 @@ public class HomeFragment extends Fragment {
         viewPager.setCurrentItem(0);
     }
 
+    public void selectAgenda(){
+        viewPager.setCurrentItem(categories.size()-1);
+    }
+
     private void enableNotifs(){
         if(!AppController.getSharedPreferences().contains("notif_enabled")) {
             SharedPreferences.Editor editor = AppController.getSharedPreferences().edit();

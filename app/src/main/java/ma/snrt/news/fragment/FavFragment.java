@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -39,6 +40,7 @@ public class FavFragment extends Fragment {
     int selectedMode = 0;
     Context mContext;
     SwipeRefreshLayout swipeRefreshLayout;
+    ImageView favEmptyImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +55,7 @@ public class FavFragment extends Fragment {
         newsBtn = rootView.findViewById(R.id.news_btn);
         videosBtn = rootView.findViewById(R.id.video_btn);
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh_layout);
+        favEmptyImage = rootView.findViewById(R.id.fav_empty_image);
         
         mContext = getActivity();
 
@@ -94,6 +97,7 @@ public class FavFragment extends Fragment {
 
         if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)){
             rootView.findViewById(R.id.fav_menu).setBackgroundColor(ContextCompat.getColor(mContext, R.color.bgGrey2Dark));
+            favEmptyImage.setImageResource(R.drawable.fav_empty_dark);
         }
 
         return rootView;

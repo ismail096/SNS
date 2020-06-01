@@ -180,6 +180,7 @@ public class AgendaDetailActivity extends AppCompatActivity {
                     dir = "rtl";
                 }
                 String text = Utils.loadJSONFromAsset("index.html", this);
+                text = text.replace("{{resumeContent}}", "");
                 text = text.replace("{{content}}", post.getDescription());
                 text = text.replace("{{myFont}}", font);
                 text = text.replace("{{color}}", color);

@@ -53,6 +53,7 @@ dependencies {
     implementation('com.github.JakeWharton:ViewPagerIndicator:2.4.1') {
         exclude module: 'support-v4'
     }
+    implementation 'com.dailymotion.dailymotion-sdk-android:sdk:0.2.2'
     implementation project(':audiowave')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'

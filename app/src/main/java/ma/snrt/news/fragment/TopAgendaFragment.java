@@ -158,7 +158,7 @@ public class TopAgendaFragment extends Fragment {
 
     private void getTopAgendas(){
         String cacheTag = "top_agenda_"+ Utils.getAppCurrentLang();
-        ApiCall.getFeaturedAgenda(0, new Callback<JsonArray>() {
+        ApiCall.getFeaturedAgenda(0, "", "", "",  new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(swipeRefreshLayout!=null)

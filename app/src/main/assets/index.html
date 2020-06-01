@@ -7,11 +7,19 @@
 		<style>
 			@font-face {
 				font-family: 'fontFr';
-				src: url('file:///android_asset/fonts/Averta-regular.otf');
+				src: url('file:///android_asset/fonts/Averta-Regular.otf');
+			}
+			@font-face {
+				font-family: 'fontFrSemi';
+				src: url('file:///android_asset/fonts/Averta-Semibold.otf');
 			}
 			@font-face {
 				font-family: 'fontAr';
 				src: url('file:///android_asset/fonts/ArbFONTS-DroidKufi-Regular.ttf');
+			}
+			@font-face {
+				font-family: 'fontArBold';
+				src: url('file:///android_asset/fonts/ArbFONTS-DroidKufi-Bold.ttf');
 			}
 			body {
 			padding: 0px;
@@ -19,24 +27,35 @@
 			color: {{color}};
 			text-align: center;
 			background: {{bgColor}};
-			font-family: {{myFont}};
 			}
 			.text {
 				text-align: justify;
 				line-height: 1.6;
+				font-family: {{myFont}};
+			}
+			.resume {
+				text-align: justify;
+				line-height: 1.6;
+				font-family: {{myFontSemi}};
 			}
 			img, iframe{
-				width: 100%;
+				width: 100% !important;
 				height: auto;
 			}
 			a{
 				text-decoration: none;
 				color: #4592ED;
 			}
+			.twitter-timeline {
+				width: 100vw !important;
+			}
     	</style>
 	</head>
 
 	<body>
+		<div class="resume">
+			{{resumeContent}}
+		</div>
 		<div class="text">
 			{{content}}
 		</div>

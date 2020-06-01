@@ -46,15 +46,15 @@
             android:background="@color/true_fake_color"
             >
 
-            <androidx.appcompat.widget.AppCompatEditText
+            <ma.snrt.news.ui.EditTextRegular
                 android:id="@+id/search_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/edit_bg"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingStart="48dp"
-                android:paddingEnd="48dp"
+                android:paddingStart="40dp"
+                android:paddingEnd="40dp"
                 android:hint="@string/search_hint"
                 android:imeOptions="actionSearch"
                 android:inputType="text"

@@ -97,11 +97,15 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mHolder.moreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, AgendaActivity.class);
+                /*Intent intent = new Intent(context, AgendaActivity.class);
                 CategoryAgenda category = new CategoryAgenda();
                 category.setId(item.getCategory_id());
                 category.setTitle(item.getCategory());
                 intent.putExtra("category", category);
+                context.startActivity(intent);*/
+
+                Intent intent = new Intent(context, AgendaDetailActivity.class);
+                intent.putExtra("post", item);
                 context.startActivity(intent);
             }
         });

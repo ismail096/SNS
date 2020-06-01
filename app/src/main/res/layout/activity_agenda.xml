@@ -166,6 +166,7 @@
                     android:paddingStart="40dp"
                     android:background="@drawable/edit_border"
                     android:hint="@string/position_hint"
+                    android:textColorHint="@color/text_grey"
                     />
 
             </RelativeLayout>
@@ -192,7 +193,7 @@
                         android:layout_centerVertical="true"
                         />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <ma.snrt.news.ui.EditTextRegular
                         android:id="@+id/filtre_date1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -204,6 +205,7 @@
                         android:background="@drawable/edit_border"
                         android:paddingStart="40dp"
                         android:hint="@string/start_date_hint"
+                        android:textColorHint="@color/text_grey"
                         />
 
                 </RelativeLayout>
@@ -224,7 +226,7 @@
                         android:layout_centerVertical="true"
                         />
 
-                    <androidx.appcompat.widget.AppCompatEditText
+                    <ma.snrt.news.ui.EditTextRegular
                         android:id="@+id/filtre_date2"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -237,6 +239,7 @@
                         android:background="@drawable/edit_border"
                         android:paddingStart="40dp"
                         android:hint="@string/end_date_hint"
+                        android:textColorHint="@color/text_grey"
                         />
 
                 </RelativeLayout>

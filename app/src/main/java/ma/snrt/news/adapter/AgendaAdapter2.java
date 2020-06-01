@@ -135,7 +135,7 @@ public class AgendaAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 try {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-                    intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_post)+" "+item.getUrl());
+                    intent.putExtra(Intent.EXTRA_TEXT, item.getTitle()+"\n"+item.getUrl());
                     intent.setType("text/plain");
                     context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)));
                 } catch(Exception e) {

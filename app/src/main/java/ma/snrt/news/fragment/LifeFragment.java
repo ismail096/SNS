@@ -282,7 +282,7 @@ public class LifeFragment extends Fragment {
         int catId = category.getId();
         if(selectedTag.equals(""))
             isCat = true;
-        ApiCall.getNewsByCatOrTag(isCat, catId, selectedTag, 0, new Callback<JsonArray>() {
+        ApiCall.getFeaturedByCatOrTag(isCat, catId, selectedTag, 0, new Callback<JsonArray>() {
             @Override
             public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
                 if(progressBar!=null)

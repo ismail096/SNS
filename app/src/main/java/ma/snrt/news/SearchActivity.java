@@ -41,6 +41,7 @@ import ma.snrt.news.adapter.Videos2Adapter;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.ui.EditTextRegular;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.util.Cache;
@@ -61,7 +62,7 @@ public class SearchActivity extends AppCompatActivity {
     TextViewExtraBold allBtn, newsBtn, videoBtn;
     TextViewRegular cancelBtn;
     RelativeLayout listLayout, micLayout;
-    AppCompatEditText searchEditText;
+    EditTextRegular searchEditText;
     ArrayList<Post> posts;
     int selectedMode = 0;
     int currentPage = 0;
@@ -203,6 +204,13 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 return false;
             }
+        });
+
+        searchBtn.setOnClickListener(v -> {
+            currentPage = 0;
+            posts.clear();
+            isListLoaded = false;
+            callSearchApi();
         });
 
     }

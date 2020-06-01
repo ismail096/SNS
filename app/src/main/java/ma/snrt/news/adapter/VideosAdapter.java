@@ -32,6 +32,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import ma.snrt.news.AppController;
+import ma.snrt.news.DailymotionActivity;
 import ma.snrt.news.PopupPlayerActivity;
 import ma.snrt.news.R;
 import ma.snrt.news.model.Post;
@@ -112,15 +113,17 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             public void onClick(View view) {
                 if(item.getType().equals("youtube")){
                     if(item.getLink()!=null && !item.getLink().isEmpty()) {
-                        String ytId = Utils.extractYoutubeVideoId(item.getLink());
-                        Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, false);
+                        String ytId = item.getLink();//Utils.extractYoutubeVideoId(item.getLink());
+                        Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, true);
                         context.startActivity(intent);
                     }
                     else
                         Toast.makeText(context, context.getString(R.string.error_play_video), Toast.LENGTH_SHORT).show();
                 }
                 else if(item.getType().equals("dailymotion")){
-
+                    Intent intent = new Intent(context, DailymotionActivity.class);
+                    intent.putExtra("url", item.getLink());
+                    context.startActivity(intent);
                 }
                 else if(item.getType().equals("url")){
                     Intent intent = new Intent(context, PopupPlayerActivity.class);
@@ -191,7 +194,7 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-                        intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.share_post)+" "+item.getUrl());
+                        intent.putExtra(Intent.EXTRA_TEXT, item.getTitle()+"\n"+item.getUrl());
                         intent.setType("text/plain");
                         context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)));
                     } catch(Exception e) {

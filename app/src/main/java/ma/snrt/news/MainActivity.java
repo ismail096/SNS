@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -249,6 +250,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }*/
     }
+
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+            return;
+        }
+        super.onBackPressed();
+    }
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(MyContextWrapper.wrap(newBase, Utils.getAppCurrentLang()));

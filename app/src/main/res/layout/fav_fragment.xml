@@ -77,6 +77,7 @@
                             >
 
                             <ImageView
+                                android:id="@+id/fav_empty_image"
                                 android:layout_width="@dimen/fav_empty_width"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/fav_empty"

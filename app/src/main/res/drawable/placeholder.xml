@@ -7,11 +7,11 @@
                 android:height="280dp" android:width="280dp"/>
         </shape>
     </item>
-    <item
+   <!-- <item
         android:drawable="@drawable/logo_btn_home"
         android:bottom="220dp"
         android:left="220dp"
         android:right="220dp"
         android:top="220dp"
-        />
+        />-->
 </layer-list>
