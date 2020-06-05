@@ -146,8 +146,8 @@ public class AgendaDetailActivity extends AppCompatActivity {
             if (post.getCategory() != null)
                 categoryTextView.setText(Html.fromHtml(post.getCategory()));
             titleTextView.setText(Html.fromHtml(post.getTitle()));
-            if (post.getDate() != null) {
-                dateTextView.setText(Utils.getPostRelativeDate(this, post.getDate()));
+            if (post.getDatePublication() != null) {
+                dateTextView.setText(Utils.getPostRelativeDate(this, post.getDatePublication()));
             }
             positionTextView.setText(post.getPosition());
             findViewById(R.id.detail_scroll).setVisibility(View.VISIBLE);

@@ -131,4 +131,93 @@ public class Utils {
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         return metrics.widthPixels;
     }
+
+    public static int getTabSize(Context context, int pos){
+        int result = 0;
+        switch (pos){
+            case 0:
+                result = Utils.dpToPx(context.getResources(), 140);
+                break;
+            case 1:
+                result = Utils.dpToPx(context.getResources(), 220);
+                break;
+            case 2:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 3:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 4:
+                result = Utils.dpToPx(context.getResources(), 160);
+                break;
+            case 5:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 6:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 7:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 8:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 9:
+                result = Utils.dpToPx(context.getResources(), 160);
+                break;
+            case 10:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 11:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 12:
+                result = Utils.dpToPx(context.getResources(), 200);
+                break;
+        }
+        return result;
+    }
+
+    public static int getTabSizeAr(Context context, int pos){
+        int result = 0;
+        switch (pos){
+            case 0:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 1:
+                result = Utils.dpToPx(context.getResources(), 160);
+                break;
+            case 2:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 3:
+                result = Utils.dpToPx(context.getResources(), 80);
+                break;
+            case 4:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 5:
+                result = Utils.dpToPx(context.getResources(), 80);
+                break;
+            case 6:
+                result = Utils.dpToPx(context.getResources(), 80);
+                break;
+            case 7:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 8:
+                result = Utils.dpToPx(context.getResources(), 120);
+                break;
+            case 9:
+                result = Utils.dpToPx(context.getResources(), 100);
+                break;
+            case 10:
+                result = Utils.dpToPx(context.getResources(), 80);
+                break;
+            case 11:
+                result = Utils.dpToPx(context.getResources(), 160);
+                break;
+        }
+        return result;
+    }
 }

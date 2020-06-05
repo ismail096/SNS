@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="heading_line_spacing">-3dp</dimen>
+    <dimen name="big_line_spacing">-2dp</dimen>
+    <dimen name="title_size">15sp</dimen>
+    <dimen name="big_title_size">19sp</dimen>
+    <dimen name="titles_size">19sp</dimen>
+    <dimen name="date_size">10sp</dimen>
+    <dimen name="small_date_size">8sp</dimen>
+    <dimen name="big_date_size">12sp</dimen>
+    <dimen name="page_title">20sp</dimen>
+    <dimen name="story_title">24sp</dimen>
+    <dimen name="story_date">12sp</dimen>
+    <dimen name="tab_size">18sp</dimen>
+    <dimen name="title_top_margin">0dp</dimen>
+    <dimen name="font_rm_padding">-5dp</dimen>
+    <dimen name="small_title_margin">0dp</dimen>
+    <dimen name="detail_title_spacing">-8dp</dimen>
+    <dimen name="margin_top_app">0dp</dimen>
+    <dimen name="margin_home_titles">5dp</dimen>
+
+    <dimen name="small_title_size">15sp</dimen>
+    <dimen name="life_tab_size">13sp</dimen>
+
+    <dimen name="team_text_size">13sp</dimen>
+
+</resources>

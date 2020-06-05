@@ -207,12 +207,14 @@ public class TopAgendaFragment extends Fragment {
                 public void run() {
                     // Shift the view to snap  near the center of the screen.
                     // This does not have to be precise.
-                    int dx = (topRecyclerview.getWidth() - topRecyclerview.getChildAt(0).getWidth()) / 2;
-                    topRecyclerview.scrollBy(-dx, 0);
-                    // Assign the LinearSnapHelper that will initially snap the near-center view.
-                    if(snapHelper==null) {
-                        snapHelper = new LinearSnapHelper();
-                        snapHelper.attachToRecyclerView(topRecyclerview);
+                    if(topRecyclerview!=null) {
+                        int dx = (topRecyclerview.getWidth() - topRecyclerview.getChildAt(0).getWidth()) / 2;
+                        topRecyclerview.scrollBy(-dx, 0);
+                        // Assign the LinearSnapHelper that will initially snap the near-center view.
+                        if (snapHelper == null) {
+                            snapHelper = new LinearSnapHelper();
+                            snapHelper.attachToRecyclerView(topRecyclerview);
+                        }
                     }
                 }
             });

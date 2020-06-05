@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -214,6 +215,8 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             lp.setMargins(0, 0, 0, Utils.dpToPx(context.getResources(), 10));
             mHolder.imageLayout.setLayoutParams(lp);
             mHolder.title.setMaxLines(2);
+            mHolder.title.setMinLines(2);
+            mHolder.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15 );
         }
         //setAnimation(mHolder.itemView, position);
     }

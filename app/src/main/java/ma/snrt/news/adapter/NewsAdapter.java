@@ -188,11 +188,11 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (getItemViewType(position) == TYPE_NORMAL) {
                 RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
                 if ((position + 1) % 4 == 0) {
-                    lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
+                    lp.setMarginStart( Utils.dpToPx(context.getResources(), 0));
                 } else if ((position + 2) % 4 == 0) {
-                    lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                    lp.setMarginStart( Utils.dpToPx(context.getResources(), 10));
                 } else if ((position + 3) % 4 == 0) {
-                    lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
+                    lp.setMarginStart( Utils.dpToPx(context.getResources(), 20));
                 }
                 int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                 lp.width = width;

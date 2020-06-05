@@ -130,8 +130,8 @@ public class AgendaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 .into(mHolder.imageView);
 
         mHolder.title.setText(Html.fromHtml(item.getTitle()));
-        if(item.getDate()!=null) {
-                mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDate()));
+        if(item.getDatePublication()!=null) {
+                mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
         }
         if(item.getPosition()!=null && !item.getPosition().isEmpty())
             mHolder.position.setText(item.getPosition());

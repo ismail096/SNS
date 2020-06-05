@@ -412,7 +412,7 @@ public class PostDetailActivity extends AppCompatActivity {
                 String result = "";
                 String[] tagsAsString = post.getTags().replaceAll(" ", "").split(",");
                 for(int i=0;i<tagsAsString.length;i++)
-                    result+= "#"+tagsAsString[i]+" ";
+                    result+= "#"+Html.fromHtml(tagsAsString[i])+" ";
                 SpannableString ss = new SpannableString(result);
                 String[] words = result.split(" ");
                 for (final String word : words) {

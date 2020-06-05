@@ -138,6 +138,7 @@ public class HomeFragment extends Fragment {
                     tf = Typeface.createFromAsset(mContext.getAssets(), "fonts/ArbFONTS-DroidKufi-Regular.ttf");
                 }
                 tv.setTypeface(tf);
+                tv.setIncludeFontPadding(false);
                 tabLayout.getTabAt(i).setCustomView(container);
                 tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
 
@@ -148,7 +149,12 @@ public class HomeFragment extends Fragment {
                     textPaint.setTextSize(tv.getTextSize());
                     textPaint.setStyle(Paint.Style.FILL);
                     textPaint.getTextBounds(tv.getText().toString(), 0, tv.getText().toString().length(), bounds);
-                    int width = (int) textPaint.measureText(tv.getText().toString()) * 2;
+                    int width = (int) textPaint.measureText(Html.fromHtml(tv.getText().toString()).toString()) * 2;
+                    if(Utils.getAppCurrentLang().equals("ar"))
+                        width = (int) (textPaint.measureText(tv.getText().toString()) * 1.8f);
+                   /* int width = Utils.getTabSize(mContext, i);
+                    if(Utils.getAppCurrentLang().equals("ar"))
+                        width = Utils.getTabSizeAr(mContext, i);*/
                     LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
                     ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(i).setLayoutParams(layoutParams);
                 }

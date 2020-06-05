@@ -189,31 +189,28 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
                         if (((position + 1) - diff) % 4 == 0) {
-                            lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
+                            lp.setMarginStart(Utils.dpToPx(context.getResources(), 0));
                         } else if (((position + 2) - diff) % 4 == 0) {
-                            lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
+                            lp.setMarginStart(Utils.dpToPx(context.getResources(), 10));
                         } else if (((position + 3) - diff) % 4 == 0) {
-                            lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
+                            lp.setMarginStart(Utils.dpToPx(context.getResources(), 20));
                         }
                     }
 
                     if(position==6){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 20);
-                        lp.rightMargin = 0;
+                        lp.setMarginStart(Utils.dpToPx(context.getResources(), 20));
                     }
                     if(position==7){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 10);
-                        lp.rightMargin = 0;
+                        lp.setMarginStart(Utils.dpToPx(context.getResources(), 10));
                     }
                     if(position==8){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
-                        lp.leftMargin = Utils.dpToPx(context.getResources(), 0);
-                        lp.rightMargin = 0;
+                        lp.setMarginStart(Utils.dpToPx(context.getResources(), 0));
                     }
                     mHolder.itemView.setLayoutParams(lp);
                     holder.setIsRecyclable(false);

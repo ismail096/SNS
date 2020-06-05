@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">SNRTNEWS</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="general">عام</string>
+    <string name="langues">اللغة</string>
+    <string name="dark_mode">الوضع المظلم</string>
+    <string name="notifications">إشعارات</string>
+    <string name="noter_app">تنقيط التطبيق</string>
+    <string name="a_propos">نبذة عن SNRT NEWS</string>
+    <string name="fr">فر</string>
+    <string name="ar">عر</string>
+    <string name="empty_list_text">لا توجد عناصر متاحة</string>
+    <string name="error_load_data">لا يمكن تحميل البيانات في الوقت الحالي</string>
+    <string name="see_more">المزيد ...</string>
+    <string name="related_posts">مقالات ذات صلة</string>
+    <string name="empty_view">لا يمكن تحميل الصفحة ، يرجى المحاولة مرة أخرى لاحقًا</string>
+    <string name="share">مشاركة</string>
+    <string name="api_error">شكرا! لديك مشكلة ... يرجى المحاولة مرة أخرى لاحقًا</string>
+    <string name="share_post"></string>
+    <string name="check_internet">تحقق من اتصالك بالإنترنت</string>
+    <string name="videos">الفيديو</string>
+    <string name="error_play_video">لا يمكنك تشغيل الفيديو في الوقت الحالي</string>
+    <string name="empty_search_text">لم يتم العثور على عناصر لهذا البحث</string>
+    <string name="search_hint">اكتب بحثك هنا</string>
+    <string name="search_mic_text">اضغط للتحدث</string>
+    <string name="stt_not_supported">لا يدعم جهازك هذه الميزة</string>
+    <string name="permissions_needed">شكرًا لك على السماح بالأذونات لهذه الميزة</string>
+    <string name="favoris">المفضلة</string>
+    <string name="lorem_ipsum"></string>
+    <string name="configuration">إعدادات</string>
+    <string name="reception_alerte">تفعيل الإشعارات</string>
+    <string name="alertes_perso_text">حدد <b> السمات المفضلة </b> لتلقي <b> إشعارات في الوقت الفعلي </b></string>
+    <string name="story">سطوري</string>
+    <string name="articles">مقالات</string>
+    <string name="select_all">حدد الكل</string>
+    <string name="flash_news">أخبار عاجلة</string>
+
+
+    <!-- new version -->
+
+    <string name="top_news">آخر الأخبار</string>
+    <string name="stories">سطوري</string>
+    <string name="agenda">مذكرة ثقافية</string>
+    <string name="top_videos">الأكثر مشاهدة</string>
+    <string name="all">الكل</string>
+    <string name="all_videos">جميع الفيديوهات</string>
+    <string name="search">البحث</string>
+    <string name="cancel">إلغاء</string>
+    <string name="results">نتيجة</string>
+    <string name="submit">تأكيد</string>
+    <string name="find_response">ابحث عن إجابة</string>
+    <string name="ask_quest">اطرح سؤالا</string>
+    <string name="ask_ur_quest">اطرح سؤالك</string>
+    <string name="next">التالي</string>
+    <string name="name">الإسم</string>
+    <string name="email">البريد الإلكتروني</string>
+    <string name="submit_quest">تأكيد سؤالي</string>
+    <string name="quest_send_success">تم إرسال سؤالك</string>
+    <string name="recommanded">مُقترَح لك</string>
+    <string name="top_matches">أهم مباريات اليوم</string>
+    <string name="botola">البطولة</string>
+    <string name="finished">إنتهى</string>
+    <string name="favoris_title">ابحث عن المقالات ومقاطع الفيديو المحفوظة</string>
+    <string name="favoris_empty_text">أثناء قراءة المقال ، انقر فوق الرمز لحفظه. يمكنك العودة هنا لقراءتها لاحقًا</string>
+    <string name="position_hint">حدد مدينة</string>
+    <string name="start_date_hint">من</string>`
+    <string name="end_date_hint">الى</string>
+    <string name="watch_live">شاهد المباشر</string>
+
+</resources>
