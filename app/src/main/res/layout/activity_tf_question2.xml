@@ -1,138 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/true_fake_color"
-        app:theme="@style/ThemeOverlay.AppCompat"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:elevation="4dp"
-        >
-
-        <ImageView
-            android:id="@+id/back_btn"
-            android:layout_width="@dimen/detail_icon_size"
-            android:layout_height="wrap_content"
-            android:src="@drawable/back_dark"
-            android:layout_marginStart="16dp"
-            android:layout_gravity="start|center_vertical"
-            android:onClick="onClick"
-            android:adjustViewBounds="true"
-            />
-
-        <ImageView
-            android:id="@+id/close_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/close_vf"
-            android:layout_marginEnd="16dp"
-            android:layout_gravity="end|center_vertical"
-            android:onClick="onClick"
-            android:adjustViewBounds="true"
-            />
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:src="?attr/trueFakeLogo"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"
-        android:adjustViewBounds="true"
-        />
-
-    <ma.snrt.news.ui.TextViewRegular
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="?attr/secondaryTextColor"
-        android:text="@string/lorem_ipsum"
-        android:maxLines="2"
-        android:layout_margin="20dp"
-        />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tf_name_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/name"
-        android:gravity="top"
-        android:background="@drawable/tf_edit_border"
-        android:padding="10dp"
-        android:textColor="?attr/secondaryTextColor"
-        android:textColorHint="@color/text_grey"
-        />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/tf_email_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:hint="@string/email"
-        android:gravity="top"
-        android:background="@drawable/tf_edit_border"
-        android:padding="10dp"
-        android:textColor="?attr/secondaryTextColor"
-        android:textColorHint="@color/text_grey"
-        />
+    >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="end"
-        android:layout_margin="20dp"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ma.snrt.news.ui.TextViewExtraBold
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/titles_size"
-            android:textColor="?attr/secondaryTextColor"
-            android:text="@string/submit_quest"
-            android:textAllCaps="true"
-            android:layout_gravity="center_vertical"
-            />
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/true_fake_color"
+            app:theme="@style/ThemeOverlay.AppCompat"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:elevation="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="@dimen/detail_icon_size"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_dark"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="start|center_vertical"
+                android:onClick="onClick"
+                android:adjustViewBounds="true"
+                />
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/close_vf"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="end|center_vertical"
+                android:onClick="onClick"
+                android:adjustViewBounds="true"
+                />
+
+        </androidx.appcompat.widget.Toolbar>
 
         <ImageView
-            android:id="@+id/submit_btn"
-            android:layout_width="48dp"
-            android:layout_height="40dp"
-            android:background="@color/true_fake_color"
-            android:textColor="@color/app_white"
-            android:src="@drawable/ic_next_white"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:src="?attr/trueFakeLogo"
+            android:layout_marginTop="40dp"
             android:layout_gravity="center_horizontal"
+            android:adjustViewBounds="true"
+            />
+
+        <ma.snrt.news.ui.TextViewRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="?attr/secondaryTextColor"
+            android:text="@string/lorem_ipsum"
+            android:maxLines="2"
+            android:layout_margin="20dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tf_name_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:padding="4dp"
-            android:onClick="onClick"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/name"
+            android:gravity="top"
+            android:background="@drawable/tf_edit_border"
+            android:padding="10dp"
+            android:textColor="?attr/secondaryTextColor"
+            android:textColorHint="@color/text_grey"
+            />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tf_email_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/email"
+            android:gravity="top"
+            android:background="@drawable/tf_edit_border"
+            android:padding="10dp"
+            android:textColor="?attr/secondaryTextColor"
+            android:textColorHint="@color/text_grey"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_margin="20dp"
+            >
+
+            <ma.snrt.news.ui.TextViewExtraBold
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titles_size"
+                android:textColor="?attr/secondaryTextColor"
+                android:text="@string/submit_quest"
+                android:textAllCaps="true"
+                android:layout_gravity="center_vertical"
+                />
+
+            <ImageView
+                android:id="@+id/submit_btn"
+                android:layout_width="48dp"
+                android:layout_height="40dp"
+                android:background="@color/true_fake_color"
+                android:textColor="@color/app_white"
+                android:src="@drawable/ic_next_white"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="20dp"
+                android:padding="4dp"
+                android:onClick="onClick"
+                />
+
+        </LinearLayout>
+
+        <ma.snrt.news.ui.TextViewRegular
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="?attr/secondaryTextColor"
+            android:text="@string/lorem_ipsum"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             />
 
     </LinearLayout>
 
-    <ma.snrt.news.ui.TextViewRegular
+    <RelativeLayout
+        android:id="@+id/msg_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textColor="?attr/secondaryTextColor"
-        android:text="@string/lorem_ipsum"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        />
+        android:layout_height="match_parent"
+        android:background="#D9000000"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:id="@+id/msg_imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/close"
+                />
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/msg_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tf_error_send"
+                android:textSize="@dimen/page_title"
+                android:textColor="@color/white"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                android:gravity="center"
+                />
+
+            <ma.snrt.news.ui.TextViewBold
+                android:id="@+id/msg_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry"
+                android:textSize="@dimen/titles_size"
+                android:textColor="@color/colorPrimary"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:onClick="onClick"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
-
-
-</LinearLayout>
+</RelativeLayout>

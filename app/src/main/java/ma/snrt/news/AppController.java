@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 import ma.snrt.news.network.ApiInterface;
 import ma.snrt.news.network.GsonHelper;
+import ma.snrt.news.network.ResponseInterceptor;
 import ma.snrt.news.util.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -62,17 +63,18 @@ public class AppController extends Application {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
                         Request request = chain.request();
-                        if(request.method().equalsIgnoreCase("post")) {
-                            String url = request.url().toString().replace("https", "http");
+                        //if(request.method().equalsIgnoreCase("post")) {
+                            String url = request.url().toString().replace("%E2%80%8E", "");
                             Request finalRequest = request.newBuilder()
                                     .url(url)
                                     .tag(null)
                                     .build();
                             return chain.proceed(finalRequest);
-                        }
-                        return  chain.proceed(request);
+                        //}
+                        //return  chain.proceed(request);
                     }
                 })
+                //.addInterceptor(new ResponseInterceptor())
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)

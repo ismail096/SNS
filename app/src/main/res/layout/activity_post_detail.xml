@@ -229,53 +229,24 @@
         android:visibility="gone"
         >
 
-        <rm.com.audiowave.AudioWaveView
-            android:id="@+id/wave"
+        <SeekBar
+            android:id="@+id/tts_seekbar"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:animateExpansion="false"
-            app:chunkWidth="2dp"
-            app:chunkHeight="20dp"
-            app:minChunkHeight="2dp"
-            app:chunkSpacing="2dp"
-            app:chunkRadius="1dp"
-            app:touchable="true"
-            app:waveColor="@color/colorPrimary"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="@dimen/post_margin"
-            android:layout_marginEnd="10dp"
+            android:layout_gravity="center_vertical"
+            android:theme="@style/seekBarStyle"
             />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/wave"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:visibility="gone"
-            />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="?attr/dividerColor"/>
 
         <ImageView
             android:id="@+id/read_text_btn"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="end|center_vertical"
-            android:src="@drawable/play_tts"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/tts_play"
             android:onClick="onClick"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:background="@color/colorPrimary"
+            android:padding="12dp"
             />
 
     </LinearLayout>
@@ -309,6 +280,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:theme="@style/seekBarStyle"
             />
 
         <TextView

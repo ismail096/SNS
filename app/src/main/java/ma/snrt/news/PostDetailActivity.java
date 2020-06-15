@@ -14,7 +14,6 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
@@ -36,16 +35,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import ma.snrt.news.adapter.RelatedAdapter;
 import ma.snrt.news.model.Post;
@@ -53,23 +46,17 @@ import ma.snrt.news.network.ApiCall;
 import ma.snrt.news.network.GsonHelper;
 import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewEBItalic;
-import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.ui.TextViewExtraBold;
+import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
 import ma.snrt.news.util.MyContextWrapper;
 import ma.snrt.news.util.Utils;
-import okhttp3.ResponseBody;
 import ozaydin.serkan.com.image_zoom_view.ImageViewZoom;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import rm.com.audiowave.AudioWaveView;
-import rm.com.audiowave.OnProgressListener;
-
 
 import static ma.snrt.news.AppController.mFirebaseAnalytics;
-
-//import static ma.snrt.news.AppController.mFirebaseAnalytics;
 
 public class PostDetailActivity extends AppCompatActivity {
     TextViewBold titleTextView;
@@ -90,9 +77,10 @@ public class PostDetailActivity extends AppCompatActivity {
     int descriptionTextSize = 13;
     LinearLayout ttsLayout;
     private int audioDuration;
-    private AudioWaveView audioWaveView;
     private MediaPlayer mediaPlayer;
     private Runnable audioRunnable;
+    private ImageView ttsPlayBtn;
+    private SeekBar ttsSeekbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +106,9 @@ public class PostDetailActivity extends AppCompatActivity {
         bookMarksBtn = findViewById(R.id.bookmark_btn);
         tagsTextView = findViewById(R.id.post_tags);
         fontBtn = findViewById(R.id.fontBtn);
+        ttsSeekbar = findViewById(R.id.tts_seekbar);
         ttsLayout = findViewById(R.id.post_bottom_layout);
+        ttsPlayBtn = findViewById(R.id.read_text_btn);
 
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -173,6 +163,14 @@ public class PostDetailActivity extends AppCompatActivity {
 
         descriptionWv.getSettings().setJavaScriptEnabled(true);
         descriptionWv.getSettings().setBuiltInZoomControls(false);
+        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)){
+            ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.app_black));
+            ttsPlayBtn.setImageResource(R.drawable.tts_play_dark);
+        }
+        else{
+            ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            ttsPlayBtn.setImageResource(R.drawable.tts_play);
+        }
 
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, post.getId()+"");
@@ -182,83 +180,33 @@ public class PostDetailActivity extends AppCompatActivity {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 
         setupProgress();
-        getAudioBytes();
+        //getAudioBytes();
 
         fillPost();
         if(post.getDescriptionArticle() == null)
             getPostFromApi(post.getId());
     }
 
-    private void getAudioBytes() {
-        ApiCall.getUrlBytes(post.getText_speech(), new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if(response.isSuccessful() && response.body()!=null){
-                    audioWaveView.setRawData(getBytesFromResponse(response.body()));
-                    ttsLayout.setVisibility(View.VISIBLE);
-                    //Animation animation = AnimationUtils.loadAnimation(PostDetailActivity.this, R.anim.slide_up2);
-                    //ttsLayout.startAnimation(animation);
-
-                }
-                else
-                    ttsLayout.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                ttsLayout.setVisibility(View.GONE);
-            }
-        });
-    }
-
-    private byte[] getBytesFromResponse(ResponseBody body) {
-        byte[] fileReader = new byte[4096];
-        try {
-            InputStream inputStream = null;
-            try {
-                inputStream = body.byteStream();
-                while (true) {
-                    int read = inputStream.read(fileReader);
-                    if (read == -1) {
-                        break;
-                    }
-                }
-            } catch (IOException e) {
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-            }
-        } catch (IOException e) {
-        }
-        return fileReader;
-    }
-
 
     private void setupProgress(){
-        audioWaveView = findViewById(R.id.wave);
-        final Random random = new Random();
-        final byte[] data = new byte[1024 * 200];
-        random.nextBytes(data);
-        audioWaveView.setRawData(data);
 
-        audioWaveView.setOnProgressListener(new OnProgressListener() {
+        ttsSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onStartTracking(float v) {
-
-            }
-
-            @Override
-            public void onStopTracking(float v) {
-
-            }
-
-            @Override
-            public void onProgressChanged(float v, boolean b) {
-                if(mediaPlayer.isPlaying() && b){
-                    int playPositionInMillisecconds = (audioDuration / 100) * (int)v;
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if(mediaPlayer.isPlaying() && fromUser){
+                    int playPositionInMillisecconds = (audioDuration / 100) * (int)progress;
                     mediaPlayer.seekTo(playPositionInMillisecconds);
                 }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
         mediaPlayer = new MediaPlayer();
@@ -266,7 +214,7 @@ public class PostDetailActivity extends AppCompatActivity {
             @Override
             public void onBufferingUpdate(MediaPlayer mediaPlayer, int i) {
                 if(i<100)
-                    audioWaveView.setProgress(i);
+                    ttsSeekbar.setProgress(i);
             }
         });
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -287,10 +235,24 @@ public class PostDetailActivity extends AppCompatActivity {
         audioDuration = mediaPlayer.getDuration(); // gets the song length in milliseconds from URL
         if(!mediaPlayer.isPlaying()){
             mediaPlayer.start();
-            ((ImageView) findViewById(R.id.read_text_btn)).setImageResource(R.drawable.pause_tts);
+            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)){
+                ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.app_black));
+                ttsPlayBtn.setImageResource(R.drawable.tts_pause_dark);
+            }
+            else{
+                ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                ttsPlayBtn.setImageResource(R.drawable.tts_pause);
+            }
         }else {
             mediaPlayer.pause();
-            ((ImageView) findViewById(R.id.read_text_btn)).setImageResource(R.drawable.play_tts);
+            if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false)){
+                ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.app_black));
+                ttsPlayBtn.setImageResource(R.drawable.tts_play_dark);
+            }
+            else{
+                ttsPlayBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+                ttsPlayBtn.setImageResource(R.drawable.tts_play);
+            }
         }
         primaryProgressUpdater();
     }
@@ -298,7 +260,7 @@ public class PostDetailActivity extends AppCompatActivity {
     private final Handler handler = new Handler();
     /** Method which updates the SeekBar primary progress by current song playing position*/
     private void primaryProgressUpdater() {
-        audioWaveView.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/audioDuration)*100)); // This math construction give a percentage of "was playing"/"song length"
+        ttsSeekbar.setProgress((int)(((float)mediaPlayer.getCurrentPosition()/audioDuration)*100)); // This math construction give a percentage of "was playing"/"song length"
         if (mediaPlayer.isPlaying()) {
             audioRunnable = new Runnable() {
                 public void run() {
@@ -402,7 +364,7 @@ public class PostDetailActivity extends AppCompatActivity {
             }
 
             if(post.getText_speech()!=null && post.getText_speech().contains(".mp3")){
-                getAudioBytes();
+                ttsLayout.setVisibility(View.VISIBLE);
             }
             else {
                 ttsLayout.setVisibility(View.GONE);

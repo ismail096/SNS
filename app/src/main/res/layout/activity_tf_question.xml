@@ -38,11 +38,11 @@
             <ma.snrt.news.ui.TextViewBold
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onClick"
                 android:textColor="@color/white"
                 android:textSize="@dimen/title_size"
                 android:text="@string/next"
                 android:layout_gravity="center_vertical"
+                android:clickable="false"
                 />
 
             <ImageView

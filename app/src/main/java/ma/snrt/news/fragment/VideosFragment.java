@@ -129,15 +129,10 @@ public class VideosFragment extends Fragment {
                 tabLayout.getTabAt(i).setCustomView(container);
                 tabLayout.getTabAt(i).setTag(categories.get(i).getColor());
                 if(getResources().getBoolean(R.bool.is_tablet)) {
-                    Rect bounds = new Rect();
-                    Paint textPaint = tv.getPaint();
-                    textPaint.setTypeface(tf);
-                    textPaint.setTextSize(tv.getTextSize());
-                    textPaint.setStyle(Paint.Style.FILL);
-                    textPaint.getTextBounds(tv.getText().toString(), 0, tv.getText().toString().length(), bounds);
-                    int width = (int) (textPaint.measureText(tv.getText().toString()) * 2.1f);
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, ViewGroup.LayoutParams.MATCH_PARENT);
-                    ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(i).setLayoutParams(layoutParams);
+                    View tabView = tabLayout.getTabAt(i).view;
+                    tabView.setMinimumWidth(0);
+                    int p = Utils.dpToPx(mContext.getResources(), 15);
+                    tabView.setPadding(p, 0, p, 0);
                 }
             }
 

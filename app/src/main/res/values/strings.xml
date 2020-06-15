@@ -69,4 +69,8 @@
     <string name="start_date_hint">De</string>`
     <string name="end_date_hint">À</string>
     <string name="watch_live">Voir le live</string>
+    <string name="tf_error_send">Un problème est survenue lors de l\'envoi de votre question</string>
+    <string name="tf_success_send">Votre question a été envoyée avec succés</string>
+    <string name="retry">Réessayer</string>
+    <string name="ok">OK</string>
 </resources>

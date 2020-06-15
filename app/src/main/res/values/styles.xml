@@ -139,4 +139,10 @@
         <item name="tabPaddingEnd">15dp</item>
     </style>
 
+    <style name="seekBarStyle">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/bgGrey2</item>
+        <item name="android:textColorSecondary">@color/bgGrey2</item>
+    </style>
+
 </resources>

@@ -67,9 +67,6 @@ public class PopupPlayerActivity extends AppCompatActivity {
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this,
                 Util.getUserAgent(this, getString(R.string.app_name)));
         // This is the MediaSource representing the media to be played.
-        /*HlsMediaSource videoSource =
-                new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse("https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"));        // Prepare the player with the source.
-        player.prepare(videoSource);*/
 
         MediaSource mediaSource = new ExtractorMediaSource.Factory(dataSourceFactory)
                 .setExtractorsFactory(new DefaultExtractorsFactory())

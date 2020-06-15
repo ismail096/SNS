@@ -66,5 +66,8 @@
     <string name="start_date_hint">من</string>`
     <string name="end_date_hint">الى</string>
     <string name="watch_live">شاهد المباشر</string>
-
+    <string name="tf_error_send">حدثت مشكلة أثناء إرسال سؤالك</string>
+    <string name="tf_success_send">تم إرسال سؤالك بنجاح</string>
+    <string name="retry">أعد المحاولة</string>
+    <string name="ok">حسنا</string>
 </resources>
