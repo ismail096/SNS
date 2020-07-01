@@ -41,6 +41,7 @@
         <attr name="iconMenu" format="integer"/>
         <attr name="loaderIcon" format="integer"/>
         <attr name="trueFakeLogo" format="integer"/>
+        <attr name="iconNext" format="integer"/>
     </declare-styleable>
     <declare-styleable name="SpannedGridLayoutManager">
         <attr name="android:orientation" />

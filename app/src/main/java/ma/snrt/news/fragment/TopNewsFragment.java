@@ -159,7 +159,7 @@ public class TopNewsFragment extends Fragment {
                     if(livePost!=null && mContext!=null) {
                         liveLayout.setVisibility(View.VISIBLE);
                         liveTitle.setText(Html.fromHtml(livePost.getTitle()));
-                        watchBtn.setOnClickListener(new View.OnClickListener() {
+                        liveLayout.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(mContext, PostDetailActivity.class);

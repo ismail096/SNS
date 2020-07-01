@@ -14,11 +14,15 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.transition.ChangeBounds;
+import android.transition.Transition;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.DecelerateInterpolator;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -56,6 +60,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static ma.snrt.news.AppController.BASE_URL;
 import static ma.snrt.news.AppController.mFirebaseAnalytics;
 
 public class PostDetailActivity extends AppCompatActivity {
@@ -89,6 +94,10 @@ public class PostDetailActivity extends AppCompatActivity {
             setTheme(R.style.ActivityThemeDark);
         }
         super.onCreate(savedInstanceState);
+
+        getWindow().setSharedElementEnterTransition(enterTransition());
+        getWindow().setSharedElementReturnTransition(returnTransition());
+
         setContentView(R.layout.activity_post_detail);
         Cache.initFavoris();
         Cache.initLikedPosts();
@@ -407,7 +416,12 @@ public class PostDetailActivity extends AppCompatActivity {
             else
                 tagsTextView.setVisibility(View.GONE);
 
-            loadDescription();
+            /*new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {*/
+                    loadDescription();
+             /*   }
+            }, 700);*/
         }
         else{
             findViewById(R.id.detail_scroll).setVisibility(View.GONE);
@@ -450,13 +464,32 @@ public class PostDetailActivity extends AppCompatActivity {
             text = text.replace("{{bgColor}}", bgColor);
             text = text.replace("{{direction}}", dir);
             text = text.replace("twitter-tweet", "twitter-tweet tw-align-center");
+            text = text.replace("/sites/default/files/inline-images", BASE_URL+"/sites/default/files/inline-images");
             descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
-            descriptionWv.setVisibility(View.VISIBLE);
+            descriptionWv.setWebViewClient(new WebViewClient() {
+                public void onPageFinished(WebView view, String url) {
+                    descriptionWv.setVisibility(View.VISIBLE);
+                }
+            });
         }
         else
             descriptionWv.setVisibility(View.GONE);
 
         getRelatedNews();
+    }
+
+    private Transition enterTransition() {
+        ChangeBounds bounds = new ChangeBounds();
+        bounds.setDuration(600);
+        return bounds;
+    }
+
+    private Transition returnTransition() {
+        ChangeBounds bounds = new ChangeBounds();
+        bounds.setInterpolator(new DecelerateInterpolator());
+        bounds.setDuration(600);
+
+        return bounds;
     }
 
     private void getRelatedNews(){

@@ -7,8 +7,8 @@
     <string name="notifications">إشعارات</string>
     <string name="noter_app">تنقيط التطبيق</string>
     <string name="a_propos">نبذة عن SNRT NEWS</string>
-    <string name="fr">فر</string>
-    <string name="ar">عر</string>
+    <string name="fr">Fr</string>
+    <string name="ar">ع</string>
     <string name="empty_list_text">لا توجد عناصر متاحة</string>
     <string name="error_load_data">لا يمكن تحميل البيانات في الوقت الحالي</string>
     <string name="see_more">المزيد ...</string>
@@ -65,7 +65,7 @@
     <string name="position_hint">حدد مدينة</string>
     <string name="start_date_hint">من</string>`
     <string name="end_date_hint">الى</string>
-    <string name="watch_live">شاهد المباشر</string>
+    <string name="watch_live">المباشر</string>
     <string name="tf_error_send">حدثت مشكلة أثناء إرسال سؤالك</string>
     <string name="tf_success_send">تم إرسال سؤالك بنجاح</string>
     <string name="retry">أعد المحاولة</string>

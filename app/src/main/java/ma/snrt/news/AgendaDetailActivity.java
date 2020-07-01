@@ -45,6 +45,8 @@ import ma.snrt.news.util.MyContextWrapper;
 import ma.snrt.news.util.PermissionsHelper;
 import ma.snrt.news.util.Utils;
 
+import static ma.snrt.news.AppController.BASE_URL;
+
 public class AgendaDetailActivity extends AppCompatActivity {
     TextViewExtraBold titleTextView, categoryTextView;
     TextViewRegular dateTextView, positionTextView;
@@ -186,6 +188,7 @@ public class AgendaDetailActivity extends AppCompatActivity {
                 text = text.replace("{{color}}", color);
                 text = text.replace("{{bgColor}}", bgColor);
                 text = text.replace("{{direction}}", dir);
+                text = text.replace("/sites/default/files/inline-images", BASE_URL+"/sites/default/files/inline-images");
                 descriptionWv.loadDataWithBaseURL("file:///android_asset/", text, "text/html", "utf-8", null);
             } else
                 descriptionWv.setVisibility(View.GONE);

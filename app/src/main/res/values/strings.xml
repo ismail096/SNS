@@ -7,8 +7,8 @@
     <string name="notifications">Notifications</string>
     <string name="noter_app">Noter l\'application</string>
     <string name="a_propos">à propos de SNRT NEWS</string>
-    <string name="fr">FR</string>
-    <string name="ar">AR</string>
+    <string name="fr">Fr</string>
+    <string name="ar">ع</string>
     <string name="empty_list_text">Aucun élément disponible</string>
     <string name="error_load_data">Impossible de charger les données pour le moment</string>
     <string name="see_more">Voir Plus</string>
@@ -68,7 +68,7 @@
     <string name="position_hint">Sélectionner une ville</string>
     <string name="start_date_hint">De</string>`
     <string name="end_date_hint">À</string>
-    <string name="watch_live">Voir le live</string>
+    <string name="watch_live">Live</string>
     <string name="tf_error_send">Un problème est survenue lors de l\'envoi de votre question</string>
     <string name="tf_success_send">Votre question a été envoyée avec succés</string>
     <string name="retry">Réessayer</string>

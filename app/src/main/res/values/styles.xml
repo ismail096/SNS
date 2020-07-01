@@ -43,6 +43,7 @@
         <item name="iconBack">@drawable/back</item>
         <item name="iconMenu">@drawable/menu_drawer</item>
         <item name="trueFakeLogo">@drawable/true_fake</item>
+        <item name="iconNext">@drawable/ic_next_black</item>
         <item tools:targetApi="23" name="android:statusBarColor">@color/app_white</item>
         <item tools:targetApi="23" name="android:windowLightStatusBar">true</item>
         <item name="loaderIcon">@raw/loader</item>
@@ -84,6 +85,7 @@
         <item name="iconBack">@drawable/back_dark</item>
         <item name="iconMenu">@drawable/menu_drawer_dark</item>
         <item name="trueFakeLogo">@drawable/true_fake_dark</item>
+        <item name="iconNext">@drawable/ic_next_white</item>
         <item tools:targetApi="23" name="android:statusBarColor">@color/app_black</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
         <item name="loaderIcon">@raw/loader_dark</item>

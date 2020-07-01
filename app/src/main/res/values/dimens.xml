@@ -79,6 +79,6 @@
     <dimen name="menu_category_size">20sp</dimen>
     <dimen name="menu_item_size">18sp</dimen>
     <dimen name="live_padding">10dp</dimen>
-    <dimen name="live_width">120dp</dimen>
+    <dimen name="live_width">100dp</dimen>
 
 </resources>

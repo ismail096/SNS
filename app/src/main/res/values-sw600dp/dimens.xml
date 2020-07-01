@@ -12,7 +12,7 @@
     <dimen name="page_title">22sp</dimen>
     <dimen name="story_title">24sp</dimen>
     <dimen name="story_date">16sp</dimen>
-    <dimen name="tab_size">18sp</dimen>
+    <dimen name="tab_size">16sp</dimen>
     <!--<dimen name="title_top_margin">10dp</dimen>
     <dimen name="small_title_margin">5dp</dimen>
     <dimen name="font_rm_padding">-2.5dp</dimen>

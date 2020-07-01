@@ -63,6 +63,7 @@ public class RelatedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         mHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mHolder.imageView.setTransitionName("imageMain");
                 Intent intent = new Intent(context, PostDetailActivity.class);
                 intent.putExtra("post", item);
                 Bundle bundle = null;
@@ -99,6 +100,8 @@ public class RelatedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             mHolder.category.setTextColor(Color.parseColor(item.getColor()));
         else
             mHolder.category.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+
+        mHolder.imageView.setTransitionName(null);
 
         mHolder.title.setClickable(false);
 
