@@ -51,7 +51,7 @@
             android:id="@+id/see_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/tab_agenda_select"
             android:textSize="@dimen/date_size"
             android:textAllCaps="true"
             android:text="@string/see_more"

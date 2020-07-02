@@ -79,6 +79,7 @@
                     android:layout_marginStart="5dp"
                     android:layout_toStartOf="@+id/fav_btn"
                     android:clickable="true"
+                    android:visibility="gone"
                     />
 
                 <ImageView

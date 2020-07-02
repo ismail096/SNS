@@ -181,11 +181,11 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             if(context.getResources().getBoolean(R.bool.is_tablet)){
                 if(getItemViewType(position) == TYPE_NORMAL){
                     int diff = 0;
-                    if(position>9)
-                        diff = 10;
+                    if(position>10)
+                        diff = 11;
                     RecyclerView.LayoutParams lp = (RecyclerView.LayoutParams) mHolder.itemView.getLayoutParams();
 
-                    if(position != 6 || position != 7 || position != 8) {
+                    if(position != 7 || position != 8 || position != 9) {
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
                         if (((position + 1) - diff) % 4 == 0) {
@@ -197,17 +197,17 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         }
                     }
 
-                    if(position==6){
+                    if(position==7){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
                         lp.setMarginStart(Utils.dpToPx(context.getResources(), 20));
                     }
-                    if(position==7){
+                    if(position==8){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
                         lp.setMarginStart(Utils.dpToPx(context.getResources(), 10));
                     }
-                    if(position==8){
+                    if(position==9){
                         int width = Utils.getScreenWidth((Activity) context) / 3 - Utils.dpToPx(context.getResources(), 20);
                         lp.width = width;
                         lp.setMarginStart(Utils.dpToPx(context.getResources(), 0));
@@ -286,10 +286,10 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             return TYPE_AGENDA;
         if(items.get(position).getCustomCategory() == 3)
             return TYPE_VIDEOS;
-        if(!context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==6 || position==11))
+        if((position==0 || position==6 || position==11 || (position>11 && (position-11)% 4 == 0)))
             return TYPE_BIG;
-        if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position==5 || position ==9 || (position>10 && (position - 10) % 4 == 0)))
-            return TYPE_BIG;
+        /*if(context.getResources().getBoolean(R.bool.is_tablet) && (position==0 || position== 6 || position == 11 || (position>11 && (position - 11) % 4 == 0)))
+            return TYPE_BIG;*/
         return TYPE_NORMAL;
     }
 
@@ -325,7 +325,6 @@ public class TopNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             default:
                 throw new IllegalStateException("Unexpected value: " + viewType);
         }
-
         return mViewHolder;
     }
 

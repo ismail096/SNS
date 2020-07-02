@@ -109,7 +109,9 @@ public class TopNewsFragment extends Fragment {
             lm.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
-                     if(position==0 || position==4 || position==5 || position==9 || position==10 || (position>10 && (position - 10) % 4 == 0))
+                     if(position==0 || position==4 || position==5
+                             || position==6 || position==10 || position == 11
+                             || (position>11 && (position - 11) % 4 == 0))
                         return 3;
                      return 1;
                 }
@@ -306,7 +308,7 @@ public class TopNewsFragment extends Fragment {
     private void setListAdapter(){
         if(posts.size()>0){
             recyclerView.setVisibility(View.VISIBLE);
-            if(!getResources().getBoolean(R.bool.is_tablet)) {
+            /*if(!getResources().getBoolean(R.bool.is_tablet)) {
                 if (posts.size() > 4 && users.size() > 0)
                     posts.add(4, new Post(1));
                 if (posts.size() > 5 && videos.size() > 0)
@@ -314,14 +316,14 @@ public class TopNewsFragment extends Fragment {
                 if (posts.size() > 10 && agendas.size() > 0)
                     posts.add(10, new Post(2));
             }
-            else{
+            else{*/
                 if (posts.size() > 4 && users.size() > 0)
                     posts.add(4, new Post(1));
                 if (posts.size() > 5 && videos.size() > 0)
                     posts.add(5, new Post(3));
                 if (posts.size() > 10 && agendas.size() > 0)
                     posts.add(10, new Post(2));
-            }
+            //}
             newsAdapter = new TopNewsAdapter(mContext, posts, users, videos, agendas);
             recyclerView.setAdapter(newsAdapter);
         }

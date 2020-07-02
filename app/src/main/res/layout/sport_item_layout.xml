@@ -82,6 +82,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_toStartOf="@+id/fav_btn"
                     android:adjustViewBounds="true"
+                    android:visibility="gone"
                     />
 
                 <ImageView
