@@ -10,6 +10,9 @@ import com.SnrtNews.storysnrt.SnrtNewsStoryAr;
 import com.SnrtNews.storysnrt.SnrtNewsStoryFr;
 import com.SnrtNews.storysnrt.StoryItem;
 import com.SnrtNews.storysnrt.callbacks.StoryCallback;
+import com.thefuntasty.hauler.DragDirection;
+import com.thefuntasty.hauler.HaulerView;
+import com.thefuntasty.hauler.OnDragDismissedListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +39,7 @@ public class StoryActivity extends AppCompatActivity
     private List<StoryItem> storyItem;
     private List<List<StoryItem>> storyuser;
     ArrayList<User> users;
+    private HaulerView advancedHaulerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,11 +48,18 @@ public class StoryActivity extends AppCompatActivity
         setContentView(R.layout.activity_story);
 
         container = findViewById(R.id.container);
+        advancedHaulerView = findViewById(R.id.advancedHaulerView);
         positionTextView = findViewById(R.id.story_pin_text);
         likeTextView = findViewById(R.id.story_like_text);
 
         users = (ArrayList<User>) getIntent().getSerializableExtra("users");
         userIndex = getIntent().getIntExtra("user_index", 0);
+        advancedHaulerView.setOnDragDismissedListener(new OnDragDismissedListener() {
+            @Override
+            public void onDismissed(@NotNull DragDirection dragDirection) {
+                finish();
+            }
+        });
         getStoryData();
     }
 

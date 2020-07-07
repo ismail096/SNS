@@ -1,92 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.thefuntasty.hauler.HaulerView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/advancedHaulerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".StoryActivity">
+    android:background="@android:color/white"
+    app:dragUpEnabled="true"
+    app:dragElasticity="0.9"
+    app:dragDismissScale="0.7"
+    app:fadeSystemBars="true"
+    app:dragDismissDistance="25dp">
 
-    <LinearLayout
-        android:id="@+id/story_options"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/story_bg"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:elevation="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        >
+    <com.thefuntasty.hauler.LockableNestedScrollView
+        android:id="@+id/scrollViewParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/story_close"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"
-            android:adjustViewBounds="true"
-            android:onClick="onClick"
-            android:src="@drawable/story_close" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:context=".StoryActivity">
 
-        <ImageView
-            android:id="@+id/story_pin"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:adjustViewBounds="true"
-            android:onClick="onClick"
-            android:src="@drawable/story_pin" />
+            <LinearLayout
+                android:id="@+id/story_options"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/story_bg"
+                android:clickable="true"
+                android:orientation="vertical"
+                android:elevation="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"
+                >
 
-        <ma.snrt.news.ui.TextViewRegular
-            android:id="@+id/story_pin_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:textAllCaps="true"
-            android:textColor="@color/app_white"
-            android:textSize="@dimen/small_date_size" />
+                <ImageView
+                    android:id="@+id/story_close"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="40dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/story_close" />
 
-        <ImageView
-            android:id="@+id/story_pause"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:adjustViewBounds="true"
-            android:onClick="onClick"
-            android:src="@drawable/story_pause" />
+                <ImageView
+                    android:id="@+id/story_pin"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/story_pin" />
 
-        <ImageView
-            android:id="@+id/story_like"
-            android:layout_width="24dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:adjustViewBounds="true"
-            android:onClick="onClick"
-            android:src="@drawable/story_like" />
+                <ma.snrt.news.ui.TextViewRegular
+                    android:id="@+id/story_pin_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/app_white"
+                    android:textSize="@dimen/small_date_size" />
 
-        <ma.snrt.news.ui.TextViewRegular
-            android:id="@+id/story_like_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="30dp"
-            android:textColor="@color/app_white"
-            android:textSize="@dimen/small_date_size" />
+                <ImageView
+                    android:id="@+id/story_pause"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/story_pause" />
 
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/story_like"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:adjustViewBounds="true"
+                    android:onClick="onClick"
+                    android:src="@drawable/story_like" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ma.snrt.news.ui.TextViewRegular
+                    android:id="@+id/story_like_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="30dp"
+                    android:textColor="@color/app_white"
+                    android:textSize="@dimen/small_date_size" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.thefuntasty.hauler.LockableNestedScrollView>
+
+</com.thefuntasty.hauler.HaulerView>
+
+
+
+
+
+
+
