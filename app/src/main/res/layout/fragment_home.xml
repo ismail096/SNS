@@ -14,20 +14,21 @@
         android:visibility="gone"
         >
 
-       <com.google.android.material.tabs.TabLayout
-           android:id="@+id/tablayout"
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/tablayout_height"
-           style="@style/myCustomTablayout"
-           app:tabMode="scrollable"
-           android:background="@color/colorPrimary"
-           app:tabIndicatorFullWidth="true"
-           app:tabIndicator="@drawable/tab_indicator"
-           android:elevation="2dp"
-           app:tabPaddingStart="@dimen/tab_padding"
-           app:tabPaddingEnd="@dimen/tab_padding"
-           android:measureAllChildren="true"
-           />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tablayout_height"
+            style="@style/myCustomTablayout"
+            app:tabMode="scrollable"
+            android:background="@color/colorPrimary"
+            app:tabIndicator="@drawable/tab_indicator"
+            android:elevation="2dp"
+            app:tabPaddingStart="@dimen/tab_padding"
+            app:tabPaddingEnd="@dimen/tab_padding"
+            android:measureAllChildren="true"
+            app:tabIndicatorFullWidth="false"
+
+            />
 
         <com.duolingo.open.rtlviewpager.RtlViewPager
             android:id="@+id/viewpager"
