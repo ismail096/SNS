@@ -93,7 +93,6 @@
             android:theme="@style/ActivityThemeLight" />
         <activity
             android:name=".StoryActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Draggable" />
         <activity
             android:name=".TutorialActivity"
