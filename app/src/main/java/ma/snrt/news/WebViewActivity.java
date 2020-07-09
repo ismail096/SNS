@@ -10,6 +10,7 @@ import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -81,6 +82,7 @@ public class WebViewActivity extends AppCompatActivity {
             webView.setBackground(null);
             webView.getSettings().setSupportZoom(false);
             webView.getSettings().setDomStorageEnabled(true);
+            webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
             webView.setWebViewClient(new WebViewClient(){
 
                 @Override
