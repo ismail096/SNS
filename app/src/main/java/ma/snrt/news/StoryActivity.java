@@ -45,6 +45,7 @@ public class StoryActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.zoom_in, R.anim.zoom_in);
         setContentView(R.layout.activity_story);
 
         container = findViewById(R.id.container);
@@ -57,7 +58,9 @@ public class StoryActivity extends AppCompatActivity
         advancedHaulerView.setOnDragDismissedListener(new OnDragDismissedListener() {
             @Override
             public void onDismissed(@NotNull DragDirection dragDirection) {
+
                 finish();
+                overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
             }
         });
         getStoryData();

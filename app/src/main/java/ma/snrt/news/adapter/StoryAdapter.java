@@ -78,6 +78,7 @@ public class StoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                 intent.putExtra("users", items);
                 intent.putExtra("user_index", position);
                 context.startActivity(intent);
+
             }
         });
 
