@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import ma.snrt.news.R;
 import ma.snrt.news.model.Tag;
 import ma.snrt.news.ui.TextViewBold;
 import ma.snrt.news.ui.TextViewExtraBold;
+import ma.snrt.news.util.Utils;
 
 public class LifeTagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -62,7 +64,24 @@ public class LifeTagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
 
-        mHolder.name.setText(Html.fromHtml(item.getName()));
+        if(context.getResources().getBoolean(R.bool.is_tablet)) {
+
+            if(Utils.getAppCurrentLang().equals("ar"))
+            {
+                mHolder.name.setText(Html.fromHtml(item.getName())+"       ");
+            }
+            else
+            {
+                mHolder.name.setText(Html.fromHtml(item.getName()));
+            }
+
+        }
+        else
+        {
+            mHolder.name.setText(Html.fromHtml(item.getName()));
+        }
+
+
 
         if(item.isSelected()){
             mHolder.container.setBackgroundResource(R.drawable.life_tag_selected);
