@@ -100,6 +100,7 @@ public class PopupPlayerActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.root: case R.id.close_btn:
                 finish();
+                overridePendingTransition(R.anim.slide_out_bottom, R.anim.slide_in_bottom);
                 break;
             case R.id.exo_fullscreen:
                 toggleFullScreen();
