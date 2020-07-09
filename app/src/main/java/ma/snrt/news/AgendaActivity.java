@@ -316,7 +316,7 @@ public class AgendaActivity extends AppCompatActivity {
             topAdapter = new TopAgendaAdapter(AgendaActivity.this, tops);
             topRecyclerview.setAdapter(topAdapter);
             // Scroll to the position we want to snap to
-            layoutManager.scrollToPosition(tops.size() / 2);
+            /*layoutManager.scrollToPosition(tops.size() / 2);
             // Wait until the RecyclerView is laid out.
             topRecyclerview.post(new Runnable() {
                 @Override
@@ -331,7 +331,7 @@ public class AgendaActivity extends AppCompatActivity {
                         snapHelper.attachToRecyclerView(topRecyclerview);
                     }
                 }
-            });
+            });*/
         }
         else{
             topRecyclerview.setVisibility(View.GONE);
