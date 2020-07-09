@@ -18,7 +18,6 @@
         android:layout_marginTop="7.5dp"
         android:layout_marginBottom="7.5dp"
         android:textAllCaps="true"
-        android:supportsRtl="true"
         />
 
 </RelativeLayout>
