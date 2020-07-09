@@ -54,13 +54,13 @@
                 android:layout_marginTop="@dimen/margin_top_app"
                 >
 
-              <ImageView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="32dp"
                     android:src="?attr/logoDetail"
                     android:adjustViewBounds="true"
                     android:layout_marginStart="@dimen/post_margin"
-                  />
+                    />
 
                 <ImageView
                     android:layout_width="wrap_content"

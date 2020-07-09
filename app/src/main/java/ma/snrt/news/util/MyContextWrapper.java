@@ -6,6 +6,7 @@ package ma.snrt.news.util;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.pm.PackageInstaller;
 import android.content.res.Configuration;
 import android.os.Build;
 
@@ -20,12 +21,6 @@ public class MyContextWrapper extends ContextWrapper {
     @SuppressWarnings("deprecation")
     public static ContextWrapper wrap(Context context, String language) {
         Configuration config = context.getResources().getConfiguration();
-        /*Locale sysLocale = null;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            sysLocale = getSystemLocale(config);
-        } else {
-            sysLocale = getSystemLocaleLegacy(config);
-        }*/
         if(language.equals("")){
             String deviceLang = Locale.getDefault().getLanguage();
             if(!deviceLang.equals("fr") && !deviceLang.equals("ar"))
