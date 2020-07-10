@@ -64,22 +64,7 @@ public class LifeTagAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             }
         });
 
-        if(context.getResources().getBoolean(R.bool.is_tablet)) {
-
-            if(Utils.getAppCurrentLang().equals("ar"))
-            {
-                mHolder.name.setText(Html.fromHtml(item.getName())+"       ");
-            }
-            else
-            {
-                mHolder.name.setText(Html.fromHtml(item.getName()));
-            }
-
-        }
-        else
-        {
-            mHolder.name.setText(Html.fromHtml(item.getName()));
-        }
+        mHolder.name.setText(Html.fromHtml(item.getName()));
 
 
 
