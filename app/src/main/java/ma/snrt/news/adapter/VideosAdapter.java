@@ -26,9 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,9 +33,9 @@ import ma.snrt.news.AppController;
 import ma.snrt.news.DailymotionActivity;
 import ma.snrt.news.PopupPlayerActivity;
 import ma.snrt.news.R;
+import ma.snrt.news.YouTubePlayerActivity;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.ui.TextViewBold;
-import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.TextViewEBItalic;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
@@ -77,10 +74,12 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     }
                 }
             });
-        }catch(Exception ex){
+        } catch (Exception ex) {
 
         }
     }
+
+
 
     public void setLoaded() {
         notifyDataSetChanged();
@@ -112,21 +111,23 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(item.getType().equals("youtube")){
-                    if(item.getLink()!=null && !item.getLink().isEmpty()) {
-                        String ytId = item.getLink();//Utils.extractYoutubeVideoId(item.getLink());
-                        Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, true);
+                if (item.getType().equals("youtube")) {
+                    if (item.getLink() != null && !item.getLink().isEmpty()) {
+                        String ytId = item.getLink();
+                        //Utils.extractYoutubeVideoId(item.getLink());
+                       // Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, true);
+                       // context.startActivity(intent);
+
+                        Intent intent = new Intent(context, YouTubePlayerActivity.class);
+                        intent.putExtra("url", ytId);
                         context.startActivity(intent);
-                    }
-                    else
+                    } else
                         Toast.makeText(context, context.getString(R.string.error_play_video), Toast.LENGTH_SHORT).show();
-                }
-                else if(item.getType().equals("dailymotion")){
+                } else if (item.getType().equals("dailymotion")) {
                     Intent intent = new Intent(context, DailymotionActivity.class);
                     intent.putExtra("url", item.getLink());
                     context.startActivity(intent);
-                }
-                else if(item.getType().equals("url")){
+                } else if (item.getType().equals("url")) {
                     Intent intent = new Intent(context, PopupPlayerActivity.class);
                     intent.putExtra("video_uri", item.getLink());
                     intent.putExtra("video_image", item.getImage());
@@ -144,7 +145,7 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         });
         mHolder.title.setText(Html.fromHtml(item.getTitle()));
         mHolder.category.setText(Html.fromHtml(item.getCategory()));
-        if(item.getColor()!=null && item.getColor().length()==7)
+        if (item.getColor() != null && item.getColor().length() == 7)
             mHolder.category.setTextColor(Color.parseColor(item.getColor()));
         else
             mHolder.category.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
@@ -159,33 +160,29 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 .apply(requestOptions)
                 .into(mHolder.imageView);
 
-        if(item.getDatePublication()!=null) {
+        if (item.getDatePublication() != null) {
             mHolder.date.setVisibility(View.VISIBLE);
-                mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
-        }
-        else
+            mHolder.date.setText(Utils.getPostRelativeDate(context, item.getDatePublication()));
+        } else
             mHolder.date.setVisibility(View.GONE);
 
-        if(!Cache.existsInVidFav(item.getId()+"")) {
-            if(!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        if (!Cache.existsInVidFav(item.getId() + "")) {
+            if (!AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
                 mHolder.favBtn.setImageResource(R.drawable.bookmarks_empty);
             else
                 mHolder.favBtn.setImageResource(R.drawable.bookmarks_dark);
-        }
-        else
+        } else
             mHolder.favBtn.setImageResource(R.drawable.bookmarks);
 
         View.OnClickListener onClickListener = v -> {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.fav_btn:
-                    if(!Cache.existsInVidFav(item.getId()+"")){
-                        Cache.putVidToFav(item.getId()+"", item);
+                    if (!Cache.existsInVidFav(item.getId() + "")) {
+                        Cache.putVidToFav(item.getId() + "", item);
                         mHolder.favBtn.setImageResource(R.drawable.bookmarks);
-                    }
-                    else
-                    {
-                        Cache.removeVidFromFav(item.getId()+"");
-                        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+                    } else {
+                        Cache.removeVidFromFav(item.getId() + "");
+                        if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
                             mHolder.favBtn.setImageResource(R.drawable.bookmarks_dark);
                         else
                             mHolder.favBtn.setImageResource(R.drawable.bookmarks_empty);
@@ -195,10 +192,10 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     try {
                         Intent intent = new Intent(Intent.ACTION_SEND);
                         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name));
-                        intent.putExtra(Intent.EXTRA_TEXT, item.getTitle()+"\n"+item.getUrl());
+                        intent.putExtra(Intent.EXTRA_TEXT, item.getTitle() + "\n" + item.getUrl());
                         intent.setType("text/plain");
                         context.startActivity(Intent.createChooser(intent, context.getString(R.string.share)));
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         Toast.makeText(context, context.getString(R.string.api_error), Toast.LENGTH_SHORT).show();
                     }
                     break;
@@ -206,17 +203,17 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         };
         mHolder.favBtn.setOnClickListener(onClickListener);
         mHolder.shareBtn.setOnClickListener(onClickListener);
-        if(AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
+        if (AppController.getSharedPreferences().getBoolean("NIGHT_MODE", false))
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.bgGrey2Dark));
         else
             mHolder.container.setBackgroundColor(ContextCompat.getColor(context, R.color.app_white));
-        if(context.getResources().getBoolean(R.bool.is_tablet)){
+        if (context.getResources().getBoolean(R.bool.is_tablet)) {
             LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) mHolder.imageLayout.getLayoutParams();
             lp.setMargins(0, 0, 0, Utils.dpToPx(context.getResources(), 10));
             mHolder.imageLayout.setLayoutParams(lp);
             mHolder.title.setMaxLines(2);
             mHolder.title.setMinLines(2);
-            mHolder.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15 );
+            mHolder.title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
         }
         //setAnimation(mHolder.itemView, position);
     }
@@ -232,7 +229,7 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0)
+        if (position == 0)
             return TYPE_BIG;
         return TYPE_NORMAL;
     }
@@ -240,10 +237,10 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup,
                                                       int viewType) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_layout, viewGroup, false);
-            if(viewType==TYPE_NORMAL && ! context.getResources().getBoolean(R.bool.is_tablet))
-                v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_small_layout, viewGroup, false);
-            return new ViewHolder(v);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_layout, viewGroup, false);
+        if (viewType == TYPE_NORMAL && !context.getResources().getBoolean(R.bool.is_tablet))
+            v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.video_item_small_layout, viewGroup, false);
+        return new ViewHolder(v);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -269,4 +266,6 @@ public class VideosAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             parent = convertView.findViewById(R.id.post_item_parent);
         }
     }
+
+
 }

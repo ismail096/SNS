@@ -2,6 +2,7 @@ package ma.snrt.news;
 
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -114,7 +115,10 @@ public class PopupPlayerActivity extends AppCompatActivity {
             playerView.setLayoutParams(lp);
             FrameLayout.LayoutParams lp2 = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             playerControls.setLayoutParams(lp2);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+
             findViewById(R.id.close_btn).setVisibility(View.GONE);
             fullscreenImage.setImageResource(R.drawable.exo_controls_fullscreen_exit);
 
@@ -131,7 +135,12 @@ public class PopupPlayerActivity extends AppCompatActivity {
             playerView.setLayoutParams(lp);
             FrameLayout.LayoutParams lp2 = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, Utils.dpToPx(getResources(), 220));
             playerControls.setLayoutParams(lp2);
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+            if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+
+
             findViewById(R.id.close_btn).setVisibility(View.VISIBLE);
             fullscreenImage.setImageResource(R.drawable.ic_fullscreen);
             playBtn.getLayoutParams().width = getResources().getDimensionPixelSize(R.dimen.small_play_btn);

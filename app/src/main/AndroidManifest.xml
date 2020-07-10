@@ -54,6 +54,12 @@
             android:name=".PopupPlayerActivity"
             android:configChanges="orientation|screenSize|layoutDirection"
             android:theme="@style/Theme.Transparent" />
+
+
+        <activity
+            android:name=".YouTubePlayerActivity"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".WebViewActivity"
             android:screenOrientation="portrait"

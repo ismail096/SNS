@@ -480,14 +480,14 @@ public class PostDetailActivity extends AppCompatActivity {
 
     private Transition enterTransition() {
         ChangeBounds bounds = new ChangeBounds();
-        bounds.setDuration(600);
+        bounds.setDuration(105);
         return bounds;
     }
 
     private Transition returnTransition() {
         ChangeBounds bounds = new ChangeBounds();
         bounds.setInterpolator(new DecelerateInterpolator());
-        bounds.setDuration(600);
+        bounds.setDuration(150);
 
         return bounds;
     }

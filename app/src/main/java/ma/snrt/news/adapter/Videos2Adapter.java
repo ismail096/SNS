@@ -25,9 +25,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -35,9 +32,9 @@ import ma.snrt.news.AppController;
 import ma.snrt.news.DailymotionActivity;
 import ma.snrt.news.PopupPlayerActivity;
 import ma.snrt.news.R;
+import ma.snrt.news.YouTubePlayerActivity;
 import ma.snrt.news.model.Post;
 import ma.snrt.news.ui.TextViewBold;
-import ma.snrt.news.ui.TextViewExtraBold;
 import ma.snrt.news.ui.TextViewEBItalic;
 import ma.snrt.news.ui.TextViewRegular;
 import ma.snrt.news.util.Cache;
@@ -115,7 +112,11 @@ public class Videos2Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
               if(item.getType().equals("youtube")){
                   if(item.getLink()!=null && !item.getLink().isEmpty()) {
                       String ytId = item.getLink(); //  Utils.extractYoutubeVideoId(item.getLink());
-                      Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, true);
+                    //  Intent intent = YouTubeStandalonePlayer.createVideoIntent((Activity) context, AppController.API_KEY, ytId, 0, true, true);
+                     // context.startActivity(intent);
+
+                      Intent intent = new Intent(context, YouTubePlayerActivity.class);
+                      intent.putExtra("url", ytId);
                       context.startActivity(intent);
                   }
                   else
