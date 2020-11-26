@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.android.exoplayer:exoplayer-dash:2.11.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b99a381cbf7dd2cb8b1a424902920696/jetified-exoplayer-dash-2.11.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b99a381cbf7dd2cb8b1a424902920696/jetified-exoplayer-dash-2.11.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b99a381cbf7dd2cb8b1a424902920696/jetified-exoplayer-dash-2.11.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-dash/2.11.1/ea6338444f766dac5fc497a9647cd398a4d033b5/exoplayer-dash-2.11.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-dash/2.11.1/75958b3fdf2ec23cf8960052fb1b77010b7ad2f7/exoplayer-dash-2.11.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
